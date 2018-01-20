@@ -15,6 +15,21 @@ namespace XamPass.Controllers
             return View();
         }
 
+        public IActionResult FirstTest()
+        {
+            List<string> ObjList = new List<string>()
+            {
+                "Latur",
+                "Mumbai",
+                "Pune",
+                "Delhi",
+                "Dehradun",
+                "Noida",
+                "New Delhi"
+            };
+            return View(ObjList);
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
