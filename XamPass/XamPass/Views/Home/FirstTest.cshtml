@@ -1,4 +1,4 @@
-﻿@model IEnumerable<string>
+﻿@model XamPass.Models.ViewModel
 
 @{
 	ViewBag.Title = "FirstTest";
@@ -18,7 +18,7 @@
 
 	<script>
 		$(function () {
-				var availableTags = @Html.Raw(Json.Serialize(Model))
+				var availableTags = @Html.Raw(Json.Serialize(Model.Institutions.Select(i => i.Name)))
             $("#tags").autocomplete({
                 source: availableTags
             });
@@ -29,7 +29,7 @@
 <body>
 	<p>
 		Try Autocomplete by using the following cities:
-		"Latur", "Mumbai", "Pune", "Delhi", "Dehradun", "Noida", "New Delhi"
+		"BA Leipzig", "HTWK Leipzig", "Universität Leipzig", "BA Glauchau", "BA Dresden", "HfM Weimar", "Universität Jena", "Fernuniversität Hagen"
 	</p>
 	<div class="ui-widget">
 		<label for="tags">City: </label>

@@ -17,17 +17,29 @@ namespace XamPass.Controllers
 
         public IActionResult FirstTest()
         {
-            List<string> ObjList = new List<string>()
+            ViewModel viewModel = new ViewModel();
+            viewModel.Institutions = new List<Institution>()
             {
-                "Latur",
-                "Mumbai",
-                "Pune",
-                "Delhi",
-                "Dehradun",
-                "Noida",
-                "New Delhi"
+                new Institution(){Id=0, Name="BA Leipzig"},
+                new Institution(){Id=1, Name="HTWK Leipzig"},
+                new Institution(){Id=2, Name="Universität Leipzig"},
+                new Institution(){Id=3, Name="BA Glauchau"},
+                new Institution(){Id=4, Name="BA Dresden"},
+                new Institution(){Id=5, Name="HfM Weimar"},
+                new Institution(){Id=6, Name="Universität Jena"},
+                new Institution(){Id=7, Name="Fernuniversität Hagen"}
             };
-            return View(ObjList);
+            //List<string> ObjList = new List<string>()
+            //{
+            //    "Latur",
+            //    "Mumbai",
+            //    "Pune",
+            //    "Delhi",
+            //    "Dehradun",
+            //    "Noida",
+            //    "New Delhi"
+            //};
+            return View(viewModel);
         }
 
         public IActionResult About()
