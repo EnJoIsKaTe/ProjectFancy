@@ -27,7 +27,8 @@ namespace XamPass.Controllers
                 new Institution(){Id=4, Name="BA Dresden"},
                 new Institution(){Id=5, Name="HfM Weimar"},
                 new Institution(){Id=6, Name="Universität Jena"},
-                new Institution(){Id=7, Name="Fernuniversität Hagen"}
+                new Institution(){Id=7, Name="Fernuniversität Hagen"},
+                new Institution(){Id=7, Name="MLU Halle"}
             };
             //List<string> ObjList = new List<string>()
             //{
