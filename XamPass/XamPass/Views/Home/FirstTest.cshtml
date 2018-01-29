@@ -1,8 +1,8 @@
-﻿@model XamPass.Models.ViewModel
+﻿@model XamPass.Models.FirstModel
 
 @{
 	ViewBag.Title = "FirstTest";
-	Layout = null;
+	//Layout = null;
 }
 
 <h2>First Test</h2>
@@ -16,14 +16,14 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-	<script>
-		$(function () {
-				var availableTags = @Html.Raw(Json.Serialize(Model.Institutions.Select(i => i.Name)))
-            $("#tags").autocomplete({
-                source: availableTags
-            });
-        });
-	</script>
+	@*<script>
+			$(function () {
+					var availableTags = @Html.Raw(Json.Serialize(Model.Select(x => x.Name)))
+					$("#tags").autocomplete({
+						 source: availableTags
+					});
+			  });
+		</script>*@
 </head>
 
 <body>
@@ -31,8 +31,24 @@
 		Try Autocomplete by using the following cities:
 		"BA Leipzig", "HTWK Leipzig", "Universität Leipzig", "BA Glauchau", "BA Dresden", "HfM Weimar", "Universität Jena", "Fernuniversität Hagen"
 	</p>
-	<div class="ui-widget">
-		<label for="tags">City: </label>
-		<input id="tags">
-	</div>
+	<div class="form form-group">
+		@using (Html.BeginForm("FirstTest", "Home", FormMethod.Post))
+		{
+			@Html.AntiForgeryToken();
+
+			@*@Html.TextBoxFor(m => Model.Name, new { id = "tags" })*@
+			@*<input class="form-control" id="tags" name="Name" type="text" value="Fill in" />*@
+
+			@Html.DropDownListFor(m => m.Institution.Id, Model.Institutions, "Einrichtung auswählen", new { @class = "form form-control" })
+
+			<button type="submit" class="btn btn">Senden</button>
+
+			@*<input type="submit" value="Klick" formaction=@Url.Action("FirstTest", "Home") formmethod="post" class="btn btn-default" />*@
+
+			@*<div class="ui-widget">
+					<label for="tags">City: </label>
+					<input id="tags">
+				</div>*@
+		}
+	</div>	
 </body>

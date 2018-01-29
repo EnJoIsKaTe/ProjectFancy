@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using XamPass.Models;
 
 namespace XamPass.Controllers
@@ -15,32 +16,96 @@ namespace XamPass.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult FirstTest()
         {
-            ViewModel viewModel = new ViewModel();
-            viewModel.Institutions = new List<Institution>()
-            {
-                new Institution(){Id=0, Name="BA Leipzig"},
-                new Institution(){Id=1, Name="HTWK Leipzig"},
-                new Institution(){Id=2, Name="Universität Leipzig"},
-                new Institution(){Id=3, Name="BA Glauchau"},
-                new Institution(){Id=4, Name="BA Dresden"},
-                new Institution(){Id=5, Name="HfM Weimar"},
-                new Institution(){Id=6, Name="Universität Jena"},
-                new Institution(){Id=7, Name="Fernuniversität Hagen"}
-            };
-            //List<string> ObjList = new List<string>()
-            //{
-            //    "Latur",
-            //    "Mumbai",
-            //    "Pune",
-            //    "Delhi",
-            //    "Dehradun",
-            //    "Noida",
-            //    "New Delhi"
-            //};
-            return View(viewModel);
+            var institutions = GetAllInstitutions();
+            var model = new FirstModel();
+            model.Institutions = GetSelectListItems(institutions);
+
+            return View(model);
         }
+
+        [HttpPost]
+        public IActionResult FirstTest(FirstModel model)
+        {
+            //var result = model;
+
+            var institutions = GetAllInstitutions();
+            model.Institutions = GetSelectListItems(institutions);
+            if(ModelState.IsValid)
+            {
+                var result = institutions.First(i => i.Id == model.Institution.Id);
+                return RedirectToAction("Done", result);
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult SecondTest()
+        {
+            var institutions = GetAllInstitutions();
+            var model = new SecondModel();
+            model.InstitutionList = (List<Institution>)institutions;
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult SecondTest(string institution)
+        {
+            var institutions = GetAllInstitutions();
+            SecondModel model = new SecondModel();
+            model.InstitutionList = (List<Institution>)institutions;
+            if (ModelState.IsValid)
+            {
+                var result = institutions.First(i => i.Name == institution);
+                return RedirectToAction("Done", result);
+            }
+            return View(model);
+        }
+
+        public IActionResult Done(Institution institution)
+        {
+            return View(institution);
+        }
+
+        private IEnumerable<Institution> GetAllInstitutions()
+        {
+            List<Institution> institutions = new List<Institution>();
+            institutions.Add(new Institution() { Id = 0, Name = "BA Leipzig" });
+            institutions.Add(new Institution() { Id = 1, Name = "HTWK Leipzig" });
+            institutions.Add(new Institution() { Id = 2, Name = "Universität Leipzig" });
+            institutions.Add(new Institution() { Id = 3, Name = "BA Glauchau" });
+            institutions.Add(new Institution() { Id = 4, Name = "BA Dresden" });
+            institutions.Add(new Institution() { Id = 5, Name = "HfM Weimar" });
+            institutions.Add(new Institution() { Id = 6, Name = "Universität Jena" });
+            institutions.Add(new Institution() { Id = 7, Name = "Fernuniversität Hagen" });
+
+            //List<string> result = new List<string>();
+            //foreach(var item in institutions)
+            //{
+            //    result.Add(item.Name);
+            //}
+            return institutions;
+        }
+
+        private IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<Institution> elements)
+        {
+            var selectList = new List<SelectListItem>();
+            foreach (var element in elements)
+            {
+                selectList.Add(new SelectListItem { Value = element.Id.ToString(), Text = element.Name });
+            }
+            return selectList;
+        }
+
+
+
+
+
+
+
+
 
         public IActionResult About()
         {
