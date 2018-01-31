@@ -16,6 +16,12 @@ namespace XamPass.Controllers
             return View();
         }
 
+        public IActionResult CreateDB()
+        {
+            // call method
+            return RedirectToAction("Done");
+        }
+
         [HttpGet]
         public IActionResult FirstTest()
         {

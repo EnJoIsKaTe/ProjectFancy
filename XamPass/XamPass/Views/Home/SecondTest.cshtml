@@ -1,6 +1,6 @@
 ﻿@model XamPass.Models.SecondModel
 @{
-	ViewData["Title"] = "SecondTest";
+	 ViewData["Title"] = "SecondTest";
 }
 
 <h2>SecondTest</h2>
@@ -13,13 +13,13 @@
 	}
 </div>*@
 
-<div>
-	<form method="post" class="form form-group">
-		<input list="institutions" name="institution" class="form form-control" />
+<div class="form-inline">
+	<form method="post">
+		<input list="institutions" name="institution" class="form-control dropdown-toggle col-md-2" />
 		<datalist id="institutions">
 			@foreach (var item in Model.InstitutionList)
 			{
-				<option value="@item.Name" />
+				<option value="@item.Name"/>
 			}
 		</datalist>
 		<button type="submit" class="btn btn">Senden</button>

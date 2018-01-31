@@ -1,8 +1,7 @@
 ﻿@model XamPass.Models.FirstModel
 
 @{
-	ViewBag.Title = "FirstTest";
-	//Layout = null;
+	 ViewBag.Title = "FirstTest";
 }
 
 <h2>First Test</h2>
@@ -10,11 +9,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>jQuery UI Autocomplete - Default functionality</title>
+	@*<title>jQuery UI Autocomplete - Default functionality</title>*@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+	<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" rel="stylesheet" />
 
 	@*<script>
 			$(function () {
@@ -39,7 +41,7 @@
 			@*@Html.TextBoxFor(m => Model.Name, new { id = "tags" })*@
 			@*<input class="form-control" id="tags" name="Name" type="text" value="Fill in" />*@
 
-			@Html.DropDownListFor(m => m.Institution.Id, Model.Institutions, "Einrichtung auswählen", new { @class = "form form-control" })
+			@Html.DropDownListFor(m => m.Institution.Id, Model.Institutions, "Einrichtung auswählen", new { @class = "selectpicker col" })
 
 			<button type="submit" class="btn btn">Senden</button>
 
