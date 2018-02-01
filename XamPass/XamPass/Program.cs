@@ -21,19 +21,19 @@ namespace XamPass
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-               // try
+                // try
                 //{
-                    var context = services.GetRequiredService<DataContext>();
-            
-                // Solange die Datenbank noch nicht erstellt ist sollte diese Methode auskommentiert bleiben
-                // DatabaseTest(context);
-                
-            
-            //}
+                var context = services.GetRequiredService<DataContext>();
+
+                // Solange die Datenbank noch nicht erstellt ist sollte diese Methode auskommentiert sein
+                DatabaseTest(context);
+
+
+                //}
                 //catch (Exception ex)
                 //{
-                  //  var logger = services.GetRequiredService<ILogger<Program>>();
-                    //logger.LogError(ex, "An error occurred while seeding the database.");
+                //  var logger = services.GetRequiredService<ILogger<Program>>();
+                //logger.LogError(ex, "An error occurred while seeding the database.");
                 //}
             }
 
@@ -56,7 +56,7 @@ namespace XamPass
 
             // Erstellt die Datenbank neu auf Grundlage der Model-Klassen
             context.Database.EnsureCreated();
-            
+
             // Testdaten in die Tabelle dt_federal_state einfügen
             DtFederalState[] federalStates = new DtFederalState[]
             {

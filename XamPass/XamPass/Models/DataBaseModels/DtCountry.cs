@@ -16,13 +16,13 @@ namespace XamPass.Models.DataBaseModels
         /// <summary>
         /// Identifier des Datensatzes
         /// </summary>
-        [Key]
+        [Key]        
         public long CountryID { get; set; }
 
         /// <summary>
         /// Name des Staates
         /// </summary>
-        [StringLength(50)]
+        [StringLength(100)]
         public string CountryName { get; set; }
 
         #endregion         

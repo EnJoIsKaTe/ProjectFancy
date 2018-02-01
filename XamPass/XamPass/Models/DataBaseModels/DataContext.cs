@@ -26,6 +26,10 @@ namespace XamPass.Models.DataBaseModels
 
         #endregion
 
+        /// <summary>
+        /// Jede Datenbanktabelle wird nach dem Namensschema benannt
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DtQuestion>().ToTable("dt_question");

@@ -20,6 +20,11 @@ namespace XamPass.Models.DataBaseModels
         public long AnswerID { get; set; }
 
         /// <summary>
+        /// Zeitpunkt der Erstellung des Datensatzes
+        /// </summary>
+        public DateTime SubmissionDate { get; set; }
+
+        /// <summary>
         /// Inhalt der Antwort
         /// </summary>
         public string Content { get; set; }
@@ -27,7 +32,7 @@ namespace XamPass.Models.DataBaseModels
         /// <summary>
         /// Positive Bewertungen für die Antwort
         /// </summary>
-        public double UpVotes { get; set; }
+        public int UpVotes { get; set; }
 
         #endregion
     }

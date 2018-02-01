@@ -22,7 +22,7 @@ namespace XamPass.Models.DataBaseModels
         /// <summary>
         /// Name des Studienfachs
         /// </summary>
-        [StringLength(50)]
+        [StringLength(100)]
         public string Name { get; set; }
 
         /// <summary>

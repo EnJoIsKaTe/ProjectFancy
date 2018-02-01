@@ -32,7 +32,7 @@ namespace XamPass.Models.DataBaseModels
         /// <summary>
         /// Name der Hochschule / Universität
         /// </summary>
-        [StringLength(50)]
+        [StringLength(100)]
         public string UniversityName { get; set; }
 
         #endregion

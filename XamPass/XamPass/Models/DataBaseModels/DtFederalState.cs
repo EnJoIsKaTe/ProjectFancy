@@ -23,7 +23,7 @@ namespace XamPass.Models.DataBaseModels
         /// <summary>
         /// Name des Bundesstaates
         /// </summary>
-        [StringLength(50)]
+        [StringLength(100)]
         public string StateName { get; set; }
 
         #endregion

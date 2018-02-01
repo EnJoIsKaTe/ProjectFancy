@@ -23,8 +23,8 @@ namespace XamPass.Models.DataBaseModels
         /// <summary>
         /// Universität an der die Frage gestellt wurde
         /// </summary>
-        public DtUniversity University { get; set; }     
-        
+        public DtUniversity University { get; set; }
+
         /// <summary>
         /// Studiengang in dem die Frage gestellt wurde
         /// </summary>
@@ -41,9 +41,19 @@ namespace XamPass.Models.DataBaseModels
         public List<DtAnswer> Answers { get; set; }
 
         /// <summary>
+        /// Zeitpunkt der Erstellung des Datensatzes
+        /// </summary>
+        public DateTime SubmissionDate { get; set; }
+
+        /// <summary>
         /// Inhaltstext der Frage
         /// </summary>
         public string Content { get; set; }
+
+        /// <summary>
+        /// Anzahl der positiven Bewertungen der Frage
+        /// </summary>
+        public int UpVotes { get; set; }        
 
         #endregion
     }
