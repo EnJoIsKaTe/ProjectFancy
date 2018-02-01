@@ -25,7 +25,7 @@ namespace XamPass
                 //{
                 var context = services.GetRequiredService<DataContext>();
 
-                // Solange die Datenbank noch nicht erstellt ist sollte diese Methode auskommentiert sein
+                // Solange der DB-Server noch nicht bereit ist sollte diese Methode auskommentiert sein
                 DatabaseTest(context);
 
 

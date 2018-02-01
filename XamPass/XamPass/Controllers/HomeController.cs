@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using XamPass.Models;
+using XamPass.Models.DataBaseModels;
 
 namespace XamPass.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly DataContext _Context;
+
+        public HomeController (DataContext context)
+        {
+            _Context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -18,6 +26,7 @@ namespace XamPass.Controllers
 
         public IActionResult CreateDB()
         {
+            
             // call method
             return RedirectToAction("Done");
         }
