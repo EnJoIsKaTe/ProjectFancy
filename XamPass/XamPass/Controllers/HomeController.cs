@@ -36,37 +36,19 @@ namespace XamPass.Controllers
         [HttpGet]
         public async Task<IActionResult> FirstTest()
         {
-            //var institutions = GetAllInstitutions();
-            //var model = new FirstModel();
-            //model.Institutions = GetSelectListItems(institutions);
-
-            var model = new FirstModel();
             var universities = await _context.Universities.ToListAsync();
-
-            List<Institution> institutions = new List<Institution>();            
+            var model = new FirstModel();
+            model.Institutions = new List<SelectListItem>();
             foreach(var item in universities)
             {
-                Institution institution = new Institution() { Name = item.UniversityName, Id = (int)item.UniversityID };
-                institutions.Add(institution);
+                model.Institutions.Add(new SelectListItem() { Value = item.UniversityID.ToString(), Text = item.UniversityName });
             }
-            model.Institutions = GetSelectListItems(institutions);
-
             return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> FirstTest(FirstModel model)
         {
-            //var result = model;
-            //var institutions = GetAllInstitutions();
-            //model.Institutions = GetSelectListItems(institutions);
-            //if (ModelState.IsValid)
-            //{
-            //    var result = institutions.First(i => i.Id == model.Institution.Id);
-            //    return RedirectToAction("Done", result);
-            //}
-            //return View(model);
-
             var universities = await _context.Universities.ToListAsync();
             if (ModelState.IsValid)
             {
