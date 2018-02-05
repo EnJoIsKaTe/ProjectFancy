@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using XamPass.Models;
 using XamPass.Models.DataBaseModels;
 
@@ -12,11 +13,11 @@ namespace XamPass.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly DataContext _Context;
+        private readonly DataContext _context;
 
         public HomeController (DataContext context)
         {
-            _Context = context;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -26,16 +27,28 @@ namespace XamPass.Controllers
 
         public IActionResult CreateDB()
         {
-            
+
             // call method
+            DBInitialize.DatabaseTest(_context);
             return RedirectToAction("Done");
         }
 
         [HttpGet]
-        public IActionResult FirstTest()
+        public async Task<IActionResult> FirstTest()
         {
-            var institutions = GetAllInstitutions();
+            //var institutions = GetAllInstitutions();
+            //var model = new FirstModel();
+            //model.Institutions = GetSelectListItems(institutions);
+
             var model = new FirstModel();
+            var universities = await _context.Universities.ToListAsync();
+
+            List<Institution> institutions = new List<Institution>();            
+            foreach(var item in universities)
+            {
+                Institution institution = new Institution() { Name = item.UniversityName, Id = (int)item.UniversityID };
+                institutions.Add(institution);
+            }
             model.Institutions = GetSelectListItems(institutions);
 
             return View(model);
