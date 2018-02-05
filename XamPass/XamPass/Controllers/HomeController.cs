@@ -55,15 +55,23 @@ namespace XamPass.Controllers
         }
 
         [HttpPost]
-        public IActionResult FirstTest(FirstModel model)
+        public async Task<IActionResult> FirstTest(FirstModel model)
         {
             //var result = model;
+            //var institutions = GetAllInstitutions();
+            //model.Institutions = GetSelectListItems(institutions);
+            //if (ModelState.IsValid)
+            //{
+            //    var result = institutions.First(i => i.Id == model.Institution.Id);
+            //    return RedirectToAction("Done", result);
+            //}
+            //return View(model);
 
-            var institutions = GetAllInstitutions();
-            model.Institutions = GetSelectListItems(institutions);
-            if(ModelState.IsValid)
+            var universities = await _context.Universities.ToListAsync();
+            if (ModelState.IsValid)
             {
-                var result = institutions.First(i => i.Id == model.Institution.Id);
+                var university = universities.First(u => u.UniversityID == model.Institution.Id);
+                var result = new Institution() { Id = (int)university.UniversityID, Name = university.UniversityName };
                 return RedirectToAction("Done", result);
             }
             return View(model);
@@ -108,12 +116,6 @@ namespace XamPass.Controllers
             institutions.Add(new Institution() { Id = 5, Name = "HfM Weimar" });
             institutions.Add(new Institution() { Id = 6, Name = "Universität Jena" });
             institutions.Add(new Institution() { Id = 7, Name = "Fernuniversität Hagen" });
-
-            //List<string> result = new List<string>();
-            //foreach(var item in institutions)
-            //{
-            //    result.Add(item.Name);
-            //}
             return institutions;
         }
 

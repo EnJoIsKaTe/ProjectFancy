@@ -10,6 +10,6 @@ namespace XamPass.Models
     {
         public Institution Institution { get; set; }
 
-        public IEnumerable<SelectListItem> Institutions { get; set; }        
+        public IEnumerable<SelectListItem> Institutions { get; set; }    
     }
 }
