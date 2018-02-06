@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,13 @@ namespace XamPass
             services.AddDbContext<DataContext>(options 
                 => options.UseMySql(Configuration.GetConnectionString("DataBaseConnection")));
 
+            // Authentifizierung
+            services.AddAuthentication("AdminCookieScheme").AddCookie("AdminCookieScheme", options =>
+            {
+                options.AccessDeniedPath = new PathString("/Admin/Access");
+                options.LoginPath = new PathString("/Admin/Login");
+            });
+
             services.AddMvc();
         }
 
@@ -44,6 +52,9 @@ namespace XamPass
             }
 
             app.UseStaticFiles();
+
+            // Authentifizierung
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
