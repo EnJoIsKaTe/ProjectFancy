@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 100px;
     padding-bottom: 20px;
 }
 
@@ -32,4 +32,18 @@
     .carousel-caption {
         display: none;
     }
+}
+
+/*#############################################################*/
+/*######################## CUSTOM CSS #########################*/
+/*#############################################################*/
+
+.toolbar-img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.toolbar-ul{
+    margin-top: 11pt;
+    margin-left: 20pt;
 }
