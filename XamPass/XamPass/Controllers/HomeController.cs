@@ -15,7 +15,7 @@ namespace XamPass.Controllers
     {
         private readonly DataContext _context;
 
-        public HomeController (DataContext context)
+        public HomeController(DataContext context)
         {
             _context = context;
         }
@@ -27,8 +27,7 @@ namespace XamPass.Controllers
 
         public IActionResult CreateDB()
         {
-
-            // call method
+            // Solange der DB-Server noch nicht bereit ist sollte dieser Methodenaufruf auskommentiert sein
             DBInitialize.DatabaseTest(_context);
             return RedirectToAction("Done");
         }
@@ -36,10 +35,15 @@ namespace XamPass.Controllers
         [HttpGet]
         public async Task<IActionResult> FirstTest()
         {
+            // Liste aller DtUniversity-Objekte wird aus DB erstellt
             var universities = await _context.Universities.ToListAsync();
+            // ViewModel wird instanziiert
             var model = new FirstModel();
+            // im ViewModel wird eine Liste aus SelectListItems erstellt
             model.Institutions = new List<SelectListItem>();
-            foreach(var item in universities)
+            // SelectListItems werden aus DtUniversity-Objekten erszeugt und Liste hinzugefügt
+            // SelectListItem besteht aus Value = ID und Text = Name
+            foreach (var item in universities)
             {
                 model.Institutions.Add(new SelectListItem() { Value = item.UniversityID.ToString(), Text = item.UniversityName });
             }
@@ -49,6 +53,9 @@ namespace XamPass.Controllers
         [HttpPost]
         public async Task<IActionResult> FirstTest(FirstModel model)
         {
+            // ViewModel wird als Parameter entgegengenommen
+            // Liste der DtUniversity-Objekte wird auf passende ID durchsucht
+            // bei Treffer wird auf Website "/Home/Done" umgeleitet und gefundene Institution mitgegeben
             var universities = await _context.Universities.ToListAsync();
             if (ModelState.IsValid)
             {
@@ -60,23 +67,29 @@ namespace XamPass.Controllers
         }
 
         [HttpGet]
-        public IActionResult SecondTest()
+        public async Task<IActionResult> SecondTest()
         {
-            var institutions = GetAllInstitutions();
+            var universities = await _context.Universities.ToListAsync();
             var model = new SecondModel();
-            model.InstitutionList = (List<Institution>)institutions;
+            model.InstitutionList = new List<Institution>();
+            foreach (var item in universities)
+            {
+                model.InstitutionList.Add(new Institution() { Id = (int)item.UniversityID, Name = item.UniversityName });
+            }
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult SecondTest(string institution)
+        public async Task<IActionResult> SecondTest(string institution)
         {
-            var institutions = GetAllInstitutions();
-            SecondModel model = new SecondModel();
-            model.InstitutionList = (List<Institution>)institutions;
+            var universities = await _context.Universities.ToListAsync();
+            var model = new SecondModel();
+            model.InstitutionList = new List<Institution>();
             if (ModelState.IsValid)
             {
-                var result = institutions.First(i => i.Name == institution);
+                var uni = universities.First(u => u.UniversityName == institution);
+                var result = new Institution() { Id = (int)uni.UniversityID, Name = uni.UniversityName };
+                model.InstitutionList.Add(result);
                 return RedirectToAction("Done", result);
             }
             return View(model);
@@ -87,38 +100,7 @@ namespace XamPass.Controllers
             return View(institution);
         }
 
-        private IEnumerable<Institution> GetAllInstitutions()
-        {
-            List<Institution> institutions = new List<Institution>();
-            institutions.Add(new Institution() { Id = 0, Name = "BA Leipzig" });
-            institutions.Add(new Institution() { Id = 1, Name = "HTWK Leipzig" });
-            institutions.Add(new Institution() { Id = 2, Name = "Universität Leipzig" });
-            institutions.Add(new Institution() { Id = 3, Name = "BA Glauchau" });
-            institutions.Add(new Institution() { Id = 4, Name = "BA Dresden" });
-            institutions.Add(new Institution() { Id = 5, Name = "HfM Weimar" });
-            institutions.Add(new Institution() { Id = 6, Name = "Universität Jena" });
-            institutions.Add(new Institution() { Id = 7, Name = "Fernuniversität Hagen" });
-            return institutions;
-        }
-
-        private IEnumerable<SelectListItem> GetSelectListItems(IEnumerable<Institution> elements)
-        {
-            var selectList = new List<SelectListItem>();
-            foreach (var element in elements)
-            {
-                selectList.Add(new SelectListItem { Value = element.Id.ToString(), Text = element.Name });
-            }
-            return selectList;
-        }
-
-
-
-
-
-
-
-
-
+        #region template-methods
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -132,6 +114,7 @@ namespace XamPass.Controllers
 
             return View();
         }
+        #endregion
 
         public IActionResult Error()
         {
