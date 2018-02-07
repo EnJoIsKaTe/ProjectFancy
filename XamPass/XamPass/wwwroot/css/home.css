@@ -1,0 +1,52 @@
+﻿h1 {
+    font-weight: 900;
+    margin-top: 0px;
+}
+
+.input-cell-name {
+    text-align: start;
+    padding: 5px;
+    width: 100pt
+}
+
+.input-cell {
+    margin-bottom: 3px;
+}
+
+#submitBtn {
+    width: 90%;
+    height: 40pt;
+    position: relative;
+    margin: 20pt;
+    /*box-shadow: 0px 0px 5px #edc880;*/
+    border: 1px solid #666;
+    background: linear-gradient(#ef8f32, #ef8f32); /*#ed8a2a;*/
+    font-size: 15pt;
+    font-weight: 600;
+}
+
+    #submitBtn:hover {
+        background: linear-gradient(#f79b45, #ef8f32);
+    }
+
+    #submitBtn:active {
+        background: linear-gradient(#ef8f32, #e57d19);
+    }
+
+#newEntryBtn {
+    position: relative;
+    width: 250pt;
+    /*box-shadow: 0px 0px 5px #edc880;*/
+    border: 1px solid #edb850;
+    background-color: transparent; /*linear-gradient(#ef8f32, #ef8f32);*/ /*#ed8a2a;*/
+    color: #ef8f32;
+}
+
+    #newEntryBtn:hover {
+        background: linear-gradient(#f79b45, #ef8f32);
+        color:#333;
+    }
+
+    #newEntryBtn:active {
+        background: linear-gradient(#ef8f32, #e57d19);
+    }
