@@ -34,8 +34,8 @@ namespace XamPass.Controllers
             // create claims
             List<Claim> claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, "admin"),
-                new Claim(ClaimTypes.Email, inputModel.Username)
+                new Claim(ClaimTypes.Name, "admin")
+                //new Claim(ClaimTypes.Email, inputModel.Username)
             };
 
             // create identity
