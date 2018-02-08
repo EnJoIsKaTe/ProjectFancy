@@ -20,7 +20,7 @@ namespace XamPass.Models.DataBaseModels
         public DbSet<DtFederalState> FederalStates { get; set; }
         public DbSet<DtCountry> Countries { get; set; }
         public DbSet<DtUniversity> Universities { get; set; }
-        public DbSet<DtFieldOfStudies> FieldsOfStidies { get; set; }
+        public DbSet<DtFieldOfStudies> FieldsOfStudies { get; set; }
         public DbSet<DtSubject> Subjects { get; set; }
         public DbSet<DtAnswer> Answers { get; set; }
 

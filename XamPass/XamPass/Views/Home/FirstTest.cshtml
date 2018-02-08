@@ -41,7 +41,7 @@
 			@*@Html.TextBoxFor(m => Model.Name, new { id = "tags" })*@
 			@*<input class="form-control" id="tags" name="Name" type="text" value="Fill in" />*@
 
-			@Html.DropDownListFor(m => m.Institution.Id, Model.Institutions, "Einrichtung auswählen", new { @class = "selectpicker col" })
+			@Html.DropDownListFor(m => m.InstitutionId, Model.Institutions, "Einrichtung auswählen", new { @class = "selectpicker col" })
 
 			<button type="submit" class="btn btn">Senden</button>
 

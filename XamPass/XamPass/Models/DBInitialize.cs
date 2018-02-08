@@ -22,10 +22,10 @@ namespace XamPass.Models
             // Testdaten in die Tabelle dt_federal_state einfügen
             DtFederalState[] federalStates = new DtFederalState[]
             {
-                new DtFederalState(){ StateName = "Sachsen"},
-                new DtFederalState(){ StateName = "Thüringen"},
-                new DtFederalState(){ StateName = "Hessen"},
-                new DtFederalState(){ StateName = "Bayern"}
+                new DtFederalState(){ FederalStateName = "Sachsen"},
+                new DtFederalState(){ FederalStateName = "Thüringen"},
+                new DtFederalState(){ FederalStateName = "Hessen"},
+                new DtFederalState(){ FederalStateName = "Bayern"}
             };
 
             // Testdaten in Tabelle dt_university einfügen
@@ -67,14 +67,14 @@ namespace XamPass.Models
 
             DtFieldOfStudies[] fieldsOfStudies = new DtFieldOfStudies[]
             {
-                new DtFieldOfStudies(){Name = "Informatik", Type = FieldOfStudiesType.Engineering},
-                new DtFieldOfStudies(){Name = "Bauingenieurwesen", Type = FieldOfStudiesType.Engineering},
-                new DtFieldOfStudies(){Name = "Betriebswirtschaftslehre", Type = FieldOfStudiesType.Economics},
-                new DtFieldOfStudies(){Name = "Philosophie", Type = FieldOfStudiesType.SocialScience},
-                new DtFieldOfStudies(){Name = "Kulturwissenschaften", Type = FieldOfStudiesType.SocialScience},
-                new DtFieldOfStudies(){Name = "Immobilienwirtschaft", Type = FieldOfStudiesType.Economics},
-                new DtFieldOfStudies(){Name = "Kunstgeschichte", Type = FieldOfStudiesType.SocialScience},
-                new DtFieldOfStudies(){Name = "Gesang", Type = FieldOfStudiesType.Arts}
+                new DtFieldOfStudies(){FieldOfStudiesName = "Informatik", Type = FieldOfStudiesType.Engineering},
+                new DtFieldOfStudies(){FieldOfStudiesName = "Bauingenieurwesen", Type = FieldOfStudiesType.Engineering},
+                new DtFieldOfStudies(){FieldOfStudiesName = "Betriebswirtschaftslehre", Type = FieldOfStudiesType.Economics},
+                new DtFieldOfStudies(){FieldOfStudiesName = "Philosophie", Type = FieldOfStudiesType.SocialScience},
+                new DtFieldOfStudies(){FieldOfStudiesName = "Kulturwissenschaften", Type = FieldOfStudiesType.SocialScience},
+                new DtFieldOfStudies(){FieldOfStudiesName = "Immobilienwirtschaft", Type = FieldOfStudiesType.Economics},
+                new DtFieldOfStudies(){FieldOfStudiesName = "Kunstgeschichte", Type = FieldOfStudiesType.SocialScience},
+                new DtFieldOfStudies(){FieldOfStudiesName = "Gesang", Type = FieldOfStudiesType.Arts}
             };
 
             foreach (DtFieldOfStudies fieldOfStudies in fieldsOfStudies)
@@ -86,13 +86,13 @@ namespace XamPass.Models
 
             DtSubject[] subjects = new DtSubject[]
             {
-                new DtSubject(){Name = "Automaten und formale Sprachen"},
-                new DtSubject(){Name = "Berechebarkeit und Komplexität"},
-                new DtSubject(){Name = "Personalführung"},
-                new DtSubject(){Name = "Stochastik"},
-                new DtSubject(){Name = "Lineare Algebra"},
-                new DtSubject(){Name = "Netzwerke"},
-                new DtSubject(){Name = "Programmieren C++"},
+                new DtSubject(){SubjectName = "Automaten und formale Sprachen"},
+                new DtSubject(){SubjectName = "Berechebarkeit und Komplexität"},
+                new DtSubject(){SubjectName = "Personalführung"},
+                new DtSubject(){SubjectName = "Stochastik"},
+                new DtSubject(){SubjectName = "Lineare Algebra"},
+                new DtSubject(){SubjectName = "Netzwerke"},
+                new DtSubject(){SubjectName = "Programmieren C++"},
 
             };
 
@@ -121,7 +121,7 @@ namespace XamPass.Models
             {
                 new DtQuestion(){Answers = context.Answers.Where(a => a.AnswerID == 1).ToList(),
                     Content = "Konstruieren Sie eine Turing Maschine",
-                    FieldOfStudies = context.FieldsOfStidies.SingleOrDefault(f => f.FieldOfStudiesID == 1),
+                    FieldOfStudies = context.FieldsOfStudies.SingleOrDefault(f => f.FieldOfStudiesID == 1),
                     Subject = context.Subjects.SingleOrDefault(s => s.SubjectID == 1),
                     SubmissionDate = DateTime.Now,
                     University = context.Universities.SingleOrDefault(u => u.UniversityID == 1),
@@ -129,7 +129,7 @@ namespace XamPass.Models
 
                 new DtQuestion(){Answers = null,
                     Content = "Weitere Frage",
-                    FieldOfStudies = context.FieldsOfStidies.SingleOrDefault(u => u.FieldOfStudiesID == 1),
+                    FieldOfStudies = context.FieldsOfStudies.SingleOrDefault(u => u.FieldOfStudiesID == 1),
                     Subject = context.Subjects.SingleOrDefault(u => u.SubjectID == 1),
                     SubmissionDate = DateTime.Now,
                     University = context.Universities.SingleOrDefault(u => u.UniversityID == 1),

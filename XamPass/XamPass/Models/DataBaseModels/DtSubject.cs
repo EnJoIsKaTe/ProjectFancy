@@ -23,7 +23,7 @@ namespace XamPass.Models.DataBaseModels
         /// Name des Faches
         /// </summary>
         [StringLength(100)]
-        public string Name { get; set; }
+        public string SubjectName { get; set; }
 
         #endregion
     }
