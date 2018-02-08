@@ -23,8 +23,18 @@ namespace XamPass.Controllers
 
         public IActionResult Index()
         {
-            var viewModelSearch = GetViewModelSearch().Result;
-            return View(viewModelSearch);
+            try
+            {
+                var viewModelSearch = GetViewModelSearch().Result;
+                return View(viewModelSearch);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return RedirectToAction("CreateDB");
+            }
+
         }
 
         private async Task<ViewModelSearch> GetViewModelSearch()
@@ -36,7 +46,7 @@ namespace XamPass.Controllers
 
             var viewModelSearch = new ViewModelSearch();
 
-            foreach(var item in universities)
+            foreach (var item in universities)
             {
                 viewModelSearch.Universities.Add(new SelectListItem()
                 {
