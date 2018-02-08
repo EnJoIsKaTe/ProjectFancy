@@ -8,7 +8,7 @@ namespace XamPass.Models
 {
     public class FirstModel
     {
-        public Institution Institution { get; set; }
+        public int InstitutionId { get; set; }
 
         public List<SelectListItem> Institutions { get; set; }
     }

@@ -23,13 +23,12 @@ namespace XamPass.Models.DataBaseModels
         /// Name des Studienfachs
         /// </summary>
         [StringLength(100)]
-        public string Name { get; set; }
+        public string FieldOfStudiesName { get; set; }
 
         /// <summary>
         /// Typ des Studienfachs (ermöglicht eine später Spezifizierung)
         /// </summary>
-        [StringLength(50)]
-        public string Type { get; set; }
+        public FieldOfStudiesType Type { get; set; }
         
         #endregion
     }

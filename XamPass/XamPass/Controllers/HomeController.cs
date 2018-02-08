@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -22,9 +23,65 @@ namespace XamPass.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            try
+            {
+                var viewModelSearch = GetViewModelSearch().Result;
+                return View(viewModelSearch);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return RedirectToAction("CreateDB");
+            }
+
         }
 
+        private async Task<ViewModelSearch> GetViewModelSearch()
+        {
+            var universities = await _context.Universities.ToListAsync();
+            var federalStates = await _context.FederalStates.ToListAsync();
+            var subjects = await _context.Subjects.ToListAsync();
+            var fieldsOfStudies = await _context.FieldsOfStudies.ToListAsync();
+
+            var viewModelSearch = new ViewModelSearch();
+
+            foreach (var item in universities)
+            {
+                viewModelSearch.Universities.Add(new SelectListItem()
+                {
+                    Value = item.UniversityID.ToString(),
+                    Text = item.UniversityName
+                });
+            }
+            foreach (var item in federalStates)
+            {
+                viewModelSearch.FederalStates.Add(new SelectListItem()
+                {
+                    Value = item.FederalStateID.ToString(),
+                    Text = item.FederalStateName
+                });
+            }
+            foreach (var item in subjects)
+            {
+                viewModelSearch.Subjects.Add(new SelectListItem()
+                {
+                    Value = item.SubjectID.ToString(),
+                    Text = item.SubjectName
+                });
+            }
+            foreach (var item in fieldsOfStudies)
+            {
+                viewModelSearch.FieldsOfStudies.Add(new SelectListItem()
+                {
+                    Value = item.FieldOfStudiesID.ToString(),
+                    Text = item.FieldOfStudiesName
+                });
+            }
+            return viewModelSearch;
+        }
+
+        [Authorize]
         public IActionResult CreateDB()
         {
             // Solange der DB-Server noch nicht bereit ist sollte dieser Methodenaufruf auskommentiert sein
@@ -59,7 +116,7 @@ namespace XamPass.Controllers
             var universities = await _context.Universities.ToListAsync();
             if (ModelState.IsValid)
             {
-                var university = universities.First(u => u.UniversityID == model.Institution.Id);
+                var university = universities.First(u => u.UniversityID == model.InstitutionId);
                 var result = new Institution() { Id = (int)university.UniversityID, Name = university.UniversityName };
                 return RedirectToAction("Done", result);
             }
