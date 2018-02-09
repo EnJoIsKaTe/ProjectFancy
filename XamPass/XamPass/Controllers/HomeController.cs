@@ -21,20 +21,26 @@ namespace XamPass.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             try
             {
                 var viewModelSearch = GetViewModelSearch().Result;
                 return View(viewModelSearch);
-
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 return RedirectToAction("CreateDB");
             }
+        }
 
+        [HttpPost]
+        public IActionResult Index(ViewModelSearch viewModelSearch)
+        {
+            var result = viewModelSearch;
+            return View();
         }
 
         private async Task<ViewModelSearch> GetViewModelSearch()
