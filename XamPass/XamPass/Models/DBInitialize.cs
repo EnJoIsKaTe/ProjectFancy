@@ -28,14 +28,21 @@ namespace XamPass.Models
                 new DtFederalState(){ FederalStateName = "Bayern"}
             };
 
+            DtCountry[] countries = new DtCountry[]
+            {
+                new DtCountry(){CountryName = "Deutschland"},
+                new DtCountry(){CountryName = "Österreich"},
+                new DtCountry(){CountryName = "Schweiz"}
+            };
+
             // Testdaten in Tabelle dt_university einfügen
             List<DtUniversity> universities = new List<DtUniversity>()
             {
-                new DtUniversity(){UniversityName = "BA Leipzig", UniversityID = 1 },
-                new DtUniversity(){UniversityName = "BA Dresden", UniversityID = 2 },
-                new DtUniversity(){UniversityName = "BA Glauchau", UniversityID = 3 },
-                new DtUniversity(){UniversityName = "Universität Leipzig", UniversityID = 4 },
-                new DtUniversity(){UniversityName = "HTWK Leipzig", UniversityID = 5 }
+                new DtUniversity(){UniversityName = "BA Leipzig", UniversityID = 1, Country = countries[0], FederalState = federalStates[0] },
+                new DtUniversity(){UniversityName = "BA Dresden", UniversityID = 2, Country = countries[0], FederalState = federalStates[0] },
+                new DtUniversity(){UniversityName = "BA Glauchau", UniversityID = 3, Country = countries[0], FederalState = federalStates[0] },
+                new DtUniversity(){UniversityName = "Universität Leipzig", UniversityID = 4, Country = countries[0], FederalState = federalStates[0] },
+                new DtUniversity(){UniversityName = "HTWK Leipzig", UniversityID = 5, Country = countries[0], FederalState = federalStates[0] }
             };
 
             foreach (DtFederalState state in federalStates)
@@ -49,15 +56,7 @@ namespace XamPass.Models
             }
 
             context.SaveChanges();
-
-
-            DtCountry[] countries = new DtCountry[]
-            {
-                new DtCountry(){CountryName = "Deutschland"},
-                new DtCountry(){CountryName = "Österreich"},
-                new DtCountry(){CountryName = "Schweiz"}
-            };
-
+       
             foreach (DtCountry country in countries)
             {
                 context.Add(country);
