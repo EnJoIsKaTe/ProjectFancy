@@ -107,7 +107,8 @@ namespace XamPass.Models
             {
                 new DtAnswer(){SubmissionDate = DateTime.Now,
                     Content = "Ich weiß doch nicht wie eine Turing Maschine aussieht!!!11!",
-                    UpVotes = 77}
+                    UpVotes = 77
+                }
             };
 
             foreach (DtAnswer answer in answers)
