@@ -42,13 +42,6 @@ namespace XamPass.Models
                 new DtFederalState(){ FederalStateName = "Bayern"}
             };
 
-            foreach (DtFederalState state in federalStates)
-            {
-                context.Add(state);
-            }
-
-            context.SaveChanges();
-
             // Testdaten in Tabelle dt_university einfügen
             List<DtUniversity> universities = new List<DtUniversity>()
             {
@@ -57,13 +50,28 @@ namespace XamPass.Models
                 new DtUniversity(){UniversityName = "BA Glauchau", UniversityID = 3 },
                 new DtUniversity(){UniversityName = "Universität Leipzig", UniversityID = 4 },
                 new DtUniversity(){UniversityName = "HTWK Leipzig", UniversityID = 5 }
-            };            
+            };
 
             
 
             foreach (DtUniversity university in universities)
             {
                 context.Add(university);
+            }
+
+            context.SaveChanges();
+
+
+            DtCountry[] countries = new DtCountry[]
+            {
+                new DtCountry(){CountryName = "Deutschland"},
+                new DtCountry(){CountryName = "Österreich"},
+                new DtCountry(){CountryName = "Schweiz"}
+            };
+
+            foreach (DtCountry country in countries)
+            {
+                context.Add(country);
             }
 
             context.SaveChanges();
