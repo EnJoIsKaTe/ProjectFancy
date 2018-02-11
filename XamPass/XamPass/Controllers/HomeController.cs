@@ -42,19 +42,25 @@ namespace XamPass.Controllers
         {
             var result = viewModelSearch;
             var questions = _context.Questions.ToList();
-            var uniList = _context.Universities.ToList();
-            var resultList = new List<DtUniversity>();
-            foreach (var item in questions)
+            var resultList = new List<DtQuestion>();
+
+            if (viewModelSearch.UniversityId == 0)
             {
-                var uniId = item.UniversityID;
-                resultList.Add(uniList.FirstOrDefault(u => u.UniversityID == uniId));
+                resultList = questions;
             }
+            else
+            {
+                resultList = questions.Select(q => q)
+                    .Where(q => q.UniversityID == viewModelSearch.UniversityId).ToList();
+            }
+
             StringBuilder sb = new StringBuilder();
             foreach (var item in resultList)
             {
-                sb.AppendLine(item.UniversityName);
+                sb.AppendLine(item.Content + ";");
             }
             ViewBag.Test = sb.ToString();
+            viewModelSearch = GetViewModelSearch().Result;
             return View(viewModelSearch);
         }
 

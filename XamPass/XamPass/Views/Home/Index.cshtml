@@ -48,14 +48,15 @@
 								<td>
 									@*<input id="inputCourseOfStudy" class="form-control col-md-2 input-cell" />*@
 									@*<select id="inputCourseOfStudy" list="courses" class="form-control col-md-2 dropdown-toggle input-cell" style="padding-left:10px;" />
-									<datalist id="courses">
-										<option value="">Fachrichtung wählen</option>
-										@foreach (var item in Model.FieldsOfStudies)
-										{
-											<option value="@item.Value">@item.Text</option>
-										}
-									</datalist>*@
-									@Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, "Fachrichtung auswählen", new { @class = "selectpicker col" })
+										<datalist id="courses">
+											<option value="">Fachrichtung wählen</option>
+											@foreach (var item in Model.FieldsOfStudies)
+											{
+												<option value="@item.Value">@item.Text</option>
+											}
+										</datalist>*@
+									@Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, "Fachrichtung auswählen",
+										  new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
 								</td>
 							</tr>
 							<tr>
@@ -65,14 +66,15 @@
 								<td>
 									@*<input id="inputSubjectOfStudy" class="form-control col-md-2 input-cell" />*@
 									@*<select id="inputSubjectOfStudy" list="subjects" class="form-control col-md-2 dropdown-toggle input-cell" style="padding-left:10px;" />
-		<datalist id="subjects">
-			<option value="">Fach wählen</option>
-			@foreach (var item in Model.Subjects)
-			{
-				<option value="@item.Value">@item.Text</option>
-			}
-		</datalist>*@
-									@Html.DropDownListFor(m => m.SubjectId, Model.Subjects, "Fach auswählen", new { @class = "selectpicker col" })
+										<datalist id="subjects">
+											<option value="">Fach wählen</option>
+											@foreach (var item in Model.Subjects)
+											{
+												<option value="@item.Value">@item.Text</option>
+											}
+										</datalist>*@
+									@Html.DropDownListFor(m => m.SubjectId, Model.Subjects, "Fach auswählen",
+										  new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
 								</td>
 							</tr>
 							<tr>
@@ -99,7 +101,8 @@
 										<option value="Sachsen"> Sachsen</option>
 										<option value="Bayern">Bayern </option>*@
 									@*</datalist>*@
-									@Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, "Bundesland auswählen", new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+									@Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, "Bundesland auswählen",
+												 new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
 								</td>
 							</tr>
 							<tr>
@@ -118,7 +121,8 @@
 										<option value="HTWK"> HTWK </option>*@
 									@*</datalist>*@
 									@*<input id="inputUni" class="form-control col-md-2 input-cell" />*@
-									@Html.DropDownListFor(m => m.UniversityId, Model.Universities, "Hochschule auswählen", new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+									@Html.DropDownListFor(m => m.UniversityId, Model.Universities, "Hochschule auswählen",
+														new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
 								</td>
 							</tr>
 							<tr>
@@ -126,7 +130,7 @@
 									Schlüsselwörter
 								</td>
 								<td>
-									<input id="inputKeywords" class="form-control col-md-2 input-cell" style="padding-left:16px;"/>
+									<input id="inputKeywords" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
 								</td>
 							</tr>
 						</table>
@@ -146,7 +150,7 @@
 	</table>
 
 
-	<label>Unis:</label>  @ViewBag.Test
+	<label>Fragen:</label>  @ViewBag.Test
 
 </body>
 
