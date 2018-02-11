@@ -18,7 +18,7 @@ namespace XamPass.Models.DataBaseModels
         /// Identifier des Datensatzes
         /// </summary>
         [Key]
-        public long FederalStateID { get; set; }
+        public int FederalStateID { get; set; }
 
         /// <summary>
         /// Name des Bundesstaates

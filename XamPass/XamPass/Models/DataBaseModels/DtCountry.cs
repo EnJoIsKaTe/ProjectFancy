@@ -17,7 +17,7 @@ namespace XamPass.Models.DataBaseModels
         /// Identifier des Datensatzes
         /// </summary>
         [Key]        
-        public long CountryID { get; set; }
+        public int CountryID { get; set; }
 
         /// <summary>
         /// Name des Staates

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -40,7 +41,21 @@ namespace XamPass.Controllers
         public IActionResult Index(ViewModelSearch viewModelSearch)
         {
             var result = viewModelSearch;
-            return View();
+            var questions = _context.Questions.ToList();
+            var uniList = _context.Universities.ToList();
+            var resultList = new List<DtUniversity>();
+            foreach (var item in questions)
+            {
+                var uniId = item.UniversityID;
+                resultList.Add(uniList.FirstOrDefault(u => u.UniversityID == uniId));
+            }
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in resultList)
+            {
+                sb.AppendLine(item.UniversityName);
+            }
+            ViewBag.Test = sb.ToString();
+            return View(viewModelSearch);
         }
 
         private async Task<ViewModelSearch> GetViewModelSearch()

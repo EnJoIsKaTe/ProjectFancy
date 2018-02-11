@@ -17,7 +17,7 @@ namespace XamPass.Models.DataBaseModels
         /// Identifier des Datensatzes
         /// </summary>
         [Key]
-        public long SubjectID { get; set; }
+        public int SubjectID { get; set; }
 
         /// <summary>
         /// Name des Faches

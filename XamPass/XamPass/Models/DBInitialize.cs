@@ -19,38 +19,6 @@ namespace XamPass.Models
             // Erstellt die Datenbank neu auf Grundlage der Model-Klassen
             context.Database.EnsureCreated();
 
-            // Testdaten in die Tabelle dt_federal_state einfügen
-            DtFederalState[] federalStates = new DtFederalState[]
-            {
-                new DtFederalState(){ FederalStateName = "Sachsen"},
-                new DtFederalState(){ FederalStateName = "Thüringen"},
-                new DtFederalState(){ FederalStateName = "Hessen"},
-                new DtFederalState(){ FederalStateName = "Bayern"}
-            };
-
-            // Testdaten in Tabelle dt_university einfügen
-            List<DtUniversity> universities = new List<DtUniversity>()
-            {
-                new DtUniversity(){UniversityName = "BA Leipzig", UniversityID = 1 },
-                new DtUniversity(){UniversityName = "BA Dresden", UniversityID = 2 },
-                new DtUniversity(){UniversityName = "BA Glauchau", UniversityID = 3 },
-                new DtUniversity(){UniversityName = "Universität Leipzig", UniversityID = 4 },
-                new DtUniversity(){UniversityName = "HTWK Leipzig", UniversityID = 5 }
-            };
-
-            foreach (DtFederalState state in federalStates)
-            {
-                context.Add(state);
-            }
-
-            foreach (DtUniversity university in universities)
-            {
-                context.Add(university);
-            }
-
-            context.SaveChanges();
-
-
             DtCountry[] countries = new DtCountry[]
             {
                 new DtCountry(){CountryName = "Deutschland"},
@@ -61,6 +29,41 @@ namespace XamPass.Models
             foreach (DtCountry country in countries)
             {
                 context.Add(country);
+            }
+
+            context.SaveChanges();
+
+            // Testdaten in die Tabelle dt_federal_state einfügen
+            DtFederalState[] federalStates = new DtFederalState[]
+            {
+                new DtFederalState(){ FederalStateName = "Sachsen"},
+                new DtFederalState(){ FederalStateName = "Thüringen"},
+                new DtFederalState(){ FederalStateName = "Hessen"},
+                new DtFederalState(){ FederalStateName = "Bayern"}
+            };
+
+            foreach (DtFederalState state in federalStates)
+            {
+                context.Add(state);
+            }
+
+            context.SaveChanges();
+
+            // Testdaten in Tabelle dt_university einfügen
+            List<DtUniversity> universities = new List<DtUniversity>()
+            {
+                new DtUniversity(){UniversityName = "BA Leipzig", UniversityID = 1 },
+                new DtUniversity(){UniversityName = "BA Dresden", UniversityID = 2 },
+                new DtUniversity(){UniversityName = "BA Glauchau", UniversityID = 3 },
+                new DtUniversity(){UniversityName = "Universität Leipzig", UniversityID = 4 },
+                new DtUniversity(){UniversityName = "HTWK Leipzig", UniversityID = 5 }
+            };            
+
+            
+
+            foreach (DtUniversity university in universities)
+            {
+                context.Add(university);
             }
 
             context.SaveChanges();
@@ -122,18 +125,18 @@ namespace XamPass.Models
             {
                 new DtQuestion(){Answers = context.Answers.Where(a => a.AnswerID == 1).ToList(),
                     Content = "Konstruieren Sie eine Turing Maschine",
-                    FieldOfStudies = context.FieldsOfStudies.SingleOrDefault(f => f.FieldOfStudiesID == 1),
-                    Subject = context.Subjects.SingleOrDefault(s => s.SubjectID == 1),
+                    FieldOfStudies = context.FieldsOfStudies.FirstOrDefault(f => f.FieldOfStudiesID == 1),
+                    Subject = context.Subjects.FirstOrDefault(s => s.SubjectID == 1),
                     SubmissionDate = DateTime.Now,
-                    University = context.Universities.SingleOrDefault(u => u.UniversityID == 1),
+                    University = context.Universities.FirstOrDefault(u => u.UniversityID == 1),
                     UpVotes = 2},
 
                 new DtQuestion(){Answers = null,
                     Content = "Weitere Frage",
-                    FieldOfStudies = context.FieldsOfStudies.SingleOrDefault(u => u.FieldOfStudiesID == 1),
-                    Subject = context.Subjects.SingleOrDefault(u => u.SubjectID == 1),
+                    FieldOfStudies = context.FieldsOfStudies.FirstOrDefault(u => u.FieldOfStudiesID == 1),
+                    Subject = context.Subjects.FirstOrDefault(u => u.SubjectID == 1),
                     SubmissionDate = DateTime.Now,
-                    University = context.Universities.SingleOrDefault(u => u.UniversityID == 1),
+                    University = context.Universities.FirstOrDefault(u => u.UniversityID == 1),
                     UpVotes = 0}
             };
 
