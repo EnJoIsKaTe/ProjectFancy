@@ -15,13 +15,6 @@ namespace XamPass.Models
         public int SubjectId { get; set; }
         public int FieldOfStudiesId { get; set; }
 
-        // Properties die als Vorschläge angezeigt werden können
-        public List<SelectListItem> Universities { get; set; }
-        public List<SelectListItem> FederalStates { get; set; }
-        public List<SelectListItem> Countries { get; set; }
-        public List<SelectListItem> Subjects { get; set; }
-        public List<SelectListItem> FieldsOfStudies { get; set; }
-
         // Properties, die aus der Oberfläche zu befüllen sind
         public string QuestionContent { get; set; }
         public string QuestionTitle { get; set; }
@@ -29,13 +22,13 @@ namespace XamPass.Models
         /// <summary>
         /// Standard Constructor
         /// </summary>
-        public ViewModelCreate()
+        public ViewModelCreate(ViewModelSearch viewModelSearch)
         {
-            Universities = new List<SelectListItem>();
-            FederalStates = new List<SelectListItem>();
-            Countries = new List<SelectListItem>();
-            Subjects = new List<SelectListItem>();
-            FieldsOfStudies = new List<SelectListItem>();
+            UniversityId = viewModelSearch.UniversityId;
+            FederalStateId = viewModelSearch.FederalStateId;
+            CountryId = 0;
+            SubjectId = viewModelSearch.SubjectId;
+            FieldOfStudiesId = viewModelSearch.FieldOfStudiesId;
         }       
     }
 }
