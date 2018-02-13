@@ -40,19 +40,34 @@ namespace XamPass.Controllers
         [HttpPost]
         public IActionResult Index(ViewModelSearch viewModelSearch)
         {
-            var result = viewModelSearch;
-            var questions = _context.Questions.ToList();
+           // var result = viewModelSearch;
+            //var questions = _context.Questions.ToList();
             var resultList = new List<DtQuestion>();
 
-            if (viewModelSearch.UniversityId == 0)
+
+            // Alle Fragen werden aus der Datenbank geladen und danach mit den eingegebenen Filtern durchsucht
+            resultList = _context.Questions.ToList();
+            
+            if (viewModelSearch.UniversityId != 0)
             {
-                resultList = questions;
+                resultList = resultList.Where(q => q.UniversityID == viewModelSearch.UniversityId).ToList();
             }
-            else
-            {
-                resultList = questions.Select(q => q)
-                    .Where(q => q.UniversityID == viewModelSearch.UniversityId).ToList();
-            }
+
+            if (viewModelSearch.FieldOfStudiesId != 0)
+                resultList = resultList.Where(q => q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId).ToList();
+
+            if (viewModelSearch.SubjectId != 0)
+                resultList = resultList.Where(q => q.SubjectID == viewModelSearch.SubjectId).ToList();
+                       
+            //if (viewModelSearch.UniversityId == 0)
+            //{
+            //    resultList = questions;
+            //}
+            //else
+            //{
+            //    resultList = questions.Select(q => q)
+            //        .Where(q => q.UniversityID == viewModelSearch.UniversityId).ToList();
+            //}
 
             StringBuilder sb = new StringBuilder();
             foreach (var item in resultList)
@@ -63,7 +78,7 @@ namespace XamPass.Controllers
             viewModelSearch = GetViewModelSearch().Result;
             return View(viewModelSearch);
         }
-
+        
         private async Task<ViewModelSearch> GetViewModelSearch()
         {
             var universities = await _context.Universities.ToListAsync();
@@ -107,6 +122,84 @@ namespace XamPass.Controllers
             }
             return viewModelSearch;
         }
+
+        #region Add new Question
+
+        /// <summary>
+        /// Lädt Vorschläge für die Properties der neuen Frage aus der Datenbank
+        /// </summary>
+        /// <returns></returns>
+        private async Task<ViewModelCreate> GetViewModelCreate()
+        {
+            var universities = await _context.Universities.ToListAsync();
+            var federalStates = await _context.FederalStates.ToListAsync();
+            var subjects = await _context.Subjects.ToListAsync();
+            var fieldsOfStudies = await _context.FieldsOfStudies.ToListAsync();
+
+            var viewModelCreate = new ViewModelCreate();
+
+            foreach (var item in universities)
+            {
+                viewModelCreate.Universities.Add(new SelectListItem()
+                {
+                    Value = item.UniversityID.ToString(),
+                    Text = item.UniversityName
+                });
+            }
+            foreach (var item in federalStates)
+            {
+                viewModelCreate.FederalStates.Add(new SelectListItem()
+                {
+                    Value = item.FederalStateID.ToString(),
+                    Text = item.FederalStateName
+                });
+            }
+            foreach (var item in subjects)
+            {
+                viewModelCreate.Subjects.Add(new SelectListItem()
+                {
+                    Value = item.SubjectID.ToString(),
+                    Text = item.SubjectName
+                });
+            }
+            foreach (var item in fieldsOfStudies)
+            {
+                viewModelCreate.FieldsOfStudies.Add(new SelectListItem()
+                {
+                    Value = item.FieldOfStudiesID.ToString(),
+                    Text = item.FieldOfStudiesName
+                });
+            }
+
+            return viewModelCreate;
+        }
+
+        /// <summary>
+        /// Befüllt die Properties einer neuen Frage aus dem ViewModelCreate Objekt und speichert die Frage in der DB
+        /// </summary>
+        /// <param name="viewModelCreate"></param>
+        private void CreateNewQuestion(ViewModelCreate viewModelCreate)
+        {
+            DtQuestion question = new DtQuestion();
+
+            question.Title = viewModelCreate.QuestionTitle;
+            question.Content = viewModelCreate.QuestionContent;
+
+            question.FieldOfStudiesID = viewModelCreate.FieldOfStudiesId;
+            question.SubjectID = viewModelCreate.SubjectId;
+            question.SubmissionDate = DateTime.Now;
+            question.UniversityID = viewModelCreate.UniversityId;
+
+            // TODO Benjamin: check ob alle Angaben richtig sind
+
+            _context.Add(question);
+
+            _context.SaveChanges();
+        }
+
+
+
+        #endregion
 
         [Authorize]
         public IActionResult CreateDB()

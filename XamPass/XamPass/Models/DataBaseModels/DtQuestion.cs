@@ -41,13 +41,19 @@ namespace XamPass.Models.DataBaseModels
         /// <summary>
         /// Liste von Antworten, die auf die Frage gegeben wurden
         /// </summary>
-        public int AnswerID { get; set; }
+        //public int AnswerID { get; set; }
         public List<DtAnswer> Answers { get; set; }
 
         /// <summary>
         /// Zeitpunkt der Erstellung des Datensatzes
         /// </summary>
         public DateTime SubmissionDate { get; set; }
+
+        /// <summary>
+        /// Titel / Betreff, der Frage
+        /// </summary>
+        [StringLength(250)]
+        public string Title { get; set; }
 
         /// <summary>
         /// Inhaltstext der Frage

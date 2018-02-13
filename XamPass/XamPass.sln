@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamPass", "XamPass\XamPass.csproj", "{320B5B49-7A15-4EBE-A416-719494F8BA75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamPass", "XamPass\XamPass.csproj", "{320B5B49-7A15-4EBE-A416-719494F8BA75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller.Tests", "Controller.Tests\Controller.Tests.csproj", "{BD6E6E8A-F4EC-4313-AFA7-0C8D8CA13D30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{320B5B49-7A15-4EBE-A416-719494F8BA75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{320B5B49-7A15-4EBE-A416-719494F8BA75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{320B5B49-7A15-4EBE-A416-719494F8BA75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD6E6E8A-F4EC-4313-AFA7-0C8D8CA13D30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD6E6E8A-F4EC-4313-AFA7-0C8D8CA13D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD6E6E8A-F4EC-4313-AFA7-0C8D8CA13D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD6E6E8A-F4EC-4313-AFA7-0C8D8CA13D30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

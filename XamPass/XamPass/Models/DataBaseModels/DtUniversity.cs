@@ -22,13 +22,13 @@ namespace XamPass.Models.DataBaseModels
         /// <summary>
         /// FK für den Staat der Universität
         /// </summary>
-        //public int CountryID { get; set; }
+        public int CountryID { get; set; }
         public DtCountry Country { get; set; }
 
         /// <summary>
         /// FK für den Bundesstaat der Universität
         /// </summary>
-        //public int FederalStateID { get; set; }
+        public int FederalStateID { get; set; }
         public DtFederalState FederalState { get; set; }
 
         /// <summary>
