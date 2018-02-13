@@ -292,6 +292,11 @@ namespace XamPass.Controllers
             return View(viewModelSearch);
         }
 
+        public IActionResult CreateNewEntry()
+        {
+            return View();
+        }
+
         #region template-methods
         public IActionResult About()
         {

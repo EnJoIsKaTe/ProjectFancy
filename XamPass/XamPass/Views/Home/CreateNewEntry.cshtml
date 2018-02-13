@@ -1,0 +1,125 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/create.css" />
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+</head>
+
+<body>
+    <h1>Neuen Eintrag anlegen</h1>
+
+    <table width="100%">
+        <tr>
+            <td width="100%">
+                <div id="caption">
+                    <h3>Stelle eine Frage</h3>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @using (Html.BeginForm("Create", "Create", FormMethod.Post))
+                {
+                    <div id="createTable" style="width:100%;">
+
+                        <table width="100%">
+                            <tr>
+                                <td class="input-cell-name">
+                                    Fachrichtung
+                                </td>
+                                <td>
+                                    <input class="form-control col-md-2 input-cell" />
+                                    @*@Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, "Fachrichtung auswählen",
+                                        new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })*@
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="input-cell-name">
+                                    Fach
+                                </td>
+                                <td>
+                                    <input class="form-control col-md-2 input-cell" />
+                                    @*@Html.DropDownListFor(m => m.SubjectId, Model.Subjects, "Fach auswählen",
+                                        new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })*@
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="input-cell-name">
+                                    Land
+                                </td>
+                                <td>
+                                    <input id="inputCounty" readonly="true" value="Deutschland" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="input-cell-name">
+                                    Bundesland
+                                </td>
+                                <td>
+                                    <input class="form-control col-md-2 input-cell" />
+                                    @*@Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, "Bundesland auswählen",
+                                        new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })*@
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="input-cell-name">
+                                    Hochschule
+                                </td>
+                                <td>
+                                    <input class="form-control col-md-2 input-cell" />
+                                    @*@Html.DropDownListFor(m => m.UniversityId, Model.Universities, "Hochschule auswählen",
+                                        new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })*@
+                                </td>
+                            </tr>
+                        </table>
+
+                        <hr style="margin: 10px 0px 10px 0px;" />
+
+                        <table width="80%">
+                            <tr>
+                                <td class="input-cell-name">
+                                    Frage
+                                </td>
+                                <td>
+                                    <textarea class="form-control col-md-2 input-cell-big"></textarea>
+                                    @*@Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, "Fachrichtung auswählen",
+                                        new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })*@
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="input-cell-name">
+                                    Antwort oder Lösung
+                                </td>
+                                <td>
+                                    <textarea class="form-control col-md-2 input-cell-big"></textarea>
+                                    @*@Html.DropDownListFor(m => m.SubjectId, Model.Subjects, "Fach auswählen",
+                                        new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })*@
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="input-cell-name"></td>
+                                <td>
+                                    <div width="100%" style="text-align:right;">
+                                        <button id="createBtn" type="submit" class="btn">Anlegen</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+                }
+        </tr>
+    </table>
+</body>

@@ -6,15 +6,27 @@
 .input-cell-name {
     text-align: start;
     padding: 5px;
-    width: 100pt
+    width: 130pt
 }
 
 .input-cell {
     margin-bottom: 3px;
-    width:100%;
+    width: 40%;
 }
 
-#submitBtn {
+.input-cell-big {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+
+    height: 40pt;
+    min-height: 40pt;
+    max-height: 200pt;
+
+    margin-bottom: 3px;
+}
+
+#createBtn {
     width: 150pt;
     height: 35pt;
     position: relative;
@@ -26,28 +38,10 @@
     font-weight: 600;
 }
 
-    #submitBtn:hover {
+    #createBtn:hover {
         background: linear-gradient(#f79b45, #ef8f32);
     }
 
-    #submitBtn:active {
-        background: linear-gradient(#ef8f32, #e57d19);
-    }
-
-#newEntryBtn {
-    position: relative;
-    width: 250pt;
-    /*box-shadow: 0px 0px 5px #edc880;*/
-    border: 1px solid #edb850;
-    background-color: transparent; /*linear-gradient(#ef8f32, #ef8f32);*/ /*#ed8a2a;*/
-    color: #ef8f32;
-}
-
-    #newEntryBtn:hover {
-        background: linear-gradient(#f79b45, #ef8f32);
-        color:#333;
-    }
-
-    #newEntryBtn:active {
+    #createBtn:active {
         background: linear-gradient(#ef8f32, #e57d19);
     }
