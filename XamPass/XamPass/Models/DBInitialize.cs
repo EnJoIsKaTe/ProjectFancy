@@ -127,6 +127,7 @@ namespace XamPass.Models
                     Subject = context.Subjects.FirstOrDefault(s => s.SubjectID == 1),
                     SubmissionDate = DateTime.Now,
                     University = context.Universities.FirstOrDefault(u => u.UniversityID == 1),
+                    //UniversityID = 1,
                     UpVotes = 2},
 
                 new DtQuestion(){Answers = null,
