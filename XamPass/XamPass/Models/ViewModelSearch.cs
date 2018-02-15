@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +16,11 @@ namespace XamPass.Models
         public int FederalStateId { get; set; }
         public int SubjectId { get; set; }
         public int FieldOfStudiesId { get; set; }
+
+        // Properties, die aus der Oberfläche zu befüllen sind
+        [DataType(DataType.MultilineText)]
+        public string QuestionContent { get; set; }
+        public string QuestionTitle { get; set; }
 
         public List<SelectListItem> Universities { get; set; }
         public List<SelectListItem> FederalStates { get; set; }

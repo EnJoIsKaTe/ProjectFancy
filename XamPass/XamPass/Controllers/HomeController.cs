@@ -27,7 +27,8 @@ namespace XamPass.Controllers
         {
             try
             {
-                var viewModelSearch = GetViewModelSearch().Result;
+                ViewModelSearch viewModelSearch = new ViewModelSearch();
+                viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
                 return View(viewModelSearch);
             }
             catch (Exception e)
@@ -75,18 +76,18 @@ namespace XamPass.Controllers
                 sb.AppendLine(item.Content + ";");
             }
             ViewBag.Test = sb.ToString();
-            viewModelSearch = GetViewModelSearch().Result;
+            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
             return View(viewModelSearch);
         }
 
-        private async Task<ViewModelSearch> GetViewModelSearch()
+        private async Task<ViewModelSearch> GetViewModelSearch(ViewModelSearch viewModelSearch)
         {
             var universities = await _context.Universities.ToListAsync();
             var federalStates = await _context.FederalStates.ToListAsync();
             var subjects = await _context.Subjects.ToListAsync();
             var fieldsOfStudies = await _context.FieldsOfStudies.ToListAsync();
 
-            var viewModelSearch = new ViewModelSearch();
+            //var viewModelSearch = new ViewModelSearch();
 
             foreach (var item in universities)
             {
@@ -130,8 +131,11 @@ namespace XamPass.Controllers
         {
             var result = viewModelSearch;
 
-            ViewModelCreate vieModelCreate = new ViewModelCreate(viewModelSearch);
-            return RedirectToAction("Done", result);
+            viewModelSearch = GetViewModelSearch(result).Result;
+            
+            //return RedirectToAction("Done", result);
+            return View(viewModelSearch);
+            //return RedirectToAction("CreateNewEntry", viewModelCreate);
         }
 
         /// <summary>
@@ -183,28 +187,30 @@ namespace XamPass.Controllers
         //    return viewModelCreate;
         //}
 
-        /// <summary>
-        /// Befüllt die Properties einer neuen Frage aus dem ViewModelCreate Objekt und speichert die Frage in der DB
-        /// </summary>
-        /// <param name="viewModelCreate"></param>
-        private void CreateNewQuestion(ViewModelCreate viewModelCreate)
-        {
-            DtQuestion question = new DtQuestion();
+        ///// <summary>
+        ///// Befüllt die Properties einer neuen Frage aus dem ViewModelCreate Objekt und speichert die Frage in der DB
+        ///// </summary>
+        ///// <param name="viewModelCreate"></param>
+        //private void CreateNewQuestion(ViewModelCreate viewModelCreate)
+        //{
+        //    var result = viewModelCreate;
+            
+        //    DtQuestion question = new DtQuestion();
 
-            question.Title = viewModelCreate.QuestionTitle;
-            question.Content = viewModelCreate.QuestionContent;
+        //    question.Title = viewModelCreate.QuestionTitle;
+        //    question.Content = viewModelCreate.QuestionContent;
 
-            question.FieldOfStudiesID = viewModelCreate.FieldOfStudiesId;
-            question.SubjectID = viewModelCreate.SubjectId;
-            question.SubmissionDate = DateTime.Now;
-            question.UniversityID = viewModelCreate.UniversityId;
+        //    question.FieldOfStudiesID = viewModelCreate.FieldOfStudiesId;
+        //    question.SubjectID = viewModelCreate.SubjectId;
+        //    question.SubmissionDate = DateTime.Now;
+        //    question.UniversityID = viewModelCreate.UniversityId;
 
-            // TODO Benjamin: check ob alle Angaben richtig sind
+        //    // TODO Benjamin: check ob alle Angaben richtig sind
 
-            _context.Add(question);
+        //    _context.Add(question);
 
-            _context.SaveChanges();
-        }
+        //    _context.SaveChanges();
+        //}
 
 
 
@@ -289,12 +295,15 @@ namespace XamPass.Controllers
 
         public IActionResult Done(ViewModelSearch viewModelSearch)
         {
-            return View(viewModelSearch);
+            var result = viewModelSearch;
+            return View(result);
         }
 
-        public IActionResult CreateNewEntry()
+        [HttpPost]
+        public IActionResult CreateNewEntry(ViewModelSearch viewModelSearch)
         {
-            return View();
+            var result = viewModelSearch;
+            return RedirectToAction("Done");
         }
 
         #region template-methods
