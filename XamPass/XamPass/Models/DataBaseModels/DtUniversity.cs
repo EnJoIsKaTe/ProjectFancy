@@ -17,16 +17,18 @@ namespace XamPass.Models.DataBaseModels
         /// Identifier des Datensatzes
         /// </summary>
         [Key]
-        public long UniversityID { get; set; }
+        public int UniversityID { get; set; }
 
         /// <summary>
         /// FK für den Staat der Universität
         /// </summary>
+        public int CountryID { get; set; }
         public DtCountry Country { get; set; }
 
         /// <summary>
         /// FK für den Bundesstaat der Universität
         /// </summary>
+        public int FederalStateID { get; set; }
         public DtFederalState FederalState { get; set; }
 
         /// <summary>

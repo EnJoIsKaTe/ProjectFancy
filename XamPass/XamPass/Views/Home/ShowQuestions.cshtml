@@ -1,0 +1,14 @@
+﻿@model XamPass.Models.ViewModelQuestions
+
+@{
+	 ViewData["Title"] = "ShowQuestions";
+}
+
+<h2>ShowQuestions</h2>
+
+<ul>
+	@foreach(var item in Model.Questions)
+	{
+		<li>@item.Content</li>
+	}
+</ul>

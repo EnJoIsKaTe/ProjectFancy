@@ -17,7 +17,7 @@ namespace XamPass.Models.DataBaseModels
         /// Identifier des Datensatzes
         /// </summary>
         [Key]
-        public long FieldOfStudiesID { get; set; }
+        public int FieldOfStudiesID { get; set; }
 
         /// <summary>
         /// Name des Studienfachs
