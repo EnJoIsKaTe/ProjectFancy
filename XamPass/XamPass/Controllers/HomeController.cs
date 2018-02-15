@@ -138,8 +138,20 @@ namespace XamPass.Controllers
         public IActionResult CreateQuestion(ViewModelSearch viewModelSearch)
         {
             var result = viewModelSearch;
-
             viewModelSearch = GetViewModelSearch(result).Result;
+
+            if (viewModelSearch.FederalStateId != 0)
+            {
+                viewModelSearch.UniversitySelectList = new List<SelectListItem>();
+                foreach (var item in viewModelSearch.Universities)
+                {
+                    if (item.FederalStateID == viewModelSearch.FederalStateId)
+                    {
+                        viewModelSearch.UniversitySelectList.Add(
+                            new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
+                    }
+                }
+            }
 
             //return RedirectToAction("Done", result);
             return View(viewModelSearch);
@@ -315,6 +327,24 @@ namespace XamPass.Controllers
         public IActionResult CreateNewEntry(ViewModelSearch viewModelSearch)
         {
             var result = viewModelSearch;
+
+            DtQuestion question = new DtQuestion();
+
+            //question.Title = viewModelSearch.QuestionTitle;
+            question.Title = "Neue Frage";
+            question.Content = viewModelSearch.QuestionContent;
+
+            question.FieldOfStudiesID = viewModelSearch.FieldOfStudiesId;
+            question.SubjectID = viewModelSearch.SubjectId;
+            question.SubmissionDate = DateTime.Now;
+            question.UniversityID = viewModelSearch.UniversityId;
+
+            // TODO Benjamin: check ob alle Angaben richtig sind
+
+            _context.Add(question);
+
+            _context.SaveChanges();
+
             return RedirectToAction("Done");
         }
 
