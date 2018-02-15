@@ -22,6 +22,8 @@ namespace XamPass.Controllers
             _context = context;
         }
 
+        #region Homepage
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -41,10 +43,28 @@ namespace XamPass.Controllers
         [HttpPost]
         public IActionResult Index(ViewModelSearch viewModelSearch)
         {
-            // var result = viewModelSearch;
-            //var questions = _context.Questions.ToList();
-            var resultList = new List<DtQuestion>();
+            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
+            if (viewModelSearch.FederalStateId != 0)
+            {
+                viewModelSearch.UniversitySelectList = new List<SelectListItem>();
+                foreach (var item in viewModelSearch.Universities)
+                {
+                    if (item.FederalStateID == viewModelSearch.FederalStateId)
+                    {
+                        viewModelSearch.UniversitySelectList.Add(
+                            new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
+                    }
+                }
+            }
+            return View(viewModelSearch);
+        }
+        #endregion
+
+        #region ShowQuestions
+        public IActionResult ShowQuestions(ViewModelSearch viewModelSearch)
+        {
+            var resultList = new List<DtQuestion>();
 
             // Alle Fragen werden aus der Datenbank geladen und danach mit den eingegebenen Filtern durchsucht
             resultList = _context.Questions.ToList();
@@ -60,25 +80,12 @@ namespace XamPass.Controllers
             if (viewModelSearch.SubjectId != 0)
                 resultList = resultList.Where(q => q.SubjectID == viewModelSearch.SubjectId).ToList();
 
-            //if (viewModelSearch.UniversityId == 0)
-            //{
-            //    resultList = questions;
-            //}
-            //else
-            //{
-            //    resultList = questions.Select(q => q)
-            //        .Where(q => q.UniversityID == viewModelSearch.UniversityId).ToList();
-            //}
-
-            StringBuilder sb = new StringBuilder();
-            foreach (var item in resultList)
-            {
-                sb.AppendLine(item.Content + ";");
-            }
-            ViewBag.Test = sb.ToString();
-            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
-            return View(viewModelSearch);
+            ViewModelQuestions viewModelQuestions = new ViewModelQuestions();
+            viewModelQuestions.Questions = resultList;
+            return View(viewModelQuestions);
         }
+        #endregion
+
 
         private async Task<ViewModelSearch> GetViewModelSearch(ViewModelSearch viewModelSearch)
         {
@@ -88,10 +95,11 @@ namespace XamPass.Controllers
             var fieldsOfStudies = await _context.FieldsOfStudies.ToListAsync();
 
             //var viewModelSearch = new ViewModelSearch();
+            viewModelSearch.Universities = universities;
 
             foreach (var item in universities)
             {
-                viewModelSearch.Universities.Add(new SelectListItem()
+                viewModelSearch.UniversitySelectList.Add(new SelectListItem()
                 {
                     Value = item.UniversityID.ToString(),
                     Text = item.UniversityName
@@ -132,7 +140,7 @@ namespace XamPass.Controllers
             var result = viewModelSearch;
 
             viewModelSearch = GetViewModelSearch(result).Result;
-            
+
             //return RedirectToAction("Done", result);
             return View(viewModelSearch);
             //return RedirectToAction("CreateNewEntry", viewModelCreate);
@@ -194,7 +202,7 @@ namespace XamPass.Controllers
         //private void CreateNewQuestion(ViewModelCreate viewModelCreate)
         //{
         //    var result = viewModelCreate;
-            
+
         //    DtQuestion question = new DtQuestion();
 
         //    question.Title = viewModelCreate.QuestionTitle;
@@ -223,6 +231,8 @@ namespace XamPass.Controllers
             DBInitialize.DatabaseTest(_context);
             return RedirectToAction("Done");
         }
+
+        #region Tests
 
         [HttpGet]
         public async Task<IActionResult> FirstTest()
@@ -292,6 +302,8 @@ namespace XamPass.Controllers
             }
             return View(model);
         }
+
+        #endregion
 
         public IActionResult Done(ViewModelSearch viewModelSearch)
         {

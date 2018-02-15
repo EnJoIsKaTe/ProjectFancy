@@ -46,9 +46,9 @@
 								</td>
 								<td>
 									@*<input class="form-control col-md-2 input-cell" />*@
-									@Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, 
-										Model.FieldsOfStudies.Single(f => f.Value == Model.UniversityId.ToString()).Text,
-										new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+									@Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies,
+											  Model.FieldsOfStudies.Single(f => f.Value == Model.UniversityId.ToString()).Text,
+											  new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
 								</td>
 							</tr>
 							<tr>
@@ -58,8 +58,8 @@
 								<td>
 									@*<input class="form-control col-md-2 input-cell" />*@
 									@Html.DropDownListFor(m => m.SubjectId, Model.Subjects,
-										Model.Subjects.Single(s => s.Value == Model.SubjectId.ToString()).Text,
-										new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+											  Model.Subjects.Single(s => s.Value == Model.SubjectId.ToString()).Text,
+											  new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
 								</td>
 							</tr>
 							<tr>
@@ -77,8 +77,8 @@
 								<td>
 									@*<input class="form-control col-md-2 input-cell" />*@
 									@Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates,
-										Model.FederalStates.Single(f => f.Value == Model.FederalStateId.ToString()).Text,
-										new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+											  Model.FederalStates.Single(f => f.Value == Model.FederalStateId.ToString()).Text,
+											  new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
 								</td>
 							</tr>
 							<tr>
@@ -86,10 +86,20 @@
 									Hochschule
 								</td>
 								<td>
-									@*<input class="form-control col-md-2 input-cell" />*@
-									@Html.DropDownListFor(m => m.UniversityId, Model.Universities, 
-										Model.Universities.Single(u => u.Value == Model.UniversityId.ToString()).Text,
-										new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+									<input class="form-control col-md-2 input-cell" />
+									@{
+										List<SelectListItem> uniSelectList = new List<SelectListItem>();
+										foreach (var item in Model.Universities)
+										{
+											uniSelectList.Add(new SelectListItem()
+											{
+												Value = item.UniversityID.ToString(),
+												Text = item.UniversityName
+											});
+										}
+									}
+									@Html.DropDownListFor(m => m.UniversityId, uniSelectList, "Hochschule auswählen",
+												  new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
 								</td>
 							</tr>
 						</table>
@@ -103,7 +113,7 @@
 								</td>
 								<td>
 									@*<textarea class="form-control col-md-2 input-cell-big"></textarea>*@
-									@Html.TextAreaFor(m => m.QuestionContent, new { @class = "input-cell"})
+									@Html.TextAreaFor(m => m.QuestionContent, new { @class = "input-cell" })
 								</td>
 							</tr>
 							<tr>

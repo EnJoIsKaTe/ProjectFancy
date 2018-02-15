@@ -56,7 +56,11 @@ namespace XamPass.Models
                 new DtUniversity(){UniversityName = "BA Dresden",  CountryID = 1, FederalStateID = 1},
                 new DtUniversity(){UniversityName = "BA Glauchau", CountryID = 1, FederalStateID = 1},
                 new DtUniversity(){UniversityName = "Universität Leipzig", CountryID = 1, FederalStateID = 1},
-                new DtUniversity(){UniversityName = "HTWK Leipzig", CountryID = 1, FederalStateID = 1}
+                new DtUniversity(){UniversityName = "HTWK Leipzig", CountryID = 1, FederalStateID = 1},
+                new DtUniversity(){UniversityName = "Universität Jena", CountryID = 1, FederalStateID = 2},
+                new DtUniversity(){UniversityName = "HfM Weimar", CountryID = 1, FederalStateID = 2},
+                new DtUniversity(){UniversityName = "Universität Kassel", CountryID = 1, FederalStateID = 3},
+                new DtUniversity(){UniversityName = "Universität Würzburg", CountryID = 1, FederalStateID = 4}
             };
 
             foreach (DtUniversity university in universities)
@@ -127,20 +131,27 @@ namespace XamPass.Models
                     Subject = context.Subjects.FirstOrDefault(s => s.SubjectID == 1),
                     SubmissionDate = DateTime.Now,
                     University = context.Universities.FirstOrDefault(u => u.UniversityID == 1),
-                    //UniversityID = 1,
                     UpVotes = 2},
 
                 new DtQuestion(){Answers = null,
-                    Content = "Weitere Frage 1",
+                    Content = "Was soll das alles?",
                     FieldOfStudies = context.FieldsOfStudies.FirstOrDefault(u => u.FieldOfStudiesID == 1),
                     Subject = context.Subjects.FirstOrDefault(u => u.SubjectID == 1),
                     SubmissionDate = DateTime.Now,
-                    University = context.Universities.FirstOrDefault(u => u.UniversityID == 1),
-                    UpVotes = 0},                
+                    University = context.Universities.FirstOrDefault(u => u.UniversityID == 2),
+                    UpVotes = 0},
+
+                 new DtQuestion(){Answers = null,
+                    Content = "Was ist deine Lieblingsfarbe?",
+                    FieldOfStudies = context.FieldsOfStudies.FirstOrDefault(u => u.FieldOfStudiesID == 1),
+                    Subject = context.Subjects.FirstOrDefault(u => u.SubjectID == 1),
+                    SubmissionDate = DateTime.Now,
+                    University = context.Universities.FirstOrDefault(u => u.UniversityID == 3),
+                    UpVotes = 0}
             };
 
             // weitere Fragen eintragen
-            for (int i = 1; i < 6; i++)
+            for (int i = 4; i < 10; i++)
             {
                 var question = new DtQuestion()
                 {
