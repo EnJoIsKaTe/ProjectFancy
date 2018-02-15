@@ -151,21 +151,21 @@ namespace XamPass.Models
             };
 
             // weitere Fragen eintragen
-            //for (int i = 4; i < 10; i++)
-            //{
-            //    var question = new DtQuestion()
-            //    {
-            //        Answers = null,
-            //        Content = String.Format("Weitere Frage {0}", i),
-            //        FieldOfStudies = context.FieldsOfStudies.FirstOrDefault(u => u.FieldOfStudiesID == i),
-            //        Subject = context.Subjects.FirstOrDefault(u => u.SubjectID == i),
-            //        SubmissionDate = DateTime.Now,
-            //        University = context.Universities.FirstOrDefault(u => u.UniversityID == i),
-            //        UpVotes = 0
-            //    };
+            for (int i = 1; i < 6; i++)
+            {
+                var question = new DtQuestion()
+                {
+                    Answers = null,
+                    Content = String.Format("Weitere Frage {0}", i),
+                    FieldOfStudies = context.FieldsOfStudies.FirstOrDefault(u => u.FieldOfStudiesID == i),
+                    Subject = context.Subjects.FirstOrDefault(u => u.SubjectID == i),
+                    SubmissionDate = DateTime.Now,
+                    University = context.Universities.FirstOrDefault(u => u.UniversityID == i),
+                    UpVotes = 0
+                };
 
-            //    questions.Add(question);
-            //}
+                questions.Add(question);
+            }
 
             foreach (DtQuestion question in questions)
             {
