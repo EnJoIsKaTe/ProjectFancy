@@ -64,24 +64,34 @@ namespace XamPass.Controllers
         #region ShowQuestions
         public IActionResult ShowQuestions(ViewModelSearch viewModelSearch)
         {
-            var resultList = new List<DtQuestion>();
+            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+
+            var questions = new List<DtQuestion>();
 
             // Alle Fragen werden aus der Datenbank geladen und danach mit den eingegebenen Filtern durchsucht
-            resultList = _context.Questions.ToList();
+            questions = _context.Questions.ToList();            
+
+            if (viewModelSearch.FieldOfStudiesId != 0)
+            {
+                questions = questions.Where(q => q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId).ToList();
+            }
+
+            if (viewModelSearch.SubjectId != 0)
+            {
+                questions = questions.Where(q => q.SubjectID == viewModelSearch.SubjectId).ToList();
+            }
+
+            if (viewModelSearch.FederalStateId != 0)
+            { 
+                questions = questions.Where(q => q.University.FederalStateID == viewModelSearch.FederalStateId).ToList();
+            }
 
             if (viewModelSearch.UniversityId != 0)
             {
-                resultList = resultList.Where(q => q.UniversityID == viewModelSearch.UniversityId).ToList();
+                questions = questions.Where(q => q.UniversityID == viewModelSearch.UniversityId).ToList();
             }
-
-            if (viewModelSearch.FieldOfStudiesId != 0)
-                resultList = resultList.Where(q => q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId).ToList();
-
-            if (viewModelSearch.SubjectId != 0)
-                resultList = resultList.Where(q => q.SubjectID == viewModelSearch.SubjectId).ToList();
-
             ViewModelQuestions viewModelQuestions = new ViewModelQuestions();
-            viewModelQuestions.Questions = resultList;
+            viewModelQuestions.Questions = questions;
             return View(viewModelQuestions);
         }
         #endregion
@@ -326,6 +336,7 @@ namespace XamPass.Controllers
         [HttpPost]
         public IActionResult CreateNewEntry(ViewModelSearch viewModelSearch)
         {
+            //TODO: Fehlerbehandlung / Warnung bei fehlenden/falschen Einträgen
             var result = viewModelSearch;
 
             DtQuestion question = new DtQuestion();
