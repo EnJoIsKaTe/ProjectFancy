@@ -45,8 +45,18 @@ namespace XamPass.Controllers
         {
             viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
+            // filtert Hochschulen für gewähltes Bundesland
             if (viewModelSearch.FederalStateId != 0)
             {
+                if (viewModelSearch.UniversityId != 0)
+                {
+                    var university = viewModelSearch.Universities.FirstOrDefault(u => u.UniversityID == viewModelSearch.UniversityId);
+                    if (university.FederalStateID != viewModelSearch.FederalStateId)
+                    {
+                        viewModelSearch.UniversityId = 0;
+                    }
+                }
+                // setzt gewählte Hochschule auf 0, wenn gewähltes Bundesland nicht übereinstimmt
                 viewModelSearch.UniversitySelectList = new List<SelectListItem>();
                 foreach (var item in viewModelSearch.Universities)
                 {
@@ -57,6 +67,7 @@ namespace XamPass.Controllers
                     }
                 }
             }
+           
             return View(viewModelSearch);
         }
         #endregion
