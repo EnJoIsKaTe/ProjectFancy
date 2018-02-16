@@ -186,8 +186,102 @@ namespace XamPass.Controllers
             //return RedirectToAction("CreateNewEntry", viewModelCreate);
 
         }
-        
-        // (Re-)creates the local Database in the way the model was written
+
+        /// <summary>
+        /// Lädt Vorschläge für die Properties der neuen Frage aus der Datenbank
+        /// </summary>
+        /// <returns></returns>
+        //private async Task<ViewModelCreate> GetViewModelCreate()
+        //{
+        //    var universities = await _context.Universities.ToListAsync();
+        //    var federalStates = await _context.FederalStates.ToListAsync();
+        //    var subjects = await _context.Subjects.ToListAsync();
+        //    var fieldsOfStudies = await _context.FieldsOfStudies.ToListAsync();
+
+        //    var viewModelCreate = new ViewModelCreate();
+
+        //    foreach (var item in universities)
+        //    {
+        //        viewModelCreate.Universities.Add(new SelectListItem()
+        //        {
+        //            Value = item.UniversityID.ToString(),
+        //            Text = item.UniversityName
+        //        });
+        //    }
+        //    foreach (var item in federalStates)
+        //    {
+        //        viewModelCreate.FederalStates.Add(new SelectListItem()
+        //        {
+        //            Value = item.FederalStateID.ToString(),
+        //            Text = item.FederalStateName
+        //        });
+        //    }
+        //    foreach (var item in subjects)
+        //    {
+        //        viewModelCreate.Subjects.Add(new SelectListItem()
+        //        {
+        //            Value = item.SubjectID.ToString(),
+        //            Text = item.SubjectName
+        //        });
+        //    }
+        //    foreach (var item in fieldsOfStudies)
+        //    {
+        //        viewModelCreate.FieldsOfStudies.Add(new SelectListItem()
+        //        {
+        //            Value = item.FieldOfStudiesID.ToString(),
+        //            Text = item.FieldOfStudiesName
+        //        });
+        //    }
+
+        //    return viewModelCreate;
+        //}
+
+        ///// <summary>
+        ///// Befüllt die Properties einer neuen Frage aus dem ViewModelCreate Objekt und speichert die Frage in der DB
+        ///// </summary>
+        ///// <param name="viewModelCreate"></param>
+        //private void CreateNewQuestion(ViewModelCreate viewModelCreate)
+        //{
+        //    var result = viewModelCreate;
+
+        //    DtQuestion question = new DtQuestion();
+
+        //    question.Title = viewModelCreate.QuestionTitle;
+        //    question.Content = viewModelCreate.QuestionContent;
+
+        //    question.FieldOfStudiesID = viewModelCreate.FieldOfStudiesId;
+        //    question.SubjectID = viewModelCreate.SubjectId;
+        //    question.SubmissionDate = DateTime.Now;
+        //    question.UniversityID = viewModelCreate.UniversityId;
+
+        //    // TODO Benjamin: check ob alle Angaben richtig sind
+
+        //    _context.Add(question);
+
+        //    _context.SaveChanges();
+        //}
+
+
+
+        #endregion
+
+        #region View Question
+
+        [HttpGet]
+        public IActionResult ViewQuestion()
+        {
+            //var result = viewModelSearch;
+
+            //viewModelSearch = GetViewModelSearch(result).Result;
+
+            ////return RedirectToAction("Done", result);
+            //return View(viewModelSearch);
+            return View();
+            //return RedirectToAction("CreateNewEntry", viewModelCreate);
+        }
+
+        #endregion
+
         [Authorize]
         public IActionResult CreateDB()
         {       

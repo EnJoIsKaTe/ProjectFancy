@@ -1,0 +1,30 @@
+﻿.question {
+    display: inline-block;
+    width: 70%;
+    word-break: break-word;
+    font-size: 20px;
+}
+
+.card-custom {
+    float: right;
+    width: 25%;
+    display: inline-block;
+    border: 1px solid #333;
+    border-radius: 15px;
+    background-color: #ffdabf;
+    box-shadow: #333 2px 2px 5px;
+}
+
+.card-header {
+    margin: 0px 0px 15px 0px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.btn-show-answer {
+    margin: 20px 0px 10px 0px;
+}
+
+.answer {
+    width: 70%;
+}
