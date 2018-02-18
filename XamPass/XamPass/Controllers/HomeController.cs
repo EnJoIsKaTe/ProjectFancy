@@ -67,7 +67,7 @@ namespace XamPass.Controllers
                     }
                 }
             }
-           
+
             return View(viewModelSearch);
         }
         #endregion
@@ -80,7 +80,7 @@ namespace XamPass.Controllers
             var questions = new List<DtQuestion>();
 
             // Alle Fragen werden aus der Datenbank geladen und danach mit den eingegebenen Filtern durchsucht
-            questions = _context.Questions.ToList();            
+            questions = _context.Questions.ToList();
 
             if (viewModelSearch.FieldOfStudiesId != 0)
             {
@@ -93,7 +93,7 @@ namespace XamPass.Controllers
             }
 
             if (viewModelSearch.FederalStateId != 0)
-            { 
+            {
                 questions = questions.Where(q => q.University.FederalStateID == viewModelSearch.FederalStateId).ToList();
             }
 
@@ -106,8 +106,7 @@ namespace XamPass.Controllers
             return View(viewModelQuestions);
         }
         #endregion
-
-
+        
         private async Task<ViewModelSearch> GetViewModelSearch(ViewModelSearch viewModelSearch)
         {
             var universities = await _context.Universities.ToListAsync();
@@ -152,17 +151,24 @@ namespace XamPass.Controllers
             }
             return viewModelSearch;
         }
-
-        #region Add new Question
-
+        
+        /// <summary>
+        /// Filters Universities by Federal State
+        /// </summary>
+        /// <param name="viewModelSearch">Data From the View</param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult CreateQuestion(ViewModelSearch viewModelSearch)
         {
-            var result = viewModelSearch;
-            viewModelSearch = GetViewModelSearch(result).Result;
+            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
+            viewModelSearch.UniversityId = 0;
+
+            // Filter Universities by Federal State
             if (viewModelSearch.FederalStateId != 0)
             {
+                // Workaround for when University is in different State
+
                 viewModelSearch.UniversitySelectList = new List<SelectListItem>();
                 foreach (var item in viewModelSearch.Universities)
                 {
@@ -175,92 +181,16 @@ namespace XamPass.Controllers
             }
 
             //return RedirectToAction("Done", result);
+
             return View(viewModelSearch);
             //return RedirectToAction("CreateNewEntry", viewModelCreate);
+
         }
-
-        /// <summary>
-        /// Lädt Vorschläge für die Properties der neuen Frage aus der Datenbank
-        /// </summary>
-        /// <returns></returns>
-        //private async Task<ViewModelCreate> GetViewModelCreate()
-        //{
-        //    var universities = await _context.Universities.ToListAsync();
-        //    var federalStates = await _context.FederalStates.ToListAsync();
-        //    var subjects = await _context.Subjects.ToListAsync();
-        //    var fieldsOfStudies = await _context.FieldsOfStudies.ToListAsync();
-
-        //    var viewModelCreate = new ViewModelCreate();
-
-        //    foreach (var item in universities)
-        //    {
-        //        viewModelCreate.Universities.Add(new SelectListItem()
-        //        {
-        //            Value = item.UniversityID.ToString(),
-        //            Text = item.UniversityName
-        //        });
-        //    }
-        //    foreach (var item in federalStates)
-        //    {
-        //        viewModelCreate.FederalStates.Add(new SelectListItem()
-        //        {
-        //            Value = item.FederalStateID.ToString(),
-        //            Text = item.FederalStateName
-        //        });
-        //    }
-        //    foreach (var item in subjects)
-        //    {
-        //        viewModelCreate.Subjects.Add(new SelectListItem()
-        //        {
-        //            Value = item.SubjectID.ToString(),
-        //            Text = item.SubjectName
-        //        });
-        //    }
-        //    foreach (var item in fieldsOfStudies)
-        //    {
-        //        viewModelCreate.FieldsOfStudies.Add(new SelectListItem()
-        //        {
-        //            Value = item.FieldOfStudiesID.ToString(),
-        //            Text = item.FieldOfStudiesName
-        //        });
-        //    }
-
-        //    return viewModelCreate;
-        //}
-
-        ///// <summary>
-        ///// Befüllt die Properties einer neuen Frage aus dem ViewModelCreate Objekt und speichert die Frage in der DB
-        ///// </summary>
-        ///// <param name="viewModelCreate"></param>
-        //private void CreateNewQuestion(ViewModelCreate viewModelCreate)
-        //{
-        //    var result = viewModelCreate;
-
-        //    DtQuestion question = new DtQuestion();
-
-        //    question.Title = viewModelCreate.QuestionTitle;
-        //    question.Content = viewModelCreate.QuestionContent;
-
-        //    question.FieldOfStudiesID = viewModelCreate.FieldOfStudiesId;
-        //    question.SubjectID = viewModelCreate.SubjectId;
-        //    question.SubmissionDate = DateTime.Now;
-        //    question.UniversityID = viewModelCreate.UniversityId;
-
-        //    // TODO Benjamin: check ob alle Angaben richtig sind
-
-        //    _context.Add(question);
-
-        //    _context.SaveChanges();
-        //}
-
-
-
-        #endregion
-
+        
+        // (Re-)creates the local Database in the way the model was written
         [Authorize]
         public IActionResult CreateDB()
-        {
-            // Solange der DB-Server noch nicht bereit ist sollte dieser Methodenaufruf auskommentiert sein
+        {       
             DBInitialize.DatabaseTest(_context);
             return RedirectToAction("Done");
         }
@@ -344,30 +274,39 @@ namespace XamPass.Controllers
             return View(result);
         }
 
+        /// <summary>
+        /// Creates new DtQuestion Object with the Properties from the View and Saves it to the Database
+        /// </summary>
+        /// <param name="viewModelSearch"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult CreateNewEntry(ViewModelSearch viewModelSearch)
         {
-            //TODO: Fehlerbehandlung / Warnung bei fehlenden/falschen Einträgen
-            var result = viewModelSearch;
+            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
-            DtQuestion question = new DtQuestion();
+            // If all entries are correct
+            if (ModelState.IsValid)
+            {
+                DtQuestion question = new DtQuestion();
 
-            //question.Title = viewModelSearch.QuestionTitle;
-            question.Title = "Neue Frage";
-            question.Content = viewModelSearch.QuestionContent;
+                //question.Title = viewModelSearch.QuestionTitle;
+                question.Title = "Neue Frage";
+                question.Content = viewModelSearch.QuestionContent;
+                
+                question.FieldOfStudiesID = (int)viewModelSearch.FieldOfStudiesId;
+                question.SubjectID = (int)viewModelSearch.SubjectId;
+                question.SubmissionDate = DateTime.Now;
+                question.UniversityID = (int)viewModelSearch.UniversityId;                
+                
+                _context.Add(question);
 
-            question.FieldOfStudiesID = viewModelSearch.FieldOfStudiesId;
-            question.SubjectID = viewModelSearch.SubjectId;
-            question.SubmissionDate = DateTime.Now;
-            question.UniversityID = viewModelSearch.UniversityId;
+                _context.SaveChanges();
 
-            // TODO Benjamin: check ob alle Angaben richtig sind
+                return RedirectToAction("Done");
+            }
 
-            _context.Add(question);
-
-            _context.SaveChanges();
-
-            return RedirectToAction("Done");
+            // if not all entries are correct you are redirected
+            return View("CreateQuestion", viewModelSearch);
         }
 
         #region template-methods
