@@ -24,8 +24,8 @@
 
 <body>
     <h1>Frage</h1>
-    <div style="height:auto">
-        @using (Html.BeginForm("CreateNewEntry", "Home", FormMethod.Post))
+    <div style="height:auto;display:inline-block">
+        @using (Html.BeginForm("ViewQuestion", "Home", FormMethod.Get))
         {
 
             <div id="questionContent" style="width:100%;">
@@ -102,6 +102,6 @@
             </div>
         }
     </div>
-    //Seite muss unter INFO Box abschließen
-    //Comments und Rating
+    @*//Seite muss unter INFO Box abschließen
+    //Comments und Rating*@
 </body>
