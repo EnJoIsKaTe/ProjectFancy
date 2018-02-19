@@ -13,13 +13,18 @@ namespace XamPass.Models
     /// </summary>
     public class ViewModelSearch
     {
-        public int UniversityId { get; set; }
-        public int FederalStateId { get; set; }
-        public int SubjectId { get; set; }
-        public int FieldOfStudiesId { get; set; }
+        [Required(ErrorMessage = "Bitte geben Sie eine Universität an")]
+        public int? UniversityId { get; set; }
+        [Required(ErrorMessage = "Bitte geben Sie ein Bundesland an")]
+        public int? FederalStateId { get; set; }
+        [Required(ErrorMessage = "Bitte geben Sie ein Fach an")]
+        public int? SubjectId { get; set; }
+        [Required(ErrorMessage = "Bitte geben Sie einen Studiengang an")]
+        public int? FieldOfStudiesId { get; set; }
 
         // Properties, die aus der Oberfläche zu befüllen sind
         [DataType(DataType.MultilineText)]
+        [Required(ErrorMessage = "Bitte geben Sie eine Frage ein")]
         public string QuestionContent { get; set; }
         public string QuestionTitle { get; set; }
 

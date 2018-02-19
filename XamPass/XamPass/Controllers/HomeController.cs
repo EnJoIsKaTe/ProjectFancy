@@ -67,7 +67,7 @@ namespace XamPass.Controllers
                     }
                 }
             }
-           
+
             return View(viewModelSearch);
         }
         #endregion
@@ -80,7 +80,7 @@ namespace XamPass.Controllers
             var questions = new List<DtQuestion>();
 
             // Alle Fragen werden aus der Datenbank geladen und danach mit den eingegebenen Filtern durchsucht
-            questions = _context.Questions.ToList();            
+            questions = _context.Questions.ToList();
 
             if (viewModelSearch.FieldOfStudiesId != 0)
             {
@@ -93,7 +93,7 @@ namespace XamPass.Controllers
             }
 
             if (viewModelSearch.FederalStateId != 0)
-            { 
+            {
                 questions = questions.Where(q => q.University.FederalStateID == viewModelSearch.FederalStateId).ToList();
             }
 
@@ -106,8 +106,7 @@ namespace XamPass.Controllers
             return View(viewModelQuestions);
         }
         #endregion
-
-
+        
         private async Task<ViewModelSearch> GetViewModelSearch(ViewModelSearch viewModelSearch)
         {
             var universities = await _context.Universities.ToListAsync();
@@ -152,13 +151,15 @@ namespace XamPass.Controllers
             }
             return viewModelSearch;
         }
-
-        #region Add new Question
-
+        
+        /// <summary>
+        /// Filters Universities by Federal State
+        /// </summary>
+        /// <param name="viewModelSearch">Data From the View</param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult CreateQuestion(ViewModelSearch viewModelSearch)
         {
-            //var result = viewModelSearch;
             viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
             // setzt gewählte Hochschule auf 0, wenn gewähltes Bundesland nicht übereinstimmt
@@ -185,8 +186,10 @@ namespace XamPass.Controllers
             }
 
             //return RedirectToAction("Done", result);
+
             return View(viewModelSearch);
             //return RedirectToAction("CreateNewEntry", viewModelCreate);
+
         }
 
         /// <summary>
@@ -265,12 +268,28 @@ namespace XamPass.Controllers
 
 
 
+        //#endregion
+
+        #region View Question
+
+        [HttpGet]
+        public IActionResult ViewQuestion()
+        {
+            //var result = viewModelSearch;
+
+            //viewModelSearch = GetViewModelSearch(result).Result;
+
+            ////return RedirectToAction("Done", result);
+            //return View(viewModelSearch);
+            return View();
+            //return RedirectToAction("CreateNewEntry", viewModelCreate);
+        }
+
         #endregion
 
         [Authorize]
         public IActionResult CreateDB()
-        {
-            // Solange der DB-Server noch nicht bereit ist sollte dieser Methodenaufruf auskommentiert sein
+        {       
             DBInitialize.DatabaseTest(_context);
             return RedirectToAction("Done");
         }
@@ -354,30 +373,39 @@ namespace XamPass.Controllers
             return View(result);
         }
 
+        /// <summary>
+        /// Creates new DtQuestion Object with the Properties from the View and Saves it to the Database
+        /// </summary>
+        /// <param name="viewModelSearch"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult CreateNewEntry(ViewModelSearch viewModelSearch)
         {
-            //TODO: Fehlerbehandlung / Warnung bei fehlenden/falschen Einträgen
-            var result = viewModelSearch;
+            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
-            DtQuestion question = new DtQuestion();
+            // If all entries are correct
+            if (ModelState.IsValid)
+            {
+                DtQuestion question = new DtQuestion();
 
-            //question.Title = viewModelSearch.QuestionTitle;
-            question.Title = "Neue Frage";
-            question.Content = viewModelSearch.QuestionContent;
+                //question.Title = viewModelSearch.QuestionTitle;
+                question.Title = "Neue Frage";
+                question.Content = viewModelSearch.QuestionContent;
+                
+                question.FieldOfStudiesID = (int)viewModelSearch.FieldOfStudiesId;
+                question.SubjectID = (int)viewModelSearch.SubjectId;
+                question.SubmissionDate = DateTime.Now;
+                question.UniversityID = (int)viewModelSearch.UniversityId;                
+                
+                _context.Add(question);
 
-            question.FieldOfStudiesID = viewModelSearch.FieldOfStudiesId;
-            question.SubjectID = viewModelSearch.SubjectId;
-            question.SubmissionDate = DateTime.Now;
-            question.UniversityID = viewModelSearch.UniversityId;
+                _context.SaveChanges();
 
-            // TODO Benjamin: check ob alle Angaben richtig sind
+                return RedirectToAction("Done");
+            }
 
-            _context.Add(question);
-
-            _context.SaveChanges();
-
-            return RedirectToAction("Done");
+            // if not all entries are correct you are redirected
+            return View("CreateQuestion", viewModelSearch);
         }
 
         #region template-methods

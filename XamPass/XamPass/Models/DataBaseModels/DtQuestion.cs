@@ -23,7 +23,7 @@ namespace XamPass.Models.DataBaseModels
         /// <summary>
         /// Universität an der die Frage gestellt wurde
         /// </summary>
-        public int UniversityID { get; set; }
+        public int? UniversityID { get; set; }
         public DtUniversity University { get; set; }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace XamPass.Models.DataBaseModels
         /// <summary>
         /// Liste von Antworten, die auf die Frage gegeben wurden
         /// </summary>
-        //public int AnswerID { get; set; }
+        //public int AnswerID { get; set; }       
         public List<DtAnswer> Answers { get; set; }
 
         /// <summary>
@@ -51,13 +51,13 @@ namespace XamPass.Models.DataBaseModels
 
         /// <summary>
         /// Titel / Betreff, der Frage
-        /// </summary>
+        /// </summary>        
         [StringLength(250)]
         public string Title { get; set; }
 
         /// <summary>
         /// Inhaltstext der Frage
-        /// </summary>
+        /// </summary>        
         public string Content { get; set; }
 
         /// <summary>
@@ -66,5 +66,10 @@ namespace XamPass.Models.DataBaseModels
         public int UpVotes { get; set; }        
 
         #endregion
+
+        public DtQuestion()
+        {
+            Answers = new List<DtAnswer>();
+        }
     }
 }
