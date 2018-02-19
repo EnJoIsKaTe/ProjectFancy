@@ -29,7 +29,6 @@ namespace XamPass.Models
         public string QuestionTitle { get; set; }
 
         public List<DtUniversity> Universities { get; set; }
-        //public List<DtUniversity> UniversitiesFiltered { get; set; }
         public List<SelectListItem> UniversitySelectList { get; set; }
         public List<SelectListItem> FederalStates { get; set; }
         public List<SelectListItem> Subjects { get; set; }
