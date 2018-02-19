@@ -1,107 +1,122 @@
-﻿@model XamPass.Models.ViewModelCreate
+﻿@model XamPass.Models.ViewModelQuestions
 
 @{
-    ViewData["Title"] = "ViewQuestion";
+	 ViewData["Title"] = "ViewQuestion";
 }
 
 @{
-    Layout = "_Layout";
+	 Layout = "_Layout";
 }
 
 <head>
-    <link rel="stylesheet" href="~/css/viewQuestion.css" />
+	 <link rel="stylesheet" href="~/css/viewQuestion.css" />
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	 <link rel="stylesheet" href="/resources/demos/style.css">
+	 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+	 <!-- Latest compiled and minified CSS -->
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+	 <!-- Latest compiled and minified JavaScript -->
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 </head>
 
 <body>
-    <h1>Frage</h1>
-    <div style="height:auto;display:table-cell">
-        @using (Html.BeginForm("ViewQuestion", "Home", FormMethod.Get))
-        {
+	 <h1>Frage</h1>
+	 <div style="height:auto;display:table-cell">
+		  @using (Html.BeginForm("ViewQuestion", "Home", FormMethod.Get))
+		  {
 
-            <div id="questionContent" style="width:100%;">
-                <div class="question">
-                    Die Funkstation Kamina war eine Sende- und Empfangsanlage für drahtlose Telegrafie (Löschfunkensender) in der deutschen Kolonie Togoland.
-                </div>
-                <div class="card card-custom">
-                    <div class="card-body" style="padding:10px;">
-                        <div class="card-header">
-                            Info
-                        </div>
-                        <div style="width:100%">
-                            <div style="display:inline-block;">
-                                Fachrichtung:
-                            </div>
-                            <div style="display:inline-block;float:right;">
-                                Informatik
-                            </div>
-                        </div>
-                        <div style="width:100%">
-                            <div style="display:inline-block;">
-                                Fach:
-                            </div>
-                            <div style="display:inline-block;float:right;">
-                                Mathemathik
-                            </div>
-                        </div>
-                        <div style="width:100%">
-                            <div style="display:inline-block;">
-                                Erstellungsdatum:
-                            </div>
-                            <div style="display:inline-block;float:right;">
-                                15.02.2018
-                            </div>
-                        </div>
-                        <hr style="margin:5px 0px 5px 0px" />
-                        <div style="width:100%">
-                            <div style="display:inline-block;">
-                                Hochschule:
-                            </div>
-                            <div style="display:inline-block;float:right;">
-                                BA Leipzig
-                            </div>
-                        </div>
-                        <div style="width:100%">
-                            <div style="display:inline-block;">
-                                Land:
-                            </div>
-                            <div style="display:inline-block;float:right;">
-                                Deutschland
-                            </div>
-                        </div>
-                        <div style="width:100%">
-                            <div style="display:inline-block;">
-                                Bundesland:
-                            </div>
-                            <div style="display:inline-block;float:right;">
-                                Sachsen
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+				<div id="questionContent" style="width:100%;">
+					 <div class="question">
+						  @*Die Funkstation Kamina war eine Sende- und Empfangsanlage für drahtlose Telegrafie (Löschfunkensender) in der deutschen Kolonie Togoland.*@
+						  @Model.Question.Content
+					 </div>
+					 <div class="card card-custom">
+						  <div class="card-body" style="padding:10px;">
+								<div class="card-header">
+									 Info
+								</div>
+								<div style="width:100%">
+									 <div style="display:inline-block;">
+										  Fachrichtung:
+									 </div>
+									 <div style="display:inline-block;float:right;">
+										  @*Informatik*@
+										  @Model.FieldOfStudies.FieldOfStudiesName
+									 </div>
+								</div>
+								<div style="width:100%">
+									 <div style="display:inline-block;">
+										  Fach:
+									 </div>
+									 <div style="display:inline-block;float:right;">
+										  @*Mathemathik*@
+										  @Model.Subject.SubjectName
+									 </div>
+								</div>
+								<div style="width:100%">
+									 <div style="display:inline-block;">
+										  Erstellungsdatum:
+									 </div>
+									 <div style="display:inline-block;float:right;">
+										  @*15.02.2018*@
+										  @Model.Question.SubmissionDate
+									 </div>
+								</div>
+								<hr style="margin:5px 0px 5px 0px" />
+								<div style="width:100%">
+									 <div style="display:inline-block;">
+										  Hochschule:
+									 </div>
+									 <div style="display:inline-block;float:right;">
+										  @*BA Leipzig*@
+										  @Model.University.UniversityName
+									 </div>
+								</div>
+								<div style="width:100%">
+									 <div style="display:inline-block;">
+										  Land:
+									 </div>
+									 <div style="display:inline-block;float:right;">
+										  Deutschland
+									 </div>
+								</div>
+								<div style="width:100%">
+									 <div style="display:inline-block;">
+										  Bundesland:
+									 </div>
+									 <div style="display:inline-block;float:right;">
+										  @*Sachsen*@
+										  @Model.FederalState.FederalStateName
+									 </div>
+								</div>
+						  </div>
+					 </div>
+				</div>
 
-            <div style="display:block;">
-                <button class="btn btn-show-answer" type="button" data-toggle="collapse" data-target="#collapseAwnser" aria-expanded="false">
-                    Antwort anzeigen
-                </button>
-                <div class="collapse" id="collapseAwnser">
-                    <div class="card card-body answer">
-                        Die Antwort ist 5. Oder 7.
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-    @*//Seite muss unter INFO Box abschließen
-    //Comments und Rating*@
+				<div style="display:block;">
+					 <button class="btn btn-show-answer" type="button" data-toggle="collapse" data-target="#collapseAwnser" aria-expanded="false">
+						  Antwort anzeigen
+					 </button>
+					 <div class="collapse" id="collapseAwnser">
+						  <div class="card card-body answer">
+								@*Die Antwort ist 5. Oder 7.*@
+
+								<ul>
+								@foreach(var item in Model.Answers)
+								{
+									<li>@item.Content</li>
+
+								}
+								</ul>
+
+						  </div>
+					 </div>
+				</div>
+		  }
+	 </div>
+	 @*//Seite muss unter INFO Box abschließen
+	 //Comments und Rating*@
 </body>

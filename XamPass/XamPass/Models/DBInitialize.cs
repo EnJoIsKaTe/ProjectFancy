@@ -106,22 +106,7 @@ namespace XamPass.Models
                 context.Add(subject);
             }
 
-            context.SaveChanges();
-
-            DtAnswer[] answers = new DtAnswer[]
-            {
-                new DtAnswer(){SubmissionDate = DateTime.Now,
-                    Content = "Ich weiß doch nicht wie eine Turing Maschine aussieht!!!11!",
-                    UpVotes = 77
-                }
-            };
-
-            foreach (DtAnswer answer in answers)
-            {
-                context.Add(answer);
-            }
-
-            context.SaveChanges();
+            context.SaveChanges();            
 
             List<DtQuestion> questions = new List<DtQuestion>()
             {
@@ -170,6 +155,27 @@ namespace XamPass.Models
             foreach (DtQuestion question in questions)
             {
                 context.Add(question);
+            }
+
+            context.SaveChanges();
+
+            DtAnswer[] answers = new DtAnswer[]
+            {
+                new DtAnswer(){ QuestionId = 1,
+                    SubmissionDate = DateTime.Now,
+                    Content = "Ich weiß doch nicht wie eine Turing Maschine aussieht!!!11!",
+                    UpVotes = 77
+                },
+                new DtAnswer(){ QuestionId = 3,
+                    SubmissionDate = DateTime.Now,
+                    Content = "Blau! Nein rot!",
+                    UpVotes = 2
+                }
+            };
+
+            foreach (DtAnswer answer in answers)
+            {
+                context.Add(answer);
             }
 
             context.SaveChanges();

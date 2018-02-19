@@ -19,6 +19,8 @@ namespace XamPass.Models.DataBaseModels
         [Key]
         public int AnswerID { get; set; }
 
+        public int QuestionId { get; set; }
+
         /// <summary>
         /// Zeitpunkt der Erstellung des Datensatzes
         /// </summary>
@@ -33,7 +35,7 @@ namespace XamPass.Models.DataBaseModels
         /// Positive Bewertungen für die Antwort
         /// </summary>
         public int UpVotes { get; set; }
-
+        
         #endregion
     }
 }
