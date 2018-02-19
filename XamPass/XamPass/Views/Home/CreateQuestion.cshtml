@@ -160,7 +160,7 @@
 									}
 									@Html.DropDownListFor(m => m.UniversityId, Model.UniversitySelectList,
 																	universityText,
-													 new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+													 new { @class = "form-control col-md-2 dropdown-toggle col input-cell", @onchange = "this.form.submit();" })
 
 								</td>
 							</tr>

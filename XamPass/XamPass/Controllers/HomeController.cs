@@ -45,18 +45,18 @@ namespace XamPass.Controllers
         {
             viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
+            // setzt gewählte Hochschule auf 0, wenn gewähltes Bundesland nicht übereinstimmt
+            if (viewModelSearch.UniversityId != 0)
+            {
+                var university = viewModelSearch.Universities.FirstOrDefault(u => u.UniversityID == viewModelSearch.UniversityId);
+                if (university.FederalStateID != viewModelSearch.FederalStateId)
+                {
+                    viewModelSearch.UniversityId = 0;
+                }
+            }
             // filtert Hochschulen für gewähltes Bundesland
             if (viewModelSearch.FederalStateId != 0)
-            {
-                if (viewModelSearch.UniversityId != 0)
-                {
-                    var university = viewModelSearch.Universities.FirstOrDefault(u => u.UniversityID == viewModelSearch.UniversityId);
-                    if (university.FederalStateID != viewModelSearch.FederalStateId)
-                    {
-                        viewModelSearch.UniversityId = 0;
-                    }
-                }
-                // setzt gewählte Hochschule auf 0, wenn gewähltes Bundesland nicht übereinstimmt
+            {               
                 viewModelSearch.UniversitySelectList = new List<SelectListItem>();
                 foreach (var item in viewModelSearch.Universities)
                 {
@@ -158,11 +158,21 @@ namespace XamPass.Controllers
         [HttpPost]
         public IActionResult CreateQuestion(ViewModelSearch viewModelSearch)
         {
-            var result = viewModelSearch;
-            viewModelSearch = GetViewModelSearch(result).Result;
+            //var result = viewModelSearch;
+            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
-            if (viewModelSearch.FederalStateId != 0)
+            // setzt gewählte Hochschule auf 0, wenn gewähltes Bundesland nicht übereinstimmt
+            if (viewModelSearch.UniversityId != 0)
             {
+                var university = viewModelSearch.Universities.FirstOrDefault(u => u.UniversityID == viewModelSearch.UniversityId);
+                if (university.FederalStateID != viewModelSearch.FederalStateId)
+                {
+                    viewModelSearch.UniversityId = 0;
+                }
+            }
+            // filtert Hochschulen für gewähltes Bundesland
+            if (viewModelSearch.FederalStateId != 0)
+            {                
                 viewModelSearch.UniversitySelectList = new List<SelectListItem>();
                 foreach (var item in viewModelSearch.Universities)
                 {
