@@ -1,4 +1,8 @@
-﻿h1 {
+﻿html {
+    overflow-y: scroll;
+}
+
+h1 {
     font-weight: 900;
     margin-top: 0px;
 }

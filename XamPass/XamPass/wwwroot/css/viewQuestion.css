@@ -1,4 +1,8 @@
-﻿.question {
+﻿html {
+    overflow-y: scroll;
+}
+
+.question {
     display: inline-block;
     width: 70%;
     word-break: break-word;
