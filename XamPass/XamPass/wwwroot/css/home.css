@@ -16,6 +16,7 @@
 
 #submitBtn {
     width: 150pt;
+    float:right;
     height: 35pt;
     position: relative;
     margin: 20pt 0pt 20pt 0pt;

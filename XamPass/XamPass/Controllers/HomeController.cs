@@ -22,7 +22,7 @@ namespace XamPass.Controllers
         {
             _context = context;
         }
-
+        
         #region Homepage
 
         [HttpGet]
@@ -110,7 +110,7 @@ namespace XamPass.Controllers
         #endregion
         
         private async Task<ViewModelSearch> GetViewModelSearch(ViewModelSearch viewModelSearch)
-        {
+        {            
             var universities = await _context.Universities.ToListAsync();
             var federalStates = await _context.FederalStates.ToListAsync();
             var subjects = await _context.Subjects.ToListAsync();
