@@ -13,6 +13,7 @@ using XamPass.Models.DataBaseModels;
 
 namespace XamPass.Controllers
 {
+    //[RequireHttps]
     public class HomeController : Controller
     {
         private readonly DataContext _context;
