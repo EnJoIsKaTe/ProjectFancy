@@ -1,138 +1,144 @@
 ﻿@model XamPass.Models.ViewModelQuestions
 
 @{
-    ViewData["Title"] = "ViewQuestion";
+	ViewData["Title"] = "ViewQuestion";
 }
 
 @{
-    Layout = "_Layout";
+	Layout = "_Layout";
 }
 
 <head>
-    <link rel="stylesheet" href="~/css/viewQuestion.css" />
+	<link rel="stylesheet" href="~/css/viewQuestion.css" />
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 </head>
 
 <body>
-    <h1>Frage</h1>
+	<h1>Frage</h1>
 
-    <div style="height:auto;display:block;overflow:auto">
-        @using (Html.BeginForm("ViewQuestion", "Home", FormMethod.Get))
-        {
-            <div id="questionContent" style="width:100%;">
-                <div class="question">
-                    @*Die Funkstation Kamina war eine Sende- und Empfangsanlage für drahtlose Telegrafie (Löschfunkensender) in der deutschen Kolonie Togoland.*@
-                    @Model.Question.Content
-                </div>
-                <div class="card card-custom">
-                    <div class="card-body" style="padding:10px;">
-                        <div class="card-header">
-                            Info
-                        </div>
-                        <div style="width:100%;display:inline-block;">
-                            <div style="display:inline-block;">
-                                Fachrichtung:
-                            </div>
-                            <div style="display:inline-block;float:right;">
-                                @*Informatik*@
-                                @Model.FieldOfStudies.FieldOfStudiesName
-                            </div>
-                        </div>
-                        <div style="width:100%;display:inline-block;">
-                            <div style="display:inline-block;">
-                                Fach:
-                            </div>
-                            <div style="display:inline-block;float:right; max-width:100pt;white-space: normal;text-align:right;">
-                                @*overflow: hidden;text-overflow:ellipsis;*@
-                                @*Mathemathik*@
-                                @Model.Subject.SubjectName
-                            </div>
-                        </div>
-                        <div style="width:100%;display:inline-block;">
-                            <div style="display:inline-block;">
-                                Erstellungsdatum:
-                            </div>
-                            <div style="display:inline-block;float:right;">
-                                @*15.02.2018*@
-                                @Model.Question.SubmissionDate.ToShortDateString()
-                            </div>
-                        </div>
-                        <hr style="margin:5px 0px 5px 0px" />
-                        <div style="width:100%;display:inline-block;">
-                            <div style="display:inline-block;">
-                                Hochschule:
-                            </div>
-                            <div style="display:inline-block;float:right;">
-                                @*BA Leipzig*@
-                                @Model.University.UniversityName
-                            </div>
-                        </div>
-                        <div style="width:100%;display:inline-block;">
-                            <div style="display:inline-block;">
-                                Land:
-                            </div>
-                            <div style="display:inline-block;float:right;">
-                                Deutschland
-                            </div>
-                        </div>
-                        <div style="width:100%;display:inline-block;">
-                            <div style="display:inline-block;">
-                                Bundesland:
-                            </div>
-                            <div style="display:inline-block;float:right;">
-                                @*Sachsen*@
-                                @Model.FederalState.FederalStateName
-                            </div>
-                        </div>
-                        @*<hr style="margin:5px 0px 5px 0px" />
-                        <div style="width:100%;display:inline-block; margin-bottom:10px;">
-                            <div style="display:inline-block;">
-                                Bewertung:
-                            </div>
-                            <div style="display:inline-block;float:right;">
-                                4.5/5
-                            </div>
-                        </div>
-                        <div style="width:100%;display:inline-block; text-align:center">
-                            <div class="btn-group mr-2" role="group">
-                                <button type="button" class="btn btn-secondary rating-button">1</button>
-                                <button type="button" class="btn btn-secondary rating-button">2</button>
-                                <button type="button" class="btn btn-secondary rating-button">3</button>
-                                <button type="button" class="btn btn-secondary rating-button">4</button>
-                                <button type="button" class="btn btn-secondary rating-button">5</button>
-                            </div>
-                        </div>*@
-                    </div>
-                </div>                
-            </div>
+	<div style="height:auto;display:block;overflow:auto">
+		@using (Html.BeginForm("ViewQuestion", "Home", FormMethod.Post))
+		{
+			<div id="questionContent" style="width:100%;">
+				<div class="question">
+					@*Die Funkstation Kamina war eine Sende- und Empfangsanlage für drahtlose Telegrafie (Löschfunkensender) in der deutschen Kolonie Togoland.*@
+					@Model.Question.Content
+				</div>
+				<div class="card card-custom">
+					<div class="card-body" style="padding:10px;">
+						<div class="card-header">
+							Info
+						</div>
+						<div style="width:100%;display:inline-block;">
+							<div style="display:inline-block;">
+								Fachrichtung:
+							</div>
+							<div style="display:inline-block;float:right;">
+								@*Informatik*@
+								@Model.FieldOfStudies.FieldOfStudiesName
+							</div>
+						</div>
+						<div style="width:100%;display:inline-block;">
+							<div style="display:inline-block;">
+								Fach:
+							</div>
+							<div style="display:inline-block;float:right; max-width:100pt;white-space: normal;text-align:right;">
+								@*overflow: hidden;text-overflow:ellipsis;*@
+								@*Mathemathik*@
+								@Model.Subject.SubjectName
+							</div>
+						</div>
+						<div style="width:100%;display:inline-block;">
+							<div style="display:inline-block;">
+								Erstellungsdatum:
+							</div>
+							<div style="display:inline-block;float:right;">
+								@*15.02.2018*@
+								@Model.Question.SubmissionDate.ToShortDateString()
+							</div>
+						</div>
+						<hr style="margin:5px 0px 5px 0px" />
+						<div style="width:100%;display:inline-block;">
+							<div style="display:inline-block;">
+								Hochschule:
+							</div>
+							<div style="display:inline-block;float:right;">
+								@*BA Leipzig*@
+								@Model.University.UniversityName
+							</div>
+						</div>
+						<div style="width:100%;display:inline-block;">
+							<div style="display:inline-block;">
+								Land:
+							</div>
+							<div style="display:inline-block;float:right;">
+								Deutschland
+							</div>
+						</div>
+						<div style="width:100%;display:inline-block;">
+							<div style="display:inline-block;">
+								Bundesland:
+							</div>
+							<div style="display:inline-block;float:right;">
+								@*Sachsen*@
+								@Model.FederalState.FederalStateName
+							</div>
+						</div>
+						@*<hr style="margin:5px 0px 5px 0px" />
+							<div style="width:100%;display:inline-block; margin-bottom:10px;">
+								 <div style="display:inline-block;">
+									  Bewertung:
+								 </div>
+								 <div style="display:inline-block;float:right;">
+									  4.5/5
+								 </div>
+							</div>
+							<div style="width:100%;display:inline-block; text-align:center">
+								 <div class="btn-group mr-2" role="group">
+									  <button type="button" class="btn btn-secondary rating-button">1</button>
+									  <button type="button" class="btn btn-secondary rating-button">2</button>
+									  <button type="button" class="btn btn-secondary rating-button">3</button>
+									  <button type="button" class="btn btn-secondary rating-button">4</button>
+									  <button type="button" class="btn btn-secondary rating-button">5</button>
+								 </div>
+							</div>*@
+					</div>
+				</div>
+			</div>
 
-            <div style="display:block;">
-                <button class="btn btn-show-answer" type="button" data-toggle="collapse" data-target="#collapseAwnser" aria-expanded="false">
-                    Antwort anzeigen
-                </button>
-                <div class="collapse" id="collapseAwnser">
-                    <div class="card card-body answer">
-                        @*Die Antwort ist 5. Oder 7.*@
+			<div style="display:block;">
+				<button class="btn btn-show-answer" type="button" data-toggle="collapse" data-target="#collapseAwnser" aria-expanded="false">
+					Antwort anzeigen
+				</button>
+				<div class="collapse" id="collapseAwnser">
+					<div class="card card-body answer">
+						@*Die Antwort ist 5. Oder 7.*@
 
-                        <ul>
-                            @foreach (var item in Model.Answers)
-                            {
-                                <li>@item.Content</li>
-                            }
-                        </ul>
+						<ul>
+							@foreach (var item in Model.Answers)
+							{
+								<li>@item.Content</li>
+							}
+						</ul>
 
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
+					</div>
+				</div>
+			</div>
+
+			<div width="100%" style="text-align:right;">
+				@Html.HiddenFor(m => Model.QuestionId)
+				<input type="submit" id="createBtn" value="Neue Antwort" formmethod="post"
+						 formaction=@Url.Action("CreateAnswer", "Home") class="btn" />
+			</div>
+		}
+	</div>
 </body>
