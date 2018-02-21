@@ -46,17 +46,8 @@
                                     Fachrichtung
                                 </td>
                                 <td>
-                                    @*<input id="inputCourseOfStudy" class="form-control col-md-2 input-cell" />*@
-                                    @*<select id="inputCourseOfStudy" list="courses" class="form-control col-md-2 dropdown-toggle input-cell" style="padding-left:10px;" />
-                                        <datalist id="courses">
-                                            <option value="">Fachrichtung wählen</option>
-                                            @foreach (var item in Model.FieldsOfStudies)
-                                            {
-                                                <option value="@item.Value">@item.Text</option>
-                                            }
-                                        </datalist>*@
                                     @Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, "Fachrichtung auswählen",
-                                                                                                                                                     new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+                                        new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
                                 </td>
                             </tr>
                             <tr>
@@ -64,17 +55,8 @@
                                     Fach
                                 </td>
                                 <td>
-                                    @*<input id="inputSubjectOfStudy" class="form-control col-md-2 input-cell" />*@
-                                    @*<select id="inputSubjectOfStudy" list="subjects" class="form-control col-md-2 dropdown-toggle input-cell" style="padding-left:10px;" />
-                                        <datalist id="subjects">
-                                            <option value="">Fach wählen</option>
-                                            @foreach (var item in Model.Subjects)
-                                            {
-                                                <option value="@item.Value">@item.Text</option>
-                                            }
-                                        </datalist>*@
                                     @Html.DropDownListFor(m => m.SubjectId, Model.Subjects, "Fach auswählen",
-                                                                                                                                                     new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+                                        new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
                                 </td>
                             </tr>
                             <tr>
@@ -90,23 +72,12 @@
                                     Bundesland
                                 </td>
                                 <td>
-                                    @*<select id="inputState" list="states" class="form-control col-md-2 dropdown-toggle input-cell" style="padding-left:10px;" />
-                                        <datalist id="states">
-                                            <option value="">Bundesland wählen</option>
-                                            @foreach (var item in Model.FederalStates)
-                                            {
-                                                <option value="@item.Value">@item.Text</option>
-                                            }*@
-                                    @*<option value="Sachsen-Anhalt"> Sachsen-Anhalt </option>
-                                        <option value="Sachsen"> Sachsen</option>
-                                        <option value="Bayern">Bayern </option>*@
-                                    @*</datalist>*@
                                     @Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, "Bundesland auswählen",
-                                                                                                                                                            new
-                                                                                                                                                            {
-                                                                                                                                                                @class = "form-control col-md-2 dropdown-toggle col input-cell",
-                                                                                                                                                                @onchange = "this.form.submit();"
-                                                                                                                                                            })
+                                        new
+                                        {
+                                            @class = "form-control col-md-2 dropdown-toggle col input-cell",
+                                            @onchange = "this.form.submit();"
+                                        })
                                 </td>
                             </tr>
                             <tr>
@@ -114,64 +85,12 @@
                                     Hochschule
                                 </td>
                                 <td>
-                                    @*<select id="inputUni" list="unis" class="form-control col-md-2 dropdown-toggle input-cell" style="padding-left:10px;" />
-                                        <datalist id="unis">
-                                            <option value="">Hochschule wählen</option>
-                                            @foreach (var item in Model.Universities)
-                                            {
-                                                <option value="@item.Value">@item.Text</option>
-                                            }*@
-                                    @*<option value="BA Leipzig"> BA Leipzig </option>
-                                        <option value="HTWK"> HTWK </option>*@
-                                    @*</datalist>*@
-                                    @*<input id="inputUni" class="form-control col-md-2 input-cell" />*@
-
-                                    @*@{
-                                            List<SelectListItem> uniSelectList = new List<SelectListItem>();
-                                            foreach (var item in Model.Universities)
-                                            {
-                                                uniSelectList.Add(new SelectListItem()
-                                                {
-                                                    Value = item.UniversityID.ToString(),
-                                                    Text = item.UniversityName
-                                                });
-                                            }
-                                        }*@
-
-                                    @*@{
-                                            List<SelectListItem> uniSelectList;
-                                            if (Model.FederalStateId != 0)
-                                            {
-                                                uniSelectList = new List<SelectListItem>();
-                                                foreach (var item in Model.Universities.Where(u => u.FederalStateID == Model.FederalStateId))
-                                                {
-                                                    uniSelectList.Add(new SelectListItem()
-                                                    {
-                                                        Value = item.UniversityID.ToString(),
-                                                        Text = item.UniversityName
-                                                    });
-                                                }
-                                            }
-                                            else
-                                            {
-                                                uniSelectList = new List<SelectListItem>();
-                                                foreach (var item in Model.Universities)
-                                                {
-                                                    uniSelectList.Add(new SelectListItem()
-                                                    {
-                                                        Value = item.UniversityID.ToString(),
-                                                        Text = item.UniversityName
-                                                    });
-                                                }
-                                            }
-                                        }*@
-
                                     @Html.DropDownListFor(m => m.UniversityId, Model.UniversitySelectList, "Hochschule auswählen",
-                                                                                                                                         new
-                                                                                                                                         {
-                                                                                                                                             @class = "form-control col-md-2 dropdown-toggle col input-cell",
-                                                                                                                                             @onchange = "this.form.submit();"
-                                                                                                                                         })
+                                             new
+                                             {
+                                                 @class = "form-control col-md-2 dropdown-toggle col input-cell",
+                                                 @onchange = "this.form.submit();"
+                                             })
                                 </td>
                             </tr>
                             <tr>
@@ -206,7 +125,6 @@
 
 
     <label>Fragen:</label> @*@ViewBag.Test*@
-
     @*@foreach (var item in Model.Questions)
         {
             Model.QuestionId = item.QuestionID;
@@ -216,24 +134,26 @@
                     <div class="question-header-text"> - </div>
                     <div class="question-header-text">Mathematik</div>
                 </div>
+                <div>
+                    <div class="question-header-text-title">Das ist der Titel</div>
+                </div>
                 <div style="padding:3px;">
                     <div class="question-header-text-beginning">Das ist die Frage aller Fragen!</div>
                 </div>
             </div>
         }*@
 
-    <div class="question-wrapper">
+    <div class="question-wrapper" id = "DivINeedToAddStuffTo" runat="server">
         <div class="question-wrapper-header">
             <div class="question-header-text-beginning">Informatik</div>
             <div class="question-header-text"> - </div>
             <div class="question-header-text">Mathematik</div>
         </div>
-        <div >
+        <div>
             <div class="question-header-text-title">Das ist der Titel</div>
         </div>
         <div style="padding:3px;">
             <div class="question-header-text-beginning">Das ist die Frage aller Fragen!</div>
         </div>
     </div>
-
 </body>
