@@ -56,7 +56,7 @@
                                             }
                                         </datalist>*@
                                     @Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, "Fachrichtung auswählen",
-                                                                                                                            new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+                                                                                                                                           new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
                                 </td>
                             </tr>
                             <tr>
@@ -74,7 +74,7 @@
                                             }
                                         </datalist>*@
                                     @Html.DropDownListFor(m => m.SubjectId, Model.Subjects, "Fach auswählen",
-                                                                                                                            new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+                                                                                                                                           new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
                                 </td>
                             </tr>
                             <tr>
@@ -102,11 +102,11 @@
                                         <option value="Bayern">Bayern </option>*@
                                     @*</datalist>*@
                                     @Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, "Bundesland auswählen",
-                                                                                                                                   new
-                                                                                                                                   {
-                                                                                                                                       @class = "form-control col-md-2 dropdown-toggle col input-cell",
-                                                                                                                                       @onchange = "this.form.submit();"
-                                                                                                                                   })
+                                                                                                                                                  new
+                                                                                                                                                  {
+                                                                                                                                                      @class = "form-control col-md-2 dropdown-toggle col input-cell",
+                                                                                                                                                      @onchange = "this.form.submit();"
+                                                                                                                                                  })
                                 </td>
                             </tr>
                             <tr>
@@ -167,11 +167,11 @@
                                         }*@
 
                                     @Html.DropDownListFor(m => m.UniversityId, Model.UniversitySelectList, "Hochschule auswählen",
-                                                                                                                new
-                                                                                                                {
-                                                                                                                    @class = "form-control col-md-2 dropdown-toggle col input-cell",
-                                                                                                                    @onchange = "this.form.submit();"
-                                                                                                                })
+                                                                                                                               new
+                                                                                                                               {
+                                                                                                                                   @class = "form-control col-md-2 dropdown-toggle col input-cell",
+                                                                                                                                   @onchange = "this.form.submit();"
+                                                                                                                               })
                                 </td>
                             </tr>
                             <tr>
@@ -205,17 +205,22 @@
     </table>
 
 
-    <label>Fragen:</label> @ViewBag.Test
-    <div style="display:block;border: 1px solid #222;border-radius: 5px">
-        <div style="display:inline-block;width:100%;background-color:#222;color:#DDDDDD;font-size:18px;font-weight:500;">
-            <div style="display:inline-block;padding:3px 3px 3px 10px;">Informatik</div>
-            <div style="display:inline-block;padding:3px;"> - </div>
-            <div style="display:inline-block;padding:3px;">Mathematik</div>
+    <label>Fragen:</label> @*@ViewBag.Test*@
+
+    @*@foreach (var item in Model.Questions)
+    {
+        Model.QuestionId = item.QuestionID;
+        <div class="question-wrapper">
+            <div class="question-wrapper-header">
+                <div class="question-header-text-beginning">Informatik</div>
+                <div class="question-header-text"> - </div>
+                <div class="question-header-text">Mathematik</div>
+            </div>
+            <div style="padding:3px;">
+                <div class="question-header-text-beginning">Das ist die Frage aller Fragen!</div>
+            </div>
         </div>
-        <div style="padding:3px;">
-            <div style="display:inline-block;padding:3px 3px 3px 10px;">Das ist die Frage aller Fragen!</div>
-        </div>
-    </div>
+    }*@
 
 </body>
 

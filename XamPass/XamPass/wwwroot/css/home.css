@@ -15,12 +15,12 @@ h1 {
 
 .input-cell {
     margin-bottom: 3px;
-    width:100%;
+    width: 100%;
 }
 
 #submitBtn {
     width: 150pt;
-    float:right;
+    float: right;
     height: 35pt;
     position: relative;
     margin: 20pt 0pt 20pt 0pt;
@@ -50,9 +50,35 @@ h1 {
 
     #newEntryBtn:hover {
         background: linear-gradient(#f79b45, #ef8f32);
-        color:#333;
+        color: #333;
     }
 
     #newEntryBtn:active {
         background: linear-gradient(#ef8f32, #e57d19);
     }
+
+.question-wrapper {
+    display: block;
+    border: 1px solid #222;
+    border-radius: 5px;
+}
+
+.question-wrapper-header {
+    display: inline-block;
+    width: 100%;
+    background-color: #222;
+    color: #DDDDDD;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+.question-header-text {
+    display: inline-block;
+    padding: 3px;
+}
+
+.question-header-text-beginning {
+    display: inline-block;
+    padding: 3px 3px 3px 10px;
+}
