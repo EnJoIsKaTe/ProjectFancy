@@ -152,6 +152,18 @@ namespace XamPass.Controllers
 
         }
 
+        [HttpPost]
+        public IActionResult CreateAnswer(ViewModelQuestions viewModelQuestions)
+        {
+            viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
+
+            DtQuestion question = viewModelQuestions.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
+
+
+            //return RedirectToAction("Done");
+            return View(viewModelQuestions);
+        }
+
         #region View Question
 
         [HttpGet]
