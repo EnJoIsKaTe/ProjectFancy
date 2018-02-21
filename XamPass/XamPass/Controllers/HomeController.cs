@@ -110,8 +110,8 @@ namespace XamPass.Controllers
 
             return View(viewModelQuestions);
         }
-        #endregion            
-        
+        #endregion
+
         /// <summary>
         /// Filters Universities by Federal State
         /// </summary>
@@ -175,7 +175,7 @@ namespace XamPass.Controllers
         }
 
         #endregion
-       
+
         /// <summary>
         /// Creates new DtQuestion Object with the Properties from the View and Saves it to the Database
         /// </summary>
@@ -191,9 +191,27 @@ namespace XamPass.Controllers
             {
                 DtQuestion question = new DtQuestion();
 
-                //question.Title = viewModelSearch.QuestionTitle;
-                question.Title = "Neue Frage";
+                if (viewModelSearch.QuestionTitle != null)
+                {
+                    question.Title = viewModelSearch.QuestionTitle;
+
+                }
+                else
+                {
+                    question.Title = "Neue Frage";
+
+                }
                 question.Content = viewModelSearch.QuestionContent;
+
+                if (viewModelSearch.AnswerContent != null)
+                {
+                    question.Answers.Add(new DtAnswer()
+                    {
+                        Content = viewModelSearch.AnswerContent,
+                        SubmissionDate = DateTime.Now,
+                        UpVotes = 3
+                    });
+                }
 
                 question.FieldOfStudiesID = (int)viewModelSearch.FieldOfStudiesId;
                 question.SubjectID = (int)viewModelSearch.SubjectId;
