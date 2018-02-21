@@ -19,7 +19,7 @@ namespace XamPass.Controllers
     public class HomeController : Controller
     {
         private readonly DataContext _context;
-        
+
         public HomeController(DataContext context)
         {
             _context = context;
@@ -76,6 +76,7 @@ namespace XamPass.Controllers
         #endregion
 
         #region ShowQuestions
+
         public IActionResult ShowQuestions(ViewModelSearch viewModelSearch)
         {
             viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
@@ -109,8 +110,8 @@ namespace XamPass.Controllers
 
             return View(viewModelQuestions);
         }
-        #endregion
-       
+        #endregion            
+        
         /// <summary>
         /// Filters Universities by Federal State
         /// </summary>
@@ -150,16 +151,16 @@ namespace XamPass.Controllers
             //return RedirectToAction("CreateNewEntry", viewModelCreate);
 
         }
-        
+
         #region View Question
 
         [HttpGet]
         public IActionResult ViewQuestion(ViewModelQuestions viewModelQuestions)
         {
-            viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;            
+            viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
 
             viewModelQuestions.Question = viewModelQuestions.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
-            
+
             if (viewModelQuestions.Question != null)
             {
                 viewModelQuestions.FieldOfStudies = viewModelQuestions.Question.FieldOfStudies;
@@ -174,62 +175,7 @@ namespace XamPass.Controllers
         }
 
         #endregion
-
-        #region Authorization
-        //[Authorize]
-        //public IActionResult CreateDB()
-        //{       
-        //    DBInitialize.DatabaseTest(_context);
-        //    return RedirectToAction("Done");
-        //}
-
-        //public IActionResult Login()
-
-        //{
-
-        //    if (HttpContext.User.Identity.IsAuthenticated)
-        //    {
-        //        return RedirectToAction("Index", "Admin");
-        //    }
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public async Task<IActionResult> Login(LoginInputModel inputModel)
-        //{
-        //    if (!(inputModel.Username == "admin" && inputModel.Password == "password"))
-        //        return View();
-
-        //    // create claims
-        //    List<Claim> claims = new List<Claim>
-        //    {
-        //        new Claim(ClaimTypes.Name, "admin")
-        //        //new Claim(ClaimTypes.Email, inputModel.Username)
-        //    };
-
-        //    // create identity
-        //    ClaimsIdentity identity = new ClaimsIdentity(claims, "cookie");
-
-        //    // create principal
-        //    ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-
-        //    // sign-in
-        //    await HttpContext.SignInAsync(
-        //            scheme: "AdminCookieScheme",
-        //            principal: principal);
-
-        //    return RedirectToAction("Index", "Admin");
-        //}
-
-        //public async Task<IActionResult> Logout()
-        //{
-        //    await HttpContext.SignOutAsync(
-        //            scheme: "AdminCookieScheme");
-
-        //    return RedirectToAction("Login");
-        //}
-        #endregion
-
+       
         /// <summary>
         /// Creates new DtQuestion Object with the Properties from the View and Saves it to the Database
         /// </summary>
@@ -266,6 +212,41 @@ namespace XamPass.Controllers
         }
 
         #region GetViewModels
+
+        private async Task<ViewModelQuestions> GetViewModelQuestions(ViewModelQuestions viewModelQuestions, bool hasBeenLoaded)
+        {
+            List<DtQuestion> questions = null;
+
+            if (hasBeenLoaded)
+            {
+                questions = await _context.Questions.ToListAsync();
+            }
+            else
+            {
+                questions = await _context.Questions
+                .Include(q => q.FieldOfStudies)
+                .Include(q => q.Subject)
+                .Include(q => q.University)
+                .ThenInclude(u => u.FederalState)
+                .Include(u => u.University.Country)
+                .Include(q => q.Answers)
+                .ToListAsync();
+            }
+
+            viewModelQuestions.Questions = questions;
+
+            foreach (var item in questions)
+            {
+                viewModelQuestions.QuestionsSelectList.Add(new SelectListItem()
+                {
+                    Value = item.QuestionID.ToString(),
+                    Text = item.Content
+                });
+            }
+
+            return viewModelQuestions;
+        }
+
         private async Task<ViewModelSearch> GetViewModelSearch(ViewModelSearch viewModelSearch)
         {
             var universities = await _context.Universities.ToListAsync();
@@ -309,40 +290,6 @@ namespace XamPass.Controllers
                 });
             }
             return viewModelSearch;
-        }
-
-        private async Task<ViewModelQuestions> GetViewModelQuestions(ViewModelQuestions viewModelQuestions, bool hasBeenLoaded)
-        {
-            List<DtQuestion> questions = null;
-
-            if (hasBeenLoaded)
-            {
-                questions = await _context.Questions.ToListAsync();
-            }
-            else
-            {
-                questions = await _context.Questions
-                .Include(q => q.FieldOfStudies)
-                .Include(q => q.Subject)
-                .Include(q => q.University)
-                .ThenInclude(u => u.FederalState)
-                .Include(u => u.University.Country)
-                .Include(q => q.Answers)
-                .ToListAsync();
-            }
-
-            viewModelQuestions.Questions = questions;
-
-            foreach (var item in questions)
-            {
-                viewModelQuestions.QuestionsSelectList.Add(new SelectListItem()
-                {
-                    Value = item.QuestionID.ToString(),
-                    Text = item.Content
-                });
-            }
-
-            return viewModelQuestions;
         }
         #endregion
 

@@ -11,14 +11,17 @@ namespace XamPass.Models
         /// <summary>
         /// Testet die Datenbankverbindung
         /// </summary>
-        public static void DatabaseTest(DataContext context)
+        public static void DatabaseTest(DataContext context, bool createNewDatabase)
         {
-            // Löscht die Datenbank falls vorhanden
-            context.Database.EnsureDeleted();
+            if (createNewDatabase)
+            {
+                // Löscht die Datenbank falls vorhanden
+                context.Database.EnsureDeleted();
 
-            // Erstellt die Datenbank neu auf Grundlage der Model-Klassen
-            context.Database.EnsureCreated();
-            
+                // Erstellt die Datenbank neu auf Grundlage der Model-Klassen
+                context.Database.EnsureCreated();
+            }
+
             DtCountry[] countries = new DtCountry[]
             {
                 new DtCountry(){CountryName = "Deutschland"},
