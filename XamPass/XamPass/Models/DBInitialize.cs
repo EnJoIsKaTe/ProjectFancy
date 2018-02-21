@@ -106,7 +106,28 @@ namespace XamPass.Models
                 context.Add(subject);
             }
 
-            context.SaveChanges();            
+            context.SaveChanges();
+
+            DtAnswer[] answers = new DtAnswer[]
+          {
+                new DtAnswer(){ /*QuestionId = 1,*/
+                    SubmissionDate = DateTime.Now,
+                    Content = "Ich weiß doch nicht wie eine Turing Maschine aussieht!!!11!",
+                    UpVotes = 77
+                },
+                new DtAnswer(){ /*QuestionId = 3,*/
+                    SubmissionDate = DateTime.Now,
+                    Content = "Blau! Nein rot!",
+                    UpVotes = 2
+                }
+          };
+
+            foreach (DtAnswer answer in answers)
+            {
+                context.Add(answer);
+            }
+
+            context.SaveChanges();
 
             List<DtQuestion> questions = new List<DtQuestion>()
             {
@@ -126,7 +147,7 @@ namespace XamPass.Models
                     University = context.Universities.FirstOrDefault(u => u.UniversityID == 2),
                     UpVotes = 0},
 
-                 new DtQuestion(){Answers = null,
+                 new DtQuestion(){Answers = context.Answers.Where(a => a.AnswerID == 2).ToList(),
                     Content = "Was ist deine Lieblingsfarbe?",
                     FieldOfStudies = context.FieldsOfStudies.FirstOrDefault(u => u.FieldOfStudiesID == 1),
                     Subject = context.Subjects.FirstOrDefault(u => u.SubjectID == 1),
@@ -158,27 +179,7 @@ namespace XamPass.Models
             }
 
             context.SaveChanges();
-
-            DtAnswer[] answers = new DtAnswer[]
-            {
-                new DtAnswer(){ QuestionId = 1,
-                    SubmissionDate = DateTime.Now,
-                    Content = "Ich weiß doch nicht wie eine Turing Maschine aussieht!!!11!",
-                    UpVotes = 77
-                },
-                new DtAnswer(){ QuestionId = 3,
-                    SubmissionDate = DateTime.Now,
-                    Content = "Blau! Nein rot!",
-                    UpVotes = 2
-                }
-            };
-
-            foreach (DtAnswer answer in answers)
-            {
-                context.Add(answer);
-            }
-
-            context.SaveChanges();
+          
         }
     }
 }
