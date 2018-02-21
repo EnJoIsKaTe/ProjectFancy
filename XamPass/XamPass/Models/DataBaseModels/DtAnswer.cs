@@ -19,8 +19,6 @@ namespace XamPass.Models.DataBaseModels
         [Key]
         public int AnswerID { get; set; }
 
-        public int QuestionId { get; set; }
-
         /// <summary>
         /// Zeitpunkt der Erstellung des Datensatzes
         /// </summary>
