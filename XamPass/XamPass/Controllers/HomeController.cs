@@ -168,7 +168,7 @@ namespace XamPass.Controllers
                 .Include(q => q.FieldOfStudies)
                 .Include(q => q.Subject)
                 .Include(q => q.University)
-                .ThenInclude(u => u.FederalState)                
+                .ThenInclude(u => u.FederalState)
                 .Include(u => u.University.Country)
                 .Include(q => q.Answers)
                 .ToListAsync();
@@ -256,7 +256,7 @@ namespace XamPass.Controllers
         [Authorize]
         public IActionResult CreateDB()
         {       
-            DBInitialize.DatabaseTest(_context);
+            DBInitialize.DatabaseTest(_context, true);
             return RedirectToAction("Done");
         }
 

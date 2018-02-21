@@ -10,7 +10,7 @@ namespace XamPass.Models.DataBaseModels
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-
+            
         }
 
         #region DbSets
