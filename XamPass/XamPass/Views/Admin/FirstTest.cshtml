@@ -1,7 +1,8 @@
 ﻿@model XamPass.Models.FirstModel
 
 @{
-	ViewBag.Title = "First Test";
+	 ViewBag.Title = "First Test";
+	 Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>First Test</h2>
@@ -34,7 +35,7 @@
 
 <body>
 	<div class="form form-group">
-		@using (Html.BeginForm("FirstTest", "Home", FormMethod.Post))
+		@using (Html.BeginForm("FirstTest", "Admin", FormMethod.Post))
 		{
 			@Html.AntiForgeryToken();
 
