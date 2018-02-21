@@ -9,8 +9,13 @@ h1 {
 
 .input-cell-name {
     text-align: start;
-    padding: 5px;
-    width: 130pt
+    width: 125pt
+}
+
+.input-cell-name-big {
+    text-align: start;
+    width: 125pt;
+    vertical-align: top;
 }
 
 .input-cell {
