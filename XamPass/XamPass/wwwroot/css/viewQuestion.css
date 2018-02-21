@@ -4,14 +4,15 @@
 
 .question {
     display: inline-block;
-    width: 70%;
+    width: auto;
+    max-width: 60%;
     word-break: break-word;
     font-size: 20px;
 }
 
 .card-custom {
     float: right;
-    width: 25%;
+    width: 210pt;
     display: inline-block;
     border: 1px solid #333;
     border-radius: 15px;
@@ -23,6 +24,12 @@
     margin: 0px 0px 15px 0px;
     font-size: 20px;
     font-weight: 600;
+}
+
+.card-info {
+    display: inline-block;
+    float: right;
+    margin-bottom: 5px;
 }
 
 .btn-show-answer {
