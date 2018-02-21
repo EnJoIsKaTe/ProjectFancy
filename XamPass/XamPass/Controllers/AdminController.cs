@@ -31,7 +31,7 @@ namespace XamPass.Controllers
         [Authorize]
         public IActionResult CreateDB()
         {
-            DBInitialize.DatabaseTest(_context);
+            DBInitialize.DatabaseTest(_context, true);
             return RedirectToAction("Done");
         }
 

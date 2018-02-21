@@ -111,79 +111,7 @@ namespace XamPass.Controllers
             return View(viewModelQuestions);
         }
         #endregion            
-
-            //var viewModelSearch = new ViewModelSearch();
-            viewModelSearch.Universities = universities;
-
-            foreach (var item in universities)
-            {
-                viewModelSearch.UniversitySelectList.Add(new SelectListItem()
-                {
-                    Value = item.UniversityID.ToString(),
-                    Text = item.UniversityName
-                });
-            }
-            foreach (var item in federalStates)
-            {
-                viewModelSearch.FederalStates.Add(new SelectListItem()
-                {
-                    Value = item.FederalStateID.ToString(),
-                    Text = item.FederalStateName
-                });
-            }
-            foreach (var item in subjects)
-            {
-                viewModelSearch.Subjects.Add(new SelectListItem()
-                {
-                    Value = item.SubjectID.ToString(),
-                    Text = item.SubjectName
-                });
-            }
-            foreach (var item in fieldsOfStudies)
-            {
-                viewModelSearch.FieldsOfStudies.Add(new SelectListItem()
-                {
-                    Value = item.FieldOfStudiesID.ToString(),
-                    Text = item.FieldOfStudiesName
-                });
-            }
-            return viewModelSearch;
-        }
-
-        private async Task<ViewModelQuestions> GetViewModelQuestions(ViewModelQuestions viewModelQuestions, bool hasBeenLoaded)
-        {
-            List<DtQuestion> questions = null;
-            
-            if (hasBeenLoaded)
-            {
-                questions = await _context.Questions.ToListAsync();
-            }
-            else
-            {
-                questions = await _context.Questions
-                .Include(q => q.FieldOfStudies)
-                .Include(q => q.Subject)
-                .Include(q => q.University)
-                .ThenInclude(u => u.FederalState)
-                .Include(u => u.University.Country)
-                .Include(q => q.Answers)
-                .ToListAsync();
-            }
-            
-            viewModelQuestions.Questions = questions;
-
-            foreach (var item in questions)
-            {
-                viewModelQuestions.QuestionsSelectList.Add(new SelectListItem()
-                {
-                    Value = item.QuestionID.ToString(),
-                    Text = item.Content
-                });
-            }
-            
-            return viewModelQuestions;
-        }
-
+        
         /// <summary>
         /// Filters Universities by Federal State
         /// </summary>
@@ -247,62 +175,7 @@ namespace XamPass.Controllers
         }
 
         #endregion
-
-        #region Authorization
-        //[Authorize]
-        //public IActionResult CreateDB()
-        //{       
-        //    DBInitialize.DatabaseTest(_context);
-        //    return RedirectToAction("Done");
-        //}
-
-        //public IActionResult Login()
-
-        //{
-
-        //    if (HttpContext.User.Identity.IsAuthenticated)
-        //    {
-        //        return RedirectToAction("Index", "Admin");
-        //    }
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public async Task<IActionResult> Login(LoginInputModel inputModel)
-        //{
-        //    if (!(inputModel.Username == "admin" && inputModel.Password == "password"))
-        //        return View();
-
-        //    // create claims
-        //    List<Claim> claims = new List<Claim>
-        //    {
-        //        new Claim(ClaimTypes.Name, "admin")
-        //        //new Claim(ClaimTypes.Email, inputModel.Username)
-        //    };
-
-        //    // create identity
-        //    ClaimsIdentity identity = new ClaimsIdentity(claims, "cookie");
-
-        //    // create principal
-        //    ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-
-        //    // sign-in
-        //    await HttpContext.SignInAsync(
-        //            scheme: "AdminCookieScheme",
-        //            principal: principal);
-
-        //    return RedirectToAction("Index", "Admin");
-        //}
-
-        //public async Task<IActionResult> Logout()
-        //{
-        //    await HttpContext.SignOutAsync(
-        //            scheme: "AdminCookieScheme");
-
-        //    return RedirectToAction("Login");
-        //}
-        #endregion
-
+       
         /// <summary>
         /// Creates new DtQuestion Object with the Properties from the View and Saves it to the Database
         /// </summary>
