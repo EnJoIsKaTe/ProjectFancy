@@ -1,4 +1,8 @@
-﻿h1 {
+﻿html {
+    overflow-y: scroll;
+}
+
+h1 {
     font-weight: 900;
     margin-top: 0px;
 }
@@ -16,6 +20,7 @@
 
 #submitBtn {
     width: 150pt;
+    float:right;
     height: 35pt;
     position: relative;
     margin: 20pt 0pt 20pt 0pt;

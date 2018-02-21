@@ -1,14 +1,21 @@
 ﻿@model XamPass.Models.ViewModelQuestions
 
 @{
-	 ViewData["Title"] = "ShowQuestions";
+	ViewData["Title"] = "ShowQuestions";
 }
 
 <h2>ShowQuestions</h2>
 
 <ul>
-	@foreach(var item in Model.Questions)
+	@foreach (var item in Model.Questions)
 	{
-		<li>@item.Content</li>
+		Model.QuestionId = item.QuestionID;
+		<li>@Html.ActionLink(@item.Content, "ViewQuestion", "Home", Model)</li>
 	}
 </ul>
+
+@*@Html.ListBoxFor(m => m.QuestionId, Model.QuestionsSelectList, new
+{
+	@class = "form-control col-md-2 dropdown-toggle col input-cell",
+	@onchange = "this.form.submit();"
+})*@
