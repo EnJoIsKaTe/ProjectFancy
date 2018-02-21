@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using XamPass.Models;
+using XamPass.Controllers;
 
 namespace Controller.Tests
 {
@@ -75,6 +76,12 @@ namespace Controller.Tests
 
         #region MethodsTests
         
+        [Test]
+        public void ControllerTest1()
+        {
+            HomeController controller = new HomeController(_context);
+        }
+
 
         #endregion
     }

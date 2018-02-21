@@ -79,34 +79,53 @@ namespace XamPass.Controllers
 
         public IActionResult ShowQuestions(ViewModelSearch viewModelSearch)
         {
-            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
-
-            //var questions = new List<DtQuestion>();
+            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;           
 
             // Alle Fragen werden aus der Datenbank geladen und danach mit den eingegebenen Filtern durchsucht
-            //questions = _context.Questions.ToList();
             ViewModelQuestions viewModelQuestions = new ViewModelQuestions();
+            
+            List<DtQuestion> filteredQuestions = _context.Questions
+                .Where(q => (viewModelSearch.FieldOfStudiesId != null ? q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId : q.FieldOfStudiesID != 0))
+                .Where(q => (viewModelSearch.SubjectId != null ? q.SubjectID == viewModelSearch.SubjectId : q.SubjectID != 0))
+                .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
+                .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
+                .ToList();
+
+            
             viewModelQuestions = GetViewModelQuestions(viewModelQuestions, true).Result;
 
-            if (viewModelSearch.FieldOfStudiesId.HasValue)
-            {
-                viewModelQuestions.Questions = viewModelQuestions.Questions.Where(q => q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId).ToList();
-            }
+            // TODO: Benjamin
 
-            if (viewModelSearch.SubjectId.HasValue)
-            {
-                viewModelQuestions.Questions = viewModelQuestions.Questions.Where(q => q.SubjectID == viewModelSearch.SubjectId).ToList();
-            }
+            //viewModelQuestions.Questions = filteredQuestions;
 
-            if (viewModelSearch.FederalStateId.HasValue)
-            {
-                viewModelQuestions.Questions = viewModelQuestions.Questions.Where(q => q.University.FederalStateID == viewModelSearch.FederalStateId).ToList();
-            }
+            //foreach (var item in viewModelQuestions.Questions)
+            //{
+            //    viewModelQuestions.QuestionsSelectList.Add(new SelectListItem()
+            //    {
+            //        Value = item.QuestionID.ToString(),
+            //        Text = item.Content
+            //    });
+            //}
 
-            if (viewModelSearch.UniversityId.HasValue)
-            {
-                viewModelQuestions.Questions = viewModelQuestions.Questions.Where(q => q.UniversityID == viewModelSearch.UniversityId).ToList();
-            }
+            //if (viewModelSearch.FieldOfStudiesId.HasValue)
+            //{
+            //    viewModelQuestions.Questions = viewModelQuestions.Questions.Where(q => q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId).ToList();
+            //}
+
+            //if (viewModelSearch.SubjectId.HasValue)
+            //{
+            //    viewModelQuestions.Questions = viewModelQuestions.Questions.Where(q => q.SubjectID == viewModelSearch.SubjectId).ToList();
+            //}
+
+            //if (viewModelSearch.FederalStateId.HasValue)
+            //{
+            //    viewModelQuestions.Questions = viewModelQuestions.Questions.Where(q => q.University.FederalStateID == viewModelSearch.FederalStateId).ToList();
+            //}
+
+            //if (viewModelSearch.UniversityId.HasValue)
+            //{
+            //    viewModelQuestions.Questions = viewModelQuestions.Questions.Where(q => q.UniversityID == viewModelSearch.UniversityId).ToList();
+            //}
 
             return View(viewModelQuestions);
         }
