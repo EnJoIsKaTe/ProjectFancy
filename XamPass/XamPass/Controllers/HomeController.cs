@@ -19,7 +19,7 @@ namespace XamPass.Controllers
     public class HomeController : Controller
     {
         private readonly DataContext _context;
-        
+
         public HomeController(DataContext context)
         {
             _context = context;
@@ -76,6 +76,7 @@ namespace XamPass.Controllers
         #endregion
 
         #region ShowQuestions
+
         public IActionResult ShowQuestions(ViewModelSearch viewModelSearch)
         {
             viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
@@ -109,86 +110,7 @@ namespace XamPass.Controllers
 
             return View(viewModelQuestions);
         }
-        #endregion
-        
-        private async Task<ViewModelSearch> GetViewModelSearch(ViewModelSearch viewModelSearch)
-        {            
-            var universities = await _context.Universities.ToListAsync();
-            var federalStates = await _context.FederalStates.ToListAsync();
-            var subjects = await _context.Subjects.ToListAsync();
-            var fieldsOfStudies = await _context.FieldsOfStudies.ToListAsync();
-
-            //var viewModelSearch = new ViewModelSearch();
-            viewModelSearch.Universities = universities;
-
-            foreach (var item in universities)
-            {
-                viewModelSearch.UniversitySelectList.Add(new SelectListItem()
-                {
-                    Value = item.UniversityID.ToString(),
-                    Text = item.UniversityName
-                });
-            }
-            foreach (var item in federalStates)
-            {
-                viewModelSearch.FederalStates.Add(new SelectListItem()
-                {
-                    Value = item.FederalStateID.ToString(),
-                    Text = item.FederalStateName
-                });
-            }
-            foreach (var item in subjects)
-            {
-                viewModelSearch.Subjects.Add(new SelectListItem()
-                {
-                    Value = item.SubjectID.ToString(),
-                    Text = item.SubjectName
-                });
-            }
-            foreach (var item in fieldsOfStudies)
-            {
-                viewModelSearch.FieldsOfStudies.Add(new SelectListItem()
-                {
-                    Value = item.FieldOfStudiesID.ToString(),
-                    Text = item.FieldOfStudiesName
-                });
-            }
-            return viewModelSearch;
-        }
-
-        private async Task<ViewModelQuestions> GetViewModelQuestions(ViewModelQuestions viewModelQuestions, bool hasBeenLoaded)
-        {
-            List<DtQuestion> questions = null;
-            
-            if (hasBeenLoaded)
-            {
-                questions = await _context.Questions.ToListAsync();
-            }
-            else
-            {
-                questions = await _context.Questions
-                .Include(q => q.FieldOfStudies)
-                .Include(q => q.Subject)
-                .Include(q => q.University)
-                .ThenInclude(u => u.FederalState)                
-                .Include(u => u.University.Country)
-                .Include(q => q.Answers)
-                .ToListAsync();
-            }
-            
-            viewModelQuestions.Questions = questions;
-
-            foreach (var item in questions)
-            {
-                viewModelQuestions.QuestionsSelectList.Add(new SelectListItem()
-                {
-                    Value = item.QuestionID.ToString(),
-                    Text = item.Content
-                });
-            }
-            
-            return viewModelQuestions;
-        }
+        #endregion            
 
         /// <summary>
         /// Filters Universities by Federal State
@@ -229,16 +151,16 @@ namespace XamPass.Controllers
             //return RedirectToAction("CreateNewEntry", viewModelCreate);
 
         }
-        
+
         #region View Question
 
         [HttpGet]
         public IActionResult ViewQuestion(ViewModelQuestions viewModelQuestions)
         {
-            viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;            
+            viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
 
             viewModelQuestions.Question = viewModelQuestions.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
-            
+
             if (viewModelQuestions.Question != null)
             {
                 viewModelQuestions.FieldOfStudies = viewModelQuestions.Question.FieldOfStudies;
@@ -345,6 +267,41 @@ namespace XamPass.Controllers
         }
 
         #region GetViewModels
+
+        private async Task<ViewModelQuestions> GetViewModelQuestions(ViewModelQuestions viewModelQuestions, bool hasBeenLoaded)
+        {
+            List<DtQuestion> questions = null;
+
+            if (hasBeenLoaded)
+            {
+                questions = await _context.Questions.ToListAsync();
+            }
+            else
+            {
+                questions = await _context.Questions
+                .Include(q => q.FieldOfStudies)
+                .Include(q => q.Subject)
+                .Include(q => q.University)
+                .ThenInclude(u => u.FederalState)
+                .Include(u => u.University.Country)
+                .Include(q => q.Answers)
+                .ToListAsync();
+            }
+
+            viewModelQuestions.Questions = questions;
+
+            foreach (var item in questions)
+            {
+                viewModelQuestions.QuestionsSelectList.Add(new SelectListItem()
+                {
+                    Value = item.QuestionID.ToString(),
+                    Text = item.Content
+                });
+            }
+
+            return viewModelQuestions;
+        }
+
         private async Task<ViewModelSearch> GetViewModelSearch(ViewModelSearch viewModelSearch)
         {
             var universities = await _context.Universities.ToListAsync();
@@ -388,23 +345,6 @@ namespace XamPass.Controllers
                 });
             }
             return viewModelSearch;
-        }
-
-        private async Task<ViewModelQuestions> GetViewModelQuestions(ViewModelQuestions viewModelQuestions)
-        {
-            var questions = await _context.Questions.ToListAsync();
-
-            viewModelQuestions.Questions = questions;
-
-            foreach (var item in questions)
-            {
-                viewModelQuestions.QuestionsSelectList.Add(new SelectListItem()
-                {
-                    Value = item.QuestionID.ToString(),
-                    Text = item.Content
-                });
-            }
-            return viewModelQuestions;
         }
         #endregion
 

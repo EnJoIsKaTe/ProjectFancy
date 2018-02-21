@@ -26,6 +26,7 @@ namespace XamPass.Models
         [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Bitte geben Sie eine Frage ein")]
         public string QuestionContent { get; set; }
+        [Required(ErrorMessage = "Bitte geben Sie einen Titel ein")]
         public string QuestionTitle { get; set; }
 
         public List<DtUniversity> Universities { get; set; }
