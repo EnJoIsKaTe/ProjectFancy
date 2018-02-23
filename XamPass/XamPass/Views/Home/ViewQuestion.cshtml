@@ -117,7 +117,7 @@
 
 			<div style="display:block;">
 				<button class="btn btn-show-answer" type="button" data-toggle="collapse" data-target="#collapseAwnser" aria-expanded="false">
-					Antwort anzeigen
+					Antworten anzeigen
 				</button>
 				<div class="collapse" id="collapseAwnser">
 					<div class="card card-body answer">
@@ -129,16 +129,26 @@
 								<li>@item.Content</li>
 							}
 						</ul>
-
 					</div>
 				</div>
 			</div>
 
-			<div width="100%" style="text-align:right;">
-				@Html.HiddenFor(m => Model.QuestionId)
-				<input type="submit" id="createBtn" value="Neue Antwort" formmethod="post"
-						 formaction=@Url.Action("CreateAnswer", "Home") class="btn" />
+			<div style="display:block;">
+				<button class="btn btn-show-answer" type="button" data-toggle="collapse" data-target="#collapseAnswerInput" aria-expanded="false">
+					Antwort hinzufügen
+				</button>
+				<div class="collapse" id="collapseAnswerInput">
+					<div class="input-cell-name-big">
+						@Html.TextAreaFor(m => m.Answer.Content, 10, 40, new { @class = "input-cell-big" })
+					</div>
+					<div width="100%" style="text-align:left;">
+						@Html.HiddenFor(m => Model.QuestionId)
+						<input type="submit" id="createBtn" value="Submit" formmethod="post"
+								 formaction=@Url.Action("CreateAnswer", "Home") class="btn" />
+					</div>
+				</div>
 			</div>
+
 		}
 	</div>
 </body>

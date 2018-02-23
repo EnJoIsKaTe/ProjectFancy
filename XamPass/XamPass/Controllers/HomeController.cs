@@ -79,11 +79,11 @@ namespace XamPass.Controllers
 
         public IActionResult ShowQuestions(ViewModelSearch viewModelSearch)
         {
-            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;           
+            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
             // Alle Fragen werden aus der Datenbank geladen und danach mit den eingegebenen Filtern durchsucht
             ViewModelQuestions viewModelQuestions = new ViewModelQuestions();
-            
+
             List<DtQuestion> filteredQuestions = _context.Questions
                 .Where(q => (viewModelSearch.FieldOfStudiesId != null ? q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId : q.FieldOfStudiesID != 0))
                 .Where(q => (viewModelSearch.SubjectId != null ? q.SubjectID == viewModelSearch.SubjectId : q.SubjectID != 0))
@@ -91,7 +91,7 @@ namespace XamPass.Controllers
                 .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
                 .ToList();
 
-            
+
             viewModelQuestions = GetViewModelQuestions(viewModelQuestions, true).Result;
 
             // TODO: Benjamin
@@ -176,11 +176,16 @@ namespace XamPass.Controllers
         {
             viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
 
-            DtQuestion question = viewModelQuestions.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
+            if (viewModelQuestions.Answer != null)
+            {
+                DtQuestion question = viewModelQuestions.Questions.FirstOrDefault(
+                    q => q.QuestionID == viewModelQuestions.QuestionId);
+                viewModelQuestions.Answer.SubmissionDate = DateTime.Now;
+                question.Answers.Add(viewModelQuestions.Answer);
 
-
-            //return RedirectToAction("Done");
-            return View(viewModelQuestions);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("ViewQuestion", viewModelQuestions);
         }
 
         #region View Question
