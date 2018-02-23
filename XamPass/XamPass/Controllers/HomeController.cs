@@ -76,7 +76,11 @@ namespace XamPass.Controllers
         #endregion
 
         #region ShowQuestions
-
+        /// <summary>
+        /// Gets called when in the Main View a selection was made and the Search Button has been hit.
+        /// </summary>
+        /// <param name="viewModelSearch"></param>
+        /// <returns></returns>
         public IActionResult ShowQuestions(ViewModelSearch viewModelSearch)
         {
             viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
@@ -189,7 +193,12 @@ namespace XamPass.Controllers
         }
 
         #region View Question
-
+        /// <summary>
+        /// Gets called when a single Question is selected and the Details of that Question have to be loaded
+        /// Loads the Details of the Question to the viewModelQuestions and returns the Details View
+        /// </summary>
+        /// <param name="viewModelQuestions"></param>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult ViewQuestion(ViewModelQuestions viewModelQuestions)
         {
