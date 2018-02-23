@@ -97,6 +97,7 @@ namespace XamPass.Controllers
 
 
             viewModelQuestions = GetViewModelQuestions(viewModelQuestions, true).Result;
+            viewModelQuestions.Questions = filteredQuestions;
 
             // TODO: Benjamin
 

@@ -39,10 +39,22 @@ namespace XamPass.Models
             // Testdaten in die Tabelle dt_federal_state einfügen
             DtFederalState[] federalStates = new DtFederalState[]
             {
-                new DtFederalState(){ FederalStateName = "Sachsen"},
-                new DtFederalState(){ FederalStateName = "Thüringen"},
+                new DtFederalState(){ FederalStateName = "Baden-Württemberg"},
+                new DtFederalState(){ FederalStateName = "Bayern"},
+                new DtFederalState(){ FederalStateName = "Berlin"},
+                new DtFederalState(){ FederalStateName = "Brandenburg"},
+                new DtFederalState(){ FederalStateName = "Bremen"},
+                new DtFederalState(){ FederalStateName = "Hamburg"},
                 new DtFederalState(){ FederalStateName = "Hessen"},
-                new DtFederalState(){ FederalStateName = "Bayern"}
+                new DtFederalState(){ FederalStateName = "Mecklenburg-Vorpommern"},
+                new DtFederalState(){ FederalStateName = "Niedersachsen"},
+                new DtFederalState(){ FederalStateName = "Nordrhein-Westfalen"},
+                new DtFederalState(){ FederalStateName = "Rheinland-Pfalz"},
+                new DtFederalState(){ FederalStateName = "Saarland"},
+                new DtFederalState(){ FederalStateName = "Sachsen"},
+                new DtFederalState(){ FederalStateName = "Sachsen-Anhalt"},
+                new DtFederalState(){ FederalStateName = "Schleswig-Holstein"},
+                new DtFederalState(){ FederalStateName = "Thüringen"}
             };
 
             foreach(DtFederalState state in federalStates)
@@ -55,15 +67,15 @@ namespace XamPass.Models
             // Testdaten in Tabelle dt_university einfügen
             List<DtUniversity> universities = new List<DtUniversity>()
             {
-                new DtUniversity(){UniversityName = "BA Leipzig", CountryID = 1, FederalStateID = 1 },
-                new DtUniversity(){UniversityName = "BA Dresden",  CountryID = 1, FederalStateID = 1},
-                new DtUniversity(){UniversityName = "BA Glauchau", CountryID = 1, FederalStateID = 1},
-                new DtUniversity(){UniversityName = "Universität Leipzig", CountryID = 1, FederalStateID = 1},
-                new DtUniversity(){UniversityName = "HTWK Leipzig", CountryID = 1, FederalStateID = 1},
-                new DtUniversity(){UniversityName = "Universität Jena", CountryID = 1, FederalStateID = 2},
-                new DtUniversity(){UniversityName = "HfM Weimar", CountryID = 1, FederalStateID = 2},
-                new DtUniversity(){UniversityName = "Universität Kassel", CountryID = 1, FederalStateID = 3},
-                new DtUniversity(){UniversityName = "Universität Würzburg", CountryID = 1, FederalStateID = 4}
+                new DtUniversity(){UniversityName = "BA Leipzig", CountryID = 1, FederalStateID = 13 },
+                new DtUniversity(){UniversityName = "BA Dresden",  CountryID = 1, FederalStateID = 13},
+                new DtUniversity(){UniversityName = "BA Glauchau", CountryID = 1, FederalStateID = 13},
+                new DtUniversity(){UniversityName = "Universität Leipzig", CountryID = 1, FederalStateID = 13},
+                new DtUniversity(){UniversityName = "HTWK Leipzig", CountryID = 1, FederalStateID = 13},
+                new DtUniversity(){UniversityName = "Universität Jena", CountryID = 1, FederalStateID = 16},
+                new DtUniversity(){UniversityName = "HfM Weimar", CountryID = 1, FederalStateID = 16},
+                new DtUniversity(){UniversityName = "Universität Kassel", CountryID = 1, FederalStateID = 7},
+                new DtUniversity(){UniversityName = "Universität Würzburg", CountryID = 1, FederalStateID = 2}
             };
 
             foreach (DtUniversity university in universities)
