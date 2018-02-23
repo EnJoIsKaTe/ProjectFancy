@@ -88,29 +88,27 @@ namespace XamPass.Controllers
             // Alle Fragen werden aus der Datenbank geladen und danach mit den eingegebenen Filtern durchsucht
             ViewModelQuestions viewModelQuestions = new ViewModelQuestions();
 
+            // Build the filter and load the Questions from the Database
             List<DtQuestion> filteredQuestions = _context.Questions
                 .Where(q => (viewModelSearch.FieldOfStudiesId != null ? q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId : q.FieldOfStudiesID != 0))
                 .Where(q => (viewModelSearch.SubjectId != null ? q.SubjectID == viewModelSearch.SubjectId : q.SubjectID != 0))
                 .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
                 .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
                 .ToList();
+            
+            //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, true).Result;
 
-
-            viewModelQuestions = GetViewModelQuestions(viewModelQuestions, true).Result;
             viewModelQuestions.Questions = filteredQuestions;
-
-            // TODO: Benjamin
-
-            //viewModelQuestions.Questions = filteredQuestions;
-
-            //foreach (var item in viewModelQuestions.Questions)
-            //{
-            //    viewModelQuestions.QuestionsSelectList.Add(new SelectListItem()
-            //    {
-            //        Value = item.QuestionID.ToString(),
-            //        Text = item.Content
-            //    });
-            //}
+            
+            // Fill the SelectList
+            foreach (var item in viewModelQuestions.Questions)
+            {
+                viewModelQuestions.QuestionsSelectList.Add(new SelectListItem()
+                {
+                    Value = item.QuestionID.ToString(),
+                    Text = item.Content
+                });
+            }
 
             //if (viewModelSearch.FieldOfStudiesId.HasValue)
             //{
@@ -176,15 +174,27 @@ namespace XamPass.Controllers
 
         }
 
+        /// <summary>
+        /// Gets called when a new Answer to a Question was put in
+        /// Loads the Question from the Database and adds the Answer
+        /// </summary>
+        /// <param name="viewModelQuestions"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult CreateAnswer(ViewModelQuestions viewModelQuestions)
         {
-            viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
-
+            //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
+            
             if (viewModelQuestions.Answer != null)
             {
-                DtQuestion question = viewModelQuestions.Questions.FirstOrDefault(
-                    q => q.QuestionID == viewModelQuestions.QuestionId);
+                //DtQuestion question = viewModelQuestions.Questions.FirstOrDefault(
+                //    q => q.QuestionID == viewModelQuestions.QuestionId);
+
+                // Load the Question from the Db, only the Answers-Property is needed here
+                DtQuestion question = _context.Questions
+                .Include(q => q.Answers)
+                .SingleOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
+
                 viewModelQuestions.Answer.SubmissionDate = DateTime.Now;
                 question.Answers.Add(viewModelQuestions.Answer);
 
@@ -203,10 +213,22 @@ namespace XamPass.Controllers
         [HttpGet]
         public IActionResult ViewQuestion(ViewModelQuestions viewModelQuestions)
         {
-            viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
+            //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
 
-            viewModelQuestions.Question = viewModelQuestions.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
+            //viewModelQuestions.Question = viewModelQuestions.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
 
+            // Loads the selected Question from the Database
+            viewModelQuestions.Question = _context.Questions
+                .Include(q => q.FieldOfStudies)
+                .Include(q => q.Subject)
+                .Include(q => q.University)
+                .ThenInclude(u => u.FederalState)
+                .Include(u => u.University.Country)
+                .Include(q => q.Answers)
+                .SingleOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
+                
+
+            // Fill the Properties for the View
             if (viewModelQuestions.Question != null)
             {
                 viewModelQuestions.FieldOfStudies = viewModelQuestions.Question.FieldOfStudies;

@@ -7,6 +7,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using XamPass.Models;
 using XamPass.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Controller.Tests
 {
@@ -75,13 +76,76 @@ namespace Controller.Tests
         #endregion
 
         #region MethodsTests
-        
+
         [Test]
-        public void ControllerTest1()
+        public void CreateNewEntryTest()
         {
             HomeController controller = new HomeController(_context);
+
+            string testTitle = "Test Title";
+
+            ViewModelSearch viewModelSearch = new ViewModelSearch()
+            {
+                FederalStateId = 1,
+                FieldOfStudiesId = 1,
+                QuestionContent = "Test Content",
+                SubjectId = 1,
+                QuestionTitle = testTitle,
+                UniversityId = 1
+            };
+
+            controller.CreateNewEntry(viewModelSearch);
+
+            DtQuestion question = _context.Questions.SingleOrDefault(q => q.Title.Equals(testTitle));
+
+            Assert.IsNotNull(question);
+            Assert.AreEqual(question.FieldOfStudiesID, 1);
+            Assert.AreEqual(question.SubjectID, 1);
+            Assert.AreEqual(question.UniversityID, 1);
         }
 
+        [Test]
+        public void CreateAnswerTest()
+        {
+            HomeController controller = new HomeController(_context);
+
+            ViewModelQuestions vmq = new ViewModelQuestions()
+            {
+                QuestionId = 1,
+                Answer = new DtAnswer() { Content = "Test Answer" }
+            };
+
+            controller.CreateAnswer(vmq);
+
+            DtQuestion question = _context.Questions.SingleOrDefault(q => q.QuestionID == 1);
+
+            DtAnswer answer = question.Answers.SingleOrDefault(a => a.Content.Equals("Test Answer"));
+
+            Assert.IsNotNull(answer);
+            Assert.AreEqual(question.Answers.Count, 2);
+        }
+
+        [Test]
+        public void ViewQuestionTest()
+        {
+            HomeController controller = new HomeController(_context);
+
+            ViewModelQuestions vmq = new ViewModelQuestions()
+            {
+                QuestionId = 1
+            };
+
+            controller.ViewQuestion(vmq);
+
+            Assert.IsNotNull(vmq.Question);
+            Assert.IsNotNull(vmq.FieldOfStudies);
+            Assert.IsNotNull(vmq.Subject);
+            Assert.IsNotNull(vmq.University);
+            Assert.IsNotNull(vmq.FederalState);
+            Assert.IsNotNull(vmq.Answers);
+
+            Assert.AreEqual(vmq.QuestionId, 1);            
+        }
 
         #endregion
     }
