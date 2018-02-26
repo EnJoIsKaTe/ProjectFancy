@@ -13,29 +13,35 @@ namespace XamPass.Models
     /// </summary>
     public class ViewModelSearch
     {
-        [Required(ErrorMessage = "Bitte geben Sie eine Universität an")]
+        //[Required(ErrorMessage = "Bitte geben Sie eine Universität an")]
         public int? UniversityId { get; set; }
-        [Required(ErrorMessage = "Bitte geben Sie ein Bundesland an")]
+        //[Required(ErrorMessage = "Bitte geben Sie ein Bundesland an")]
         public int? FederalStateId { get; set; }
-        [Required(ErrorMessage = "Bitte geben Sie ein Fach an")]
+        //[Required(ErrorMessage = "Bitte geben Sie ein Fach an")]
         public int? SubjectId { get; set; }
-        [Required(ErrorMessage = "Bitte geben Sie einen Studiengang an")]
+        //[Required(ErrorMessage = "Bitte geben Sie einen Studiengang an")]
         public int? FieldOfStudiesId { get; set; }
 
-        // Properties, die aus der Oberfläche zu befüllen sind
-        [DataType(DataType.MultilineText)]
-        [Required(ErrorMessage = "Bitte geben Sie eine Frage ein")]
-        public string QuestionContent { get; set; }
-        [Required(ErrorMessage = "Bitte geben Sie einen Titel ein")]
-        public string QuestionTitle { get; set; }
-        [DataType(DataType.MultilineText)]
-        public string AnswerContent { get; set; }
+        //// Properties, die aus der Oberfläche zu befüllen sind
+        //[DataType(DataType.MultilineText)]
+        //[Required(ErrorMessage = "Bitte geben Sie eine Frage ein")]
+        //public string QuestionContent { get; set; }
+        //[Required(ErrorMessage = "Bitte geben Sie einen Titel ein")]
+        //public string QuestionTitle { get; set; }
+        //[DataType(DataType.MultilineText)]
+        //public string AnswerContent { get; set; }
 
         public List<DtUniversity> Universities { get; set; }
         public List<SelectListItem> UniversitySelectList { get; set; }
         public List<SelectListItem> FederalStates { get; set; }
         public List<SelectListItem> Subjects { get; set; }
         public List<SelectListItem> FieldsOfStudies { get; set; }
+
+        // show questions
+        public int? QuestionId { get; set; }
+        public List<DtQuestion> Questions { get; set; }
+        public List<SelectListItem> QuestionsSelectList { get; set; }
+        public bool SearchExecuted { get; set; }
 
         /// <summary>
         /// Standard Constructor
@@ -47,6 +53,10 @@ namespace XamPass.Models
             FederalStates = new List<SelectListItem>();
             Subjects = new List<SelectListItem>();
             FieldsOfStudies = new List<SelectListItem>();
+
+            // show questions
+            Questions = new List<DtQuestion>();
+            QuestionsSelectList = new List<SelectListItem>();
         }
     }
 }

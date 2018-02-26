@@ -1,4 +1,4 @@
-﻿@model XamPass.Models.ViewModelSearch
+﻿@model XamPass.Models.ViewModelCreate
 
 @{
 	 ViewData["Title"] = "CreateQuestion";
@@ -168,13 +168,13 @@ new
 													 }
 													 else
 													 {
-														  universityText = Model.UniversitySelectList
+														  universityText = Model.Universities
 																						  .FirstOrDefault(f => f.Value == Model.UniversityId.ToString()).Text;
 
 
 													 }
 												}
-												@Html.DropDownListFor(m => m.UniversityId, Model.UniversitySelectList,
+												@Html.DropDownListFor(m => m.UniversityId, Model.Universities,
 															universityText,
 															new
 															{

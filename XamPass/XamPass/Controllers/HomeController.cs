@@ -48,6 +48,8 @@ namespace XamPass.Controllers
         {
             viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
+            viewModelSearch.SearchExecuted = false;
+
             // setzt gewählte Hochschule auf null, wenn gewähltes Bundesland nicht übereinstimmt
             if (viewModelSearch.UniversityId.HasValue)
             {
@@ -71,6 +73,27 @@ namespace XamPass.Controllers
                 }
             }
 
+            if (viewModelSearch.SearchExecuted)
+            {
+                // Build the filter and load the Questions from the Database
+                List<DtQuestion> filteredQuestions = _context.Questions
+                    .Where(q => (viewModelSearch.FieldOfStudiesId != null ? q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId : q.FieldOfStudiesID != 0))
+                    .Where(q => (viewModelSearch.SubjectId != null ? q.SubjectID == viewModelSearch.SubjectId : q.SubjectID != 0))
+                    .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
+                    .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
+                    .ToList();
+                viewModelSearch.Questions = filteredQuestions;
+
+                // Fill the SelectList
+                foreach (var item in filteredQuestions)
+                {
+                    viewModelSearch.QuestionsSelectList.Add(new SelectListItem()
+                    {
+                        Value = item.QuestionID.ToString(),
+                        Text = item.Content
+                    });
+                }
+            }
             return View(viewModelSearch);
         }
         #endregion
@@ -83,27 +106,40 @@ namespace XamPass.Controllers
         /// <returns></returns>
         public IActionResult ShowQuestions(ViewModelSearch viewModelSearch)
         {
+            viewModelSearch.SearchExecuted = true;
+
             viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
             // Alle Fragen werden aus der Datenbank geladen und danach mit den eingegebenen Filtern durchsucht
-            ViewModelQuestions viewModelQuestions = new ViewModelQuestions();
+            //ViewModelQuestions viewModelQuestions = new ViewModelQuestions();
 
-            // Build the filter and load the Questions from the Database
+            //Build the filter and load the Questions from the Database
             List<DtQuestion> filteredQuestions = _context.Questions
                 .Where(q => (viewModelSearch.FieldOfStudiesId != null ? q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId : q.FieldOfStudiesID != 0))
                 .Where(q => (viewModelSearch.SubjectId != null ? q.SubjectID == viewModelSearch.SubjectId : q.SubjectID != 0))
                 .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
                 .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
                 .ToList();
-            
+
             //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, true).Result;
 
-            viewModelQuestions.Questions = filteredQuestions;
-            
+            //viewModelQuestions.Questions = filteredQuestions;
+            viewModelSearch.Questions = filteredQuestions;
+
+            //// Fill the SelectList
+            //foreach (var item in viewModelQuestions.Questions)
+            //{
+            //    viewModelQuestions.QuestionsSelectList.Add(new SelectListItem()
+            //    {
+            //        Value = item.QuestionID.ToString(),
+            //        Text = item.Content
+            //    });
+            //}
+
             // Fill the SelectList
-            foreach (var item in viewModelQuestions.Questions)
+            foreach (var item in filteredQuestions)
             {
-                viewModelQuestions.QuestionsSelectList.Add(new SelectListItem()
+                viewModelSearch.QuestionsSelectList.Add(new SelectListItem()
                 {
                     Value = item.QuestionID.ToString(),
                     Text = item.Content
@@ -130,38 +166,32 @@ namespace XamPass.Controllers
             //    viewModelQuestions.Questions = viewModelQuestions.Questions.Where(q => q.UniversityID == viewModelSearch.UniversityId).ToList();
             //}
 
-            return View(viewModelQuestions);
+            //return View(viewModelSearch);
+            return View("Index", viewModelSearch);
         }
         #endregion
 
-        /// <summary>
-        /// Filters Universities by Federal State
-        /// </summary>
-        /// <param name="viewModelSearch">Data From the View</param>
-        /// <returns></returns>
-        [HttpPost]
-        public IActionResult CreateQuestion(ViewModelSearch viewModelSearch)
+        //[HttpPost]
+        public IActionResult CreateQuestion(ViewModelCreate viewModelCreate)
         {
-            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+            viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
 
-            // setzt gewählte Hochschule auf 0, wenn gewähltes Bundesland nicht übereinstimmt
-            if (viewModelSearch.UniversityId.HasValue)
+            if (viewModelCreate.UniversityId.HasValue)
             {
-                var university = viewModelSearch.Universities.FirstOrDefault(u => u.UniversityID == viewModelSearch.UniversityId);
-                if (university.FederalStateID != viewModelSearch.FederalStateId)
+                var university = _context.Universities.FirstOrDefault(u => u.UniversityID == viewModelCreate.UniversityId);
+                if (university.FederalStateID != viewModelCreate.FederalStateId)
                 {
-                    viewModelSearch.UniversityId = null;
+                    viewModelCreate.UniversityId = null;
                 }
             }
-            // filtert Hochschulen für gewähltes Bundesland
-            if (viewModelSearch.FederalStateId.HasValue)
+            if (viewModelCreate.FederalStateId.HasValue)
             {
-                viewModelSearch.UniversitySelectList = new List<SelectListItem>();
-                foreach (var item in viewModelSearch.Universities)
+                viewModelCreate.Universities = new List<SelectListItem>();
+                foreach (var item in _context.Universities)
                 {
-                    if (item.FederalStateID == viewModelSearch.FederalStateId)
+                    if (item.FederalStateID == viewModelCreate.FederalStateId)
                     {
-                        viewModelSearch.UniversitySelectList.Add(
+                        viewModelCreate.Universities.Add(
                             new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
                     }
                 }
@@ -169,9 +199,8 @@ namespace XamPass.Controllers
 
             //return RedirectToAction("Done", result);
 
-            return View(viewModelSearch);
+            return View(viewModelCreate);
             //return RedirectToAction("CreateNewEntry", viewModelCreate);
-
         }
 
         /// <summary>
@@ -180,11 +209,11 @@ namespace XamPass.Controllers
         /// </summary>
         /// <param name="viewModelQuestions"></param>
         /// <returns></returns>
-        [HttpPost]
+        //[HttpPost]
         public IActionResult CreateAnswer(ViewModelQuestions viewModelQuestions)
         {
             //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
-            
+
             if (viewModelQuestions.Answer != null)
             {
                 //DtQuestion question = viewModelQuestions.Questions.FirstOrDefault(
@@ -210,12 +239,14 @@ namespace XamPass.Controllers
         /// </summary>
         /// <param name="viewModelQuestions"></param>
         /// <returns></returns>
-        [HttpGet]
-        public IActionResult ViewQuestion(ViewModelQuestions viewModelQuestions)
+        public IActionResult ViewQuestion(int? id)
         {
-            //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
+            ViewModelQuestions viewModelQuestions = new ViewModelQuestions();
+            viewModelQuestions.QuestionId = (int?)id;
 
-            //viewModelQuestions.Question = viewModelQuestions.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
+            viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
+
+            viewModelQuestions.Question = viewModelQuestions.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
 
             // Loads the selected Question from the Database
             viewModelQuestions.Question = _context.Questions
@@ -226,7 +257,7 @@ namespace XamPass.Controllers
                 .Include(u => u.University.Country)
                 .Include(q => q.Answers)
                 .SingleOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
-                
+
 
             // Fill the Properties for the View
             if (viewModelQuestions.Question != null)
@@ -249,19 +280,19 @@ namespace XamPass.Controllers
         /// </summary>
         /// <param name="viewModelSearch"></param>
         /// <returns></returns>
-        [HttpPost]
-        public IActionResult CreateNewEntry(ViewModelSearch viewModelSearch)
+        //[HttpPost]
+        public IActionResult CreateNewEntry(ViewModelCreate viewModelCreate)
         {
-            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+            //viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
             // If all entries are correct
             if (ModelState.IsValid)
             {
                 DtQuestion question = new DtQuestion();
 
-                if (viewModelSearch.QuestionTitle != null)
+                if (viewModelCreate.QuestionTitle != null)
                 {
-                    question.Title = viewModelSearch.QuestionTitle;
+                    question.Title = viewModelCreate.QuestionTitle;
 
                 }
                 else
@@ -269,22 +300,22 @@ namespace XamPass.Controllers
                     question.Title = "Neue Frage";
 
                 }
-                question.Content = viewModelSearch.QuestionContent;
+                question.Content = viewModelCreate.QuestionContent;
 
-                if (viewModelSearch.AnswerContent != null)
+                if (viewModelCreate.AnswerContent != null)
                 {
                     question.Answers.Add(new DtAnswer()
                     {
-                        Content = viewModelSearch.AnswerContent,
+                        Content = viewModelCreate.AnswerContent,
                         SubmissionDate = DateTime.Now,
                         UpVotes = 3
                     });
                 }
 
-                question.FieldOfStudiesID = (int)viewModelSearch.FieldOfStudiesId;
-                question.SubjectID = (int)viewModelSearch.SubjectId;
+                question.FieldOfStudiesID = (int)viewModelCreate.FieldOfStudiesId;
+                question.SubjectID = (int)viewModelCreate.SubjectId;
                 question.SubmissionDate = DateTime.Now;
-                question.UniversityID = (int)viewModelSearch.UniversityId;
+                question.UniversityID = (int)viewModelCreate.UniversityId;
 
                 _context.Add(question);
 
@@ -294,7 +325,7 @@ namespace XamPass.Controllers
             }
 
             // if not all entries are correct you are redirected
-            return View("CreateQuestion", viewModelSearch);
+            return View("CreateQuestion", viewModelCreate);
         }
 
         #region GetViewModels
@@ -376,6 +407,51 @@ namespace XamPass.Controllers
                 });
             }
             return viewModelSearch;
+        }
+
+        private async Task<ViewModelCreate> GetViewModelCreate(ViewModelCreate viewModelCreate)
+        {
+            var universities = await _context.Universities.ToListAsync();
+            var federalStates = await _context.FederalStates.ToListAsync();
+            var subjects = await _context.Subjects.ToListAsync();
+            var fieldsOfStudies = await _context.FieldsOfStudies.ToListAsync();
+
+            //var viewModelSearch = new ViewModelSearch();
+            //viewModelCreate.Universities = universities;
+
+            foreach (var item in universities)
+            {
+                viewModelCreate.Universities.Add(new SelectListItem()
+                {
+                    Value = item.UniversityID.ToString(),
+                    Text = item.UniversityName
+                });
+            }
+            foreach (var item in federalStates)
+            {
+                viewModelCreate.FederalStates.Add(new SelectListItem()
+                {
+                    Value = item.FederalStateID.ToString(),
+                    Text = item.FederalStateName
+                });
+            }
+            foreach (var item in subjects)
+            {
+                viewModelCreate.Subjects.Add(new SelectListItem()
+                {
+                    Value = item.SubjectID.ToString(),
+                    Text = item.SubjectName
+                });
+            }
+            foreach (var item in fieldsOfStudies)
+            {
+                viewModelCreate.FieldsOfStudies.Add(new SelectListItem()
+                {
+                    Value = item.FieldOfStudiesID.ToString(),
+                    Text = item.FieldOfStudiesName
+                });
+            }
+            return viewModelCreate;
         }
         #endregion
 

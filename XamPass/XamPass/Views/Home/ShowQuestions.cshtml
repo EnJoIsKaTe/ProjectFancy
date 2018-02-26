@@ -1,4 +1,4 @@
-﻿@model XamPass.Models.ViewModelQuestions
+﻿@model XamPass.Models.ViewModelSearch
 
 @{
 	ViewData["Title"] = "ShowQuestions";
@@ -6,13 +6,13 @@
 
 <h2>ShowQuestions</h2>
 
-<ul>
+@*<ul>
 	@foreach (var item in Model.Questions)
 	{
 		Model.QuestionId = item.QuestionID;
 		<li>@Html.ActionLink(@item.Content, "ViewQuestion", "Home", Model)</li>
 	}
-</ul>
+</ul>*@
 
 @*@Html.ListBoxFor(m => m.QuestionId, Model.QuestionsSelectList, new
 {
