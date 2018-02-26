@@ -24,6 +24,8 @@ namespace XamPass.Models.DataBaseModels
         /// Name des Bundesstaates
         /// </summary>
         [StringLength(100)]
+        [MinLength(5,ErrorMessage = "Der Name des Bundesland muss mindestens 5 Zeichen lang sein")]
+        [Required(ErrorMessage = "Bitte geben Sie ein Bundesland an")]
         public string FederalStateName { get; set; }
 
         #endregion

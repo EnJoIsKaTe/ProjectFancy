@@ -2,21 +2,40 @@
     overflow-y: scroll;
 }
 
+.rating-button {
+    background-color: #999999;
+    background-image: url(../images/star.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-origin: content-box;
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    color: #ffffff;
+    text-shadow: 0px 0px 5px #333;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
 .question {
     display: inline-block;
-    width: 70%;
+    width: auto;
+    max-width: 60%;
     word-break: break-word;
     font-size: 20px;
 }
 
 .card-custom {
     float: right;
-    width: 25%;
+    width: 210pt;
     display: inline-block;
     border: 1px solid #333;
     border-radius: 15px;
     background-color: #ffdabf;
     box-shadow: #333 2px 2px 5px;
+    margin: 0 5px 5px 0;
 }
 
 .card-header {
@@ -25,10 +44,21 @@
     font-weight: 600;
 }
 
+.card-info {
+    display: inline-block;
+    float: right;
+    margin-bottom: 5px;
+}
+
 .btn-show-answer {
     margin: 20px 0px 10px 0px;
 }
 
+    .btn-show-answer:focus {
+        outline: none;
+    }
+
 .answer {
-    width: 70%;
+    width: auto;
+    max-width: 60%;
 }

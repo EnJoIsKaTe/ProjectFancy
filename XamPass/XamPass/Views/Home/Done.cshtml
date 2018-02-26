@@ -8,6 +8,13 @@
 
 @*<p>@Model.UniversityId</p>*@
 
+@*<ul>
+	@foreach (var item in Model.QuestionsSelectList)
+	{
+		 <li>@item.Text</li>
+	}
+</ul>*@
+
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">

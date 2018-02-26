@@ -1,0 +1,69 @@
+﻿@model XamPass.Models.DataBaseModels.DtQuestion
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>DtQuestion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmissionDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SubmissionDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpVotes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpVotes)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FieldOfStudies)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FieldOfStudies.FieldOfStudiesID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subject.SubjectID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.University)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.University.UniversityID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="EditQuestions" asp-route-id="@Model.QuestionID">Edit</a> |
+    <a asp-action="IndexQuestions">Back to List</a>
+</div>
+</body>
+</html>

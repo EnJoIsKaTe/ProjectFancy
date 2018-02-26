@@ -1,0 +1,38 @@
+﻿@model XamPass.Models.DataBaseModels.DtFieldOfStudies
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Neue Fachrichtung anlegen</h2>
+<hr />
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp class="control-label">Name der Fachrichtung</label>
+                    <input asp-for="@Model.FieldOfStudiesName" class="form-control" />
+                    <span asp-validation-for="@Model.FieldOfStudiesName" class="text-danger"></span>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="text-left col-md-2">
+                <div class="form-group">
+                    <input type="submit" value="Fachrichtung erstellen" class="btn btn-default"
+                           formaction=@Url.Action("SaveNewFieldOfStudies", "Home") />
+                </div>
+            </div>
+            <div class="text-left col-md-2">
+                <div class="form-group">
+                    <input type="submit" value="Abbrechen" class="btn btn-default" formaction=@Url.Action("CancelNewField", "Home") />
+                </div>
+            </div>
+        </div>
+        </div>
+</form>
+
+

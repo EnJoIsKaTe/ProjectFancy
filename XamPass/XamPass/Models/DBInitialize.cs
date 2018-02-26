@@ -11,14 +11,17 @@ namespace XamPass.Models
         /// <summary>
         /// Testet die Datenbankverbindung
         /// </summary>
-        public static void DatabaseTest(DataContext context)
+        public static void DatabaseTest(DataContext context, bool createNewDatabase)
         {
-            // Löscht die Datenbank falls vorhanden
-            context.Database.EnsureDeleted();
+            if (createNewDatabase)
+            {
+                // Löscht die Datenbank falls vorhanden
+                context.Database.EnsureDeleted();
 
-            // Erstellt die Datenbank neu auf Grundlage der Model-Klassen
-            context.Database.EnsureCreated();
-            
+                // Erstellt die Datenbank neu auf Grundlage der Model-Klassen
+                context.Database.EnsureCreated();
+            }
+
             DtCountry[] countries = new DtCountry[]
             {
                 new DtCountry(){CountryName = "Deutschland"},
@@ -36,10 +39,22 @@ namespace XamPass.Models
             // Testdaten in die Tabelle dt_federal_state einfügen
             DtFederalState[] federalStates = new DtFederalState[]
             {
-                new DtFederalState(){ FederalStateName = "Sachsen"},
-                new DtFederalState(){ FederalStateName = "Thüringen"},
+                new DtFederalState(){ FederalStateName = "Baden-Württemberg"},
+                new DtFederalState(){ FederalStateName = "Bayern"},
+                new DtFederalState(){ FederalStateName = "Berlin"},
+                new DtFederalState(){ FederalStateName = "Brandenburg"},
+                new DtFederalState(){ FederalStateName = "Bremen"},
+                new DtFederalState(){ FederalStateName = "Hamburg"},
                 new DtFederalState(){ FederalStateName = "Hessen"},
-                new DtFederalState(){ FederalStateName = "Bayern"}
+                new DtFederalState(){ FederalStateName = "Mecklenburg-Vorpommern"},
+                new DtFederalState(){ FederalStateName = "Niedersachsen"},
+                new DtFederalState(){ FederalStateName = "Nordrhein-Westfalen"},
+                new DtFederalState(){ FederalStateName = "Rheinland-Pfalz"},
+                new DtFederalState(){ FederalStateName = "Saarland"},
+                new DtFederalState(){ FederalStateName = "Sachsen"},
+                new DtFederalState(){ FederalStateName = "Sachsen-Anhalt"},
+                new DtFederalState(){ FederalStateName = "Schleswig-Holstein"},
+                new DtFederalState(){ FederalStateName = "Thüringen"}
             };
 
             foreach(DtFederalState state in federalStates)
@@ -52,15 +67,15 @@ namespace XamPass.Models
             // Testdaten in Tabelle dt_university einfügen
             List<DtUniversity> universities = new List<DtUniversity>()
             {
-                new DtUniversity(){UniversityName = "BA Leipzig", CountryID = 1, FederalStateID = 1 },
-                new DtUniversity(){UniversityName = "BA Dresden",  CountryID = 1, FederalStateID = 1},
-                new DtUniversity(){UniversityName = "BA Glauchau", CountryID = 1, FederalStateID = 1},
-                new DtUniversity(){UniversityName = "Universität Leipzig", CountryID = 1, FederalStateID = 1},
-                new DtUniversity(){UniversityName = "HTWK Leipzig", CountryID = 1, FederalStateID = 1},
-                new DtUniversity(){UniversityName = "Universität Jena", CountryID = 1, FederalStateID = 2},
-                new DtUniversity(){UniversityName = "HfM Weimar", CountryID = 1, FederalStateID = 2},
-                new DtUniversity(){UniversityName = "Universität Kassel", CountryID = 1, FederalStateID = 3},
-                new DtUniversity(){UniversityName = "Universität Würzburg", CountryID = 1, FederalStateID = 4}
+                new DtUniversity(){UniversityName = "BA Leipzig", CountryID = 1, FederalStateID = 13 },
+                new DtUniversity(){UniversityName = "BA Dresden",  CountryID = 1, FederalStateID = 13},
+                new DtUniversity(){UniversityName = "BA Glauchau", CountryID = 1, FederalStateID = 13},
+                new DtUniversity(){UniversityName = "Universität Leipzig", CountryID = 1, FederalStateID = 13},
+                new DtUniversity(){UniversityName = "HTWK Leipzig", CountryID = 1, FederalStateID = 13},
+                new DtUniversity(){UniversityName = "Universität Jena", CountryID = 1, FederalStateID = 16},
+                new DtUniversity(){UniversityName = "HfM Weimar", CountryID = 1, FederalStateID = 16},
+                new DtUniversity(){UniversityName = "Universität Kassel", CountryID = 1, FederalStateID = 7},
+                new DtUniversity(){UniversityName = "Universität Würzburg", CountryID = 1, FederalStateID = 2}
             };
 
             foreach (DtUniversity university in universities)
@@ -106,7 +121,28 @@ namespace XamPass.Models
                 context.Add(subject);
             }
 
-            context.SaveChanges();            
+            context.SaveChanges();
+
+            DtAnswer[] answers = new DtAnswer[]
+          {
+                new DtAnswer(){ /*QuestionId = 1,*/
+                    SubmissionDate = DateTime.Now,
+                    Content = "Ich weiß doch nicht wie eine Turing Maschine aussieht!!!11!",
+                    UpVotes = 77
+                },
+                new DtAnswer(){ /*QuestionId = 3,*/
+                    SubmissionDate = DateTime.Now,
+                    Content = "Blau! Nein rot!",
+                    UpVotes = 2
+                }
+          };
+
+            foreach (DtAnswer answer in answers)
+            {
+                context.Add(answer);
+            }
+
+            context.SaveChanges();
 
             List<DtQuestion> questions = new List<DtQuestion>()
             {
@@ -126,7 +162,7 @@ namespace XamPass.Models
                     University = context.Universities.FirstOrDefault(u => u.UniversityID == 2),
                     UpVotes = 0},
 
-                 new DtQuestion(){Answers = null,
+                 new DtQuestion(){Answers = context.Answers.Where(a => a.AnswerID == 2).ToList(),
                     Content = "Was ist deine Lieblingsfarbe?",
                     FieldOfStudies = context.FieldsOfStudies.FirstOrDefault(u => u.FieldOfStudiesID == 1),
                     Subject = context.Subjects.FirstOrDefault(u => u.SubjectID == 1),
@@ -158,27 +194,7 @@ namespace XamPass.Models
             }
 
             context.SaveChanges();
-
-            DtAnswer[] answers = new DtAnswer[]
-            {
-                new DtAnswer(){ QuestionId = 1,
-                    SubmissionDate = DateTime.Now,
-                    Content = "Ich weiß doch nicht wie eine Turing Maschine aussieht!!!11!",
-                    UpVotes = 77
-                },
-                new DtAnswer(){ QuestionId = 3,
-                    SubmissionDate = DateTime.Now,
-                    Content = "Blau! Nein rot!",
-                    UpVotes = 2
-                }
-            };
-
-            foreach (DtAnswer answer in answers)
-            {
-                context.Add(answer);
-            }
-
-            context.SaveChanges();
+          
         }
     }
 }

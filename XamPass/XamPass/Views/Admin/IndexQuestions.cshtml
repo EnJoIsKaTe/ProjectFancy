@@ -1,0 +1,79 @@
+﻿@model IEnumerable<XamPass.Models.DataBaseModels.DtQuestion>
+
+@{
+       Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="CreateQuestions">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubmissionDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Content)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpVotes)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FieldOfStudies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.University)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubmissionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpVotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FieldOfStudies.FieldOfStudiesID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject.SubjectID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.University.UniversityID)
+            </td>
+            <td>
+                <a asp-action="EditQuestions" asp-route-id="@item.QuestionID">Edit</a> |
+                <a asp-action="DetailsQuestions" asp-route-id="@item.QuestionID">Details</a> |
+                <a asp-action="DeleteQuestions" asp-route-id="@item.QuestionID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

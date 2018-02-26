@@ -12,6 +12,7 @@ namespace XamPass.Models
         // TODO: nicht genutzte Properties löschen
         public int? QuestionId { get; set; }
         public DtQuestion Question { get; set; }
+        public DtAnswer Answer { get; set; }
         public DtFieldOfStudies FieldOfStudies { get; set; }
         public DtSubject Subject { get; set; }
         public DtUniversity University { get; set; }
