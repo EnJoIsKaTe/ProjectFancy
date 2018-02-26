@@ -111,7 +111,6 @@ namespace XamPass.Controllers
             viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
             // Alle Fragen werden aus der Datenbank geladen und danach mit den eingegebenen Filtern durchsucht
-            //ViewModelQuestions viewModelQuestions = new ViewModelQuestions();
 
             //Build the filter and load the Questions from the Database
             List<DtQuestion> filteredQuestions = _context.Questions
@@ -126,16 +125,6 @@ namespace XamPass.Controllers
             //viewModelQuestions.Questions = filteredQuestions;
             viewModelSearch.Questions = filteredQuestions;
 
-            //// Fill the SelectList
-            //foreach (var item in viewModelQuestions.Questions)
-            //{
-            //    viewModelQuestions.QuestionsSelectList.Add(new SelectListItem()
-            //    {
-            //        Value = item.QuestionID.ToString(),
-            //        Text = item.Content
-            //    });
-            //}
-
             // Fill the SelectList
             foreach (var item in filteredQuestions)
             {
@@ -144,29 +133,8 @@ namespace XamPass.Controllers
                     Value = item.QuestionID.ToString(),
                     Text = item.Content
                 });
-            }
+            }            
 
-            //if (viewModelSearch.FieldOfStudiesId.HasValue)
-            //{
-            //    viewModelQuestions.Questions = viewModelQuestions.Questions.Where(q => q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId).ToList();
-            //}
-
-            //if (viewModelSearch.SubjectId.HasValue)
-            //{
-            //    viewModelQuestions.Questions = viewModelQuestions.Questions.Where(q => q.SubjectID == viewModelSearch.SubjectId).ToList();
-            //}
-
-            //if (viewModelSearch.FederalStateId.HasValue)
-            //{
-            //    viewModelQuestions.Questions = viewModelQuestions.Questions.Where(q => q.University.FederalStateID == viewModelSearch.FederalStateId).ToList();
-            //}
-
-            //if (viewModelSearch.UniversityId.HasValue)
-            //{
-            //    viewModelQuestions.Questions = viewModelQuestions.Questions.Where(q => q.UniversityID == viewModelSearch.UniversityId).ToList();
-            //}
-
-            //return View(viewModelSearch);
             return View("Index", viewModelSearch);
         }
         #endregion

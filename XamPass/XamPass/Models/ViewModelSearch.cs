@@ -22,15 +22,6 @@ namespace XamPass.Models
         //[Required(ErrorMessage = "Bitte geben Sie einen Studiengang an")]
         public int? FieldOfStudiesId { get; set; }
 
-        //// Properties, die aus der Oberfläche zu befüllen sind
-        //[DataType(DataType.MultilineText)]
-        //[Required(ErrorMessage = "Bitte geben Sie eine Frage ein")]
-        //public string QuestionContent { get; set; }
-        //[Required(ErrorMessage = "Bitte geben Sie einen Titel ein")]
-        //public string QuestionTitle { get; set; }
-        //[DataType(DataType.MultilineText)]
-        //public string AnswerContent { get; set; }
-
         public List<DtUniversity> Universities { get; set; }
         public List<SelectListItem> UniversitySelectList { get; set; }
         public List<SelectListItem> FederalStates { get; set; }
