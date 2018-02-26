@@ -366,10 +366,10 @@ namespace XamPass.Controllers
 
         private async Task<ViewModelSearch> GetViewModelSearch(ViewModelSearch viewModelSearch)
         {
-            var universities = await _context.Universities.ToListAsync();
-            var federalStates = await _context.FederalStates.ToListAsync();
-            var subjects = await _context.Subjects.ToListAsync();
-            var fieldsOfStudies = await _context.FieldsOfStudies.ToListAsync();
+            var universities = await _context.Universities.OrderBy(u => u.UniversityName).ToListAsync();
+            var federalStates = await _context.FederalStates.OrderBy(f => f.FederalStateName).ToListAsync();
+            var subjects = await _context.Subjects.OrderBy(s => s.SubjectName).ToListAsync();
+            var fieldsOfStudies = await _context.FieldsOfStudies.OrderBy(f => f.FieldOfStudiesName).ToListAsync();
 
             //var viewModelSearch = new ViewModelSearch();
             viewModelSearch.Universities = universities;
