@@ -1,4 +1,4 @@
-﻿@model XamPass.Models.ViewModelSearch
+﻿@model XamPass.Models.ViewModelCreate
 
 @{
 	 ViewData["Title"] = "CreateQuestion";
@@ -172,31 +172,31 @@ new
                    }
             }*@
 
-                                             @{
-            string universityText;
-            if (Model.UniversityId == null)
-            {
-                universityText = "Hochschule auswählen";
-            }
-            else
-            {
-                universityText = Model.UniversitySelectList
-                                                .FirstOrDefault(f => f.Value == Model.UniversityId.ToString()).Text;
+												@{
+													 string universityText;
+													 if (Model.UniversityId == null)
+													 {
+														  universityText = "Hochschule auswählen";
+													 }
+													 else
+													 {
+														  universityText = Model.Universities
+																						  .FirstOrDefault(f => f.Value == Model.UniversityId.ToString()).Text;
 
 
-            }
-                                             }
-                                             @Html.DropDownListFor(m => m.UniversityId, Model.UniversitySelectList,
-                         universityText,
-                         new
-                         {
-                             @class = "form-control col-md-2 dropdown-toggle col input-cell",
-                             @onchange = "this.form.submit();"
-                         })
-                                             <div class="validation-div">
-                                                 @Html.ValidationMessageFor(m => m.UniversityId, "", new { @class = "validation-message" })
-                                             </div>
-                                         </td>
+													 }
+												}
+												@Html.DropDownListFor(m => m.UniversityId, Model.Universities,
+															universityText,
+															new
+															{
+																 @class = "form-control col-md-2 dropdown-toggle col input-cell",
+																 @onchange = "this.form.submit();"
+															})
+												<div class="validation-div">
+													 @Html.ValidationMessageFor(m => m.UniversityId, "", new { @class = "validation-message" })
+												</div>
+										  </td>
                                          <td>
                                              <div width="100%" style="text-align:right;">
                                                  <input type="submit" id="createUniversityBtn" value="Neue Universität anlegen" formmethod="post"
