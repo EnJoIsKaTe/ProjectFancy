@@ -25,28 +25,34 @@
 		<div class="container">
 			<div class="col-md-7">
 				<div class="row">
-					<h3>Suche</h3>
+					<h4>Suche</h4>
 				</div>
 				<div class="form-group">
-					<div class="row">
+					<div class="row, input-cell-name">
 						Fachrichtung
 					</div>
 					<div class="row">
-						@Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, "Fachrichtung auswählen", new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+						@Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, "Fachrichtung auswählen", new
+						{
+							@class = "form-control col-md-2 dropdown-toggle col input-cell"
+						})
 					</div>
-					<div class="row">
+					<div class="row, input-cell-name">
 						Fach
 					</div>
 					<div class="row">
-						@Html.DropDownListFor(m => m.SubjectId, Model.Subjects, "Fach auswählen", new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+						@Html.DropDownListFor(m => m.SubjectId, Model.Subjects, "Fach auswählen", new
+						{
+							@class = "form-control col-md-2 dropdown-toggle col input-cell"
+						})
 					</div>
-					<div class="row">
+					<div class="row, input-cell-name">
 						Land
 					</div>
 					<div class="row">
 						<input readonly value="Deutschland" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
 					</div>
-					<div class="row">
+					<div class="row, input-cell-name">
 						Bundesland
 					</div>
 					<div class="row">
@@ -55,9 +61,8 @@
 							@class = "form-control col-md-2 dropdown-toggle col input-cell",
 							@onchange = "this.form.submit();"
 						})
-
 					</div>
-					<div class="row">
+					<div class="row, input-cell-name">
 						Hochschule
 					</div>
 					<div class="row">
@@ -67,7 +72,7 @@
 							@onchange = "this.form.submit();"
 						})
 					</div>
-					<div class="row">
+					<div class="row, input-cell-name">
 						Schlüsselwörter
 					</div>
 					<div class="row">
@@ -81,8 +86,47 @@
 				</div>
 			</div>
 			<div class="col-md-1"></div>
+
+			@if (@Model.SearchExecuted)
+			{
+				<div class="row">
+					<div class="container">
+						<div class="question-wrapper">
+						<div class="question-wrapper-header">
+							<div class="question-header-text-beginning">Fragen</div>
+							@*<div class="question-header-text-beginning">Informatik</div>
+								<div class="question-header-text"> - </div>
+								<div class="question-header-text">Mathematik</div>*@
+						</div>
+						@foreach (var item in Model.Questions)
+						{
+							<div class="row">
+								<div class="col-sm-8">
+									@if (!String.IsNullOrEmpty(item.Title))
+									{
+										<div class="question-header-text-title">@item.Title</div>
+									}
+									@*<div class="question-header-text-title">Das ist der Titel</div>*@
+									<div style="padding:3px;" class="question">
+										<a asp-action="ViewQuestion" asp-route-id="@item.QuestionID" class="question-header-text-beginning">@item.Content</a>
+										<br>
+										@*<div class="question-header-text-beginning">Das ist die Frage aller Fragen!</div>*@
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="question">@item.FieldOfStudies.FieldOfStudiesName - @item.Subject.SubjectName </div>
+								</div>
+							</div>
+						}
+						</div>
+					</div>
+					<div class="row"></div>
+				</div>
+			}
+
+			@*<div class="col-md-1"></div>*@
 			<div class="col-md-2">
-				<h3>Neuer Eintrag</h3>
+				<h4>Neuer Eintrag</h4>
 				<div class="row">
 					<button type="submit" id="newEntryBtn" formaction=@Url.Action("CreateQuestion", "Home") formmethod="post" class="btn">
 						Neuen Eintrag anlegen
@@ -92,43 +136,11 @@
 			<div class="col-md-2"></div>
 		</div>
 
-		<asp:PlaceHolder id="DivINeedToAddStuffTo" runat="server">
 
+		<asp:PlaceHolder id="DivINeedToAddStuffTo" runat="server">
 		</asp:PlaceHolder>
 
-		@if (@Model.SearchExecuted)
-		{
-			<div class="container">
-				<div class="question-wrapper">
-					<div class="question-wrapper-header">
-						<div class="question-header-text-beginning">Fragen</div>
-						@*<div class="question-header-text-beginning">Informatik</div>
-							<div class="question-header-text"> - </div>
-							<div class="question-header-text">Mathematik</div>*@
-					</div>
-					@foreach (var item in Model.Questions)
-					{
-						<div class="row">
-							<div class="col-sm-8">
-								@if (!String.IsNullOrEmpty(item.Title))
-								{
-									<div class="question-header-text-title">@item.Title</div>
-								}
-								@*<div class="question-header-text-title">Das ist der Titel</div>*@
-								<div style="padding:3px;" class="question">
-									<a asp-action="ViewQuestion" asp-route-id="@item.QuestionID" class="question-header-text-beginning">@item.Content</a>
-									<br>
-									@*<div class="question-header-text-beginning">Das ist die Frage aller Fragen!</div>*@
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<div class="question">@item.FieldOfStudies.FieldOfStudiesName - @item.Subject.SubjectName </div>
-							</div>
-						</div>
-					}
-				</div>
-			</div>
-		}
+
 	}
 </body>
 
