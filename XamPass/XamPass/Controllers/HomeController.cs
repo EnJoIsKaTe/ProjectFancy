@@ -122,8 +122,7 @@ namespace XamPass.Controllers
 
             //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, true).Result;
 
-            //viewModelQuestions.Questions = filteredQuestions;
-            viewModelSearch.Questions = filteredQuestions;
+            
 
             // Fill the SelectList
             foreach (var item in filteredQuestions)
@@ -433,5 +432,94 @@ namespace XamPass.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+# region new Field Of Studies, Subject, University
+
+        public IActionResult CreateNewFieldOfStudies(ViewModelCreate viewModelCreate)
+        {
+            DtFieldOfStudies fieldOfStudies = new DtFieldOfStudies();
+
+            return View("CreateFieldOfStudies", fieldOfStudies);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveNewFieldOfStudies(DtFieldOfStudies fieldOfStudies)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(fieldOfStudies);
+                await _context.SaveChangesAsync();
+
+                ViewModelCreate viewModelCreate = new ViewModelCreate();
+                viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
+
+                return View("CreateQuestion", viewModelCreate);
+            }
+
+            return View("CreateFieldOfStudies", fieldOfStudies);
+        }
+        
+        public IActionResult CancelNewField()
+        {
+            ViewModelCreate viewModelCreate = new ViewModelCreate();
+            viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
+
+            return View("CreateQuestion", viewModelCreate);
+        }
+
+        public IActionResult CreateNewSubject(ViewModelCreate viewModelCreate)
+        {
+            DtSubject subject = new DtSubject();
+
+            return View("CreateSubject", subject);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveNewSubject(DtSubject subject)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(subject);
+                await _context.SaveChangesAsync();
+
+                ViewModelCreate viewModelCreate = new ViewModelCreate();
+                viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
+
+                return View("CreateQuestion", viewModelCreate);
+            }
+
+            return View("CreateSubject", subject);
+        }
+
+        public IActionResult CreateNewUniversity(ViewModelCreate viewModelCreate)
+        {
+            DtUniversity university = new DtUniversity();
+            return View("CreateUniversity", university);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveNewUniversity(DtUniversity university)
+        {
+            if (ModelState.IsValid)
+            {
+                university.CountryID = 1;
+                _context.Add(university);
+                await _context.SaveChangesAsync();
+
+                ViewModelCreate viewModelCreate = new ViewModelCreate();
+                viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
+
+                return View("CreateQuestion", viewModelCreate);
+            }
+
+            return View("CreateUniversity", university);
+        }
+
+
+
+        #endregion
     }
 }

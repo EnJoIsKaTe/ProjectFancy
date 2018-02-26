@@ -23,6 +23,8 @@ namespace XamPass.Models.DataBaseModels
         /// Name des Faches
         /// </summary>
         [StringLength(100)]
+        [MinLength(5, ErrorMessage = "Der Name des Faches muss mindestens 5 Zeichen haben")]
+        [Required(ErrorMessage ="Bitte geben Sie eine Universität an")]
         public string SubjectName { get; set; }
 
         #endregion

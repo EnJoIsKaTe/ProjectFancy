@@ -23,6 +23,8 @@ namespace XamPass.Models.DataBaseModels
         /// Name des Studienfachs
         /// </summary>
         [StringLength(100)]
+        [MinLength(5, ErrorMessage = "Der Name des Studiengangs muss mindestens 5 Zeichen haben")]
+        [Required(ErrorMessage = "Bitte geben sie eine Fachrichtung an")]
         public string FieldOfStudiesName { get; set; }
 
         /// <summary>
