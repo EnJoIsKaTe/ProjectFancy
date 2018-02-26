@@ -1,0 +1,47 @@
+﻿@model XamPass.Models.DataBaseModels.DtUniversity
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Neue Universität anlegen</h2>
+<hr />
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp class="control-label">Name der Universität</label>
+                    <input asp-for="@Model.UniversityName" class="form-control" />
+                    <span asp-validation-for="@Model.UniversityName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp class="control-label">Name des Bundesland</label>
+                    <input asp-for="@Model.FederalState.FederalStateName" class="form-control" />
+                    <span asp-validation-for="@Model.FederalState.FederalStateName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-left col-md-2">
+                <div class="form-group">
+                    <input type="submit" value="Universität erstellen" class="btn btn-default"
+                           formaction=@Url.Action("SaveNewUniversity", "Home") />
+                </div>
+            </div>
+
+            <div class="text-left col-md-2">
+                <div class="form-group">
+                    <input type="submit" value="Abbrechen" class="btn btn-default" formaction=@Url.Action("CancelNewField", "Home") />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+

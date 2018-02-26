@@ -95,11 +95,11 @@ namespace XamPass.Controllers
                 .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
                 .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
                 .ToList();
-            
+
             //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, true).Result;
 
             viewModelQuestions.Questions = filteredQuestions;
-            
+
             // Fill the SelectList
             foreach (var item in viewModelQuestions.Questions)
             {
@@ -184,7 +184,7 @@ namespace XamPass.Controllers
         public IActionResult CreateAnswer(ViewModelQuestions viewModelQuestions)
         {
             //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
-            
+
             if (viewModelQuestions.Answer != null)
             {
                 //DtQuestion question = viewModelQuestions.Questions.FirstOrDefault(
@@ -226,7 +226,7 @@ namespace XamPass.Controllers
                 .Include(u => u.University.Country)
                 .Include(q => q.Answers)
                 .SingleOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
-                
+
 
             // Fill the Properties for the View
             if (viewModelQuestions.Question != null)
@@ -389,5 +389,94 @@ namespace XamPass.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+# region new Field Of Studies, Subject, University
+
+        public IActionResult CreateNewFieldOfStudies(ViewModelSearch viewModelSearch)
+        {
+            DtFieldOfStudies fieldOfStudies = new DtFieldOfStudies();
+
+            return View("CreateFieldOfStudies", fieldOfStudies);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveNewFieldOfStudies(DtFieldOfStudies fieldOfStudies)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(fieldOfStudies);
+                await _context.SaveChangesAsync();
+
+                ViewModelSearch viewModelSearch = new ViewModelSearch();
+                viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+
+                return View("CreateQuestion", viewModelSearch);
+            }
+
+            return View("CreateFieldOfStudies", fieldOfStudies);
+        }
+        
+        public IActionResult CancelNewField()
+        {
+            ViewModelSearch viewModelSearch = new ViewModelSearch();
+            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+
+            return View("CreateQuestion", viewModelSearch);
+        }
+
+        public IActionResult CreateNewSubject(ViewModelSearch viewModelSearch)
+        {
+            DtSubject subject = new DtSubject();
+
+            return View("CreateSubject", subject);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveNewSubject(DtSubject subject)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(subject);
+                await _context.SaveChangesAsync();
+
+                ViewModelSearch viewModelSearch = new ViewModelSearch();
+                viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+
+                return View("CreateQuestion", viewModelSearch);
+            }
+
+            return View("CreateSubject", subject);
+        }
+
+        public IActionResult CreateNewUniversity(ViewModelSearch viewModelSearch)
+        {
+            DtUniversity university = new DtUniversity();
+            return View("CreateUniversity", university);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveNewUniversity(DtUniversity university)
+        {
+            if (ModelState.IsValid)
+            {
+                university.CountryID = 1;
+                _context.Add(university);
+                await _context.SaveChangesAsync();
+
+                ViewModelSearch viewModelSearch = new ViewModelSearch();
+                viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+
+                return View("CreateQuestion", viewModelSearch);
+            }
+
+            return View("CreateUniversity", university);
+        }
+
+
+
+        #endregion
     }
 }

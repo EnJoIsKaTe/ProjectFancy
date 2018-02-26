@@ -40,69 +40,81 @@
 						  <div id="createTable" style="width:100%;">
 
 								<table width="100%">
-									 <tr>
-										  <td class="input-cell-name">
-												Fachrichtung
-										  </td>
-										  <td>
-												@*<input class="form-control col-md-2 input-cell" />*@
-												@{
-													 string fieldOfStudiesText;
-													 if (Model.FieldOfStudiesId == null)
-													 {
-														  fieldOfStudiesText = "Fachrichtung auswählen";
-													 }
-													 else
-													 {
-														  fieldOfStudiesText = Model.FieldsOfStudies
-														  .FirstOrDefault(f => f.Value == Model.FieldOfStudiesId.ToString()).Text;
+                                    <tr>
+                                        <td class="input-cell-name">
+                                            Fachrichtung
+                                        </td>
+                                        <td>
+                                            @*<input class="form-control col-md-2 input-cell" />*@
+                                            @{
+            string fieldOfStudiesText;
+            if (Model.FieldOfStudiesId == null)
+            {
+                fieldOfStudiesText = "Fachrichtung auswählen";
+            }
+            else
+            {
+                fieldOfStudiesText = Model.FieldsOfStudies
+                .FirstOrDefault(f => f.Value == Model.FieldOfStudiesId.ToString()).Text;
 
 
-													 }
-												}
-												@Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies,
-																					 fieldOfStudiesText,
-																					 new
-																					 {
-																						  @class = "form-control col-md-2 dropdown-toggle col input-cell",
-																						  @onchange = "this.form.submit();"
-																					 })
-												<div class="validation-div">
-													 @Html.ValidationMessageFor(m => m.FieldOfStudiesId, "", new { @class = "validation-message" })
-												</div>
-										  </td>
-									 </tr>
-									 <tr>
-										  <td class="input-cell-name">
-												Fach
-										  </td>
-										  <td>
-												@*<input class="form-control col-md-2 input-cell" />*@
-												@{ string subjectText;
-													 if (Model.SubjectId == null)
-													 {
-														  subjectText = "Fach auswählen";
-													 }
-													 else
-													 {
-														  subjectText = Model.Subjects
-																						  .FirstOrDefault(f => f.Value == Model.SubjectId.ToString()).Text;
+            }
+                                            }
+                                            @Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies,
+                                                  fieldOfStudiesText,
+                                                  new
+                                                  {
+                                                      @class = "form-control col-md-2 dropdown-toggle col input-cell",
+                                                      @onchange = "this.form.submit();"
+                                                  })
+                                            <div class="validation-div">
+                                                @Html.ValidationMessageFor(m => m.FieldOfStudiesId, "", new { @class = "validation-message" })
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div width="100%" style="text-align:right;">
+                                                <input type="submit" id="createFieldOfStudiesBtn" value="Neue Fachrichtung anlegen" formmethod="post"
+                                                       formaction=@Url.Action("CreateNewFieldOfStudies", "Home") class="btn" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="input-cell-name">
+                                            Fach
+                                        </td>
+                                        <td>
+                                            @*<input class="form-control col-md-2 input-cell" />*@
+                                            @{ string subjectText;
+            if (Model.SubjectId == null)
+            {
+                subjectText = "Fach auswählen";
+            }
+            else
+            {
+                subjectText = Model.Subjects
+                                                .FirstOrDefault(f => f.Value == Model.SubjectId.ToString()).Text;
 
 
-													 }
-												}
-												@Html.DropDownListFor(m => m.SubjectId, Model.Subjects,
+            }
+                                            }
+                                            @Html.DropDownListFor(m => m.SubjectId, Model.Subjects,
 subjectText,
 new
 {
 @class = "form-control col-md-2 dropdown-toggle col input-cell",
 @onchange = "this.form.submit();"
 })
-												<div class="validation-div">
-													 @Html.ValidationMessageFor(m => m.SubjectId, "", new { @class = "validation-message" })
-												</div>
-										  </td>
-									 </tr>
+                                            <div class="validation-div">
+                                                @Html.ValidationMessageFor(m => m.SubjectId, "", new { @class = "validation-message" })
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div width="100%" style="text-align:right;">
+                                                <input type="submit" id="createSubjectBtn" value="Neues Fach anlegen" formmethod="post"
+                                                       formaction=@Url.Action("CreateNewSubject", "Home") class="btn" />
+                                            </div>
+                                        </td>
+                                    </tr>
 									 <tr>
 										  <td class="input-cell-name">
 												Land
@@ -142,50 +154,56 @@ new
 												</div>
 										  </td>
 									 </tr>
-									 <tr>
-										  <td class="input-cell-name">
-												Hochschule
-										  </td>
-										  <td>
-												@*<input class="form-control col-md-2 input-cell" />*@
-												@*@{
-															List<SelectListItem> uniSelectList = new List<SelectListItem>();
-															foreach (var item in Model.Universities)
-															{
-																	uniSelectList.Add(new SelectListItem()
-																	{
-																		  Value = item.UniversityID.ToString(),
-																		  Text = item.UniversityName
-																	});
-															}
-													 }*@
+                                     <tr>
+                                         <td class="input-cell-name">
+                                             Hochschule
+                                         </td>
+                                         <td>
+                                             @*<input class="form-control col-md-2 input-cell" />*@
+                                             @*@{
+                   List<SelectListItem> uniSelectList = new List<SelectListItem>();
+                   foreach (var item in Model.Universities)
+                   {
+                           uniSelectList.Add(new SelectListItem()
+                           {
+                                 Value = item.UniversityID.ToString(),
+                                 Text = item.UniversityName
+                           });
+                   }
+            }*@
 
-												@{
-													 string universityText;
-													 if (Model.UniversityId == null)
-													 {
-														  universityText = "Hochschule auswählen";
-													 }
-													 else
-													 {
-														  universityText = Model.UniversitySelectList
-																						  .FirstOrDefault(f => f.Value == Model.UniversityId.ToString()).Text;
+                                             @{
+            string universityText;
+            if (Model.UniversityId == null)
+            {
+                universityText = "Hochschule auswählen";
+            }
+            else
+            {
+                universityText = Model.UniversitySelectList
+                                                .FirstOrDefault(f => f.Value == Model.UniversityId.ToString()).Text;
 
 
-													 }
-												}
-												@Html.DropDownListFor(m => m.UniversityId, Model.UniversitySelectList,
-															universityText,
-															new
-															{
-																 @class = "form-control col-md-2 dropdown-toggle col input-cell",
-																 @onchange = "this.form.submit();"
-															})
-												<div class="validation-div">
-													 @Html.ValidationMessageFor(m => m.UniversityId, "", new { @class = "validation-message" })
-												</div>
-										  </td>
-									 </tr>
+            }
+                                             }
+                                             @Html.DropDownListFor(m => m.UniversityId, Model.UniversitySelectList,
+                         universityText,
+                         new
+                         {
+                             @class = "form-control col-md-2 dropdown-toggle col input-cell",
+                             @onchange = "this.form.submit();"
+                         })
+                                             <div class="validation-div">
+                                                 @Html.ValidationMessageFor(m => m.UniversityId, "", new { @class = "validation-message" })
+                                             </div>
+                                         </td>
+                                         <td>
+                                             <div width="100%" style="text-align:right;">
+                                                 <input type="submit" id="createUniversityBtn" value="Neue Universität anlegen" formmethod="post"
+                                                        formaction=@Url.Action("CreateNewUniversity", "Home") class="btn" />
+                                             </div>
+                                         </td>
+                                     </tr>
 								</table>
 
 								<hr style="margin: 20px 0px 20px 0px;" />
