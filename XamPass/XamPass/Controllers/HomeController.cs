@@ -435,7 +435,7 @@ namespace XamPass.Controllers
 
 # region new Field Of Studies, Subject, University
 
-        public IActionResult CreateNewFieldOfStudies(ViewModelSearch viewModelSearch)
+        public IActionResult CreateNewFieldOfStudies(ViewModelCreate viewModelCreate)
         {
             DtFieldOfStudies fieldOfStudies = new DtFieldOfStudies();
 
@@ -451,10 +451,10 @@ namespace XamPass.Controllers
                 _context.Add(fieldOfStudies);
                 await _context.SaveChangesAsync();
 
-                ViewModelSearch viewModelSearch = new ViewModelSearch();
-                viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+                ViewModelCreate viewModelCreate = new ViewModelCreate();
+                viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
 
-                return View("CreateQuestion", viewModelSearch);
+                return View("CreateQuestion", viewModelCreate);
             }
 
             return View("CreateFieldOfStudies", fieldOfStudies);
@@ -462,13 +462,13 @@ namespace XamPass.Controllers
         
         public IActionResult CancelNewField()
         {
-            ViewModelSearch viewModelSearch = new ViewModelSearch();
-            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+            ViewModelCreate viewModelCreate = new ViewModelCreate();
+            viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
 
-            return View("CreateQuestion", viewModelSearch);
+            return View("CreateQuestion", viewModelCreate);
         }
 
-        public IActionResult CreateNewSubject(ViewModelSearch viewModelSearch)
+        public IActionResult CreateNewSubject(ViewModelCreate viewModelCreate)
         {
             DtSubject subject = new DtSubject();
 
@@ -484,16 +484,16 @@ namespace XamPass.Controllers
                 _context.Add(subject);
                 await _context.SaveChangesAsync();
 
-                ViewModelSearch viewModelSearch = new ViewModelSearch();
-                viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+                ViewModelCreate viewModelCreate = new ViewModelCreate();
+                viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
 
-                return View("CreateQuestion", viewModelSearch);
+                return View("CreateQuestion", viewModelCreate);
             }
 
             return View("CreateSubject", subject);
         }
 
-        public IActionResult CreateNewUniversity(ViewModelSearch viewModelSearch)
+        public IActionResult CreateNewUniversity(ViewModelCreate viewModelCreate)
         {
             DtUniversity university = new DtUniversity();
             return View("CreateUniversity", university);
@@ -509,10 +509,10 @@ namespace XamPass.Controllers
                 _context.Add(university);
                 await _context.SaveChangesAsync();
 
-                ViewModelSearch viewModelSearch = new ViewModelSearch();
-                viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+                ViewModelCreate viewModelCreate = new ViewModelCreate();
+                viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
 
-                return View("CreateQuestion", viewModelSearch);
+                return View("CreateQuestion", viewModelCreate);
             }
 
             return View("CreateUniversity", university);
