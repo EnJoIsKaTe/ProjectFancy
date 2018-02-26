@@ -121,8 +121,7 @@ namespace XamPass.Controllers
                 .ToList();
 
             //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, true).Result;
-
-            
+            viewModelSearch.Questions = filteredQuestions;
 
             // Fill the SelectList
             foreach (var item in filteredQuestions)
