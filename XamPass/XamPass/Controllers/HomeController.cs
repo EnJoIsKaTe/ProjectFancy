@@ -176,27 +176,27 @@ namespace XamPass.Controllers
         /// <param name="viewModelQuestions"></param>
         /// <returns></returns>
         //[HttpPost]
-        public IActionResult CreateAnswer(ViewModelQuestions viewModelQuestions)
-        {
-            //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
+        //public IActionResult CreateAnswer(ViewModelQuestions viewModelQuestions)
+        //{
+        //    //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
 
-            if (viewModelQuestions.Answer != null)
-            {
-                //DtQuestion question = viewModelQuestions.Questions.FirstOrDefault(
-                //    q => q.QuestionID == viewModelQuestions.QuestionId);
+        //    if (viewModelQuestions.Answer != null)
+        //    {
+        //        //DtQuestion question = viewModelQuestions.Questions.FirstOrDefault(
+        //        //    q => q.QuestionID == viewModelQuestions.QuestionId);
 
-                // Load the Question from the Db, only the Answers-Property is needed here
-                DtQuestion question = _context.Questions
-                .Include(q => q.Answers)
-                .SingleOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
+        //        // Load the Question from the Db, only the Answers-Property is needed here
+        //        DtQuestion question = _context.Questions
+        //        .Include(q => q.Answers)
+        //        .SingleOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
 
-                viewModelQuestions.Answer.SubmissionDate = DateTime.Now;
-                question.Answers.Add(viewModelQuestions.Answer);
+        //        viewModelQuestions.Answer.SubmissionDate = DateTime.Now;
+        //        question.Answers.Add(viewModelQuestions.Answer);
 
-                _context.SaveChanges();
-            }
-            return RedirectToAction("ViewQuestion", viewModelQuestions);
-        }
+        //        _context.SaveChanges();
+        //    }
+        //    return RedirectToAction("ViewQuestion", viewModelQuestions);
+        //}
 
         #region View Question
         /// <summary>
@@ -205,6 +205,7 @@ namespace XamPass.Controllers
         /// </summary>
         /// <param name="viewModelQuestions"></param>
         /// <returns></returns>
+        [HttpGet]
         public IActionResult ViewQuestion(int? id)
         {
             ViewModelQuestions viewModelQuestions = new ViewModelQuestions();
@@ -234,6 +235,53 @@ namespace XamPass.Controllers
                 viewModelQuestions.Country = viewModelQuestions.Question.University.Country;
                 viewModelQuestions.FederalState = viewModelQuestions.Question.University.FederalState;
                 viewModelQuestions.Answers = viewModelQuestions.Question.Answers;
+            }
+            return View(viewModelQuestions);
+        }
+
+        [HttpPost]
+        public IActionResult ViewQuestion(ViewModelQuestions viewModelQuestions)
+        {
+            viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
+
+            viewModelQuestions.Question = viewModelQuestions.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
+
+            // Loads the selected Question from the Database
+            viewModelQuestions.Question = _context.Questions
+                .Include(q => q.FieldOfStudies)
+                .Include(q => q.Subject)
+                .Include(q => q.University)
+                .ThenInclude(u => u.FederalState)
+                .Include(u => u.University.Country)
+                .Include(q => q.Answers)
+                .SingleOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
+
+
+            // Fill the Properties for the View
+            if (viewModelQuestions.Question != null)
+            {
+                viewModelQuestions.FieldOfStudies = viewModelQuestions.Question.FieldOfStudies;
+                viewModelQuestions.Subject = viewModelQuestions.Question.Subject;
+                viewModelQuestions.University = viewModelQuestions.Question.University;
+                viewModelQuestions.Country = viewModelQuestions.Question.University.Country;
+                viewModelQuestions.FederalState = viewModelQuestions.Question.University.FederalState;
+                viewModelQuestions.Answers = viewModelQuestions.Question.Answers;
+            }
+
+            if (viewModelQuestions.Answer != null)
+            {
+                //DtQuestion question = viewModelQuestions.Questions.FirstOrDefault(
+                //    q => q.QuestionID == viewModelQuestions.QuestionId);
+
+                // Load the Question from the Db, only the Answers-Property is needed here
+                DtQuestion question = _context.Questions
+                .Include(q => q.Answers)
+                .SingleOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
+
+                viewModelQuestions.Answer.SubmissionDate = DateTime.Now;
+                question.Answers.Add(viewModelQuestions.Answer);
+
+                _context.SaveChanges();
             }
 
             return View(viewModelQuestions);

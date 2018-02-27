@@ -143,8 +143,9 @@
 					</div>
 					<div width="100%" style="text-align:left;">
 						@Html.HiddenFor(m => Model.QuestionId)
-						<input type="submit" id="createBtn" value="Submit" formmethod="post"
-								 formaction=@Url.Action("CreateAnswer", "Home") class="btn" />
+						@*<input type="submit" id="createBtn" value="Erstellen" formmethod="post"
+		formaction=@Url.Action("CreateAnswer", "Home") class="btn" />*@
+						<input type="submit" id="createBtn" value="Erstellen" formmethod="post" class="btn" />
 					</div>
 				</div>
 			</div>
