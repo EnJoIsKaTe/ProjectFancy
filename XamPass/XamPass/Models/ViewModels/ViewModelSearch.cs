@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using XamPass.Models.DataBaseModels;
 
-namespace XamPass.Models
+namespace XamPass.Models.ViewModels
 {
     /// <summary>
     /// ViewModel that provides the data to search for Questions

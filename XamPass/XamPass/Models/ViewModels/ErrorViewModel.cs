@@ -1,6 +1,6 @@
 using System;
 
-namespace XamPass.Models
+namespace XamPass.Models.ViewModels
 {
     public class ErrorViewModel
     {
