@@ -130,7 +130,7 @@ namespace XamPass.Controllers
                 });
             }
                     
-            // questions should not be rendered
+            // questions should NOT be rendered
             viewModelSearch.SearchExecuted = false;
 
             // setzt gewählte Hochschule auf null, wenn gewähltes Bundesland nicht übereinstimmt
@@ -165,9 +165,11 @@ namespace XamPass.Controllers
         /// <returns></returns>
         public IActionResult ShowQuestions(ViewModelSearch viewModelSearch)
         {
+            // questions should be rendered
             viewModelSearch.SearchExecuted = true;
 
             //viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+
             // get entries from db
             var fieldsOfStudies = _context.FieldsOfStudies.OrderBy(f => f.FieldOfStudiesName).ToListAsync().Result;
             var subjects = _context.Subjects.OrderBy(s => s.SubjectName).ToListAsync().Result;
@@ -220,15 +222,16 @@ namespace XamPass.Controllers
             //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, true).Result;
             viewModelSearch.Questions = filteredQuestions;
 
+            // wird nicht benötigt
             // Fill the SelectList
-            foreach (var item in filteredQuestions)
-            {
-                viewModelSearch.QuestionsSelectList.Add(new SelectListItem()
-                {
-                    Value = item.QuestionID.ToString(),
-                    Text = item.Content
-                });
-            }
+            //foreach (var item in filteredQuestions)
+            //{
+            //    viewModelSearch.QuestionsSelectList.Add(new SelectListItem()
+            //    {
+            //        Value = item.QuestionID.ToString(),
+            //        Text = item.Content
+            //    });
+            //}
 
             return View("Index", viewModelSearch);
         }
