@@ -1,42 +1,21 @@
-﻿@model XamPass.Models.ViewModelQuestions
+﻿@model XamPass.Models.ViewModels.ViewModelSearch
 
 @{
-    ViewData["Title"] = "ShowQuestions";
+	ViewData["Title"] = "ShowQuestions";
 }
 
-<head>
-    <link rel="stylesheet" href="~/css/home.css" />
-</head>
+<h2>ShowQuestions</h2>
 
-<body>
-    <h2>Verfügbare Fragen</h2>
+@*<ul>
+	@foreach (var item in Model.Questions)
+	{
+		Model.QuestionId = item.QuestionID;
+		<li>@Html.ActionLink(@item.Content, "ViewQuestion", "Home", Model)</li>
+	}
+</ul>*@
 
-    <ul>
-        @foreach (var item in Model.Questions)
-        {
-            Model.QuestionId = item.QuestionID;
-            <li>@Html.ActionLink(@item.Content, "ViewQuestion", "Home", Model)</li>
-        }
-    </ul>
-
-    @foreach (var item in Model.Questions)
-    {
-        Model.QuestionId = item.QuestionID;
-        <div class="question-wrapper">
-            <div class="question-wrapper-header">
-                <div class="question-header-text-beginning">@item.FieldOfStudies.FieldOfStudiesName</div>
-                <div class="question-header-text"> - </div>
-                <div class="question-header-text">@item.Subject.SubjectName</div>
-            </div>
-            <div>
-                <div class="question-header-text-title">@item.Title</div>
-            </div>
-        </div>
-    }
-
-    @*@Html.ListBoxFor(m => m.QuestionId, Model.QuestionsSelectList, new
-        {
-            @class = "form-control col-md-2 dropdown-toggle col input-cell",
-            @onchange = "this.form.submit();"
-        })*@
-</body>
+@*@Html.ListBoxFor(m => m.QuestionId, Model.QuestionsSelectList, new
+{
+	@class = "form-control col-md-2 dropdown-toggle col input-cell",
+	@onchange = "this.form.submit();"
+})*@
