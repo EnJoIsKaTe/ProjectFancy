@@ -42,17 +42,6 @@ namespace XamPass.Models.ViewModels
             FederalStates = new List<SelectListItem>();
             Subjects = new List<SelectListItem>();
             FieldsOfStudies = new List<SelectListItem>();
-
-            //Universities = viewModelSearch.Universities;
-            //FederalStates = viewModelSearch.FederalStates;
-            //Subjects = viewModelSearch.Subjects;
-            //FieldsOfStudies = viewModelSearch.FieldsOfStudies;
-
-            //UniversityId = viewModelSearch.UniversityId;
-            //FederalStateId = viewModelSearch.FederalStateId;
-            //CountryId = 0;
-            //SubjectId = viewModelSearch.SubjectId;
-            //FieldOfStudiesId = viewModelSearch.FieldOfStudiesId;
         }       
     }
 }

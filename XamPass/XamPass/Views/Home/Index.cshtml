@@ -28,7 +28,7 @@
 					<h4>Suche</h4>
 				</div>
 				<div class="form-group">
-					<div class="row, input-cell-name">
+					<div class="row input-cell-name">
 						Fachrichtung
 					</div>
 					<div class="row">
@@ -37,7 +37,7 @@
 							@class = "form-control col-md-2 dropdown-toggle col input-cell"
 						})
 					</div>
-					<div class="row, input-cell-name">
+					<div class="row input-cell-name">
 						Fach
 					</div>
 					<div class="row">
@@ -46,13 +46,13 @@
 							@class = "form-control col-md-2 dropdown-toggle col input-cell"
 						})
 					</div>
-					<div class="row, input-cell-name">
+					<div class="row input-cell-name">
 						Land
 					</div>
 					<div class="row">
 						<input readonly value="Deutschland" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
 					</div>
-					<div class="row, input-cell-name">
+					<div class="row input-cell-name">
 						Bundesland
 					</div>
 					<div class="row">
@@ -62,17 +62,17 @@
 							@onchange = "this.form.submit();"
 						})
 					</div>
-					<div class="row, input-cell-name">
+					<div class="row input-cell-name">
 						Hochschule
 					</div>
 					<div class="row">
-						@Html.DropDownListFor(m => m.UniversityId, Model.UniversitySelectList, "Hochschule auswählen", new
-						{
-							@class = "form-control col-md-2 dropdown-toggle col input-cell",
-							@onchange = "this.form.submit();"
-						})
+						@Html.DropDownListFor(m => m.UniversityId, Model.Universities, "Hochschule auswählen", new
+				 {
+					 @class = "form-control col-md-2 dropdown-toggle col input-cell",
+					 @onchange = "this.form.submit();"
+				 })
 					</div>
-					<div class="row, input-cell-name">
+					<div class="row input-cell-name">
 						Schlüsselwörter
 					</div>
 					<div class="row">

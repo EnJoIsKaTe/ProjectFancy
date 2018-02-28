@@ -22,9 +22,7 @@ namespace XamPass.Models.ViewModels
         //[Required(ErrorMessage = "Bitte geben Sie einen Studiengang an")]
         public int? FieldOfStudiesId { get; set; }
 
-        public List<DtUniversity> Universities { get; set; }
-
-        public List<SelectListItem> UniversitySelectList { get; set; }
+        public List<SelectListItem> Universities { get; set; }
         public List<SelectListItem> FederalStates { get; set; }
         public List<SelectListItem> Subjects { get; set; }
         public List<SelectListItem> FieldsOfStudies { get; set; }
@@ -32,7 +30,6 @@ namespace XamPass.Models.ViewModels
         // show questions
         public int? QuestionId { get; set; }
         public List<DtQuestion> Questions { get; set; }
-        //public List<SelectListItem> QuestionsSelectList { get; set; }
         public bool SearchExecuted { get; set; }
 
         /// <summary>
@@ -40,15 +37,13 @@ namespace XamPass.Models.ViewModels
         /// </summary>
         public ViewModelSearch()
         {
-            Universities = new List<DtUniversity>();
-            UniversitySelectList = new List<SelectListItem>();
+            Universities = new List<SelectListItem>();
             FederalStates = new List<SelectListItem>();
             Subjects = new List<SelectListItem>();
             FieldsOfStudies = new List<SelectListItem>();
 
             // show questions
             Questions = new List<DtQuestion>();
-            //QuestionsSelectList = new List<SelectListItem>();
         }
     }
 }

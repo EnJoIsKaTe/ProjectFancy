@@ -18,14 +18,13 @@ namespace XamPass.Models.ViewModels
         public DtUniversity University { get; set; }
         public DtCountry Country { get; set; }
         public DtFederalState FederalState { get; set; }
+
         public List<DtQuestion> Questions { get; set; }
-        public List<SelectListItem> QuestionsSelectList { get; set; }
         public List<DtAnswer> Answers { get; set; }
 
         public ViewModelQuestion()
         {
             Questions = new List<DtQuestion>();
-            QuestionsSelectList = new List<SelectListItem>();
             Answers = new List<DtAnswer>();
         }
     }
