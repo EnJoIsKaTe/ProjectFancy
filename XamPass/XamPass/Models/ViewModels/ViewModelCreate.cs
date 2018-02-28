@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using XamPass.Models.DataBaseModels;
 
-namespace XamPass.Models
+namespace XamPass.Models.ViewModels
 {
     public class ViewModelCreate
     {
@@ -42,17 +42,6 @@ namespace XamPass.Models
             FederalStates = new List<SelectListItem>();
             Subjects = new List<SelectListItem>();
             FieldsOfStudies = new List<SelectListItem>();
-
-            //Universities = viewModelSearch.Universities;
-            //FederalStates = viewModelSearch.FederalStates;
-            //Subjects = viewModelSearch.Subjects;
-            //FieldsOfStudies = viewModelSearch.FieldsOfStudies;
-
-            //UniversityId = viewModelSearch.UniversityId;
-            //FederalStateId = viewModelSearch.FederalStateId;
-            //CountryId = 0;
-            //SubjectId = viewModelSearch.SubjectId;
-            //FieldOfStudiesId = viewModelSearch.FieldOfStudiesId;
         }       
     }
 }

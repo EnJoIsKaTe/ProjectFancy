@@ -1,4 +1,4 @@
-﻿@model XamPass.Models.DataBaseModels.DtUniversity
+﻿@model XamPass.Models.ViewModels.ViewModelCreateUniversity
 
 @{
     ViewData["Title"] = "Create";
@@ -20,9 +20,12 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp class="control-label">Name des Bundesland</label>
-                    <input asp-for="@Model.FederalState.FederalStateName" class="form-control" />
-                    <span asp-validation-for="@Model.FederalState.FederalStateName" class="text-danger"></span>
+                    @Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, "Bundesland auswählen", new
+                    {
+                        @class = "form-control col-md-2 dropdown-toggle col input-cell"
+                    })
                 </div>
+                <span asp-validation-for="@Model.FederalStateId" class="text-danger"></span>
             </div>
         </div>
 
