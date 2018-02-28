@@ -104,26 +104,26 @@ namespace Controller.Tests
         //    Assert.AreEqual(question.UniversityID, 1);
         //}
 
-        [Test]
-        public void CreateAnswerTest()
-        {
-            HomeController controller = new HomeController(_context);
+        //[Test]
+        //public void CreateAnswerTest()
+        //{
+        //    HomeController controller = new HomeController(_context);
 
-            ViewModelQuestions vmq = new ViewModelQuestions()
-            {
-                QuestionId = 1,
-                Answer = new DtAnswer() { Content = "Test Answer" }
-            };
+        //    ViewModelQuestions vmq = new ViewModelQuestions()
+        //    {
+        //        QuestionId = 1,
+        //        Answer = new DtAnswer() { Content = "Test Answer" }
+        //    };
 
-            controller.CreateAnswer(vmq);
+        //    controller.CreateAnswer(vmq);
 
-            DtQuestion question = _context.Questions.SingleOrDefault(q => q.QuestionID == 1);
+        //    DtQuestion question = _context.Questions.SingleOrDefault(q => q.QuestionID == 1);
 
-            DtAnswer answer = question.Answers.SingleOrDefault(a => a.Content.Equals("Test Answer"));
+        //    DtAnswer answer = question.Answers.SingleOrDefault(a => a.Content.Equals("Test Answer"));
 
-            Assert.IsNotNull(answer);
-            Assert.AreEqual(question.Answers.Count, 2);
-        }
+        //    Assert.IsNotNull(answer);
+        //    Assert.AreEqual(question.Answers.Count, 2);
+        //}
 
         //[Test]
         //public void ViewQuestionTest()

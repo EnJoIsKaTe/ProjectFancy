@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using XamPass.Models.DataBaseModels;
 
-namespace XamPass.Models
+namespace XamPass.Models.ViewModels
 {
     public class ViewModelQuestions
     {
