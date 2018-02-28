@@ -242,40 +242,40 @@ namespace XamPass.Controllers
         /// Gets called when a single Question is selected and the Details of that Question have to be loaded
         /// Loads the Details of the Question to the viewModelQuestions and returns the Details View
         /// </summary>
-        /// <param name="viewModelQuestion"></param>
+        /// <param name="viewModelQuestions"></param>
         /// <returns></returns>
         [HttpGet]
         public IActionResult ViewQuestion(int? id)
         {
-            ViewModelQuestion viewModelQuestion = new ViewModelQuestion();
-            viewModelQuestion.QuestionId = (int?)id;
+            ViewModelQuestions viewModelQuestions = new ViewModelQuestions();
+            viewModelQuestions.QuestionId = (int?)id;
 
-            //viewModelQuestion = GetViewModelQuestions(viewModelQuestion, false).Result;
+            viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
 
-            //viewModelQuestion.Question = viewModelQuestion.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestion.QuestionId);
+            viewModelQuestions.Question = viewModelQuestions.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
 
             // Loads the selected Question from the Database
-            viewModelQuestion.Question = _context.Questions
+            viewModelQuestions.Question = _context.Questions
                 .Include(q => q.FieldOfStudies)
                 .Include(q => q.Subject)
                 .Include(q => q.University)
                 .ThenInclude(u => u.FederalState)
                 .Include(u => u.University.Country)
                 .Include(q => q.Answers)
-                .SingleOrDefault(q => q.QuestionID == viewModelQuestion.QuestionId);
+                .SingleOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
 
 
             // Fill the Properties for the View
-            if (viewModelQuestion.Question != null)
+            if (viewModelQuestions.Question != null)
             {
-                viewModelQuestion.FieldOfStudies = viewModelQuestion.Question.FieldOfStudies;
-                viewModelQuestion.Subject = viewModelQuestion.Question.Subject;
-                viewModelQuestion.University = viewModelQuestion.Question.University;
-                viewModelQuestion.Country = viewModelQuestion.Question.University.Country;
-                viewModelQuestion.FederalState = viewModelQuestion.Question.University.FederalState;
-                viewModelQuestion.Answers = viewModelQuestion.Question.Answers;
+                viewModelQuestions.FieldOfStudies = viewModelQuestions.Question.FieldOfStudies;
+                viewModelQuestions.Subject = viewModelQuestions.Question.Subject;
+                viewModelQuestions.University = viewModelQuestions.Question.University;
+                viewModelQuestions.Country = viewModelQuestions.Question.University.Country;
+                viewModelQuestions.FederalState = viewModelQuestions.Question.University.FederalState;
+                viewModelQuestions.Answers = viewModelQuestions.Question.Answers;
             }
-            return View(viewModelQuestion);
+            return View(viewModelQuestions);
         }
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace XamPass.Controllers
         /// <param name="viewModelQuestions"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult ViewQuestion(ViewModelQuestion viewModelQuestions)
+        public IActionResult ViewQuestion(ViewModelQuestions viewModelQuestions)
         {
             viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
 
@@ -410,7 +410,7 @@ namespace XamPass.Controllers
         #endregion
 
         #region GetViewModels
-        private async Task<ViewModelQuestion> GetViewModelQuestions(ViewModelQuestion viewModelQuestions, bool hasBeenLoaded)
+        private async Task<ViewModelQuestions> GetViewModelQuestions(ViewModelQuestions viewModelQuestions, bool hasBeenLoaded)
         {
             List<DtQuestion> questions = null;
 

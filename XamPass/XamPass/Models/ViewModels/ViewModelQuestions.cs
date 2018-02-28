@@ -7,7 +7,7 @@ using XamPass.Models.DataBaseModels;
 
 namespace XamPass.Models.ViewModels
 {
-    public class ViewModelQuestion
+    public class ViewModelQuestions
     {
         // TODO: nicht genutzte Properties löschen
         public int? QuestionId { get; set; }
@@ -22,7 +22,7 @@ namespace XamPass.Models.ViewModels
         public List<SelectListItem> QuestionsSelectList { get; set; }
         public List<DtAnswer> Answers { get; set; }
 
-        public ViewModelQuestion()
+        public ViewModelQuestions()
         {
             Questions = new List<DtQuestion>();
             QuestionsSelectList = new List<SelectListItem>();
