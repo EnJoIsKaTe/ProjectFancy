@@ -18,22 +18,64 @@ namespace XamPass.Controllers
     //[RequireHttps]
     public class HomeController : Controller
     {
+        #region Controller
         private readonly DataContext _context;
 
         public HomeController(DataContext context)
         {
             _context = context;
         }
+        #endregion
 
         #region Homepage
 
         [HttpGet]
         public IActionResult Index()
         {
+            // TODO: proper error handling, this one is for development only
             try
             {
                 ViewModelSearch viewModelSearch = new ViewModelSearch();
-                viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+                //viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+
+                // get entries from db
+                var fieldsOfStudies = _context.FieldsOfStudies.OrderBy(f => f.FieldOfStudiesName).ToListAsync().Result;
+                var subjects = _context.Subjects.OrderBy(s => s.SubjectName).ToListAsync().Result;
+                var federalStates = _context.FederalStates.OrderBy(f => f.FederalStateName).ToListAsync().Result;
+                var universities = _context.Universities.OrderBy(u => u.UniversityName).ToListAsync().Result;
+
+                foreach (var item in fieldsOfStudies)
+                {
+                    viewModelSearch.FieldsOfStudies.Add(new SelectListItem
+                    {
+                        Value = item.FieldOfStudiesID.ToString(),
+                        Text = item.FieldOfStudiesName
+                    });
+                }
+                foreach (var item in subjects)
+                {
+                    viewModelSearch.Subjects.Add(new SelectListItem
+                    {
+                        Value = item.SubjectID.ToString(),
+                        Text = item.SubjectName
+                    });
+                }
+                foreach (var item in federalStates)
+                {
+                    viewModelSearch.FederalStates.Add(new SelectListItem
+                    {
+                        Value = item.FederalStateID.ToString(),
+                        Text = item.FederalStateName
+                    });
+                }
+                foreach (var item in universities)
+                {
+                    viewModelSearch.UniversitySelectList.Add(new SelectListItem
+                    {
+                        Value = item.UniversityID.ToString(),
+                        Text = item.UniversityName
+                    });
+                }
                 return View(viewModelSearch);
             }
             catch (Exception e)
@@ -96,9 +138,7 @@ namespace XamPass.Controllers
             }
             return View(viewModelSearch);
         }
-        #endregion
 
-        #region ShowQuestions
         /// <summary>
         /// Gets called when in the Main View a selection was made and the Search Button has been hit.
         /// </summary>
@@ -131,46 +171,13 @@ namespace XamPass.Controllers
                     Value = item.QuestionID.ToString(),
                     Text = item.Content
                 });
-            }            
+            }
 
             return View("Index", viewModelSearch);
         }
         #endregion
 
-        //[HttpPost]
-        public IActionResult CreateQuestion(ViewModelCreate viewModelCreate)
-        {
-            viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
-
-            if (viewModelCreate.UniversityId.HasValue)
-            {
-                var university = _context.Universities.FirstOrDefault(u => u.UniversityID == viewModelCreate.UniversityId);
-                if (university.FederalStateID != viewModelCreate.FederalStateId)
-                {
-                    viewModelCreate.UniversityId = null;
-                }
-            }
-            if (viewModelCreate.FederalStateId.HasValue)
-            {
-                viewModelCreate.Universities = new List<SelectListItem>();
-                foreach (var item in _context.Universities)
-                {
-                    if (item.FederalStateID == viewModelCreate.FederalStateId)
-                    {
-                        viewModelCreate.Universities.Add(
-                            new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
-                    }
-                }
-            }
-
-            //return RedirectToAction("Done", result);
-
-            return View(viewModelCreate);
-            //return RedirectToAction("CreateNewEntry", viewModelCreate);
-        }
-        
         #region View Question
-
         /// <summary>
         /// Gets called when a single Question is selected and the Details of that Question have to be loaded
         /// Loads the Details of the Question to the viewModelQuestions and returns the Details View
@@ -251,21 +258,49 @@ namespace XamPass.Controllers
                 // Adding new Answer and save it to Database
                 viewModelQuestions.Answer.SubmissionDate = DateTime.Now;
                 viewModelQuestions.Question.Answers.Add(viewModelQuestions.Answer);
-                
+
                 _context.SaveChanges();
             }
 
             return View(viewModelQuestions);
         }
-
         #endregion
+
+        #region Create Question
+        [HttpPost]
+        public IActionResult CreateQuestion(ViewModelCreate viewModelCreate)
+        {
+            viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
+
+            if (viewModelCreate.UniversityId.HasValue)
+            {
+                var university = _context.Universities.FirstOrDefault(u => u.UniversityID == viewModelCreate.UniversityId);
+                if (university.FederalStateID != viewModelCreate.FederalStateId)
+                {
+                    viewModelCreate.UniversityId = null;
+                }
+            }
+            if (viewModelCreate.FederalStateId.HasValue)
+            {
+                viewModelCreate.Universities = new List<SelectListItem>();
+                foreach (var item in _context.Universities)
+                {
+                    if (item.FederalStateID == viewModelCreate.FederalStateId)
+                    {
+                        viewModelCreate.Universities.Add(
+                            new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
+                    }
+                }
+            }
+            return View(viewModelCreate);
+        }
 
         /// <summary>
         /// Creates new DtQuestion Object with the Properties from the View and Saves it to the Database
         /// </summary>
         /// <param name="viewModelSearch"></param>
         /// <returns></returns>
-        //[HttpPost]
+        [HttpPost]
         public IActionResult CreateNewEntry(ViewModelCreate viewModelCreate)
         {
             //viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
@@ -312,9 +347,9 @@ namespace XamPass.Controllers
             // if not all entries are correct you are redirected
             return View("CreateQuestion", viewModelCreate);
         }
+        #endregion
 
         #region GetViewModels
-
         private async Task<ViewModelQuestions> GetViewModelQuestions(ViewModelQuestions viewModelQuestions, bool hasBeenLoaded)
         {
             List<DtQuestion> questions = null;
@@ -440,18 +475,22 @@ namespace XamPass.Controllers
         }
         #endregion
 
+        #region Temporary
         public IActionResult Done(ViewModelSearch viewModelSearch)
         {
             var result = viewModelSearch;
             return View(result);
         }
+        #endregion
 
+        #region Error
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        #endregion
 
-# region new Field Of Studies, Subject, University
+        #region new Field Of Studies, Subject, University
 
         public IActionResult CreateNewFieldOfStudies(ViewModelCreate viewModelCreate)
         {
@@ -477,7 +516,7 @@ namespace XamPass.Controllers
 
             return View("CreateFieldOfStudies", fieldOfStudies);
         }
-        
+
         public IActionResult CancelNewField()
         {
             ViewModelCreate viewModelCreate = new ViewModelCreate();
@@ -535,9 +574,6 @@ namespace XamPass.Controllers
 
             return View("CreateUniversity", university);
         }
-
-
-
         #endregion
     }
 }
