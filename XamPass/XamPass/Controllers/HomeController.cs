@@ -554,17 +554,20 @@ namespace XamPass.Controllers
 
         public IActionResult CreateNewFieldOfStudies(ViewModelCreate viewModelCreate)
         {
-            DtFieldOfStudies fieldOfStudies = new DtFieldOfStudies();
+            ViewModelCreateFieldOfStudies vmFieldOfStudies = new ViewModelCreateFieldOfStudies();
 
-            return View("CreateFieldOfStudies", fieldOfStudies);
+            return View("CreateFieldOfStudies", vmFieldOfStudies);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveNewFieldOfStudies(DtFieldOfStudies fieldOfStudies)
+        public async Task<IActionResult> SaveNewFieldOfStudies(ViewModelCreateFieldOfStudies vmFieldOfStudies)
         {
             if (ModelState.IsValid)
             {
+                DtFieldOfStudies fieldOfStudies = new DtFieldOfStudies();
+                fieldOfStudies.FieldOfStudiesName = vmFieldOfStudies.FieldOfStudiesName;
+
                 _context.Add(fieldOfStudies);
                 await _context.SaveChangesAsync();
 
@@ -574,7 +577,88 @@ namespace XamPass.Controllers
                 return View("CreateQuestion", viewModelCreate);
             }
 
-            return View("CreateFieldOfStudies", fieldOfStudies);
+            return View("CreateFieldOfStudies", vmFieldOfStudies);
+        }
+
+        public IActionResult CreateNewSubject(ViewModelCreate viewModelCreate)
+        {
+            ViewModelCreateSubject vmSubject = new ViewModelCreateSubject();
+
+            return View("CreateSubject", vmSubject);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveNewSubject(ViewModelCreateSubject vmSubject)
+        {
+            if (ModelState.IsValid)
+            {
+                DtSubject subject = new DtSubject();
+                subject.SubjectName = vmSubject.SubjectName;
+
+                _context.Add(subject);
+                await _context.SaveChangesAsync();
+
+                ViewModelCreate viewModelCreate = new ViewModelCreate();
+                viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
+
+                return View("CreateQuestion", viewModelCreate);
+            }
+
+            return View("CreateSubject", vmSubject);
+        }
+
+        public async Task<IActionResult> CreateNewUniversity(ViewModelCreate viewModelCreate)
+        {
+            ViewModelCreateUniversity vmUniversity = new ViewModelCreateUniversity();
+
+            var federalStates = await _context.FederalStates.ToListAsync();
+
+            foreach (var item in federalStates)
+            {
+                vmUniversity.FederalStates.Add(new SelectListItem()
+                {
+                    Value = item.FederalStateID.ToString(),
+                    Text = item.FederalStateName
+                });
+            }
+
+            return View("CreateUniversity", vmUniversity);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveNewUniversity(ViewModelCreateUniversity vmUniversity)
+        {
+            if (ModelState.IsValid)
+            {
+                DtUniversity university = new DtUniversity();
+
+                university.CountryID = 1;
+                university.FederalStateID = (int)vmUniversity.FederalStateId;
+                university.UniversityName = vmUniversity.UniversityName;
+
+                _context.Add(university);
+                await _context.SaveChangesAsync();
+
+                ViewModelCreate viewModelCreate = new ViewModelCreate();
+                viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
+
+                return View("CreateQuestion", viewModelCreate);
+            }
+
+            var federalStates = await _context.FederalStates.ToListAsync();
+            
+            foreach (var item in federalStates)
+            {
+                vmUniversity.FederalStates.Add(new SelectListItem()
+                {
+                   Value = item.FederalStateID.ToString(),
+                   Text = item.FederalStateName
+                });
+            }
+
+            return View("CreateUniversity", vmUniversity);
         }
 
         public IActionResult CancelNewField()
@@ -585,55 +669,6 @@ namespace XamPass.Controllers
             return View("CreateQuestion", viewModelCreate);
         }
 
-        public IActionResult CreateNewSubject(ViewModelCreate viewModelCreate)
-        {
-            DtSubject subject = new DtSubject();
-
-            return View("CreateSubject", subject);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveNewSubject(DtSubject subject)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(subject);
-                await _context.SaveChangesAsync();
-
-                ViewModelCreate viewModelCreate = new ViewModelCreate();
-                viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
-
-                return View("CreateQuestion", viewModelCreate);
-            }
-
-            return View("CreateSubject", subject);
-        }
-
-        public IActionResult CreateNewUniversity(ViewModelCreate viewModelCreate)
-        {
-            DtUniversity university = new DtUniversity();
-            return View("CreateUniversity", university);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveNewUniversity(DtUniversity university)
-        {
-            if (ModelState.IsValid)
-            {
-                university.CountryID = 1;
-                _context.Add(university);
-                await _context.SaveChangesAsync();
-
-                ViewModelCreate viewModelCreate = new ViewModelCreate();
-                viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
-
-                return View("CreateQuestion", viewModelCreate);
-            }
-
-            return View("CreateUniversity", university);
-        }
         #endregion
     }
 }
