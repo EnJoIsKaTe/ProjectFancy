@@ -168,37 +168,9 @@ namespace XamPass.Controllers
             return View(viewModelCreate);
             //return RedirectToAction("CreateNewEntry", viewModelCreate);
         }
-
-        /// <summary>
-        /// Gets called when a new Answer to a Question was put in
-        /// Loads the Question from the Database and adds the Answer
-        /// </summary>
-        /// <param name="viewModelQuestions"></param>
-        /// <returns></returns>
-        //[HttpPost]
-        //public IActionResult CreateAnswer(ViewModelQuestions viewModelQuestions)
-        //{
-        //    //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
-
-        //    if (viewModelQuestions.Answer != null)
-        //    {
-        //        //DtQuestion question = viewModelQuestions.Questions.FirstOrDefault(
-        //        //    q => q.QuestionID == viewModelQuestions.QuestionId);
-
-        //        // Load the Question from the Db, only the Answers-Property is needed here
-        //        DtQuestion question = _context.Questions
-        //        .Include(q => q.Answers)
-        //        .SingleOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
-
-        //        viewModelQuestions.Answer.SubmissionDate = DateTime.Now;
-        //        question.Answers.Add(viewModelQuestions.Answer);
-
-        //        _context.SaveChanges();
-        //    }
-        //    return RedirectToAction("ViewQuestion", viewModelQuestions);
-        //}
-
+        
         #region View Question
+
         /// <summary>
         /// Gets called when a single Question is selected and the Details of that Question have to be loaded
         /// Loads the Details of the Question to the viewModelQuestions and returns the Details View
@@ -239,6 +211,12 @@ namespace XamPass.Controllers
             return View(viewModelQuestions);
         }
 
+        /// <summary>
+        /// Gets called, when a new Answer is created
+        /// Loads the responding Question from the Database and adds the Answer
+        /// </summary>
+        /// <param name="viewModelQuestions"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult ViewQuestion(ViewModelQuestions viewModelQuestions)
         {
@@ -270,17 +248,10 @@ namespace XamPass.Controllers
 
             if (viewModelQuestions.Answer != null)
             {
-                //DtQuestion question = viewModelQuestions.Questions.FirstOrDefault(
-                //    q => q.QuestionID == viewModelQuestions.QuestionId);
-
-                // Load the Question from the Db, only the Answers-Property is needed here
-                DtQuestion question = _context.Questions
-                .Include(q => q.Answers)
-                .SingleOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
-
+                // Adding new Answer and save it to Database
                 viewModelQuestions.Answer.SubmissionDate = DateTime.Now;
-                question.Answers.Add(viewModelQuestions.Answer);
-
+                viewModelQuestions.Question.Answers.Add(viewModelQuestions.Answer);
+                
                 _context.SaveChanges();
             }
 
