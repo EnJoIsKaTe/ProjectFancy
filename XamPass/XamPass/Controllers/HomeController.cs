@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using XamPass.Models;
+using XamPass.Models.ViewModels;
 using XamPass.Models.DataBaseModels;
 
 namespace XamPass.Controllers
