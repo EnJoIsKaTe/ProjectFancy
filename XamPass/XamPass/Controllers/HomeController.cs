@@ -88,8 +88,49 @@ namespace XamPass.Controllers
         [HttpPost]
         public IActionResult Index(ViewModelSearch viewModelSearch)
         {
-            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+            //viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
 
+            // get entries from db
+            var fieldsOfStudies = _context.FieldsOfStudies.OrderBy(f => f.FieldOfStudiesName).ToListAsync().Result;
+            var subjects = _context.Subjects.OrderBy(s => s.SubjectName).ToListAsync().Result;
+            var federalStates = _context.FederalStates.OrderBy(f => f.FederalStateName).ToListAsync().Result;
+            var universities = _context.Universities.OrderBy(u => u.UniversityName).ToListAsync().Result;
+
+            viewModelSearch.Universities = universities;
+            foreach (var item in fieldsOfStudies)
+            {
+                viewModelSearch.FieldsOfStudies.Add(new SelectListItem
+                {
+                    Value = item.FieldOfStudiesID.ToString(),
+                    Text = item.FieldOfStudiesName
+                });
+            }
+            foreach (var item in subjects)
+            {
+                viewModelSearch.Subjects.Add(new SelectListItem
+                {
+                    Value = item.SubjectID.ToString(),
+                    Text = item.SubjectName
+                });
+            }
+            foreach (var item in federalStates)
+            {
+                viewModelSearch.FederalStates.Add(new SelectListItem
+                {
+                    Value = item.FederalStateID.ToString(),
+                    Text = item.FederalStateName
+                });
+            }
+            foreach (var item in universities)
+            {
+                viewModelSearch.UniversitySelectList.Add(new SelectListItem
+                {
+                    Value = item.UniversityID.ToString(),
+                    Text = item.UniversityName
+                });
+            }
+                    
+            // questions should not be rendered
             viewModelSearch.SearchExecuted = false;
 
             // setzt gewählte Hochschule auf null, wenn gewähltes Bundesland nicht übereinstimmt
@@ -114,28 +155,6 @@ namespace XamPass.Controllers
                     }
                 }
             }
-
-            if (viewModelSearch.SearchExecuted)
-            {
-                // Build the filter and load the Questions from the Database
-                List<DtQuestion> filteredQuestions = _context.Questions
-                    .Where(q => (viewModelSearch.FieldOfStudiesId != null ? q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId : q.FieldOfStudiesID != 0))
-                    .Where(q => (viewModelSearch.SubjectId != null ? q.SubjectID == viewModelSearch.SubjectId : q.SubjectID != 0))
-                    .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
-                    .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
-                    .ToList();
-                viewModelSearch.Questions = filteredQuestions;
-
-                // Fill the SelectList
-                foreach (var item in filteredQuestions)
-                {
-                    viewModelSearch.QuestionsSelectList.Add(new SelectListItem()
-                    {
-                        Value = item.QuestionID.ToString(),
-                        Text = item.Content
-                    });
-                }
-            }
             return View(viewModelSearch);
         }
 
@@ -148,7 +167,45 @@ namespace XamPass.Controllers
         {
             viewModelSearch.SearchExecuted = true;
 
-            viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+            //viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+            // get entries from db
+            var fieldsOfStudies = _context.FieldsOfStudies.OrderBy(f => f.FieldOfStudiesName).ToListAsync().Result;
+            var subjects = _context.Subjects.OrderBy(s => s.SubjectName).ToListAsync().Result;
+            var federalStates = _context.FederalStates.OrderBy(f => f.FederalStateName).ToListAsync().Result;
+            var universities = _context.Universities.OrderBy(u => u.UniversityName).ToListAsync().Result;
+
+            foreach (var item in fieldsOfStudies)
+            {
+                viewModelSearch.FieldsOfStudies.Add(new SelectListItem
+                {
+                    Value = item.FieldOfStudiesID.ToString(),
+                    Text = item.FieldOfStudiesName
+                });
+            }
+            foreach (var item in subjects)
+            {
+                viewModelSearch.Subjects.Add(new SelectListItem
+                {
+                    Value = item.SubjectID.ToString(),
+                    Text = item.SubjectName
+                });
+            }
+            foreach (var item in federalStates)
+            {
+                viewModelSearch.FederalStates.Add(new SelectListItem
+                {
+                    Value = item.FederalStateID.ToString(),
+                    Text = item.FederalStateName
+                });
+            }
+            foreach (var item in universities)
+            {
+                viewModelSearch.UniversitySelectList.Add(new SelectListItem
+                {
+                    Value = item.UniversityID.ToString(),
+                    Text = item.UniversityName
+                });
+            }
 
             // Alle Fragen werden aus der Datenbank geladen und danach mit den eingegebenen Filtern durchsucht
 
