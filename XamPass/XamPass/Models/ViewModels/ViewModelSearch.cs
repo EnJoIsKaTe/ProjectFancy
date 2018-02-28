@@ -23,6 +23,7 @@ namespace XamPass.Models.ViewModels
         public int? FieldOfStudiesId { get; set; }
 
         public List<DtUniversity> Universities { get; set; }
+
         public List<SelectListItem> UniversitySelectList { get; set; }
         public List<SelectListItem> FederalStates { get; set; }
         public List<SelectListItem> Subjects { get; set; }
@@ -31,7 +32,7 @@ namespace XamPass.Models.ViewModels
         // show questions
         public int? QuestionId { get; set; }
         public List<DtQuestion> Questions { get; set; }
-        public List<SelectListItem> QuestionsSelectList { get; set; }
+        //public List<SelectListItem> QuestionsSelectList { get; set; }
         public bool SearchExecuted { get; set; }
 
         /// <summary>
@@ -47,7 +48,7 @@ namespace XamPass.Models.ViewModels
 
             // show questions
             Questions = new List<DtQuestion>();
-            QuestionsSelectList = new List<SelectListItem>();
+            //QuestionsSelectList = new List<SelectListItem>();
         }
     }
 }
