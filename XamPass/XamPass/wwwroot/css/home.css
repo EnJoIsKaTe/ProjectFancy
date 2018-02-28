@@ -10,7 +10,10 @@ h1 {
 .input-cell-name {
     text-align: start;
     padding: 5px;
-    width: 100pt
+    width: 100pt;
+    background-color: #BBB;
+    border-radius: 5px 5px 0px 5px;
+    margin-top:5px;
 }
 
 .input-cell {
