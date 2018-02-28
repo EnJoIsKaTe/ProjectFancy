@@ -247,35 +247,35 @@ namespace XamPass.Controllers
         [HttpGet]
         public IActionResult ViewQuestion(int? id)
         {
-            ViewModelQuestions viewModelQuestions = new ViewModelQuestions();
-            viewModelQuestions.QuestionId = (int?)id;
+            ViewModelQuestion viewModelQuestion = new ViewModelQuestion();
+            viewModelQuestion.QuestionId = (int?)id;
 
-            viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
+            viewModelQuestion = GetViewModelQuestions(viewModelQuestion, false).Result;
 
-            viewModelQuestions.Question = viewModelQuestions.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
+            viewModelQuestion.Question = viewModelQuestion.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestion.QuestionId);
 
             // Loads the selected Question from the Database
-            viewModelQuestions.Question = _context.Questions
+            viewModelQuestion.Question = _context.Questions
                 .Include(q => q.FieldOfStudies)
                 .Include(q => q.Subject)
                 .Include(q => q.University)
                 .ThenInclude(u => u.FederalState)
                 .Include(u => u.University.Country)
                 .Include(q => q.Answers)
-                .SingleOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
+                .SingleOrDefault(q => q.QuestionID == viewModelQuestion.QuestionId);
 
 
             // Fill the Properties for the View
-            if (viewModelQuestions.Question != null)
+            if (viewModelQuestion.Question != null)
             {
-                viewModelQuestions.FieldOfStudies = viewModelQuestions.Question.FieldOfStudies;
-                viewModelQuestions.Subject = viewModelQuestions.Question.Subject;
-                viewModelQuestions.University = viewModelQuestions.Question.University;
-                viewModelQuestions.Country = viewModelQuestions.Question.University.Country;
-                viewModelQuestions.FederalState = viewModelQuestions.Question.University.FederalState;
-                viewModelQuestions.Answers = viewModelQuestions.Question.Answers;
+                viewModelQuestion.FieldOfStudies = viewModelQuestion.Question.FieldOfStudies;
+                viewModelQuestion.Subject = viewModelQuestion.Question.Subject;
+                viewModelQuestion.University = viewModelQuestion.Question.University;
+                viewModelQuestion.Country = viewModelQuestion.Question.University.Country;
+                viewModelQuestion.FederalState = viewModelQuestion.Question.University.FederalState;
+                viewModelQuestion.Answers = viewModelQuestion.Question.Answers;
             }
-            return View(viewModelQuestions);
+            return View(viewModelQuestion);
         }
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace XamPass.Controllers
         /// <param name="viewModelQuestions"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult ViewQuestion(ViewModelQuestions viewModelQuestions)
+        public IActionResult ViewQuestion(ViewModelQuestion viewModelQuestions)
         {
             viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
 
@@ -410,7 +410,7 @@ namespace XamPass.Controllers
         #endregion
 
         #region GetViewModels
-        private async Task<ViewModelQuestions> GetViewModelQuestions(ViewModelQuestions viewModelQuestions, bool hasBeenLoaded)
+        private async Task<ViewModelQuestion> GetViewModelQuestions(ViewModelQuestion viewModelQuestions, bool hasBeenLoaded)
         {
             List<DtQuestion> questions = null;
 
