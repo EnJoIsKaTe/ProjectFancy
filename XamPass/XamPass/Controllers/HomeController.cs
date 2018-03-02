@@ -81,7 +81,7 @@ namespace XamPass.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return RedirectToAction("CreateDB");
+                return RedirectToAction("CreateDB", "Admin");
             }
         }
 
