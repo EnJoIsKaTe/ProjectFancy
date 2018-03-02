@@ -61,9 +61,11 @@ h1 {
     }
 
 .question-wrapper {
-    display: block;
-    border: 1px solid #222;
-    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #BBB;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .question-wrapper-header {
@@ -73,6 +75,8 @@ h1 {
     color: #FFF;
     font-size: 18px;
     font-weight: 500;
+    margin-top: 15px;
+    border-radius: 0px 15px 15px 0px;
 }
 
 .question-header-text {
@@ -82,13 +86,15 @@ h1 {
 
 .question-header-text-beginning {
     display: inline-block;
-    padding: 3px 3px 3px 10px;
 }
 
 .question-header-text-title {
     display: inline-block;
-    padding: 5px 3px 0px 10px;
     font-size: 18px;
     font-weight: 500;
     text-decoration: underline;
+}
+
+.question {
+    padding-top: 5px;
 }

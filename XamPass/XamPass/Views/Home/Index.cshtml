@@ -1,278 +1,278 @@
 ﻿@model XamPass.Models.ViewModels.ViewModelSearch
 @{
-	ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home Page";
 }
 
 <head>
-	<link rel="stylesheet" href="~/css/home.css" />
+    <link rel="stylesheet" href="~/css/home.css" />
 
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 </head>
 
 <body>
-	<h1>Home</h1>
+    <h1>Home</h1>
 
-	@using (Html.BeginForm("Index", "Home", FormMethod.Post))
-	{
-    <div class="container" style="padding-left:0px">
-        <div class="col-md-7">
-            <div class="row">
-                <h4>Suche</h4>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <div class="container" style="padding-left:0px">
+            <div class="col-md-7">
+                <div class="row">
+                    <h4>Suche</h4>
+                </div>
+                <div class="form-group">
+                    <div class="row input-cell-name">
+                        Fachrichtung
+                    </div>
+                    <div class="row">
+                        @Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, "Fachrichtung auswählen", new
+                        {
+                            @class = "form-control col-md-2 dropdown-toggle col input-cell"
+                        })
+                    </div>
+                    <div class="row input-cell-name">
+                        Fach
+                    </div>
+                    <div class="row">
+                        @Html.DropDownListFor(m => m.SubjectId, Model.Subjects, "Fach auswählen", new
+                        {
+                            @class = "form-control col-md-2 dropdown-toggle col input-cell"
+                        })
+                    </div>
+                    <div class="row input-cell-name">
+                        Land
+                    </div>
+                    <div class="row">
+                        <input readonly value="Deutschland" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
+                    </div>
+                    <div class="row input-cell-name">
+                        Bundesland
+                    </div>
+                    <div class="row">
+                        @Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, "Bundesland auswählen", new
+                        {
+                            @class = "form-control col-md-2 dropdown-toggle col input-cell",
+                            @onchange = "this.form.submit();"
+                        })
+                    </div>
+                    <div class="row input-cell-name">
+                        Hochschule
+                    </div>
+                    <div class="row">
+                        @Html.DropDownListFor(m => m.UniversityId, Model.Universities, "Hochschule auswählen", new
+                        {
+                            @class = "form-control col-md-2 dropdown-toggle col input-cell",
+                            @onchange = "this.form.submit();"
+                        })
+                    </div>
+                    <div class="row input-cell-name">
+                        Schlüsselwörter
+                    </div>
+                    <div class="row">
+                        <input id="inputKeywords" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
+                    </div>
+                    <div class="row">
+                        <button id="submitBtn" type="submit" formaction=@Url.Action("ShowQuestions", "Home") class="btn">
+                            Suchen
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <div class="row input-cell-name">
-                    Fachrichtung
-                </div>
-                <div class="row">
-                    @Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, "Fachrichtung auswählen", new
-                {
-                    @class = "form-control col-md-2 dropdown-toggle col input-cell"
-                })
-                </div>
-                <div class="row input-cell-name">
-                    Fach
-                </div>
-                <div class="row">
-                    @Html.DropDownListFor(m => m.SubjectId, Model.Subjects, "Fach auswählen", new
-                {
-                    @class = "form-control col-md-2 dropdown-toggle col input-cell"
-                })
-                </div>
-                <div class="row input-cell-name">
-                    Land
-                </div>
-                <div class="row">
-                    <input readonly value="Deutschland" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
-                </div>
-                <div class="row input-cell-name">
-                    Bundesland
-                </div>
-                <div class="row">
-                    @Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, "Bundesland auswählen", new
-                {
-                    @class = "form-control col-md-2 dropdown-toggle col input-cell",
-                    @onchange = "this.form.submit();"
-                })
-                </div>
-                <div class="row input-cell-name">
-                    Hochschule
-                </div>
-                <div class="row">
-                    @Html.DropDownListFor(m => m.UniversityId, Model.Universities, "Hochschule auswählen", new
-                {
-                    @class = "form-control col-md-2 dropdown-toggle col input-cell",
-                    @onchange = "this.form.submit();"
-                })
-                </div>
-                <div class="row input-cell-name">
-                    Schlüsselwörter
-                </div>
-                <div class="row">
-                    <input id="inputKeywords" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
-                </div>
-                <div class="row">
-                    <button id="submitBtn" type="submit" formaction=@Url.Action("ShowQuestions", "Home") class="btn">
-                        Suchen
+            <div class="col-md-1"></div>
+
+            <div class="col-md-2" style="padding-left: 0px;">
+                <h4>Neuer Eintrag</h4>
+                <div class="row" style="padding-left:15px;">
+                    <button type="submit" id="newEntryBtn" formaction=@Url.Action("CreateQuestion", "Home") formmethod="post" class="btn">
+                        Neuen Eintrag anlegen
                     </button>
                 </div>
             </div>
-        </div>
-        <div class="col-md-1"></div>
 
-        <div class="col-md-2">
-            <h4>Neuer Eintrag</h4>
-            <div class="row" style="padding-left:15px;">
-                <button type="submit" id="newEntryBtn" formaction=@Url.Action("CreateQuestion", "Home") formmethod="post" class="btn">
-                    Neuen Eintrag anlegen
-                </button>
-            </div>
-        </div>
+            @if (@Model.SearchExecuted)
+            {
+                <asp:PlaceHolder id="DivINeedToAddStuffTo" runat="server">
+                </asp:PlaceHolder>
 
-        @if (@Model.SearchExecuted)
-    {
-        <asp:PlaceHolder id="DivINeedToAddStuffTo" runat="server">
-        </asp:PlaceHolder>
-
-        <div class="row">
-            @*<div class="question-wrapper">*@
-            <div class="question-wrapper-header">
-                <div class="question-header-text-beginning">Fragen</div>
-                @*<div class="question-header-text-beginning">Informatik</div>
-                <div class="question-header-text"> - </div>
-                <div class="question-header-text">Mathematik</div>*@
-            </div>
-            @foreach (var item in Model.Questions)
-        {
-            <div class="row">
-                <div class="col-sm-8">
-                    @if (!String.IsNullOrEmpty(item.Title))
-                {
-                    <div class="question-header-text-title">@item.Title</div>
-            }
-            @*<div class="question-header-text-title">Das ist der Titel</div>*@
-                    <div style="padding:3px;" class="question">
-                        <a asp-action="ViewQuestion" asp-route-id="@item.QuestionID" class="question-header-text-beginning">@item.Content</a>
-                        <br>
-                        @*<div class="question-header-text-beginning">Das ist die Frage aller Fragen!</div>*@
+                <div class="row" style="margin-left: 0px;">
+                    @*<div class="question-wrapper">*@
+                    <div class="question-wrapper-header">
+                        <div class="question-header-text-beginning" style="padding-left:5px;">Fragen</div>
+                        @*<div class="question-header-text-beginning">Informatik</div>
+                            <div class="question-header-text"> - </div>
+                            <div class="question-header-text">Mathematik</div>*@
                     </div>
+                    @foreach (var item in Model.Questions)
+                    {
+                        <div class="row question-wrapper">
+                            <div class="col-sm-8" style="padding-left:0px;">
+                                @if (!String.IsNullOrEmpty(item.Title))
+                                {
+                                    <div class="question-header-text-title">@item.Title</div>
+                                }
+                                @*<div class="question-header-text-title">Das ist der Titel</div>*@
+                                <div class="question">
+                                    <a asp-action="ViewQuestion" asp-route-id="@item.QuestionID" class="question-header-text-beginning">@item.Content</a>
+                                    <br>
+                                    @*<div class="question-header-text-beginning">Das ist die Frage aller Fragen!</div>*@
+                                </div>
+                            </div>
+                            <div class="col-sm-4" style="padding-left:0px;">
+                                <div class="question">@item.FieldOfStudies.FieldOfStudiesName - @item.Subject.SubjectName </div>
+                            </div>
+                        </div>
+                    }
+                    @*</div>*@
                 </div>
-                <div class="col-sm-4">
-                    <div class="question">@item.FieldOfStudies.FieldOfStudiesName - @item.Subject.SubjectName </div>
-                </div>
-            </div>
-    }
-            @*</div>*@
+                <hr />
+            }
+
+
         </div>
-        <hr />
-}
-
-
-    </div>
-	}
+    }
 </body>
 
 @*<form method="post">*@
 
 @*<table class="table-responsive">
-	<tr>
-		<td class="col-md-4">
-			<div id="caption">
-				<h3>Suche</h3>
-			</div>
-		</td>
-		<td class="col-md-4">
-			<div id="newEntry">
-				<h3>Neuer Eintrag</h3>
-			</div>
-		</td>
-	</tr>
-	<tr>
-		@using (Html.BeginForm("Index", "Home", FormMethod.Post))
-		{
-			<td>
-				<div id="searchTable" style="width:80%;">
-					<table width="100%">
-						<tr>
-							<td class="input-cell-name">
-								Fachrichtung
-							</td>
-							<td>
-								@Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, "Fachrichtung auswählen",
-																																												 new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
-							</td>
-						</tr>
-						<tr>
-							<td class="input-cell-name">
-								Fach
-							</td>
-							<td>
-								@Html.DropDownListFor(m => m.SubjectId, Model.Subjects, "Fach auswählen",
-																																												 new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
-							</td>
-						</tr>
-						<tr>
-							<td class="input-cell-name">
-								Land
-							</td>
-							<td>
-								<input id="inputCounty" readonly="true" value="Deutschland" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
-							</td>
-						</tr>
-						<tr>
-							<td class="input-cell-name">
-								Bundesland
-							</td>
-							<td>
-								@Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, "Bundesland auswählen",
-									new
-									{
-										@class = "form-control col-md-2 dropdown-toggle col input-cell",
-										@onchange = "this.form.submit();"
-									})
-							</td>
-						</tr>
-						<tr>
-							<td class="input-cell-name">
-								Hochschule
-							</td>
-							<td>
-								@Html.DropDownListFor(m => m.UniversityId, Model.UniversitySelectList, "Hochschule auswählen",
-										new
-										{
-											@class = "form-control col-md-2 dropdown-toggle col input-cell",
-											@onchange = "this.form.submit();"
-										})
-							</td>
-						</tr>
-						<tr>
-							<td class="input-cell-name">
-								Schlüsselwörter
-							</td>
-							<td>
-								<input id="inputKeywords" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
-							</td>
-						</tr>
-					</table>
+    <tr>
+        <td class="col-md-4">
+            <div id="caption">
+                <h3>Suche</h3>
+            </div>
+        </td>
+        <td class="col-md-4">
+            <div id="newEntry">
+                <h3>Neuer Eintrag</h3>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <td>
+                <div id="searchTable" style="width:80%;">
+                    <table width="100%">
+                        <tr>
+                            <td class="input-cell-name">
+                                Fachrichtung
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, "Fachrichtung auswählen",
+                                                                                                                                                                                 new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-cell-name">
+                                Fach
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(m => m.SubjectId, Model.Subjects, "Fach auswählen",
+                                                                                                                                                                                 new { @class = "form-control col-md-2 dropdown-toggle col input-cell" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-cell-name">
+                                Land
+                            </td>
+                            <td>
+                                <input id="inputCounty" readonly="true" value="Deutschland" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-cell-name">
+                                Bundesland
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, "Bundesland auswählen",
+                                    new
+                                    {
+                                        @class = "form-control col-md-2 dropdown-toggle col input-cell",
+                                        @onchange = "this.form.submit();"
+                                    })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-cell-name">
+                                Hochschule
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(m => m.UniversityId, Model.UniversitySelectList, "Hochschule auswählen",
+                                        new
+                                        {
+                                            @class = "form-control col-md-2 dropdown-toggle col input-cell",
+                                            @onchange = "this.form.submit();"
+                                        })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input-cell-name">
+                                Schlüsselwörter
+                            </td>
+                            <td>
+                                <input id="inputKeywords" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
+                            </td>
+                        </tr>
+                    </table>
 
-					<div width="100%" style="text-align:center;">
-						<button id="submitBtn" type="submit" formaction=@Url.Action("ShowQuestions", "Home") class="btn">
-							Suchen
-						</button>
-					</div>
-				</div>
-			</td>
+                    <div width="100%" style="text-align:center;">
+                        <button id="submitBtn" type="submit" formaction=@Url.Action("ShowQuestions", "Home") class="btn">
+                            Suchen
+                        </button>
+                    </div>
+                </div>
+            </td>
 
-			@*</form>*@
+            @*</form>*@
 
 @*<td style="display:inline-block;">*@
 @*<button id="newEntryBtn" type="submit" class="btn">Neuen Eintrag anlegen</button>*@
 @*<button type="submit" id="newEntryBtn" formaction=@Url.Action("CreateQuestion", "Home") formmethod="post" class="btn">
-						Neuen Eintrag anlegen
-					</button>
-				</td>
-			}
-		</tr>
-	</table>*@
+                        Neuen Eintrag anlegen
+                    </button>
+                </td>
+            }
+        </tr>
+    </table>*@
 
 
 @*@ViewBag.Test*@
 @*@foreach (var item in Model.Questions)
-	{
-		 Model.QuestionId = item.QuestionID;
-		 <div class="question-wrapper">
-			  <div class="question-wrapper-header">
-					<div class="question-header-text-beginning">Informatik</div>
-					<div class="question-header-text"> - </div>
-					<div class="question-header-text">Mathematik</div>
-			  </div>
-			  <div>
-					<div class="question-header-text-title">Das ist der Titel</div>
-			  </div>
-			  <div style="padding:3px;">
-					<div class="question-header-text-beginning">Das ist die Frage aller Fragen!</div>
-			  </div>
-		 </div>
-	}*@
+    {
+         Model.QuestionId = item.QuestionID;
+         <div class="question-wrapper">
+              <div class="question-wrapper-header">
+                    <div class="question-header-text-beginning">Informatik</div>
+                    <div class="question-header-text"> - </div>
+                    <div class="question-header-text">Mathematik</div>
+              </div>
+              <div>
+                    <div class="question-header-text-title">Das ist der Titel</div>
+              </div>
+              <div style="padding:3px;">
+                    <div class="question-header-text-beginning">Das ist die Frage aller Fragen!</div>
+              </div>
+         </div>
+    }*@
 
 
 
 @*<div>
-	@if (@Model.SearchExecuted)
-	{
-		@foreach (var item in Model.Questions)
-		{*@
+    @if (@Model.SearchExecuted)
+    {
+        @foreach (var item in Model.Questions)
+        {*@
 @*Model.QuestionId = item.QuestionID;*@
 @*<li>@Html.ActionLink(@item.Content, "ViewQuestion", "Home", Model.QuestionId)</li>*@
 @*<a asp-action="ViewQuestion" asp-route-id="@item.QuestionID">@item.Content</a>
-			<br>
-		}
-	}*@
+            <br>
+        }
+    }*@
 @*</div>*@

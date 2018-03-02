@@ -9,7 +9,10 @@ h1 {
 
 .input-cell-name {
     text-align: start;
-    width: 125pt
+    width: 125pt;
+    background-color: #BBB;
+    border-radius: 5px 5px 0px 5px;
+    padding: 2px 0px 2px 5px;
 }
 
 .input-cell-name-big {
@@ -20,7 +23,52 @@ h1 {
 
 .input-cell {
     margin-bottom: 3px;
-    width: 40%;
+    width: auto;
+    min-width: 30%;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.container-ext {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.col-button-end {
+    width: auto;
+    float: right;
+    padding-right: 0px;
+}
+
+.new-something-btn {
+    width: 150pt;
+    border: 1px solid #edb850;
+    background-color: transparent;
+    color: #ef8f32;
+}
+
+    .new-something-btn:hover {
+        background: linear-gradient(#f79b45, #ef8f32);
+        color: #333;
+    }
+
+    .new-something-btn:active {
+        background: linear-gradient(#ef8f32, #e57d19);
+    }
+
+.col-validation {
+    width: auto;
+    padding: 0px;
+    min-width: 25%;
+}
+
+.dropdown-field {
+    width: 100%;
 }
 
 .input-cell-big {
@@ -73,3 +121,36 @@ h1 {
     #createBtn:active {
         background: linear-gradient(#ef8f32, #e57d19);
     }
+
+
+
+
+@media (max-width: 450px) {
+    .validation-message {
+        display: table-cell;
+        vertical-align: middle;
+        padding-left: 10px;
+    }
+
+    .validation-div {
+        display: inline-block;
+        float: right;
+    }
+
+    .input-cell {
+        margin-bottom: 3px;
+        width: 100%;
+        min-width: 30%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .input-cell-name {
+        text-align: start;
+        width: 125pt;
+        background-color: #BBB;
+        border-radius: 5px 5px 0px 5px;
+        padding: 2px 0px 2px 5px;
+        margin-top: 15px;
+    }
+}
