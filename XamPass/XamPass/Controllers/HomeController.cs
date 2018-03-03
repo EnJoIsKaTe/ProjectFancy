@@ -18,12 +18,23 @@ namespace XamPass.Controllers
     //[RequireHttps]
     public class HomeController : Controller
     {
+        private List<DtFieldOfStudies> _fieldsOfStudies;
+        private List<DtSubject> _subjects;
+        private List<DtFederalState> _federalStates;
+        private List<DtUniversity> _universities;
+
+
         #region Controller
         private readonly DataContext _context;
 
         public HomeController(DataContext context)
         {
             _context = context;
+
+            _fieldsOfStudies = new List<DtFieldOfStudies>();
+            _subjects = new List<DtSubject>();
+            _federalStates = new List<DtFederalState>();
+            _universities = new List<DtUniversity>();
         }
         #endregion
 
@@ -88,52 +99,15 @@ namespace XamPass.Controllers
         [HttpPost]
         public IActionResult Index(ViewModelSearch viewModelSearch)
         {
-            //viewModelSearch = GetViewModelSearch(viewModelSearch).Result;
+            // Fill the Dropdowns with all the Data from the Db
+            viewModelSearch = FillAllDropdowns(viewModelSearch);
 
-            // get entries from db
-            var fieldsOfStudies = _context.FieldsOfStudies.OrderBy(f => f.FieldOfStudiesName).ToListAsync().Result;
-            var subjects = _context.Subjects.OrderBy(s => s.SubjectName).ToListAsync().Result;
-            var federalStates = _context.FederalStates.OrderBy(f => f.FederalStateName).ToListAsync().Result;
             var universities = _context.Universities.OrderBy(u => u.UniversityName).ToListAsync().Result;
-
-            //viewModelSearch.Universities = universities;
-            foreach (var item in fieldsOfStudies)
-            {
-                viewModelSearch.FieldsOfStudies.Add(new SelectListItem
-                {
-                    Value = item.FieldOfStudiesID.ToString(),
-                    Text = item.FieldOfStudiesName
-                });
-            }
-            foreach (var item in subjects)
-            {
-                viewModelSearch.Subjects.Add(new SelectListItem
-                {
-                    Value = item.SubjectID.ToString(),
-                    Text = item.SubjectName
-                });
-            }
-            foreach (var item in federalStates)
-            {
-                viewModelSearch.FederalStates.Add(new SelectListItem
-                {
-                    Value = item.FederalStateID.ToString(),
-                    Text = item.FederalStateName
-                });
-            }
-            foreach (var item in universities)
-            {
-                viewModelSearch.Universities.Add(new SelectListItem
-                {
-                    Value = item.UniversityID.ToString(),
-                    Text = item.UniversityName
-                });
-            }
 
             // questions should NOT be rendered
             viewModelSearch.SearchExecuted = false;
 
-            // setzt gewählte Hochschule auf null, wenn gewähltes Bundesland nicht übereinstimmt
+            // sets selected University to null if the seleected FederalState does not fit
             if (viewModelSearch.UniversityId.HasValue)
             {
                 //var university = viewModelSearch.Universities.FirstOrDefault(u => u.UniversityID == viewModelSearch.UniversityId);
@@ -143,7 +117,7 @@ namespace XamPass.Controllers
                     viewModelSearch.UniversityId = null;
                 }
             }
-            // filtert Hochschulen für gewähltes Bundesland
+            // filter Universities by selected FederalState
             if (viewModelSearch.FederalStateId.HasValue)
             {
                 viewModelSearch.Universities = new List<SelectListItem>();
@@ -156,7 +130,162 @@ namespace XamPass.Controllers
                     }
                 }
             }
+
+            // Testarea
+            SetAllFilters(viewModelSearch);
+            
+
             return View(viewModelSearch);
+        }
+
+
+        /// <summary>
+        /// Fills the ViewModelSearch Dropdowns with the Data from the Database
+        /// Dropdowns will be sorted alphabetically
+        /// </summary>
+        /// <param name="viewModelSearch"></param>
+        /// <returns></returns>
+        public ViewModelSearch FillAllDropdowns(ViewModelSearch viewModelSearch)
+        {
+            // get entries from db            
+            _fieldsOfStudies = _context.FieldsOfStudies.OrderBy(f => f.FieldOfStudiesName).ToList();
+            _subjects = _context.Subjects.OrderBy(s => s.SubjectName).ToList();
+            _federalStates = _context.FederalStates.OrderBy(f => f.FederalStateName).ToList();
+            _universities = _context.Universities.OrderBy(u => u.UniversityName).ToList();
+
+            //viewModelSearch.Universities = universities;
+            foreach (var item in _fieldsOfStudies)
+            {
+                viewModelSearch.FieldsOfStudies.Add(new SelectListItem
+                {
+                    Value = item.FieldOfStudiesID.ToString(),
+                    Text = item.FieldOfStudiesName
+                });
+            }
+            foreach (var item in _subjects)
+            {
+                viewModelSearch.Subjects.Add(new SelectListItem
+                {
+                    Value = item.SubjectID.ToString(),
+                    Text = item.SubjectName
+                });
+            }
+            foreach (var item in _federalStates)
+            {
+                viewModelSearch.FederalStates.Add(new SelectListItem
+                {
+                    Value = item.FederalStateID.ToString(),
+                    Text = item.FederalStateName
+                });
+            }
+            foreach (var item in _universities)
+            {
+                viewModelSearch.Universities.Add(new SelectListItem
+                {
+                    Value = item.UniversityID.ToString(),
+                    Text = item.UniversityName
+                });
+            }
+
+            return viewModelSearch;
+        }
+
+
+        public ViewModelSearch SetAllFilters(ViewModelSearch viewModelSearch)
+        {
+            List<DtQuestion> questions = _context.Questions
+               .Where(q => (viewModelSearch.FieldOfStudiesId != null ? q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId : q.FieldOfStudiesID != 0))
+               .Where(q => (viewModelSearch.SubjectId != null ? q.SubjectID == viewModelSearch.SubjectId : q.SubjectID != 0))
+               .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
+               .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
+               .ToList();
+
+            // if no filter is set the Dropdowns don´t have to be filtered
+            if (viewModelSearch.SubjectId.HasValue || viewModelSearch.UniversityId.HasValue || viewModelSearch.FieldOfStudiesId.HasValue)
+            {
+                viewModelSearch = SetFilterForUniversities(questions, viewModelSearch);
+                viewModelSearch = SetFilterForFieldsOfStudies(questions, viewModelSearch);
+                viewModelSearch = SetFilterForSubjects(questions, viewModelSearch);
+            }
+
+            return viewModelSearch;
+        }
+
+
+        public ViewModelSearch SetFilterForUniversities(List<DtQuestion> questions, ViewModelSearch viewModelSearch)
+        {
+            List<DtUniversity> universities = new List<DtUniversity>();
+            
+            universities = questions
+               .Select(q => q.University)
+               .Distinct()
+               .OrderBy(u => u.UniversityName)
+               .ToList();
+
+
+            // if no filter was set or no element was returned all Elements stay in the List
+            if (universities.Count == 0)
+                universities.AddRange(_universities);
+
+            viewModelSearch.Universities.Clear();
+
+            foreach (var item in universities)
+            {
+                viewModelSearch.Universities.Add(
+                    new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
+            }
+
+            return viewModelSearch;
+        }
+
+        public ViewModelSearch SetFilterForFieldsOfStudies(List<DtQuestion> questions, ViewModelSearch viewModelSearch)
+        {
+            List<DtFieldOfStudies> fieldsOfStudies = new List<DtFieldOfStudies>();
+
+            fieldsOfStudies = questions
+               .Select(q => q.FieldOfStudies)
+               .Distinct()
+               .OrderBy(fos => fos.FieldOfStudiesName)
+               .ToList();
+
+            // if no filter was set or no element was returned all Elements stay in the List
+            if (fieldsOfStudies.Count == 0)
+                fieldsOfStudies.AddRange(_fieldsOfStudies);
+
+            viewModelSearch.FieldsOfStudies.Clear();
+
+            foreach (var item in fieldsOfStudies)
+            {
+                viewModelSearch.FieldsOfStudies.Add(
+                   new SelectListItem { Value = item.FieldOfStudiesID.ToString(), Text = item.FieldOfStudiesName });
+            }
+
+            return viewModelSearch;
+        }
+
+        public ViewModelSearch SetFilterForSubjects(List<DtQuestion> questions, ViewModelSearch viewModelSearch)
+        {
+            List<DtSubject> subjects = new List<DtSubject>();
+
+            subjects = questions
+               .Select(q => q.Subject)
+                .Distinct()
+                .OrderBy(s => s.SubjectName)
+                .ToList();
+
+            // if no filter was set or no element was returned all Elements stay in the List
+            if (subjects.Count == 0)
+                subjects.AddRange(_subjects);
+
+            viewModelSearch.Subjects.Clear();
+
+            foreach (var item in subjects)
+            {
+                viewModelSearch.Subjects.Add(
+                    new SelectListItem { Value = item.SubjectID.ToString(), Text = item.SubjectName });
+            }
+
+            return viewModelSearch;
         }
 
         /// <summary>
@@ -210,8 +339,6 @@ namespace XamPass.Controllers
                 });
             }
 
-            // Alle Fragen werden aus der Datenbank geladen und danach mit den eingegebenen Filtern durchsucht
-
             //Build the filter and load the Questions from the Database
             List<DtQuestion> filteredQuestions = _context.Questions
                 .Where(q => (viewModelSearch.FieldOfStudiesId != null ? q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId : q.FieldOfStudiesID != 0))
@@ -225,9 +352,11 @@ namespace XamPass.Controllers
 
             return View("Index", viewModelSearch);
         }
+
         #endregion
 
         #region View Question
+
         /// <summary>
         /// Gets called when a single Question is selected and the Details of that Question have to be loaded
         /// Loads the Details of the Question to the viewModelQuestions and returns the Details View
