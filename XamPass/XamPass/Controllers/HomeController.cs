@@ -81,7 +81,7 @@ namespace XamPass.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return RedirectToAction("CreateDB");
+                return RedirectToAction("CreateDB", "Admin");
             }
         }
 
@@ -129,7 +129,7 @@ namespace XamPass.Controllers
                     Text = item.UniversityName
                 });
             }
-                    
+
             // questions should NOT be rendered
             viewModelSearch.SearchExecuted = false;
 
@@ -243,7 +243,7 @@ namespace XamPass.Controllers
             //viewModelQuestion = GetViewModelQuestions(viewModelQuestion, false).Result;
 
             //viewModelQuestion.Question = viewModelQuestion.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestion.QuestionId);
-            
+
             // Loads the selected Question from the Database
             viewModelQuestion.Question = _context.Questions
                 .Include(q => q.FieldOfStudies)
@@ -280,7 +280,7 @@ namespace XamPass.Controllers
             //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, false).Result;
 
             //viewModelQuestions.Question = viewModelQuestions.Questions.FirstOrDefault(q => q.QuestionID == viewModelQuestions.QuestionId);
-            
+
             // Loads the selected Question from the Database
             viewModelQuestions.Question = _context.Questions
                 .Include(q => q.FieldOfStudies)
@@ -327,7 +327,7 @@ namespace XamPass.Controllers
             var subjects = _context.Subjects.OrderBy(s => s.SubjectName).ToListAsync().Result;
             var federalStates = _context.FederalStates.OrderBy(f => f.FederalStateName).ToListAsync().Result;
             var universities = _context.Universities.OrderBy(u => u.UniversityName).ToListAsync().Result;
-                        
+
             foreach (var item in fieldsOfStudies)
             {
                 viewModelCreate.FieldsOfStudies.Add(new SelectListItem
@@ -434,7 +434,8 @@ namespace XamPass.Controllers
 
                 _context.SaveChanges();
 
-                return RedirectToAction("Done");
+                //return RedirectToAction("Done");
+                return RedirectToAction("ViewQuestion", new { id = question.QuestionID });
             }
 
             // if not all entries are correct you are redirected
@@ -566,7 +567,7 @@ namespace XamPass.Controllers
             }
             return viewModelCreate;
         }
-#endregion
+        #endregion
 
         #region Temporary
         public IActionResult Done(ViewModelSearch viewModelSearch)
@@ -681,13 +682,13 @@ namespace XamPass.Controllers
             }
 
             var federalStates = await _context.FederalStates.ToListAsync();
-            
+
             foreach (var item in federalStates)
             {
                 vmUniversity.FederalStates.Add(new SelectListItem()
                 {
-                   Value = item.FederalStateID.ToString(),
-                   Text = item.FederalStateName
+                    Value = item.FederalStateID.ToString(),
+                    Text = item.FederalStateName
                 });
             }
 

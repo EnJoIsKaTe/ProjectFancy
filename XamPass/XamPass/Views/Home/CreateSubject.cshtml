@@ -4,35 +4,50 @@
     ViewData["Title"] = "Create Subject";
 }
 
-<h2>Neues Studienfach anlegen</h2>
-<hr />
-<form asp-action="Create">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp class="control-label">Name des Fachs</label>
-                    <input asp-for="@Model.SubjectName" class="form-control" />
-                    <span asp-validation-for="@Model.SubjectName" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="text-left col-md-2">
-                <div class="form-group">
-                    <input type="submit" value="Fach erstellen" class="btn btn-default"
-                           formaction=@Url.Action("SaveNewSubject", "Home") />
-                </div>
-            </div>
-            <div class="text-left col-md-2">
-                <div class="form-group">
-                    <input type="submit" value="Abbrechen" class="btn btn-default" formaction=@Url.Action("CancelNewField", "Home") />
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
+<head>
+    <link rel="stylesheet" href="~/css/create.css" />
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+</head>
+
+<body>
+    <h1>Neues Studienfach anlegen</h1>
+
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="container container-ext">
+            <div class="row">
+                <div class="col-md-4 form-something-new">
+                    <div class="form-group">
+                        <label asp class="control-label">Name des Fachs</label>
+                        <input asp-for="@Model.SubjectName" class="form-control" />
+                        <span asp-validation-for="@Model.SubjectName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-left col-md-2 create-something-new">
+                    @*<div class="form-group">*@
+                        <input type="submit" value="Fach erstellen" class="btn btn-default" style="width:100%"
+                               formaction=@Url.Action("SaveNewSubject", "Home") />
+                    @*</div>*@
+                </div>
+                <div class="text-left col-md-2 cancel-something-new">
+                    @*<div class="form-group">*@
+                        <input type="submit" value="Abbrechen" class="btn btn-default" style="width:100%" formaction=@Url.Action("CancelNewField", "Home") />
+                    @*</div>*@
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
 
 

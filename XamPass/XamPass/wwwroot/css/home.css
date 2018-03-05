@@ -61,11 +61,15 @@ h1 {
     }
 
 .question-wrapper {
-    padding: 5px;
-    border-bottom: 1px solid #BBB;
+    padding-top: 5px;
+    padding-bottom: 5px;
     margin-left: 0px;
     margin-right: 0px;
 }
+
+    .question-wrapper:not(:last-child) {
+        border-bottom: 1px solid #BBB;
+    }
 
 .question-wrapper-header {
     display: inline-block;
@@ -76,6 +80,7 @@ h1 {
     font-weight: 500;
     margin-top: 15px;
     border-radius: 0px 15px 15px 0px;
+}
 
 .question-header-text {
     display: inline-block;
@@ -84,14 +89,15 @@ h1 {
 
 .question-header-text-beginning {
     display: inline-block;
-    padding: 3px 3px 3px 10px;
-    padding-left: 5px;
 }
 
 .question-header-text-title {
     display: inline-block;
-    padding: 5px 3px 0px 10px;
     font-size: 18px;
     font-weight: 500;
     text-decoration: underline;
+}
+
+.question {
+    padding-top: 5px;
 }
