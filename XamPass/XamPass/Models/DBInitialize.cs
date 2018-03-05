@@ -194,7 +194,6 @@ namespace XamPass.Models
             }
 
             context.SaveChanges();
-          
         }
     }
 }
