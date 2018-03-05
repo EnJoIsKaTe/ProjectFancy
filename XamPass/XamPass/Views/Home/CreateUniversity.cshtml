@@ -4,47 +4,65 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Neue Universität anlegen</h2>
-<hr />
-<form asp-action="Create">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp class="control-label">Name der Universität</label>
-                    <input asp-for="@Model.UniversityName" class="form-control" />
-                    <span asp-validation-for="@Model.UniversityName" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label asp class="control-label">Name des Bundesland</label>
-                    @Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, "Bundesland auswählen", new
-                    {
-                        @class = "form-control col-md-2 dropdown-toggle col input-cell"
-                    })
-                </div>
-                <span asp-validation-for="@Model.FederalStateId" class="text-danger"></span>
-            </div>
-        </div>
+<head>
+    <link rel="stylesheet" href="~/css/create.css" />
 
-        <div class="row">
-            <div class="text-left col-md-2">
-                <div class="form-group">
-                    <input type="submit" value="Universität erstellen" class="btn btn-default"
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+</head>
+
+<body>
+    <h1>Neue Universität anlegen</h1>
+
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="container container-ext">
+            <div class="row">
+                <div class="col-md-4 form-something-new">
+                    <div class="form-group">
+                        <label asp class="control-label">Name der Universität</label>
+                        <input asp-for="@Model.UniversityName" class="form-control" />
+                        <span asp-validation-for="@Model.UniversityName" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 form-something-new">
+                    <div class="form-group">
+                        <label asp class="control-label">Name des Bundesland</label>
+                        @Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, "Bundesland auswählen", new
+                        {
+                            @class = "form-control dropdown-toggle"
+                        })
+                        <span asp-validation-for="@Model.FederalStateId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="text-left col-md-2 create-something-new">
+                    @*<div class="form-group">*@
+                    <input type="submit" value="Universität erstellen" class="btn btn-default" style="width:100%"
                            formaction=@Url.Action("SaveNewUniversity", "Home") />
+                    @*</div>*@
                 </div>
-            </div>
-
-            <div class="text-left col-md-2">
-                <div class="form-group">
-                    <input type="submit" value="Abbrechen" class="btn btn-default" formaction=@Url.Action("CancelNewField", "Home") />
+                <div class="text-left col-md-2 cancel-something-new">
+                    @*<div class="form-group">*@
+                    <input type="submit" value="Abbrechen" class="btn btn-default" style="width:100%" formaction=@Url.Action("CancelNewField", "Home") />
+                    @*</div>*@
                 </div>
             </div>
         </div>
-    </div>
-</form>
-
+    </form>
+</body>
 
 

@@ -123,6 +123,21 @@ h1 {
     }
 
 
+.form-something-new {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 350px;
+}
+
+.create-something-new {
+    padding: 0px 5px 0px 0px;
+    width: 250px;
+}
+
+.cancel-something-new {
+    padding: 0px;
+    width: 100px;
+}
 
 
 @media (max-width: 450px) {
@@ -152,5 +167,24 @@ h1 {
         border-radius: 5px 5px 0px 5px;
         padding: 2px 0px 2px 5px;
         margin-top: 15px;
+    }
+}
+
+@media(max-width: 992px) {
+    .form-something-new {
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 100%;
+    }
+
+    .create-something-new {
+        padding: 0px;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+
+    .cancel-something-new {
+        padding: 0px;
+        width: 100%;
     }
 }
