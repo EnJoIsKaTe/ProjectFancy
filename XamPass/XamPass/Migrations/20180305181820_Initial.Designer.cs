@@ -12,8 +12,8 @@ using XamPass.Models.DataBaseModels;
 namespace XamPass.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180305150813_Identity")]
-    partial class Identity
+    [Migration("20180305181820_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

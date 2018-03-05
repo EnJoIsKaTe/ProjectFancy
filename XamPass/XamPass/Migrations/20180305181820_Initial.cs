@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace XamPass.Migrations
 {
-    public partial class Identity : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,8 +47,6 @@ namespace XamPass.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
-
-
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
@@ -157,17 +155,17 @@ namespace XamPass.Migrations
                 });
 
             migrationBuilder.CreateTable(
-               name: "dt_Country",
-               columns: table => new
-               {
-                   CountryID = table.Column<int>(nullable: false)
-                       .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                   CountryName = table.Column<string>(maxLength: 100, nullable: true)
-               },
-               constraints: table =>
-               {
-                   table.PrimaryKey("PK_dt_Country", x => x.CountryID);
-               });
+                name: "dt_Country",
+                columns: table => new
+                {
+                    CountryID = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CountryName = table.Column<string>(maxLength: 100, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_dt_Country", x => x.CountryID);
+                });
 
             migrationBuilder.CreateTable(
                 name: "dt_federal_state",
