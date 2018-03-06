@@ -1,0 +1,298 @@
+2018-03-06T11:11:31.9053719+01:00 0HLC39AFQ3M9N:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:55954/   (ca22a1cb)
+2018-03-06T11:11:32.9086217+01:00 0HLC39AFQ3M9N:00000001 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:11:34.2741300+01:00 0HLC39AFQ3M9N:00000001 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T11:11:34.7433655+01:00 0HLC39AFQ3M9N:00000001 [INF] Executed DbCommand ("105"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T11:11:34.9291793+01:00 0HLC39AFQ3M9N:00000001 [INF] Executed DbCommand ("26"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T11:11:34.9840738+01:00 0HLC39AFQ3M9N:00000001 [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T11:11:35.0448577+01:00 0HLC39AFQ3M9N:00000001 [INF] Executed DbCommand ("37"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T11:11:42.3818530+01:00 0HLC39AFQ3M9N:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T11:11:43.0066073+01:00 0HLC39AFQ3M9N:00000001 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 10105.0366ms (afa2e885)
+2018-03-06T11:11:43.0537640+01:00 0HLC39AFQ3M9O:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:55954/css/home.css   (ca22a1cb)
+2018-03-06T11:11:43.0622270+01:00 0HLC39AFQ3M9N:00000001 [INF] Request finished in 11300.503ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:11:43.0690567+01:00 0HLC39AFQ3M9P:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:55954/resources/demos/style.css   (ca22a1cb)
+2018-03-06T11:11:43.0847652+01:00 0HLC39AFQ3M9O:00000001 [INF] The file "/css/home.css" was not modified (f1f8d725)
+2018-03-06T11:11:43.1211590+01:00 0HLC39AFQ3M9P:00000001 [INF] Request finished in 76.2621ms 404  (791a596a)
+2018-03-06T11:11:43.1271553+01:00 0HLC39AFQ3M9O:00000001 [INF] Request finished in 79.965ms 304 text/css (791a596a)
+2018-03-06T11:11:46.5042990+01:00 0HLC39AFQ3M9O:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Admin   (ca22a1cb)
+2018-03-06T11:11:46.5329071+01:00 0HLC39AFQ3M9O:00000002 [INF] Authorization failed for user: null. (a4ab1676)
+2018-03-06T11:11:46.5562098+01:00 0HLC39AFQ3M9O:00000002 [INF] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter"'. (8b6446cb)
+2018-03-06T11:11:46.5693429+01:00 0HLC39AFQ3M9O:00000002 [INF] Executing ChallengeResult with authentication schemes ([]). (f3dca807)
+2018-03-06T11:11:46.5877545+01:00 0HLC39AFQ3M9O:00000002 [INF] AuthenticationScheme: "Identity.Application" was challenged. (d45f1f38)
+2018-03-06T11:11:46.5957644+01:00 0HLC39AFQ3M9O:00000002 [INF] Executed action "XamPass.Controllers.AdminController.Index (XamPass)" in 80.0121ms (afa2e885)
+2018-03-06T11:11:46.6045929+01:00 0HLC39AFQ3M9O:00000002 [INF] Request finished in 98.8208ms 302  (791a596a)
+2018-03-06T11:11:46.6137840+01:00 0HLC39AFQ3M9O:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Account/Login?ReturnUrl=%2FAdmin   (ca22a1cb)
+2018-03-06T11:11:46.7307293+01:00 0HLC39AFQ3M9O:00000003 [INF] Executing action method "XamPass.Controllers.AccountController.Login (XamPass)" with arguments (["/Admin"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:11:46.7419807+01:00 0HLC39AFQ3M9O:00000003 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-03-06T11:11:46.9429962+01:00 0HLC39AFQ3M9O:00000003 [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2018-03-06T11:11:47.0539845+01:00 0HLC39AFQ3M9O:00000003 [INF] Executed action "XamPass.Controllers.AccountController.Login (XamPass)" in 361.1713ms (afa2e885)
+2018-03-06T11:11:47.0787764+01:00 0HLC39AFQ3M9O:00000003 [INF] Request finished in 446.2317ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:17:07.9595941+01:00 0HLC39DKT730R:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:55954/   (ca22a1cb)
+2018-03-06T11:17:08.2993428+01:00 0HLC39DKT730R:00000001 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:17:08.8549233+01:00 0HLC39DKT730R:00000001 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T11:17:09.2921793+01:00 0HLC39DKT730R:00000001 [INF] Executed DbCommand ("90"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T11:17:09.4051979+01:00 0HLC39DKT730R:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T11:17:09.4300659+01:00 0HLC39DKT730R:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T11:17:09.4657396+01:00 0HLC39DKT730R:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T11:17:13.7480510+01:00 0HLC39DKT730R:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T11:17:14.4239293+01:00 0HLC39DKT730R:00000001 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 6087.6086ms (afa2e885)
+2018-03-06T11:17:14.4388109+01:00 0HLC39DKT730S:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:55954/resources/demos/style.css   (ca22a1cb)
+2018-03-06T11:17:14.4936844+01:00 0HLC39DKT730R:00000001 [INF] Request finished in 6531.038ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:17:14.5620779+01:00 0HLC39DKT730S:00000001 [INF] Request finished in 66.5238ms 404  (791a596a)
+2018-03-06T11:17:16.1821056+01:00 0HLC39DKT730S:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Admin   (ca22a1cb)
+2018-03-06T11:17:16.2115225+01:00 0HLC39DKT730S:00000002 [INF] Authorization failed for user: null. (a4ab1676)
+2018-03-06T11:17:16.2324651+01:00 0HLC39DKT730S:00000002 [INF] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter"'. (8b6446cb)
+2018-03-06T11:17:16.2451820+01:00 0HLC39DKT730S:00000002 [INF] Executing ChallengeResult with authentication schemes ([]). (f3dca807)
+2018-03-06T11:17:16.2585501+01:00 0HLC39DKT730S:00000002 [INF] AuthenticationScheme: "Identity.Application" was challenged. (d45f1f38)
+2018-03-06T11:17:16.2635638+01:00 0HLC39DKT730S:00000002 [INF] Executed action "XamPass.Controllers.AdminController.Index (XamPass)" in 71.5496ms (afa2e885)
+2018-03-06T11:17:16.2695129+01:00 0HLC39DKT730S:00000002 [INF] Request finished in 88.0239ms 302  (791a596a)
+2018-03-06T11:17:16.2772059+01:00 0HLC39DKT730S:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Account/Login?ReturnUrl=%2FAdmin   (ca22a1cb)
+2018-03-06T11:17:16.3341952+01:00 0HLC39DKT730S:00000003 [INF] Executing action method "XamPass.Controllers.AccountController.Login (XamPass)" with arguments (["/Admin"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:17:16.3450545+01:00 0HLC39DKT730S:00000003 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-03-06T11:17:16.6523895+01:00 0HLC39DKT730S:00000003 [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2018-03-06T11:17:16.7341731+01:00 0HLC39DKT730S:00000003 [INF] Executed action "XamPass.Controllers.AccountController.Login (XamPass)" in 422.1329ms (afa2e885)
+2018-03-06T11:17:16.7684917+01:00 0HLC39DKT730S:00000003 [INF] Request finished in 463.3236ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:17:43.7822462+01:00 0HLC39DKT730S:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Account/Login?ReturnUrl=%2FAdmin   (ca22a1cb)
+2018-03-06T11:17:43.7919827+01:00 0HLC39DKT730S:00000004 [INF] Executing action method "XamPass.Controllers.AccountController.Login (XamPass)" with arguments (["/Admin"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:17:43.8005911+01:00 0HLC39DKT730S:00000004 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-03-06T11:17:44.0359201+01:00 0HLC39DKT730S:00000004 [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2018-03-06T11:17:44.0786976+01:00 0HLC39DKT730S:00000004 [INF] Executed action "XamPass.Controllers.AccountController.Login (XamPass)" in 289.1234ms (afa2e885)
+2018-03-06T11:17:44.1031819+01:00 0HLC39DKT730S:00000004 [INF] Request finished in 308.4262ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:17:44.1892523+01:00 0HLC39DKT730S:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:55954/favicon.ico   (ca22a1cb)
+2018-03-06T11:17:44.2028059+01:00 0HLC39DKT730S:00000005 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Users\patri\Source\Repos\ProjectFancy\XamPass\XamPass\wwwroot\favicon.ico"' (27b0a520)
+2018-03-06T11:17:44.2240245+01:00 0HLC39DKT730S:00000005 [INF] Request finished in 35.0644ms 200 image/x-icon (791a596a)
+2018-03-06T11:21:50.8551294+01:00 0HLC39G979AOE:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:55954/   (ca22a1cb)
+2018-03-06T11:21:51.2886246+01:00 0HLC39G979AOE:00000001 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:21:51.7999314+01:00 0HLC39G979AOE:00000001 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T11:21:52.0419169+01:00 0HLC39G979AOE:00000001 [INF] Executed DbCommand ("65"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T11:21:52.1600933+01:00 0HLC39G979AOE:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T11:21:52.1888244+01:00 0HLC39G979AOE:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T11:21:52.2183377+01:00 0HLC39G979AOE:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T11:21:56.6701313+01:00 0HLC39G979AOE:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T11:21:57.3027753+01:00 0HLC39G979AOE:00000001 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 6024.6954ms (afa2e885)
+2018-03-06T11:21:57.3255466+01:00 0HLC39G979AOF:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:55954/resources/demos/style.css   (ca22a1cb)
+2018-03-06T11:21:57.3637794+01:00 0HLC39G979AOE:00000001 [INF] Request finished in 6516.9339ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:21:57.3669965+01:00 0HLC39G979AOF:00000001 [INF] Request finished in 24.88ms 404  (791a596a)
+2018-03-06T11:25:22.1536337+01:00 0HLC39G979AOF:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Admin   (ca22a1cb)
+2018-03-06T11:25:22.1784522+01:00 0HLC39G979AOF:00000002 [INF] Authorization failed for user: null. (a4ab1676)
+2018-03-06T11:25:22.1935989+01:00 0HLC39G979AOF:00000002 [INF] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter"'. (8b6446cb)
+2018-03-06T11:25:22.2028348+01:00 0HLC39G979AOF:00000002 [INF] Executing ChallengeResult with authentication schemes ([]). (f3dca807)
+2018-03-06T11:25:22.2142046+01:00 0HLC39G979AOF:00000002 [INF] AuthenticationScheme: "Identity.Application" was challenged. (d45f1f38)
+2018-03-06T11:25:22.2247237+01:00 0HLC39G979AOF:00000002 [INF] Executed action "XamPass.Controllers.AdminController.Index (XamPass)" in 56.2471ms (afa2e885)
+2018-03-06T11:25:22.2291808+01:00 0HLC39G979AOF:00000002 [INF] Request finished in 77.6125ms 302  (791a596a)
+2018-03-06T11:25:22.2363381+01:00 0HLC39G979AOF:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Account/Login?ReturnUrl=%2FAdmin   (ca22a1cb)
+2018-03-06T11:25:22.2924669+01:00 0HLC39G979AOF:00000003 [INF] Executing action method "XamPass.Controllers.AccountController.Login (XamPass)" with arguments (["/Admin"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:25:22.3028466+01:00 0HLC39G979AOF:00000003 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-03-06T11:25:22.5293976+01:00 0HLC39G979AOF:00000003 [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2018-03-06T11:25:22.6051952+01:00 0HLC39G979AOF:00000003 [INF] Executed action "XamPass.Controllers.AccountController.Login (XamPass)" in 336.5463ms (afa2e885)
+2018-03-06T11:25:22.6377429+01:00 0HLC39G979AOF:00000003 [INF] Request finished in 374.2164ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:25:22.6509157+01:00 0HLC39G979AOE:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:55954/resources/demos/style.css   (ca22a1cb)
+2018-03-06T11:25:22.6613118+01:00 0HLC39G979AOF:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:55954/css/adminLogin.css   (ca22a1cb)
+2018-03-06T11:25:22.6635249+01:00 0HLC39G979AOE:00000002 [INF] Request finished in 23.0644ms 404  (791a596a)
+2018-03-06T11:25:22.6747921+01:00 0HLC39G979AOF:00000004 [INF] Sending file. Request path: '"/css/adminLogin.css"'. Physical path: '"C:\Users\patri\Source\Repos\ProjectFancy\XamPass\XamPass\wwwroot\css\adminLogin.css"' (27b0a520)
+2018-03-06T11:25:22.6859200+01:00 0HLC39G979AOF:00000004 [INF] Request finished in 28.733ms 200 text/css (791a596a)
+2018-03-06T11:25:38.7292176+01:00 0HLC39G979AOF:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:55954/resources/demos/style.css   (ca22a1cb)
+2018-03-06T11:25:38.7441244+01:00 0HLC39G979AOF:00000005 [INF] Request finished in 27.5336ms 404  (791a596a)
+2018-03-06T11:30:39.1245007+01:00 0HLC39G979AOG:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Account/Login?ReturnUrl=%2FAdmin   (ca22a1cb)
+2018-03-06T11:30:39.1794137+01:00 0HLC39G979AOG:00000001 [INF] Executing action method "XamPass.Controllers.AccountController.Login (XamPass)" with arguments (["/Admin"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:30:39.1914981+01:00 0HLC39G979AOG:00000001 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-03-06T11:30:39.5365653+01:00 0HLC39G979AOG:00000001 [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2018-03-06T11:30:39.5727144+01:00 0HLC39G979AOG:00000001 [INF] Executed action "XamPass.Controllers.AccountController.Login (XamPass)" in 437.9999ms (afa2e885)
+2018-03-06T11:30:39.5938272+01:00 0HLC39G979AOG:00000001 [INF] Request finished in 474.5811ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:31:15.8192861+01:00 0HLC39G979AOG:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Account/Login?ReturnUrl=%2FAdmin   (ca22a1cb)
+2018-03-06T11:31:15.8309457+01:00 0HLC39G979AOG:00000002 [INF] Executing action method "XamPass.Controllers.AccountController.Login (XamPass)" with arguments (["/Admin"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:31:15.8369308+01:00 0HLC39G979AOG:00000002 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-03-06T11:31:16.0663340+01:00 0HLC39G979AOG:00000002 [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2018-03-06T11:31:16.0989416+01:00 0HLC39G979AOG:00000002 [INF] Executed action "XamPass.Controllers.AccountController.Login (XamPass)" in 270.7137ms (afa2e885)
+2018-03-06T11:31:16.1191836+01:00 0HLC39G979AOG:00000002 [INF] Request finished in 284.967ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:32:20.3276544+01:00 0HLC39G979AOG:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Account/Login?ReturnUrl=%2FAdmin   (ca22a1cb)
+2018-03-06T11:32:20.3328932+01:00 0HLC39G979AOG:00000003 [INF] Executing action method "XamPass.Controllers.AccountController.Login (XamPass)" with arguments (["/Admin"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:32:20.3386191+01:00 0HLC39G979AOG:00000003 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-03-06T11:32:20.5656572+01:00 0HLC39G979AOG:00000003 [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2018-03-06T11:32:20.5990273+01:00 0HLC39G979AOG:00000003 [INF] Executed action "XamPass.Controllers.AccountController.Login (XamPass)" in 263.8971ms (afa2e885)
+2018-03-06T11:32:20.6147563+01:00 0HLC39G979AOG:00000003 [INF] Request finished in 276.2481ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:32:31.6609617+01:00 0HLC39G979AOG:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Account/Login?ReturnUrl=%2FAdmin   (ca22a1cb)
+2018-03-06T11:32:31.6666111+01:00 0HLC39G979AOG:00000004 [INF] Executing action method "XamPass.Controllers.AccountController.Login (XamPass)" with arguments (["/Admin"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:32:31.6721934+01:00 0HLC39G979AOG:00000004 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-03-06T11:32:31.8793256+01:00 0HLC39G979AOG:00000004 [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2018-03-06T11:32:31.9275548+01:00 0HLC39G979AOG:00000004 [INF] Executed action "XamPass.Controllers.AccountController.Login (XamPass)" in 253.4437ms (afa2e885)
+2018-03-06T11:32:31.9460074+01:00 0HLC39G979AOG:00000004 [INF] Request finished in 272.8276ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:35:38.6737144+01:00 0HLC39NVUB8H8:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:55954/   (ca22a1cb)
+2018-03-06T11:35:38.9499682+01:00 0HLC39NVUB8H8:00000001 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:35:39.4282997+01:00 0HLC39NVUB8H8:00000001 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T11:35:39.7180748+01:00 0HLC39NVUB8H8:00000001 [INF] Executed DbCommand ("57"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T11:35:40.0502270+01:00 0HLC39NVUB8H8:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T11:35:40.1078641+01:00 0HLC39NVUB8H8:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T11:35:40.1702637+01:00 0HLC39NVUB8H8:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T11:35:44.3673680+01:00 0HLC39NVUB8H8:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T11:35:44.9446263+01:00 0HLC39NVUB8H8:00000001 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 5985.7313ms (afa2e885)
+2018-03-06T11:35:44.9766661+01:00 0HLC39NVUB8H9:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:55954/resources/demos/style.css   (ca22a1cb)
+2018-03-06T11:35:45.0068422+01:00 0HLC39NVUB8H8:00000001 [INF] Request finished in 6367.4729ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:35:45.0113492+01:00 0HLC39NVUB8H9:00000001 [INF] Request finished in 36.0554ms 404  (791a596a)
+2018-03-06T11:36:02.7412223+01:00 0HLC39NVUB8H9:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Admin   (ca22a1cb)
+2018-03-06T11:36:02.7672853+01:00 0HLC39NVUB8H9:00000002 [INF] Authorization failed for user: null. (a4ab1676)
+2018-03-06T11:36:02.7870435+01:00 0HLC39NVUB8H9:00000002 [INF] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter"'. (8b6446cb)
+2018-03-06T11:36:02.7997049+01:00 0HLC39NVUB8H9:00000002 [INF] Executing ChallengeResult with authentication schemes ([]). (f3dca807)
+2018-03-06T11:36:02.8114304+01:00 0HLC39NVUB8H9:00000002 [INF] AuthenticationScheme: "Identity.Application" was challenged. (d45f1f38)
+2018-03-06T11:36:02.8176434+01:00 0HLC39NVUB8H9:00000002 [INF] Executed action "XamPass.Controllers.AdminController.Index (XamPass)" in 66.3625ms (afa2e885)
+2018-03-06T11:36:02.8233884+01:00 0HLC39NVUB8H9:00000002 [INF] Request finished in 81.7307ms 302  (791a596a)
+2018-03-06T11:36:02.8314244+01:00 0HLC39NVUB8H9:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Account/Login?ReturnUrl=%2FAdmin   (ca22a1cb)
+2018-03-06T11:36:02.8860542+01:00 0HLC39NVUB8H9:00000003 [INF] Executing action method "XamPass.Controllers.AccountController.Login (XamPass)" with arguments (["/Admin"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:36:02.8958503+01:00 0HLC39NVUB8H9:00000003 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-03-06T11:36:03.2310816+01:00 0HLC39NVUB8H9:00000003 [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2018-03-06T11:36:03.3008456+01:00 0HLC39NVUB8H9:00000003 [INF] Executed action "XamPass.Controllers.AccountController.Login (XamPass)" in 438.4436ms (afa2e885)
+2018-03-06T11:36:03.3235231+01:00 0HLC39NVUB8H9:00000003 [INF] Request finished in 475.2612ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:36:03.3397793+01:00 0HLC39NVUB8H9:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:55954/css/adminLogin.css   (ca22a1cb)
+2018-03-06T11:36:03.3513234+01:00 0HLC39NVUB8H9:00000004 [INF] Sending file. Request path: '"/css/adminLogin.css"'. Physical path: '"C:\Users\patri\Source\Repos\ProjectFancy\XamPass\XamPass\wwwroot\css\adminLogin.css"' (27b0a520)
+2018-03-06T11:36:03.3735153+01:00 0HLC39NVUB8H9:00000004 [INF] Request finished in 29.2797ms 200 text/css (791a596a)
+2018-03-06T11:36:26.7864404+01:00 0HLC39NVUB8H9:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:55954/Account/Login?ReturnUrl=%2FAdmin   (ca22a1cb)
+2018-03-06T11:36:26.8035579+01:00 0HLC39NVUB8H9:00000005 [INF] Executing action method "XamPass.Controllers.AccountController.Login (XamPass)" with arguments (["/Admin"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:36:26.8121016+01:00 0HLC39NVUB8H9:00000005 [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-03-06T11:36:27.0336277+01:00 0HLC39NVUB8H9:00000005 [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2018-03-06T11:36:27.0744069+01:00 0HLC39NVUB8H9:00000005 [INF] Executed action "XamPass.Controllers.AccountController.Login (XamPass)" in 278.0911ms (afa2e885)
+2018-03-06T11:36:27.1008265+01:00 0HLC39NVUB8H9:00000005 [INF] Request finished in 296.9189ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:36:27.1087987+01:00 0HLC39NVUB8H9:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:55954/css/adminLogin.css   (ca22a1cb)
+2018-03-06T11:36:27.1135812+01:00 0HLC39NVUB8H9:00000006 [INF] The file "/css/adminLogin.css" was not modified (f1f8d725)
+2018-03-06T11:36:27.1232612+01:00 0HLC39NVUB8H9:00000006 [INF] Request finished in 11.5175ms 304 text/css (791a596a)
+2018-03-06T11:36:27.2139230+01:00 0HLC39NVUB8H9:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:55954/favicon.ico   (ca22a1cb)
+2018-03-06T11:36:27.2206092+01:00 0HLC39NVUB8H9:00000007 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Users\patri\Source\Repos\ProjectFancy\XamPass\XamPass\wwwroot\favicon.ico"' (27b0a520)
+2018-03-06T11:36:27.2467743+01:00 0HLC39NVUB8H9:00000007 [INF] Request finished in 34.327ms 200 image/x-icon (791a596a)
+2018-03-06T11:36:41.4665758+01:00 0HLC39NVUB8H9:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:55954/   (ca22a1cb)
+2018-03-06T11:36:41.4782850+01:00 0HLC39NVUB8H9:00000008 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:36:41.4977238+01:00 0HLC39NVUB8H9:00000008 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T11:36:41.5202513+01:00 0HLC39NVUB8H9:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T11:36:41.5299920+01:00 0HLC39NVUB8H9:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T11:36:41.5420684+01:00 0HLC39NVUB8H9:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T11:36:41.5504325+01:00 0HLC39NVUB8H9:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T11:36:41.5594303+01:00 0HLC39NVUB8H9:00000008 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T11:36:41.6419609+01:00 0HLC39NVUB8H9:00000008 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 93.9708ms (afa2e885)
+2018-03-06T11:36:41.6658234+01:00 0HLC39NVUB8H9:00000008 [INF] Request finished in 188.6846ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:36:45.2515325+01:00 0HLC39NVUB8H9:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:55954/   (ca22a1cb)
+2018-03-06T11:36:45.2589799+01:00 0HLC39NVUB8H9:00000009 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:36:45.2657480+01:00 0HLC39NVUB8H9:00000009 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T11:36:45.2749504+01:00 0HLC39NVUB8H9:00000009 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T11:36:45.2815791+01:00 0HLC39NVUB8H9:00000009 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T11:36:45.2883469+01:00 0HLC39NVUB8H9:00000009 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T11:36:45.2975463+01:00 0HLC39NVUB8H9:00000009 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T11:36:45.3035850+01:00 0HLC39NVUB8H9:00000009 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T11:36:45.3772612+01:00 0HLC39NVUB8H9:00000009 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 52.7963ms (afa2e885)
+2018-03-06T11:36:45.3968338+01:00 0HLC39NVUB8H9:00000009 [INF] Request finished in 132.8421ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:38:23.9285626+01:00 0HLC39NVUB8H9:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:55954/   (ca22a1cb)
+2018-03-06T11:38:23.9356823+01:00 0HLC39NVUB8H9:0000000A [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:38:23.9481186+01:00 0HLC39NVUB8H9:0000000A [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T11:38:23.9578569+01:00 0HLC39NVUB8H9:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T11:38:23.9683606+01:00 0HLC39NVUB8H9:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T11:38:23.9757096+01:00 0HLC39NVUB8H9:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T11:38:23.9858874+01:00 0HLC39NVUB8H9:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T11:38:23.9924170+01:00 0HLC39NVUB8H9:0000000A [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T11:38:24.3331155+01:00 0HLC39NVUB8H9:0000000A [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 392.7599ms (afa2e885)
+2018-03-06T11:38:24.3537654+01:00 0HLC39NVUB8H9:0000000A [INF] Request finished in 413.5175ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:38:24.3663253+01:00 0HLC39NVUB8H9:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:55954/resources/demos/style.css   (ca22a1cb)
+2018-03-06T11:38:24.3845476+01:00 0HLC39NVUB8H9:0000000B [INF] Request finished in 8.2122ms 404  (791a596a)
+2018-03-06T11:38:54.2194309+01:00 0HLC39NVUB8H9:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:55954/   (ca22a1cb)
+2018-03-06T11:38:54.2489339+01:00 0HLC39NVUB8H9:0000000C [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T11:38:54.2723405+01:00 0HLC39NVUB8H9:0000000C [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T11:38:54.2811811+01:00 0HLC39NVUB8H9:0000000C [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T11:38:54.2868767+01:00 0HLC39NVUB8H9:0000000C [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T11:38:54.2945612+01:00 0HLC39NVUB8H9:0000000C [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T11:38:54.3006074+01:00 0HLC39NVUB8H9:0000000C [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T11:38:54.3052146+01:00 0HLC39NVUB8H9:0000000C [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T11:38:54.6681987+01:00 0HLC39NVUB8H9:0000000C [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 406.3796ms (afa2e885)
+2018-03-06T11:38:54.7028036+01:00 0HLC39NVUB8H9:0000000C [INF] Request finished in 494.2601ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T11:38:54.7348610+01:00 0HLC39NVUB8H8:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:55954/resources/demos/style.css   (ca22a1cb)
+2018-03-06T11:38:54.7524322+01:00 0HLC39NVUB8H8:00000002 [INF] Request finished in 68.7789ms 404  (791a596a)

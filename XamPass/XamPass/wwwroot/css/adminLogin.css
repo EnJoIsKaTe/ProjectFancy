@@ -1,0 +1,9 @@
+﻿#adminLoginBtn {
+    float:left;
+}
+
+@media(max-width:450px){
+    #adminLoginBtn {
+        float: right;
+    }
+}
