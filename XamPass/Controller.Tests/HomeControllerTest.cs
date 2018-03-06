@@ -31,7 +31,7 @@ namespace Controller.Tests
 
             _context = new DataContext(builder.Options);
             //_context.Database.Migrate();
-
+            
             DatabaseTest(_context, true);
         }
         /// <summary>

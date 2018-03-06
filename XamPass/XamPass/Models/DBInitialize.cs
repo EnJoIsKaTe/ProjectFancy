@@ -13,6 +13,7 @@ namespace XamPass.Models
         /// </summary>
         public static void DatabaseTest(DataContext context)
         {
+            // TODO irgendwann entfernen
             //if (createNewDatabase)
             //{
             //    // Löscht die Datenbank falls vorhanden
@@ -20,25 +21,30 @@ namespace XamPass.Models
 
             //    // Erstellt die Datenbank neu auf Grundlage der Model-Klassen
             //    context.Database.EnsureCreated();
-            //}
+            //}                        
 
-            DtCountry[] countries = new DtCountry[]
+            if (!context.Countries.Any())
             {
+                DtCountry[] countries = new DtCountry[]
+                {
                 new DtCountry(){CountryName = "Deutschland"},
                 new DtCountry(){CountryName = "Österreich"},
                 new DtCountry(){CountryName = "Schweiz"}
-            };
+                };
 
-            foreach (DtCountry country in countries)
-            {
-                context.Add(country);
+                foreach (DtCountry country in countries)
+                {
+                    context.Add(country);
+                }
+
+                context.SaveChanges();
             }
 
-            context.SaveChanges();
-
-            // Testdaten in die Tabelle dt_federal_state einfügen
-            DtFederalState[] federalStates = new DtFederalState[]
+            if (!context.FederalStates.Any())
             {
+                // Testdaten in die Tabelle dt_federal_state einfügen
+                DtFederalState[] federalStates = new DtFederalState[]
+                {
                 new DtFederalState(){ FederalStateName = "Baden-Württemberg"},
                 new DtFederalState(){ FederalStateName = "Bayern"},
                 new DtFederalState(){ FederalStateName = "Berlin"},
@@ -55,17 +61,20 @@ namespace XamPass.Models
                 new DtFederalState(){ FederalStateName = "Sachsen-Anhalt"},
                 new DtFederalState(){ FederalStateName = "Schleswig-Holstein"},
                 new DtFederalState(){ FederalStateName = "Thüringen"}
-            };
+                };
 
-            foreach(DtFederalState state in federalStates)
-            {
-                context.Add(state);
+                foreach (DtFederalState state in federalStates)
+                {
+                    context.Add(state);
+                }
+
+                context.SaveChanges();
             }
 
-            context.SaveChanges();
-
-            // Testdaten in Tabelle dt_university einfügen
-            List<DtUniversity> universities = new List<DtUniversity>()
+            if (!context.Universities.Any())
+            {
+                // Testdaten in Tabelle dt_university einfügen
+                List<DtUniversity> universities = new List<DtUniversity>()
             {
                 new DtUniversity(){UniversityName = "BA Leipzig", CountryID = 1, FederalStateID = 13 },
                 new DtUniversity(){UniversityName = "BA Dresden",  CountryID = 1, FederalStateID = 13},
@@ -78,15 +87,15 @@ namespace XamPass.Models
                 new DtUniversity(){UniversityName = "Universität Würzburg", CountryID = 1, FederalStateID = 2}
             };
 
-            foreach (DtUniversity university in universities)
-            {
-                context.Add(university);
-            }
+                foreach (DtUniversity university in universities)
+                {
+                    context.Add(university);
+                }
 
-            context.SaveChanges();
+                context.SaveChanges();
 
-            DtFieldOfStudies[] fieldsOfStudies = new DtFieldOfStudies[]
-            {
+                DtFieldOfStudies[] fieldsOfStudies = new DtFieldOfStudies[]
+                {
                 new DtFieldOfStudies(){FieldOfStudiesName = "Informatik", Type = FieldOfStudiesType.Engineering},
                 new DtFieldOfStudies(){FieldOfStudiesName = "Bauingenieurwesen", Type = FieldOfStudiesType.Engineering},
                 new DtFieldOfStudies(){FieldOfStudiesName = "Betriebswirtschaftslehre", Type = FieldOfStudiesType.Economics},
@@ -95,17 +104,20 @@ namespace XamPass.Models
                 new DtFieldOfStudies(){FieldOfStudiesName = "Immobilienwirtschaft", Type = FieldOfStudiesType.Economics},
                 new DtFieldOfStudies(){FieldOfStudiesName = "Kunstgeschichte", Type = FieldOfStudiesType.SocialScience},
                 new DtFieldOfStudies(){FieldOfStudiesName = "Gesang", Type = FieldOfStudiesType.Arts}
-            };
+                };
 
-            foreach (DtFieldOfStudies fieldOfStudies in fieldsOfStudies)
-            {
-                context.Add(fieldOfStudies);
+                foreach (DtFieldOfStudies fieldOfStudies in fieldsOfStudies)
+                {
+                    context.Add(fieldOfStudies);
+                }
+
+                context.SaveChanges();
             }
 
-            context.SaveChanges();
-
-            DtSubject[] subjects = new DtSubject[]
+            if (!context.Subjects.Any())
             {
+                DtSubject[] subjects = new DtSubject[]
+                {
                 new DtSubject(){SubjectName = "Automaten und formale Sprachen"},
                 new DtSubject(){SubjectName = "Berechenbarkeit und Komplexität"},
                 new DtSubject(){SubjectName = "Personalführung"},
@@ -114,17 +126,20 @@ namespace XamPass.Models
                 new DtSubject(){SubjectName = "Netzwerke"},
                 new DtSubject(){SubjectName = "Programmieren C++"},
 
-            };
+                };
 
-            foreach (DtSubject subject in subjects)
-            {
-                context.Add(subject);
+                foreach (DtSubject subject in subjects)
+                {
+                    context.Add(subject);
+                }
+
+                context.SaveChanges();
             }
 
-            context.SaveChanges();
-
-            DtAnswer[] answers = new DtAnswer[]
-          {
+            if (!context.Answers.Any())
+            {
+                DtAnswer[] answers = new DtAnswer[]
+              {
                 new DtAnswer(){ /*QuestionId = 1,*/
                     SubmissionDate = DateTime.Now,
                     Content = "Ich weiß doch nicht wie eine Turing Maschine aussieht!!!11!",
@@ -135,16 +150,19 @@ namespace XamPass.Models
                     Content = "Blau! Nein rot!",
                     UpVotes = 2
                 }
-          };
+              };
 
-            foreach (DtAnswer answer in answers)
-            {
-                context.Add(answer);
+                foreach (DtAnswer answer in answers)
+                {
+                    context.Add(answer);
+                }
+
+                context.SaveChanges();
             }
 
-            context.SaveChanges();
-
-            List<DtQuestion> questions = new List<DtQuestion>()
+            if (!context.Questions.Any())
+            {
+                List<DtQuestion> questions = new List<DtQuestion>()
             {
                 new DtQuestion(){Answers = context.Answers.Where(a => a.AnswerID == 1).ToList(),
                     Content = "Konstruieren Sie eine Turing Maschine",
@@ -171,29 +189,30 @@ namespace XamPass.Models
                     UpVotes = 0}
             };
 
-            // weitere Fragen eintragen
-            for (int i = 1; i < 6; i++)
-            {
-                var question = new DtQuestion()
+                // weitere Fragen eintragen
+                for (int i = 1; i < 6; i++)
                 {
-                    Answers = null,
-                    Content = String.Format("Weitere Frage {0}", i),
-                    FieldOfStudies = context.FieldsOfStudies.FirstOrDefault(u => u.FieldOfStudiesID == i),
-                    Subject = context.Subjects.FirstOrDefault(u => u.SubjectID == i),
-                    SubmissionDate = DateTime.Now,
-                    University = context.Universities.FirstOrDefault(u => u.UniversityID == i),
-                    UpVotes = 0
-                };
+                    var question = new DtQuestion()
+                    {
+                        Answers = null,
+                        Content = String.Format("Weitere Frage {0}", i),
+                        FieldOfStudies = context.FieldsOfStudies.FirstOrDefault(u => u.FieldOfStudiesID == i),
+                        Subject = context.Subjects.FirstOrDefault(u => u.SubjectID == i),
+                        SubmissionDate = DateTime.Now,
+                        University = context.Universities.FirstOrDefault(u => u.UniversityID == i),
+                        UpVotes = 0
+                    };
 
-                questions.Add(question);
+                    questions.Add(question);
+                }
+
+                foreach (DtQuestion question in questions)
+                {
+                    context.Add(question);
+                }
+
+                context.SaveChanges();
             }
-
-            foreach (DtQuestion question in questions)
-            {
-                context.Add(question);
-            }
-
-            context.SaveChanges();
         }
     }
 }
