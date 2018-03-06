@@ -2235,3 +2235,1192 @@ ORDER BY `u`.`UniversityName`" (0723d8ff)
 2018-03-06T12:31:44.1228909+01:00 0HLC3AN0HK2O3:00000005 [INF] Request finished in 136.8145ms 200 text/html; charset=utf-8 (791a596a)
 2018-03-06T12:31:44.1467938+01:00 0HLC3AN0HK2O4:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
 2018-03-06T12:31:44.1851967+01:00 0HLC3AN0HK2O4:00000005 [INF] Request finished in 34.411ms 404  (791a596a)
+2018-03-06T12:43:50.0046838+01:00 0HLC3AU3KI7CI:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:55953/   (ca22a1cb)
+2018-03-06T12:43:50.4947357+01:00 0HLC3AU3KI7CI:00000001 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:43:51.0316564+01:00 0HLC3AU3KI7CI:00000001 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:43:51.5045488+01:00 0HLC3AU3KI7CI:00000001 [INF] Executed DbCommand ("62"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:43:51.7447977+01:00 0HLC3AU3KI7CI:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:43:51.8280743+01:00 0HLC3AU3KI7CI:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:43:51.9462240+01:00 0HLC3AU3KI7CI:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:43:56.8788423+01:00 0HLC3AU3KI7CI:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:43:57.8156689+01:00 0HLC3AU3KI7CI:00000001 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 7375.1087ms (afa2e885)
+2018-03-06T12:43:57.8426762+01:00 0HLC3AU3KI7CI:00000001 [INF] Request finished in 7864.5978ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:43:57.9002324+01:00 0HLC3AU3KI7CI:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:43:57.9796074+01:00 0HLC3AU3KI7CI:00000002 [INF] Request finished in 13.5935ms 404  (791a596a)
+2018-03-06T12:44:09.3635602+01:00 0HLC3AU3KI7CI:00000003 [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 243 (ca22a1cb)
+2018-03-06T12:44:09.5023077+01:00 0HLC3AU3KI7CI:00000003 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:44:09.5182433+01:00 0HLC3AU3KI7CI:00000003 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:44:09.5308584+01:00 0HLC3AU3KI7CI:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:44:09.5395551+01:00 0HLC3AU3KI7CI:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:44:09.5461160+01:00 0HLC3AU3KI7CI:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:44:09.5546108+01:00 0HLC3AU3KI7CI:00000003 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:44:09.6933014+01:00 0HLC3AU3KI7CI:00000003 [INF] Executed DbCommand ("13"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_FederalStateId_6='?', @__viewModelSearch_FederalStateId_7='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND `q`.`FieldOfStudiesID` IS NULL) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND `q`.`SubjectID` IS NULL) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND `q`.`UniversityID` IS NULL) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND (`q.University`.`FederalStateID` = @__viewModelSearch_FederalStateId_7)) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:44:09.7603901+01:00 0HLC3AU3KI7CI:00000003 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:44:09.8547250+01:00 0HLC3AU3KI7CI:00000003 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 354.5497ms (afa2e885)
+2018-03-06T12:44:09.8777180+01:00 0HLC3AU3KI7CJ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:44:09.9170228+01:00 0HLC3AU3KI7CI:00000003 [INF] Request finished in 515.5589ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:44:09.9501541+01:00 0HLC3AU3KI7CJ:00000001 [INF] Request finished in 26.6633ms 404  (791a596a)
+2018-03-06T12:44:12.3144985+01:00 0HLC3AU3KI7CI:00000004 [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 244 (ca22a1cb)
+2018-03-06T12:44:12.3447899+01:00 0HLC3AU3KI7CI:00000004 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:44:12.3499935+01:00 0HLC3AU3KI7CI:00000004 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:44:12.3563690+01:00 0HLC3AU3KI7CI:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:44:12.3641009+01:00 0HLC3AU3KI7CI:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:44:12.3716179+01:00 0HLC3AU3KI7CI:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:44:12.3792301+01:00 0HLC3AU3KI7CI:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:44:12.3891370+01:00 0HLC3AU3KI7CI:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_UniversityId_5='?', @__viewModelSearch_FederalStateId_6='?', @__viewModelSearch_FederalStateId_7='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND `q`.`FieldOfStudiesID` IS NULL) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND `q`.`SubjectID` IS NULL) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND (`q`.`UniversityID` = @__viewModelSearch_UniversityId_5)) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND (`q.University`.`FederalStateID` = @__viewModelSearch_FederalStateId_7)) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:44:12.4005193+01:00 0HLC3AU3KI7CI:00000004 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:44:12.4854944+01:00 0HLC3AU3KI7CI:00000004 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 87.7224ms (afa2e885)
+2018-03-06T12:44:12.5267022+01:00 0HLC3AU3KI7CI:00000004 [INF] Request finished in 180.9215ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:44:12.5362953+01:00 0HLC3AU3KI7CJ:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:44:12.5602417+01:00 0HLC3AU3KI7CJ:00000002 [INF] Request finished in 44.2283ms 404  (791a596a)
+2018-03-06T12:44:25.5771097+01:00 0HLC3AU3KI7CI:00000005 [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 244 (ca22a1cb)
+2018-03-06T12:44:25.6160782+01:00 0HLC3AU3KI7CI:00000005 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:44:25.6552291+01:00 0HLC3AU3KI7CI:00000005 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:44:25.6718575+01:00 0HLC3AU3KI7CI:00000005 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:44:25.6861705+01:00 0HLC3AU3KI7CI:00000005 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:44:25.6977345+01:00 0HLC3AU3KI7CI:00000005 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:44:25.7111491+01:00 0HLC3AU3KI7CI:00000005 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:44:25.7296197+01:00 0HLC3AU3KI7CI:00000005 [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_FederalStateId_6='?', @__viewModelSearch_FederalStateId_7='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND `q`.`FieldOfStudiesID` IS NULL) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND `q`.`SubjectID` IS NULL) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND `q`.`UniversityID` IS NULL) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND (`q.University`.`FederalStateID` = @__viewModelSearch_FederalStateId_7)) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:44:25.7726092+01:00 0HLC3AU3KI7CI:00000005 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:44:25.7956373+01:00 0HLC3AU3KI7CI:00000005 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 196.3193ms (afa2e885)
+2018-03-06T12:44:25.8254736+01:00 0HLC3AU3KI7CI:00000005 [INF] Request finished in 234.7137ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:44:25.9573496+01:00 0HLC3AU3KI7CJ:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:44:26.0278693+01:00 0HLC3AU3KI7CJ:00000003 [INF] Request finished in 48.6672ms 404  (791a596a)
+2018-03-06T12:44:28.1765800+01:00 0HLC3AU3KI7CI:00000006 [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 244 (ca22a1cb)
+2018-03-06T12:44:28.2044892+01:00 0HLC3AU3KI7CI:00000006 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:44:28.2093204+01:00 0HLC3AU3KI7CI:00000006 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:44:28.2175688+01:00 0HLC3AU3KI7CI:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:44:28.2233593+01:00 0HLC3AU3KI7CI:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:44:28.2295830+01:00 0HLC3AU3KI7CI:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:44:28.2380072+01:00 0HLC3AU3KI7CI:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:44:28.2471444+01:00 0HLC3AU3KI7CI:00000006 [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_UniversityId_5='?', @__viewModelSearch_FederalStateId_6='?', @__viewModelSearch_FederalStateId_7='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND `q`.`FieldOfStudiesID` IS NULL) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND `q`.`SubjectID` IS NULL) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND (`q`.`UniversityID` = @__viewModelSearch_UniversityId_5)) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND (`q.University`.`FederalStateID` = @__viewModelSearch_FederalStateId_7)) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:44:28.2521959+01:00 0HLC3AU3KI7CI:00000006 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:44:28.3292379+01:00 0HLC3AU3KI7CI:00000006 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 76.1549ms (afa2e885)
+2018-03-06T12:44:28.3837124+01:00 0HLC3AU3KI7CJ:00000004 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:44:28.4370334+01:00 0HLC3AU3KI7CI:00000006 [INF] Request finished in 177.4005ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:44:28.4584178+01:00 0HLC3AU3KI7CJ:00000004 [INF] Request finished in 74.1383ms 404  (791a596a)
+2018-03-06T12:44:34.9294354+01:00 0HLC3AU3KI7CI:00000007 [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 245 (ca22a1cb)
+2018-03-06T12:44:35.0387386+01:00 0HLC3AU3KI7CI:00000007 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:44:35.0831329+01:00 0HLC3AU3KI7CI:00000007 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:44:35.1540022+01:00 0HLC3AU3KI7CI:00000007 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:44:35.1823718+01:00 0HLC3AU3KI7CI:00000007 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:44:35.2432701+01:00 0HLC3AU3KI7CI:00000007 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:44:35.3220324+01:00 0HLC3AU3KI7CI:00000007 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:44:35.3427029+01:00 0HLC3AU3KI7CI:00000007 [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_FieldOfStudiesId_1='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_UniversityId_5='?', @__viewModelSearch_FederalStateId_6='?', @__viewModelSearch_FederalStateId_7='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND (`q`.`FieldOfStudiesID` = @__viewModelSearch_FieldOfStudiesId_1)) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND `q`.`SubjectID` IS NULL) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND (`q`.`UniversityID` = @__viewModelSearch_UniversityId_5)) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND (`q.University`.`FederalStateID` = @__viewModelSearch_FederalStateId_7)) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:44:35.3516949+01:00 0HLC3AU3KI7CI:00000007 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:44:35.3683088+01:00 0HLC3AU3KI7CI:00000007 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 422.6563ms (afa2e885)
+2018-03-06T12:44:35.3880228+01:00 0HLC3AU3KI7CI:00000007 [INF] Request finished in 481.6209ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:44:35.4876909+01:00 0HLC3AU3KI7CJ:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:44:35.6944436+01:00 0HLC3AU3KI7CJ:00000005 [INF] Request finished in 44.1371ms 404  (791a596a)
+2018-03-06T12:44:38.4049654+01:00 0HLC3AU3KI7CI:00000008 [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 246 (ca22a1cb)
+2018-03-06T12:44:38.4625881+01:00 0HLC3AU3KI7CI:00000008 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:44:38.4732842+01:00 0HLC3AU3KI7CI:00000008 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:44:38.4818067+01:00 0HLC3AU3KI7CI:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:44:38.4893314+01:00 0HLC3AU3KI7CI:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:44:38.4963653+01:00 0HLC3AU3KI7CI:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:44:38.5060138+01:00 0HLC3AU3KI7CI:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:44:38.5167676+01:00 0HLC3AU3KI7CI:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_FieldOfStudiesId_1='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_SubjectId_3='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_UniversityId_5='?', @__viewModelSearch_FederalStateId_6='?', @__viewModelSearch_FederalStateId_7='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND (`q`.`FieldOfStudiesID` = @__viewModelSearch_FieldOfStudiesId_1)) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND (`q`.`SubjectID` = @__viewModelSearch_SubjectId_3)) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND (`q`.`UniversityID` = @__viewModelSearch_UniversityId_5)) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND (`q.University`.`FederalStateID` = @__viewModelSearch_FederalStateId_7)) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:44:38.5241162+01:00 0HLC3AU3KI7CI:00000008 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:44:38.5406757+01:00 0HLC3AU3KI7CI:00000008 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 121.1068ms (afa2e885)
+2018-03-06T12:44:38.6163680+01:00 0HLC3AU3KI7CJ:00000006 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:44:38.6503718+01:00 0HLC3AU3KI7CI:00000008 [INF] Request finished in 214.5614ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:44:38.6666683+01:00 0HLC3AU3KI7CJ:00000006 [INF] Request finished in 38.6285ms 404  (791a596a)
+2018-03-06T12:44:45.2427387+01:00 0HLC3AU3KI7CI:00000009 [INF] Request starting HTTP/1.1 POST http://localhost:55953/Home/CreateQuestion application/x-www-form-urlencoded 246 (ca22a1cb)
+2018-03-06T12:44:45.2891929+01:00 0HLC3AU3KI7CI:00000009 [INF] Executing action method "XamPass.Controllers.HomeController.CreateQuestion (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelCreate"]) - ModelState is Invalid (ba7f4ac2)
+2018-03-06T12:44:45.3043487+01:00 0HLC3AU3KI7CI:00000009 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:44:45.3864809+01:00 0HLC3AU3KI7CI:00000009 [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:44:45.4301703+01:00 0HLC3AU3KI7CI:00000009 [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:44:45.4595800+01:00 0HLC3AU3KI7CI:00000009 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:44:45.4772715+01:00 0HLC3AU3KI7CI:00000009 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:44:46.2027159+01:00 0HLC3AU3KI7CI:00000009 [INF] Executing ViewResult, running view at path "/Views/Home/CreateQuestion.cshtml". (9707eebe)
+2018-03-06T12:44:46.3616419+01:00 0HLC3AU3KI7CI:00000009 [INF] Executed action "XamPass.Controllers.HomeController.CreateQuestion (XamPass)" in 993.4545ms (afa2e885)
+2018-03-06T12:44:46.3801031+01:00 0HLC3AU3KI7CK:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:55953/css/create.css   (ca22a1cb)
+2018-03-06T12:44:46.4003415+01:00 0HLC3AU3KI7CI:00000009 [INF] Request finished in 1124.1828ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:44:46.4132662+01:00 0HLC3AU3KI7CJ:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:44:46.4315609+01:00 0HLC3AU3KI7CJ:00000007 [INF] Request finished in 62.7398ms 404  (791a596a)
+2018-03-06T12:44:46.4410154+01:00 0HLC3AU3KI7CK:00000001 [INF] The file "/css/create.css" was not modified (f1f8d725)
+2018-03-06T12:44:46.4784681+01:00 0HLC3AU3KI7CK:00000001 [INF] Request finished in 87.0478ms 304 text/css (791a596a)
+2018-03-06T12:44:49.8152676+01:00 0HLC3AU3KI7CI:0000000A [INF] Request starting HTTP/1.1 POST http://localhost:55953/Home/CreateNewSubject application/x-www-form-urlencoded 293 (ca22a1cb)
+2018-03-06T12:44:49.8472161+01:00 0HLC3AU3KI7CI:0000000A [INF] Executing action method "XamPass.Controllers.HomeController.CreateNewSubject (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelCreate"]) - ModelState is Invalid (ba7f4ac2)
+2018-03-06T12:44:50.0815189+01:00 0HLC3AU3KI7CI:0000000A [INF] Executing ViewResult, running view at path "/Views/Home/CreateNewSubject.cshtml". (9707eebe)
+2018-03-06T12:44:50.1540261+01:00 0HLC3AU3KI7CI:0000000A [INF] Executed action "XamPass.Controllers.HomeController.CreateNewSubject (XamPass)" in 319.9683ms (afa2e885)
+2018-03-06T12:44:50.2226340+01:00 0HLC3AU3KI7CI:0000000A [INF] Request finished in 351.1853ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:44:50.2301913+01:00 0HLC3AU3KI7CJ:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:44:50.2520775+01:00 0HLC3AU3KI7CJ:00000008 [INF] Request finished in 13.6939ms 404  (791a596a)
+2018-03-06T12:44:58.7952761+01:00 0HLC3AU3KI7CK:00000002 [INF] Request starting HTTP/1.1 POST http://localhost:55953/Home/SaveNewSubject application/x-www-form-urlencoded 208 (ca22a1cb)
+2018-03-06T12:44:58.8365787+01:00 0HLC3AU3KI7CK:00000002 [INF] Executing action method "XamPass.Controllers.HomeController.SaveNewSubject (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelCreateSubject"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:44:58.8450996+01:00 0HLC3AU3KI7CK:00000002 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:44:58.9898227+01:00 0HLC3AU3KI7CK:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@p0='?' (Size = 8000)"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO `dt_subject` (`SubjectName`)
+VALUES (@p0);
+SELECT `SubjectID`
+FROM `dt_subject`
+WHERE ROW_COUNT() = 1 AND `SubjectID` = LAST_INSERT_ID();" (0723d8ff)
+2018-03-06T12:44:59.0445495+01:00 0HLC3AU3KI7CK:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `d`.`UniversityID`, `d`.`CountryID`, `d`.`FederalStateID`, `d`.`UniversityName`
+FROM `dt_University` AS `d`" (0723d8ff)
+2018-03-06T12:44:59.0609932+01:00 0HLC3AU3KI7CK:00000002 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `d`.`FederalStateID`, `d`.`FederalStateName`
+FROM `dt_federal_state` AS `d`" (0723d8ff)
+2018-03-06T12:44:59.0795359+01:00 0HLC3AU3KI7CK:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `d`.`SubjectID`, `d`.`SubjectName`
+FROM `dt_subject` AS `d`" (0723d8ff)
+2018-03-06T12:44:59.1095745+01:00 0HLC3AU3KI7CK:00000002 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `d`.`FieldOfStudiesID`, `d`.`FieldOfStudiesName`, `d`.`Type`
+FROM `dt_field_of_studies` AS `d`" (0723d8ff)
+2018-03-06T12:44:59.1159239+01:00 0HLC3AU3KI7CK:00000002 [INF] Executing ViewResult, running view at path "/Views/Home/CreateQuestion.cshtml". (9707eebe)
+2018-03-06T12:44:59.1814408+01:00 0HLC3AU3KI7CK:00000002 [INF] Executed action "XamPass.Controllers.HomeController.SaveNewSubject (XamPass)" in 312.9312ms (afa2e885)
+2018-03-06T12:44:59.1939104+01:00 0HLC3AU3KI7CK:00000002 [INF] Request finished in 394.0867ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:44:59.2027378+01:00 0HLC3AU3KI7CI:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:44:59.2210387+01:00 0HLC3AU3KI7CI:0000000B [INF] Request finished in 26.9998ms 404  (791a596a)
+2018-03-06T12:45:06.9144965+01:00 0HLC3AU3KI7CJ:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:55953/   (ca22a1cb)
+2018-03-06T12:45:06.9528911+01:00 0HLC3AU3KI7CJ:00000009 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:45:06.9661367+01:00 0HLC3AU3KI7CJ:00000009 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:45:06.9763209+01:00 0HLC3AU3KI7CJ:00000009 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:45:06.9879641+01:00 0HLC3AU3KI7CJ:00000009 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:45:06.9987696+01:00 0HLC3AU3KI7CJ:00000009 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:45:07.0095531+01:00 0HLC3AU3KI7CJ:00000009 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:45:07.0224568+01:00 0HLC3AU3KI7CJ:00000009 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:45:07.1567817+01:00 0HLC3AU3KI7CJ:00000009 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 177.0549ms (afa2e885)
+2018-03-06T12:45:07.1767934+01:00 0HLC3AU3KI7CK:00000003 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:45:07.1918263+01:00 0HLC3AU3KI7CJ:00000009 [INF] Request finished in 250.35ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:45:07.4445162+01:00 0HLC3AU3KI7CK:00000003 [INF] Request finished in 47.5299ms 404  (791a596a)
+2018-03-06T12:45:11.1157980+01:00 0HLC3AU3KI7CI:0000000C [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 242 (ca22a1cb)
+2018-03-06T12:45:11.1468117+01:00 0HLC3AU3KI7CI:0000000C [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:45:11.1522443+01:00 0HLC3AU3KI7CI:0000000C [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:45:11.1610984+01:00 0HLC3AU3KI7CI:0000000C [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:45:11.1685357+01:00 0HLC3AU3KI7CI:0000000C [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:45:11.1762471+01:00 0HLC3AU3KI7CI:0000000C [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:45:11.1840624+01:00 0HLC3AU3KI7CI:0000000C [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:45:11.1945334+01:00 0HLC3AU3KI7CI:0000000C [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_SubjectId_3='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_FederalStateId_6='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND `q`.`FieldOfStudiesID` IS NULL) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND (`q`.`SubjectID` = @__viewModelSearch_SubjectId_3)) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND `q`.`UniversityID` IS NULL) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND `q.University`.`FederalStateID` IS NULL) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:45:11.2005082+01:00 0HLC3AU3KI7CI:0000000C [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:45:11.2675819+01:00 0HLC3AU3KI7CI:0000000C [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 85.8863ms (afa2e885)
+2018-03-06T12:45:11.2783067+01:00 0HLC3AU3KI7CJ:0000000A [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:45:11.3074472+01:00 0HLC3AU3KI7CI:0000000C [INF] Request finished in 161.2568ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:45:11.3402757+01:00 0HLC3AU3KI7CJ:0000000A [INF] Request finished in 20.3473ms 404  (791a596a)
+2018-03-06T12:45:13.8910152+01:00 0HLC3AU3KI7CK:00000004 [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 243 (ca22a1cb)
+2018-03-06T12:45:13.9192106+01:00 0HLC3AU3KI7CK:00000004 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:45:13.9242074+01:00 0HLC3AU3KI7CK:00000004 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:45:13.9322416+01:00 0HLC3AU3KI7CK:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:45:13.9389596+01:00 0HLC3AU3KI7CK:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:45:13.9463600+01:00 0HLC3AU3KI7CK:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:45:13.9537622+01:00 0HLC3AU3KI7CK:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:45:13.9641308+01:00 0HLC3AU3KI7CK:00000004 [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_FieldOfStudiesId_1='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_SubjectId_3='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_FederalStateId_6='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND (`q`.`FieldOfStudiesID` = @__viewModelSearch_FieldOfStudiesId_1)) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND (`q`.`SubjectID` = @__viewModelSearch_SubjectId_3)) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND `q`.`UniversityID` IS NULL) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND `q.University`.`FederalStateID` IS NULL) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:45:13.9696028+01:00 0HLC3AU3KI7CK:00000004 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:45:14.0405920+01:00 0HLC3AU3KI7CK:00000004 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 78.9543ms (afa2e885)
+2018-03-06T12:45:14.0712935+01:00 0HLC3AU3KI7CI:0000000D [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:45:14.0776766+01:00 0HLC3AU3KI7CK:00000004 [INF] Request finished in 157.2722ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:45:14.1036169+01:00 0HLC3AU3KI7CI:0000000D [INF] Request finished in 36.7308ms 404  (791a596a)
+2018-03-06T12:45:18.2649202+01:00 0HLC3AU3KI7CJ:0000000B [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 245 (ca22a1cb)
+2018-03-06T12:45:18.3667698+01:00 0HLC3AU3KI7CJ:0000000B [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:45:18.4400637+01:00 0HLC3AU3KI7CJ:0000000B [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:45:18.4791488+01:00 0HLC3AU3KI7CJ:0000000B [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:45:18.4977429+01:00 0HLC3AU3KI7CJ:0000000B [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:45:18.5166440+01:00 0HLC3AU3KI7CJ:0000000B [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:45:18.5436128+01:00 0HLC3AU3KI7CJ:0000000B [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:45:18.5551474+01:00 0HLC3AU3KI7CJ:0000000B [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_FieldOfStudiesId_1='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_SubjectId_3='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_FederalStateId_6='?', @__viewModelSearch_FederalStateId_7='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND (`q`.`FieldOfStudiesID` = @__viewModelSearch_FieldOfStudiesId_1)) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND (`q`.`SubjectID` = @__viewModelSearch_SubjectId_3)) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND `q`.`UniversityID` IS NULL) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND (`q.University`.`FederalStateID` = @__viewModelSearch_FederalStateId_7)) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:45:18.5676501+01:00 0HLC3AU3KI7CJ:0000000B [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:45:18.6892344+01:00 0HLC3AU3KI7CJ:0000000B [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 314.4303ms (afa2e885)
+2018-03-06T12:45:18.7073786+01:00 0HLC3AU3KI7CK:00000005 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:45:18.7135322+01:00 0HLC3AU3KI7CJ:0000000B [INF] Request finished in 468.1449ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:45:18.7690404+01:00 0HLC3AU3KI7CK:00000005 [INF] Request finished in 57.2712ms 404  (791a596a)
+2018-03-06T12:45:20.9082092+01:00 0HLC3AU3KI7CI:0000000E [INF] Request starting HTTP/1.1 GET http://localhost:55953/Admin   (ca22a1cb)
+2018-03-06T12:45:20.9267204+01:00 0HLC3AU3KI7CI:0000000E [INF] Authorization failed for user: null. (a4ab1676)
+2018-03-06T12:45:20.9366624+01:00 0HLC3AU3KI7CI:0000000E [INF] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter"'. (8b6446cb)
+2018-03-06T12:45:20.9448734+01:00 0HLC3AU3KI7CI:0000000E [INF] Executing ChallengeResult with authentication schemes ([]). (f3dca807)
+2018-03-06T12:45:20.9568359+01:00 0HLC3AU3KI7CI:0000000E [INF] AuthenticationScheme: "Identity.Application" was challenged. (d45f1f38)
+2018-03-06T12:45:20.9617448+01:00 0HLC3AU3KI7CI:0000000E [INF] Executed action "XamPass.Controllers.AdminController.Index (XamPass)" in 45.527ms (afa2e885)
+2018-03-06T12:45:20.9801549+01:00 0HLC3AU3KI7CI:0000000E [INF] Request finished in 60.9677ms 302  (791a596a)
+2018-03-06T12:45:20.9840366+01:00 0HLC3AU3KI7CJ:0000000C [INF] Request starting HTTP/1.1 GET http://localhost:55953/Account/Login?ReturnUrl=%2FAdmin   (ca22a1cb)
+2018-03-06T12:45:21.0327546+01:00 0HLC3AU3KI7CJ:0000000C [INF] Executing action method "XamPass.Controllers.AccountController.Login (XamPass)" with arguments (["/Admin"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:45:21.0705854+01:00 0HLC3AU3KI7CJ:0000000C [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-03-06T12:45:21.3853255+01:00 0HLC3AU3KI7CJ:0000000C [INF] Executing ViewResult, running view at path "/Views/Account/Login.cshtml". (9707eebe)
+2018-03-06T12:45:21.4583036+01:00 0HLC3AU3KI7CJ:0000000C [INF] Executed action "XamPass.Controllers.AccountController.Login (XamPass)" in 442.1648ms (afa2e885)
+2018-03-06T12:45:21.6315556+01:00 0HLC3AU3KI7CJ:0000000C [INF] Request finished in 482.3908ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:45:53.3151064+01:00 0HLC3AU3KI7CK:00000006 [INF] Request starting HTTP/1.1 POST http://localhost:55953/Account/Login?returnurl=%2FAdmin application/x-www-form-urlencoded 234 (ca22a1cb)
+2018-03-06T12:45:53.3835998+01:00 0HLC3AU3KI7CK:00000006 [INF] Executing action method "XamPass.Controllers.AccountController.Login (XamPass)" with arguments (["XamPass.Models.ViewModels.LoginViewModel", "/Admin"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:45:53.4002807+01:00 0HLC3AU3KI7CK:00000006 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:45:53.5007516+01:00 0HLC3AU3KI7CK:00000006 [INF] Executed DbCommand ("51"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`Id`, `u`.`AccessFailedCount`, `u`.`ConcurrencyStamp`, `u`.`Email`, `u`.`EmailConfirmed`, `u`.`LockoutEnabled`, `u`.`LockoutEnd`, `u`.`NormalizedEmail`, `u`.`NormalizedUserName`, `u`.`PasswordHash`, `u`.`PhoneNumber`, `u`.`PhoneNumberConfirmed`, `u`.`SecurityStamp`, `u`.`TwoFactorEnabled`, `u`.`UserName`
+FROM `AspNetUsers` AS `u`
+WHERE `u`.`NormalizedUserName` = @__normalizedUserName_0
+LIMIT 1" (0723d8ff)
+2018-03-06T12:45:53.6984042+01:00 0HLC3AU3KI7CK:00000006 [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (Size = 127)"], CommandType='Text', CommandTimeout='30']"
+""SELECT `uc`.`Id`, `uc`.`ClaimType`, `uc`.`ClaimValue`, `uc`.`UserId`
+FROM `AspNetUserClaims` AS `uc`
+WHERE `uc`.`UserId` = @__user_Id_0" (0723d8ff)
+2018-03-06T12:45:53.7545054+01:00 0HLC3AU3KI7CK:00000006 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (Size = 127)"], CommandType='Text', CommandTimeout='30']"
+""SELECT `role`.`Name`
+FROM `AspNetUserRoles` AS `userRole`
+INNER JOIN `AspNetRoles` AS `role` ON `userRole`.`RoleId` = `role`.`Id`
+WHERE `userRole`.`UserId` = @__userId_0" (0723d8ff)
+2018-03-06T12:45:53.7682875+01:00 0HLC3AU3KI7CK:00000006 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2018-03-06T12:45:53.7743195+01:00 0HLC3AU3KI7CK:00000006 [INF] User logged in. (fdce0db4)
+2018-03-06T12:45:53.7829101+01:00 0HLC3AU3KI7CK:00000006 [INF] Executing RedirectResult, redirecting to "/Admin". (d98d540e)
+2018-03-06T12:45:53.7885805+01:00 0HLC3AU3KI7CK:00000006 [INF] Executed action "XamPass.Controllers.AccountController.Login (XamPass)" in 460.0349ms (afa2e885)
+2018-03-06T12:45:53.8054526+01:00 0HLC3AU3KI7CK:00000006 [INF] Request finished in 487.6898ms 302  (791a596a)
+2018-03-06T12:45:53.8144888+01:00 0HLC3AU3KI7CI:0000000F [INF] Request starting HTTP/1.1 GET http://localhost:55953/Admin   (ca22a1cb)
+2018-03-06T12:45:53.8279074+01:00 0HLC3AU3KI7CI:0000000F [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:45:53.8386243+01:00 0HLC3AU3KI7CI:0000000F [INF] Authorization was successful for user: "admin@xampass.local". (d7eb274a)
+2018-03-06T12:45:53.8933194+01:00 0HLC3AU3KI7CI:0000000F [INF] Executing action method "XamPass.Controllers.AdminController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:45:54.0558466+01:00 0HLC3AU3KI7CI:0000000F [INF] Executing ViewResult, running view at path "/Views/Admin/Index.cshtml". (9707eebe)
+2018-03-06T12:45:54.4957000+01:00 0HLC3AU3KI7CI:0000000F [INF] Executed action "XamPass.Controllers.AdminController.Index (XamPass)" in 657.4757ms (afa2e885)
+2018-03-06T12:45:54.5596511+01:00 0HLC3AU3KI7CI:0000000F [INF] Request finished in 691.5162ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:45:56.8199044+01:00 0HLC3AU3KI7CJ:0000000D [INF] Request starting HTTP/1.1 GET http://localhost:55953/Admin/IndexQuestions   (ca22a1cb)
+2018-03-06T12:45:56.8328106+01:00 0HLC3AU3KI7CJ:0000000D [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:45:56.8612444+01:00 0HLC3AU3KI7CJ:0000000D [INF] Authorization was successful for user: "admin@xampass.local". (d7eb274a)
+2018-03-06T12:45:56.8847389+01:00 0HLC3AU3KI7CJ:0000000D [INF] Executing action method "XamPass.Controllers.AdminController.IndexQuestions (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:45:56.8941023+01:00 0HLC3AU3KI7CJ:0000000D [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:45:56.9772429+01:00 0HLC3AU3KI7CJ:0000000D [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `d`.`QuestionID`, `d`.`Content`, `d`.`FieldOfStudiesID`, `d`.`SubjectID`, `d`.`SubmissionDate`, `d`.`Title`, `d`.`UniversityID`, `d`.`UpVotes`, `d.University`.`UniversityID`, `d.University`.`CountryID`, `d.University`.`FederalStateID`, `d.University`.`UniversityName`, `d.Subject`.`SubjectID`, `d.Subject`.`SubjectName`, `d.FieldOfStudies`.`FieldOfStudiesID`, `d.FieldOfStudies`.`FieldOfStudiesName`, `d.FieldOfStudies`.`Type`
+FROM `dt_question` AS `d`
+LEFT JOIN `dt_University` AS `d.University` ON `d`.`UniversityID` = `d.University`.`UniversityID`
+INNER JOIN `dt_subject` AS `d.Subject` ON `d`.`SubjectID` = `d.Subject`.`SubjectID`
+INNER JOIN `dt_field_of_studies` AS `d.FieldOfStudies` ON `d`.`FieldOfStudiesID` = `d.FieldOfStudies`.`FieldOfStudiesID`" (0723d8ff)
+2018-03-06T12:45:57.2702213+01:00 0HLC3AU3KI7CJ:0000000D [INF] Executing ViewResult, running view at path "/Views/Admin/IndexQuestions.cshtml". (9707eebe)
+2018-03-06T12:45:57.4187187+01:00 0HLC3AU3KI7CJ:0000000D [INF] Executed action "XamPass.Controllers.AdminController.IndexQuestions (XamPass)" in 522.5764ms (afa2e885)
+2018-03-06T12:45:57.4343615+01:00 0HLC3AU3KI7CJ:0000000D [INF] Request finished in 611.1896ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:46:11.8351577+01:00 0HLC3AU3KI7CK:00000007 [INF] Request starting HTTP/1.1 GET http://localhost:55953/DtUniversities   (ca22a1cb)
+2018-03-06T12:46:11.8416624+01:00 0HLC3AU3KI7CK:00000007 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:11.8538337+01:00 0HLC3AU3KI7CK:00000007 [INF] Authorization was successful for user: "admin@xampass.local". (d7eb274a)
+2018-03-06T12:46:11.8799367+01:00 0HLC3AU3KI7CK:00000007 [INF] Executing action method "XamPass.Controllers.DtUniversitiesController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:46:11.8886768+01:00 0HLC3AU3KI7CK:00000007 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:46:11.8977744+01:00 0HLC3AU3KI7CK:00000007 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `d`.`UniversityID`, `d`.`CountryID`, `d`.`FederalStateID`, `d`.`UniversityName`
+FROM `dt_University` AS `d`" (0723d8ff)
+2018-03-06T12:46:12.0999127+01:00 0HLC3AU3KI7CK:00000007 [INF] Executing ViewResult, running view at path "/Views/DtUniversities/Index.cshtml". (9707eebe)
+2018-03-06T12:46:12.1397685+01:00 0HLC3AU3KI7CK:00000007 [INF] Executed action "XamPass.Controllers.DtUniversitiesController.Index (XamPass)" in 282.3721ms (afa2e885)
+2018-03-06T12:46:12.1483161+01:00 0HLC3AU3KI7CK:00000007 [INF] Request finished in 311.2184ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:46:16.8085026+01:00 0HLC3AU3KI7CI:00000010 [INF] Request starting HTTP/1.1 GET http://localhost:55953/DtUniversities/Edit/7   (ca22a1cb)
+2018-03-06T12:46:16.8489128+01:00 0HLC3AU3KI7CI:00000010 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:16.8921998+01:00 0HLC3AU3KI7CI:00000010 [INF] Authorization was successful for user: "admin@xampass.local". (d7eb274a)
+2018-03-06T12:46:16.9892882+01:00 0HLC3AU3KI7CI:00000010 [INF] Executing action method "XamPass.Controllers.DtUniversitiesController.Edit (XamPass)" with arguments (["7"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:46:17.0154745+01:00 0HLC3AU3KI7CI:00000010 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:46:17.0372081+01:00 0HLC3AU3KI7CI:00000010 [INF] Executed DbCommand ("0"ms) [Parameters=["@__id_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `m`.`UniversityID`, `m`.`CountryID`, `m`.`FederalStateID`, `m`.`UniversityName`
+FROM `dt_University` AS `m`
+WHERE `m`.`UniversityID` = @__id_0
+LIMIT 2" (0723d8ff)
+2018-03-06T12:46:17.2535663+01:00 0HLC3AU3KI7CI:00000010 [INF] Executing ViewResult, running view at path "/Views/DtUniversities/Edit.cshtml". (9707eebe)
+2018-03-06T12:46:17.3373404+01:00 0HLC3AU3KI7CI:00000010 [INF] Executed action "XamPass.Controllers.DtUniversitiesController.Edit (XamPass)" in 424.9902ms (afa2e885)
+2018-03-06T12:46:17.3531159+01:00 0HLC3AU3KI7CI:00000010 [INF] Request finished in 562.7746ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:46:20.0824210+01:00 0HLC3AU3KI7CJ:0000000E [INF] Request starting HTTP/1.1 GET http://localhost:55953/DtUniversities   (ca22a1cb)
+2018-03-06T12:46:20.0904626+01:00 0HLC3AU3KI7CJ:0000000E [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:20.0999048+01:00 0HLC3AU3KI7CJ:0000000E [INF] Authorization was successful for user: "admin@xampass.local". (d7eb274a)
+2018-03-06T12:46:20.1250129+01:00 0HLC3AU3KI7CJ:0000000E [INF] Executing action method "XamPass.Controllers.DtUniversitiesController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:46:20.1316962+01:00 0HLC3AU3KI7CJ:0000000E [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:46:20.1411769+01:00 0HLC3AU3KI7CJ:0000000E [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `d`.`UniversityID`, `d`.`CountryID`, `d`.`FederalStateID`, `d`.`UniversityName`
+FROM `dt_University` AS `d`" (0723d8ff)
+2018-03-06T12:46:20.1467621+01:00 0HLC3AU3KI7CJ:0000000E [INF] Executing ViewResult, running view at path "/Views/DtUniversities/Index.cshtml". (9707eebe)
+2018-03-06T12:46:20.2021075+01:00 0HLC3AU3KI7CJ:0000000E [INF] Executed action "XamPass.Controllers.DtUniversitiesController.Index (XamPass)" in 64.1296ms (afa2e885)
+2018-03-06T12:46:20.2263256+01:00 0HLC3AU3KI7CJ:0000000E [INF] Request finished in 128.3258ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:46:22.7024736+01:00 0HLC3AU3KI7CK:00000008 [INF] Request starting HTTP/1.1 GET http://localhost:55953/   (ca22a1cb)
+2018-03-06T12:46:22.7138110+01:00 0HLC3AU3KI7CK:00000008 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:22.7382120+01:00 0HLC3AU3KI7CK:00000008 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:46:22.7434488+01:00 0HLC3AU3KI7CK:00000008 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:46:22.7530461+01:00 0HLC3AU3KI7CK:00000008 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:46:22.7842229+01:00 0HLC3AU3KI7CK:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:46:22.7947491+01:00 0HLC3AU3KI7CK:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:46:22.8048273+01:00 0HLC3AU3KI7CK:00000008 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:46:22.8112255+01:00 0HLC3AU3KI7CK:00000008 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:46:22.8769644+01:00 0HLC3AU3KI7CK:00000008 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 98.4868ms (afa2e885)
+2018-03-06T12:46:22.9006236+01:00 0HLC3AU3KI7CI:00000011 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:46:22.9042825+01:00 0HLC3AU3KI7CK:00000008 [INF] Request finished in 190.8708ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:46:22.9102739+01:00 0HLC3AU3KI7CI:00000011 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:22.9349311+01:00 0HLC3AU3KI7CI:00000011 [INF] Request finished in 21.9367ms 404  (791a596a)
+2018-03-06T12:46:28.0350530+01:00 0HLC3AU3KI7CJ:0000000F [INF] Request starting HTTP/1.1 POST http://localhost:55953/Home/CreateQuestion application/x-www-form-urlencoded 284 (ca22a1cb)
+2018-03-06T12:46:28.0436318+01:00 0HLC3AU3KI7CJ:0000000F [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:28.0691235+01:00 0HLC3AU3KI7CJ:0000000F [INF] Executing action method "XamPass.Controllers.HomeController.CreateQuestion (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelCreate"]) - ModelState is Invalid (ba7f4ac2)
+2018-03-06T12:46:28.0741738+01:00 0HLC3AU3KI7CJ:0000000F [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:46:28.0835045+01:00 0HLC3AU3KI7CJ:0000000F [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:46:28.0927776+01:00 0HLC3AU3KI7CJ:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:46:28.1020257+01:00 0HLC3AU3KI7CJ:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:46:28.1204961+01:00 0HLC3AU3KI7CJ:0000000F [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:46:28.1265560+01:00 0HLC3AU3KI7CJ:0000000F [INF] Executing ViewResult, running view at path "/Views/Home/CreateQuestion.cshtml". (9707eebe)
+2018-03-06T12:46:28.1990861+01:00 0HLC3AU3KI7CJ:0000000F [INF] Executed action "XamPass.Controllers.HomeController.CreateQuestion (XamPass)" in 84.5892ms (afa2e885)
+2018-03-06T12:46:28.2239805+01:00 0HLC3AU3KI7CK:00000009 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:46:28.2263722+01:00 0HLC3AU3KI7CJ:0000000F [INF] Request finished in 178.6381ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:46:28.2343177+01:00 0HLC3AU3KI7CK:00000009 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:28.2647400+01:00 0HLC3AU3KI7CK:00000009 [INF] Request finished in 20.97ms 404  (791a596a)
+2018-03-06T12:46:31.7980364+01:00 0HLC3AU3KI7CI:00000012 [INF] Request starting HTTP/1.1 POST http://localhost:55953/Home/CreateQuestion application/x-www-form-urlencoded 332 (ca22a1cb)
+2018-03-06T12:46:31.8041766+01:00 0HLC3AU3KI7CI:00000012 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:31.8312424+01:00 0HLC3AU3KI7CI:00000012 [INF] Executing action method "XamPass.Controllers.HomeController.CreateQuestion (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelCreate"]) - ModelState is Invalid (ba7f4ac2)
+2018-03-06T12:46:31.8370419+01:00 0HLC3AU3KI7CI:00000012 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:46:31.8557537+01:00 0HLC3AU3KI7CI:00000012 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:46:31.8655824+01:00 0HLC3AU3KI7CI:00000012 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:46:31.8747450+01:00 0HLC3AU3KI7CI:00000012 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:46:31.8843823+01:00 0HLC3AU3KI7CI:00000012 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:46:31.8897204+01:00 0HLC3AU3KI7CI:00000012 [INF] Executing ViewResult, running view at path "/Views/Home/CreateQuestion.cshtml". (9707eebe)
+2018-03-06T12:46:31.9177597+01:00 0HLC3AU3KI7CI:00000012 [INF] Executed action "XamPass.Controllers.HomeController.CreateQuestion (XamPass)" in 89.0572ms (afa2e885)
+2018-03-06T12:46:31.9779480+01:00 0HLC3AU3KI7CI:00000012 [INF] Request finished in 170.0822ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:46:31.9951907+01:00 0HLC3AU3KI7CJ:00000010 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:46:32.0006549+01:00 0HLC3AU3KI7CJ:00000010 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:32.0341567+01:00 0HLC3AU3KI7CJ:00000010 [INF] Request finished in 32.2754ms 404  (791a596a)
+2018-03-06T12:46:33.9005832+01:00 0HLC3AU3KI7CK:0000000A [INF] Request starting HTTP/1.1 POST http://localhost:55953/Home/CreateQuestion application/x-www-form-urlencoded 333 (ca22a1cb)
+2018-03-06T12:46:33.9061159+01:00 0HLC3AU3KI7CK:0000000A [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:33.9441915+01:00 0HLC3AU3KI7CK:0000000A [INF] Executing action method "XamPass.Controllers.HomeController.CreateQuestion (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelCreate"]) - ModelState is Invalid (ba7f4ac2)
+2018-03-06T12:46:33.9528714+01:00 0HLC3AU3KI7CK:0000000A [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:46:33.9711040+01:00 0HLC3AU3KI7CK:0000000A [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:46:33.9806703+01:00 0HLC3AU3KI7CK:0000000A [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:46:33.9900431+01:00 0HLC3AU3KI7CK:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:46:33.9976808+01:00 0HLC3AU3KI7CK:0000000A [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:46:34.0044443+01:00 0HLC3AU3KI7CK:0000000A [INF] Executing ViewResult, running view at path "/Views/Home/CreateQuestion.cshtml". (9707eebe)
+2018-03-06T12:46:34.0605967+01:00 0HLC3AU3KI7CK:0000000A [INF] Executed action "XamPass.Controllers.HomeController.CreateQuestion (XamPass)" in 100.8352ms (afa2e885)
+2018-03-06T12:46:34.0806151+01:00 0HLC3AU3KI7CI:00000013 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:46:34.0916530+01:00 0HLC3AU3KI7CK:0000000A [INF] Request finished in 180.2322ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:46:34.1050945+01:00 0HLC3AU3KI7CI:00000013 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:34.3480848+01:00 0HLC3AU3KI7CI:00000013 [INF] Request finished in 49.0282ms 404  (791a596a)
+2018-03-06T12:46:41.7288477+01:00 0HLC3AU3KI7CJ:00000011 [INF] Request starting HTTP/1.1 POST http://localhost:55953/Home/CreateQuestion application/x-www-form-urlencoded 335 (ca22a1cb)
+2018-03-06T12:46:41.7424116+01:00 0HLC3AU3KI7CJ:00000011 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:41.7677534+01:00 0HLC3AU3KI7CJ:00000011 [INF] Executing action method "XamPass.Controllers.HomeController.CreateQuestion (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelCreate"]) - ModelState is Invalid (ba7f4ac2)
+2018-03-06T12:46:41.7736380+01:00 0HLC3AU3KI7CJ:00000011 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:46:41.7824592+01:00 0HLC3AU3KI7CJ:00000011 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:46:41.7927200+01:00 0HLC3AU3KI7CJ:00000011 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:46:41.8028823+01:00 0HLC3AU3KI7CJ:00000011 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:46:41.8119030+01:00 0HLC3AU3KI7CJ:00000011 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:46:41.8165208+01:00 0HLC3AU3KI7CJ:00000011 [INF] Executing ViewResult, running view at path "/Views/Home/CreateQuestion.cshtml". (9707eebe)
+2018-03-06T12:46:41.8815187+01:00 0HLC3AU3KI7CJ:00000011 [INF] Executed action "XamPass.Controllers.HomeController.CreateQuestion (XamPass)" in 76.0341ms (afa2e885)
+2018-03-06T12:46:41.9120198+01:00 0HLC3AU3KI7CJ:00000011 [INF] Request finished in 160.1477ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:46:41.9303918+01:00 0HLC3AU3KI7CK:0000000B [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:46:41.9438964+01:00 0HLC3AU3KI7CK:0000000B [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:41.9645695+01:00 0HLC3AU3KI7CK:0000000B [INF] Request finished in 65.4121ms 404  (791a596a)
+2018-03-06T12:46:43.9386483+01:00 0HLC3AU3KI7CI:00000014 [INF] Request starting HTTP/1.1 POST http://localhost:55953/Home/CreateQuestion application/x-www-form-urlencoded 336 (ca22a1cb)
+2018-03-06T12:46:43.9492763+01:00 0HLC3AU3KI7CI:00000014 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:43.9752861+01:00 0HLC3AU3KI7CI:00000014 [INF] Executing action method "XamPass.Controllers.HomeController.CreateQuestion (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelCreate"]) - ModelState is Invalid (ba7f4ac2)
+2018-03-06T12:46:43.9834092+01:00 0HLC3AU3KI7CI:00000014 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:46:43.9931775+01:00 0HLC3AU3KI7CI:00000014 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:46:44.0071856+01:00 0HLC3AU3KI7CI:00000014 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:46:44.0174151+01:00 0HLC3AU3KI7CI:00000014 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:46:44.0374516+01:00 0HLC3AU3KI7CI:00000014 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:46:44.0439067+01:00 0HLC3AU3KI7CI:00000014 [INF] Executing ViewResult, running view at path "/Views/Home/CreateQuestion.cshtml". (9707eebe)
+2018-03-06T12:46:44.1266949+01:00 0HLC3AU3KI7CI:00000014 [INF] Executed action "XamPass.Controllers.HomeController.CreateQuestion (XamPass)" in 96.9332ms (afa2e885)
+2018-03-06T12:46:44.1432472+01:00 0HLC3AU3KI7CJ:00000012 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:46:44.1551326+01:00 0HLC3AU3KI7CJ:00000012 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:46:44.1600883+01:00 0HLC3AU3KI7CI:00000014 [INF] Request finished in 195.7899ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:46:44.1856325+01:00 0HLC3AU3KI7CJ:00000012 [INF] Request finished in 43.7631ms 404  (791a596a)
+2018-03-06T12:47:34.0691098+01:00 0HLC3AU3KI7CK:0000000C [INF] Request starting HTTP/1.1 POST http://localhost:55953/Home/CreateNewEntry application/x-www-form-urlencoded 449 (ca22a1cb)
+2018-03-06T12:47:34.0742186+01:00 0HLC3AU3KI7CK:0000000C [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:34.1064955+01:00 0HLC3AU3KI7CK:0000000C [INF] Executing action method "XamPass.Controllers.HomeController.CreateNewEntry (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelCreate"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:47:34.1163384+01:00 0HLC3AU3KI7CK:0000000C [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:47:34.1489718+01:00 0HLC3AU3KI7CK:0000000C [INF] Executed DbCommand ("4"ms) [Parameters=["@p0='?' (Size = 8000), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 250), @p5='?', @p6='?'"], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO `dt_question` (`Content`, `FieldOfStudiesID`, `SubjectID`, `SubmissionDate`, `Title`, `UniversityID`, `UpVotes`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT `QuestionID`
+FROM `dt_question`
+WHERE ROW_COUNT() = 1 AND `QuestionID` = LAST_INSERT_ID();" (0723d8ff)
+2018-03-06T12:47:34.1680361+01:00 0HLC3AU3KI7CK:0000000C [INF] Executing RedirectResult, redirecting to "/Home/ViewQuestion/9". (d98d540e)
+2018-03-06T12:47:34.1722040+01:00 0HLC3AU3KI7CK:0000000C [INF] Executed action "XamPass.Controllers.HomeController.CreateNewEntry (XamPass)" in 89.6603ms (afa2e885)
+2018-03-06T12:47:34.1804472+01:00 0HLC3AU3KI7CK:0000000C [INF] Request finished in 108.8314ms 302  (791a596a)
+2018-03-06T12:47:34.1889239+01:00 0HLC3AU3KI7CI:00000015 [INF] Request starting HTTP/1.1 GET http://localhost:55953/Home/ViewQuestion/9   (ca22a1cb)
+2018-03-06T12:47:34.1945474+01:00 0HLC3AU3KI7CI:00000015 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:34.2212005+01:00 0HLC3AU3KI7CI:00000015 [INF] Executing action method "XamPass.Controllers.HomeController.ViewQuestion (XamPass)" with arguments (["9"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:47:34.2318484+01:00 0HLC3AU3KI7CI:00000015 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:47:34.3645294+01:00 0HLC3AU3KI7CI:00000015 [INF] Executed DbCommand ("2"ms) [Parameters=["@__viewModelQuestion_QuestionId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`, `q.University`.`UniversityID`, `q.University`.`CountryID`, `q.University`.`FederalStateID`, `q.University`.`UniversityName`, `q.University.FederalState`.`FederalStateID`, `q.University.FederalState`.`FederalStateName`, `q.University.Country`.`CountryID`, `q.University.Country`.`CountryName`, `q.Subject`.`SubjectID`, `q.Subject`.`SubjectName`, `q.FieldOfStudies`.`FieldOfStudiesID`, `q.FieldOfStudies`.`FieldOfStudiesName`, `q.FieldOfStudies`.`Type`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+LEFT JOIN `dt_federal_state` AS `q.University.FederalState` ON `q.University`.`FederalStateID` = `q.University.FederalState`.`FederalStateID`
+LEFT JOIN `dt_Country` AS `q.University.Country` ON `q.University`.`CountryID` = `q.University.Country`.`CountryID`
+INNER JOIN `dt_subject` AS `q.Subject` ON `q`.`SubjectID` = `q.Subject`.`SubjectID`
+INNER JOIN `dt_field_of_studies` AS `q.FieldOfStudies` ON `q`.`FieldOfStudiesID` = `q.FieldOfStudies`.`FieldOfStudiesID`
+WHERE `q`.`QuestionID` = @__viewModelQuestion_QuestionId_0
+ORDER BY `q`.`QuestionID`
+LIMIT 2" (0723d8ff)
+2018-03-06T12:47:34.4001401+01:00 0HLC3AU3KI7CI:00000015 [INF] Executed DbCommand ("2"ms) [Parameters=["@__viewModelQuestion_QuestionId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q.Answers`.`AnswerID`, `q.Answers`.`Content`, `q.Answers`.`DtQuestionQuestionID`, `q.Answers`.`SubmissionDate`, `q.Answers`.`UpVotes`
+FROM `dt_answer` AS `q.Answers`
+INNER JOIN (
+    SELECT DISTINCT `t`.*
+    FROM (
+        SELECT `q0`.`QuestionID`
+        FROM `dt_question` AS `q0`
+        LEFT JOIN `dt_University` AS `q.University0` ON `q0`.`UniversityID` = `q.University0`.`UniversityID`
+        LEFT JOIN `dt_federal_state` AS `q.University.FederalState0` ON `q.University0`.`FederalStateID` = `q.University.FederalState0`.`FederalStateID`
+        LEFT JOIN `dt_Country` AS `q.University.Country0` ON `q.University0`.`CountryID` = `q.University.Country0`.`CountryID`
+        INNER JOIN `dt_subject` AS `q.Subject0` ON `q0`.`SubjectID` = `q.Subject0`.`SubjectID`
+        INNER JOIN `dt_field_of_studies` AS `q.FieldOfStudies0` ON `q0`.`FieldOfStudiesID` = `q.FieldOfStudies0`.`FieldOfStudiesID`
+        WHERE `q0`.`QuestionID` = @__viewModelQuestion_QuestionId_0
+        ORDER BY `q0`.`QuestionID`
+        LIMIT 1
+    ) AS `t`
+) AS `t0` ON `q.Answers`.`DtQuestionQuestionID` = `t0`.`QuestionID`
+ORDER BY `t0`.`QuestionID`" (0723d8ff)
+2018-03-06T12:47:34.6537872+01:00 0HLC3AU3KI7CI:00000015 [INF] Executing ViewResult, running view at path "/Views/Home/ViewQuestion.cshtml". (9707eebe)
+2018-03-06T12:47:34.6947835+01:00 0HLC3AU3KI7CI:00000015 [INF] Executed action "XamPass.Controllers.HomeController.ViewQuestion (XamPass)" in 483.8884ms (afa2e885)
+2018-03-06T12:47:34.7988906+01:00 0HLC3AU3KI7CI:00000015 [INF] Request finished in 533.1587ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:47:34.8222747+01:00 0HLC3AU3KI7CK:0000000D [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:47:34.8324568+01:00 0HLC3AU3KI7CJ:00000013 [INF] Request starting HTTP/1.1 GET http://localhost:55953/css/viewQuestion.css   (ca22a1cb)
+2018-03-06T12:47:34.8417316+01:00 0HLC3AU3KI7CK:0000000D [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:34.8655727+01:00 0HLC3AU3KI7CK:0000000D [INF] Request finished in 54.6381ms 404  (791a596a)
+2018-03-06T12:47:34.8743599+01:00 0HLC3AU3KI7CJ:00000013 [INF] The file "/css/viewQuestion.css" was not modified (f1f8d725)
+2018-03-06T12:47:35.1028486+01:00 0HLC3AU3KI7CJ:00000013 [INF] Request finished in 134.3402ms 304 text/css (791a596a)
+2018-03-06T12:47:39.7362608+01:00 0HLC3AU3KI7CI:00000016 [INF] Request starting HTTP/1.1 GET http://localhost:55953/   (ca22a1cb)
+2018-03-06T12:47:39.7440575+01:00 0HLC3AU3KI7CI:00000016 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:39.7693802+01:00 0HLC3AU3KI7CI:00000016 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:47:39.7750868+01:00 0HLC3AU3KI7CI:00000016 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:47:39.7850226+01:00 0HLC3AU3KI7CI:00000016 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:47:39.8035605+01:00 0HLC3AU3KI7CI:00000016 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:47:39.8114757+01:00 0HLC3AU3KI7CI:00000016 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:47:39.8190633+01:00 0HLC3AU3KI7CI:00000016 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:47:39.8264458+01:00 0HLC3AU3KI7CI:00000016 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:47:39.8813265+01:00 0HLC3AU3KI7CI:00000016 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 83.657ms (afa2e885)
+2018-03-06T12:47:39.9025955+01:00 0HLC3AU3KI7CI:00000016 [INF] Request finished in 159.0516ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:47:39.9115012+01:00 0HLC3AU3KI7CK:0000000E [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:47:39.9178394+01:00 0HLC3AU3KI7CK:0000000E [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:39.9421658+01:00 0HLC3AU3KI7CK:0000000E [INF] Request finished in 21.1242ms 404  (791a596a)
+2018-03-06T12:47:43.5158276+01:00 0HLC3AU3KI7CJ:00000014 [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 285 (ca22a1cb)
+2018-03-06T12:47:43.5216003+01:00 0HLC3AU3KI7CJ:00000014 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:43.5625629+01:00 0HLC3AU3KI7CJ:00000014 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:47:43.5695517+01:00 0HLC3AU3KI7CJ:00000014 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:47:43.5778968+01:00 0HLC3AU3KI7CJ:00000014 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:47:43.5915459+01:00 0HLC3AU3KI7CJ:00000014 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:47:43.6012387+01:00 0HLC3AU3KI7CJ:00000014 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:47:43.6202948+01:00 0HLC3AU3KI7CJ:00000014 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:47:43.6532635+01:00 0HLC3AU3KI7CJ:00000014 [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_FieldOfStudiesId_1='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_FederalStateId_6='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND (`q`.`FieldOfStudiesID` = @__viewModelSearch_FieldOfStudiesId_1)) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND `q`.`SubjectID` IS NULL) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND `q`.`UniversityID` IS NULL) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND `q.University`.`FederalStateID` IS NULL) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:47:43.6582651+01:00 0HLC3AU3KI7CJ:00000014 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:47:43.7195701+01:00 0HLC3AU3KI7CJ:00000014 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 137.9189ms (afa2e885)
+2018-03-06T12:47:43.7402030+01:00 0HLC3AU3KI7CI:00000017 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:47:43.7429164+01:00 0HLC3AU3KI7CJ:00000014 [INF] Request finished in 220.4364ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:47:43.7689227+01:00 0HLC3AU3KI7CI:00000017 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:43.7896918+01:00 0HLC3AU3KI7CI:00000017 [INF] Request finished in 60.6242ms 404  (791a596a)
+2018-03-06T12:47:48.5409296+01:00 0HLC3AU3KI7CK:0000000F [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 286 (ca22a1cb)
+2018-03-06T12:47:48.5872666+01:00 0HLC3AU3KI7CK:0000000F [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:48.6242402+01:00 0HLC3AU3KI7CK:0000000F [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:47:48.6341309+01:00 0HLC3AU3KI7CK:0000000F [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:47:48.6470811+01:00 0HLC3AU3KI7CK:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:47:48.6601415+01:00 0HLC3AU3KI7CK:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:47:48.6659660+01:00 0HLC3AU3KI7CK:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:47:48.6717738+01:00 0HLC3AU3KI7CK:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:47:48.6826299+01:00 0HLC3AU3KI7CK:0000000F [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_FieldOfStudiesId_1='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_SubjectId_3='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_FederalStateId_6='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND (`q`.`FieldOfStudiesID` = @__viewModelSearch_FieldOfStudiesId_1)) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND (`q`.`SubjectID` = @__viewModelSearch_SubjectId_3)) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND `q`.`UniversityID` IS NULL) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND `q.University`.`FederalStateID` IS NULL) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:47:48.6883330+01:00 0HLC3AU3KI7CK:0000000F [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:47:48.7211219+01:00 0HLC3AU3KI7CK:0000000F [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 102.3151ms (afa2e885)
+2018-03-06T12:47:48.7731991+01:00 0HLC3AU3KI7CK:0000000F [INF] Request finished in 214.3493ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:47:48.7801298+01:00 0HLC3AU3KI7CJ:00000015 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:47:48.7958159+01:00 0HLC3AU3KI7CJ:00000015 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:48.8146715+01:00 0HLC3AU3KI7CJ:00000015 [INF] Request finished in 39.6877ms 404  (791a596a)
+2018-03-06T12:47:53.3906621+01:00 0HLC3AU3KI7CI:00000018 [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 288 (ca22a1cb)
+2018-03-06T12:47:53.3971028+01:00 0HLC3AU3KI7CI:00000018 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:53.4317029+01:00 0HLC3AU3KI7CI:00000018 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:47:53.4372373+01:00 0HLC3AU3KI7CI:00000018 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:47:53.4449088+01:00 0HLC3AU3KI7CI:00000018 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:47:53.4504776+01:00 0HLC3AU3KI7CI:00000018 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:47:53.4575893+01:00 0HLC3AU3KI7CI:00000018 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:47:53.4640036+01:00 0HLC3AU3KI7CI:00000018 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:47:53.4716985+01:00 0HLC3AU3KI7CI:00000018 [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_FieldOfStudiesId_1='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_SubjectId_3='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_FederalStateId_6='?', @__viewModelSearch_FederalStateId_7='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND (`q`.`FieldOfStudiesID` = @__viewModelSearch_FieldOfStudiesId_1)) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND (`q`.`SubjectID` = @__viewModelSearch_SubjectId_3)) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND `q`.`UniversityID` IS NULL) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND (`q.University`.`FederalStateID` = @__viewModelSearch_FederalStateId_7)) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:47:53.4775982+01:00 0HLC3AU3KI7CI:00000018 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:47:53.5301838+01:00 0HLC3AU3KI7CI:00000018 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 80.9212ms (afa2e885)
+2018-03-06T12:47:53.6869469+01:00 0HLC3AU3KI7CK:00000010 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:47:53.7016261+01:00 0HLC3AU3KI7CI:00000018 [INF] Request finished in 151.3454ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:47:53.7175431+01:00 0HLC3AU3KI7CK:00000010 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:54.0042938+01:00 0HLC3AU3KI7CK:00000010 [INF] Request finished in 188.4145ms 404  (791a596a)
+2018-03-06T12:47:55.5052755+01:00 0HLC3AU3KI7CJ:00000016 [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 289 (ca22a1cb)
+2018-03-06T12:47:55.5116916+01:00 0HLC3AU3KI7CJ:00000016 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:55.5517447+01:00 0HLC3AU3KI7CJ:00000016 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:47:55.5569823+01:00 0HLC3AU3KI7CJ:00000016 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:47:55.5632896+01:00 0HLC3AU3KI7CJ:00000016 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:47:55.5713277+01:00 0HLC3AU3KI7CJ:00000016 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:47:55.5774656+01:00 0HLC3AU3KI7CJ:00000016 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:47:55.5834554+01:00 0HLC3AU3KI7CJ:00000016 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:47:55.5966357+01:00 0HLC3AU3KI7CJ:00000016 [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_FieldOfStudiesId_1='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_SubjectId_3='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_UniversityId_5='?', @__viewModelSearch_FederalStateId_6='?', @__viewModelSearch_FederalStateId_7='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND (`q`.`FieldOfStudiesID` = @__viewModelSearch_FieldOfStudiesId_1)) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND (`q`.`SubjectID` = @__viewModelSearch_SubjectId_3)) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND (`q`.`UniversityID` = @__viewModelSearch_UniversityId_5)) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND (`q.University`.`FederalStateID` = @__viewModelSearch_FederalStateId_7)) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:47:55.6042566+01:00 0HLC3AU3KI7CJ:00000016 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:47:55.6787530+01:00 0HLC3AU3KI7CJ:00000016 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 132.0053ms (afa2e885)
+2018-03-06T12:47:55.6910151+01:00 0HLC3AU3KI7CI:00000019 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:47:55.6959144+01:00 0HLC3AU3KI7CJ:00000016 [INF] Request finished in 184.761ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:47:55.7248363+01:00 0HLC3AU3KI7CI:00000019 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:55.8126656+01:00 0HLC3AU3KI7CI:00000019 [INF] Request finished in 50.6689ms 404  (791a596a)
+2018-03-06T12:47:57.9144224+01:00 0HLC3AU3KI7CK:00000011 [INF] Request starting HTTP/1.1 POST http://localhost:55953/Home/ShowQuestions application/x-www-form-urlencoded 289 (ca22a1cb)
+2018-03-06T12:47:57.9211720+01:00 0HLC3AU3KI7CK:00000011 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:57.9497334+01:00 0HLC3AU3KI7CK:00000011 [INF] Executing action method "XamPass.Controllers.HomeController.ShowQuestions (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:47:57.9617583+01:00 0HLC3AU3KI7CK:00000011 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:47:57.9802176+01:00 0HLC3AU3KI7CK:00000011 [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:47:57.9882707+01:00 0HLC3AU3KI7CK:00000011 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:47:57.9974278+01:00 0HLC3AU3KI7CK:00000011 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:47:58.0084561+01:00 0HLC3AU3KI7CK:00000011 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:47:58.0180250+01:00 0HLC3AU3KI7CK:00000011 [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_FieldOfStudiesId_1='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_SubjectId_3='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_UniversityId_5='?', @__viewModelSearch_FederalStateId_6='?', @__viewModelSearch_FederalStateId_7='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND (`q`.`FieldOfStudiesID` = @__viewModelSearch_FieldOfStudiesId_1)) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND (`q`.`SubjectID` = @__viewModelSearch_SubjectId_3)) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND (`q`.`UniversityID` = @__viewModelSearch_UniversityId_5)) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND (`q.University`.`FederalStateID` = @__viewModelSearch_FederalStateId_7)) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:47:58.0244124+01:00 0HLC3AU3KI7CK:00000011 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:47:58.0774347+01:00 0HLC3AU3KI7CK:00000011 [INF] Executed action "XamPass.Controllers.HomeController.ShowQuestions (XamPass)" in 103.6203ms (afa2e885)
+2018-03-06T12:47:58.1272131+01:00 0HLC3AU3KI7CK:00000011 [INF] Request finished in 189.3074ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:47:58.1351905+01:00 0HLC3AU3KI7CJ:00000017 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:47:58.1403858+01:00 0HLC3AU3KI7CJ:00000017 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:47:58.1812376+01:00 0HLC3AU3KI7CJ:00000017 [INF] Request finished in 21.3535ms 404  (791a596a)
+2018-03-06T12:48:04.5296730+01:00 0HLC3AU3KI7CI:0000001A [INF] Request starting HTTP/1.1 GET http://localhost:55953/Home/ViewQuestion/9   (ca22a1cb)
+2018-03-06T12:48:04.5367691+01:00 0HLC3AU3KI7CI:0000001A [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:48:04.5634657+01:00 0HLC3AU3KI7CI:0000001A [INF] Executing action method "XamPass.Controllers.HomeController.ViewQuestion (XamPass)" with arguments (["9"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:48:04.5678500+01:00 0HLC3AU3KI7CI:0000001A [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:48:04.5758595+01:00 0HLC3AU3KI7CI:0000001A [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelQuestion_QuestionId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`, `q.University`.`UniversityID`, `q.University`.`CountryID`, `q.University`.`FederalStateID`, `q.University`.`UniversityName`, `q.University.FederalState`.`FederalStateID`, `q.University.FederalState`.`FederalStateName`, `q.University.Country`.`CountryID`, `q.University.Country`.`CountryName`, `q.Subject`.`SubjectID`, `q.Subject`.`SubjectName`, `q.FieldOfStudies`.`FieldOfStudiesID`, `q.FieldOfStudies`.`FieldOfStudiesName`, `q.FieldOfStudies`.`Type`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+LEFT JOIN `dt_federal_state` AS `q.University.FederalState` ON `q.University`.`FederalStateID` = `q.University.FederalState`.`FederalStateID`
+LEFT JOIN `dt_Country` AS `q.University.Country` ON `q.University`.`CountryID` = `q.University.Country`.`CountryID`
+INNER JOIN `dt_subject` AS `q.Subject` ON `q`.`SubjectID` = `q.Subject`.`SubjectID`
+INNER JOIN `dt_field_of_studies` AS `q.FieldOfStudies` ON `q`.`FieldOfStudiesID` = `q.FieldOfStudies`.`FieldOfStudiesID`
+WHERE `q`.`QuestionID` = @__viewModelQuestion_QuestionId_0
+ORDER BY `q`.`QuestionID`
+LIMIT 2" (0723d8ff)
+2018-03-06T12:48:04.5849174+01:00 0HLC3AU3KI7CI:0000001A [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelQuestion_QuestionId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q.Answers`.`AnswerID`, `q.Answers`.`Content`, `q.Answers`.`DtQuestionQuestionID`, `q.Answers`.`SubmissionDate`, `q.Answers`.`UpVotes`
+FROM `dt_answer` AS `q.Answers`
+INNER JOIN (
+    SELECT DISTINCT `t`.*
+    FROM (
+        SELECT `q0`.`QuestionID`
+        FROM `dt_question` AS `q0`
+        LEFT JOIN `dt_University` AS `q.University0` ON `q0`.`UniversityID` = `q.University0`.`UniversityID`
+        LEFT JOIN `dt_federal_state` AS `q.University.FederalState0` ON `q.University0`.`FederalStateID` = `q.University.FederalState0`.`FederalStateID`
+        LEFT JOIN `dt_Country` AS `q.University.Country0` ON `q.University0`.`CountryID` = `q.University.Country0`.`CountryID`
+        INNER JOIN `dt_subject` AS `q.Subject0` ON `q0`.`SubjectID` = `q.Subject0`.`SubjectID`
+        INNER JOIN `dt_field_of_studies` AS `q.FieldOfStudies0` ON `q0`.`FieldOfStudiesID` = `q.FieldOfStudies0`.`FieldOfStudiesID`
+        WHERE `q0`.`QuestionID` = @__viewModelQuestion_QuestionId_0
+        ORDER BY `q0`.`QuestionID`
+        LIMIT 1
+    ) AS `t`
+) AS `t0` ON `q.Answers`.`DtQuestionQuestionID` = `t0`.`QuestionID`
+ORDER BY `t0`.`QuestionID`" (0723d8ff)
+2018-03-06T12:48:04.5920728+01:00 0HLC3AU3KI7CI:0000001A [INF] Executing ViewResult, running view at path "/Views/Home/ViewQuestion.cshtml". (9707eebe)
+2018-03-06T12:48:04.6502403+01:00 0HLC3AU3KI7CI:0000001A [INF] Executed action "XamPass.Controllers.HomeController.ViewQuestion (XamPass)" in 59.8932ms (afa2e885)
+2018-03-06T12:48:04.6678167+01:00 0HLC3AU3KI7CK:00000012 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:48:04.6703396+01:00 0HLC3AU3KI7CI:0000001A [INF] Request finished in 136.5389ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:48:04.6999176+01:00 0HLC3AU3KI7CK:00000012 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:48:04.7533267+01:00 0HLC3AU3KI7CK:00000012 [INF] Request finished in 61.3348ms 404  (791a596a)
+2018-03-06T12:48:09.7899342+01:00 0HLC3AU3KI7CJ:00000018 [INF] Request starting HTTP/1.1 GET http://localhost:55953/   (ca22a1cb)
+2018-03-06T12:48:09.7974825+01:00 0HLC3AU3KI7CJ:00000018 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:48:09.8247035+01:00 0HLC3AU3KI7CJ:00000018 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:48:09.8334969+01:00 0HLC3AU3KI7CJ:00000018 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:48:09.8402886+01:00 0HLC3AU3KI7CJ:00000018 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:48:09.8479589+01:00 0HLC3AU3KI7CJ:00000018 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:48:09.8543112+01:00 0HLC3AU3KI7CJ:00000018 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:48:09.8613656+01:00 0HLC3AU3KI7CJ:00000018 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:48:09.8662140+01:00 0HLC3AU3KI7CJ:00000018 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:48:09.9239005+01:00 0HLC3AU3KI7CJ:00000018 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 70.085ms (afa2e885)
+2018-03-06T12:48:09.9452070+01:00 0HLC3AU3KI7CI:0000001B [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:48:09.9505945+01:00 0HLC3AU3KI7CJ:00000018 [INF] Request finished in 152.1418ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:48:09.9876140+01:00 0HLC3AU3KI7CI:0000001B [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:48:10.0135390+01:00 0HLC3AU3KI7CI:0000001B [INF] Request finished in 56.3197ms 404  (791a596a)
+2018-03-06T12:48:59.4133303+01:00 0HLC3AU3KI7CK:00000013 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:48:59.4245437+01:00 0HLC3AU3KI7CK:00000013 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:48:59.4485417+01:00 0HLC3AU3KI7CK:00000013 [INF] Request finished in 26.533ms 404  (791a596a)
+2018-03-06T12:49:08.8765317+01:00 0HLC3AU3KI7CJ:00000019 [INF] Request starting HTTP/1.1 POST http://localhost:55953/ application/x-www-form-urlencoded 285 (ca22a1cb)
+2018-03-06T12:49:08.8816434+01:00 0HLC3AU3KI7CJ:00000019 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:08.9089748+01:00 0HLC3AU3KI7CJ:00000019 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:49:08.9141633+01:00 0HLC3AU3KI7CJ:00000019 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:49:08.9294050+01:00 0HLC3AU3KI7CJ:00000019 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:49:08.9379853+01:00 0HLC3AU3KI7CJ:00000019 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:49:08.9451270+01:00 0HLC3AU3KI7CJ:00000019 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:49:08.9537747+01:00 0HLC3AU3KI7CJ:00000019 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:49:08.9620674+01:00 0HLC3AU3KI7CJ:00000019 [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_FederalStateId_6='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND `q`.`FieldOfStudiesID` IS NULL) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND `q`.`SubjectID` IS NULL) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND `q`.`UniversityID` IS NULL) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND `q.University`.`FederalStateID` IS NULL) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:49:08.9671527+01:00 0HLC3AU3KI7CJ:00000019 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:49:09.0428267+01:00 0HLC3AU3KI7CJ:00000019 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 87.6186ms (afa2e885)
+2018-03-06T12:49:09.0596051+01:00 0HLC3AU3KI7CJ:00000019 [INF] Request finished in 180.8623ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:49:09.0696688+01:00 0HLC3AU3KI7CI:0000001C [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:49:09.0930106+01:00 0HLC3AU3KI7CI:0000001C [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:09.1349471+01:00 0HLC3AU3KI7CI:0000001C [INF] Request finished in 40.5155ms 404  (791a596a)
+2018-03-06T12:49:11.8016827+01:00 0HLC3AU3KI7CK:00000014 [INF] Request starting HTTP/1.1 POST http://localhost:55953/Home/ShowQuestions application/x-www-form-urlencoded 285 (ca22a1cb)
+2018-03-06T12:49:11.8067221+01:00 0HLC3AU3KI7CK:00000014 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:11.8324433+01:00 0HLC3AU3KI7CK:00000014 [INF] Executing action method "XamPass.Controllers.HomeController.ShowQuestions (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:49:11.8371714+01:00 0HLC3AU3KI7CK:00000014 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:49:11.8457492+01:00 0HLC3AU3KI7CK:00000014 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:49:11.8640442+01:00 0HLC3AU3KI7CK:00000014 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:49:11.8725617+01:00 0HLC3AU3KI7CK:00000014 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:49:11.8832573+01:00 0HLC3AU3KI7CK:00000014 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:49:11.8918726+01:00 0HLC3AU3KI7CK:00000014 [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_UniversityId_5='?', @__viewModelSearch_FederalStateId_6='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND `q`.`FieldOfStudiesID` IS NULL) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND `q`.`SubjectID` IS NULL) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND (`q`.`UniversityID` = @__viewModelSearch_UniversityId_5)) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND `q.University`.`FederalStateID` IS NULL) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:49:11.8970207+01:00 0HLC3AU3KI7CK:00000014 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:49:11.9692995+01:00 0HLC3AU3KI7CK:00000014 [INF] Executed action "XamPass.Controllers.HomeController.ShowQuestions (XamPass)" in 91.8706ms (afa2e885)
+2018-03-06T12:49:12.0196159+01:00 0HLC3AU3KI7CK:00000014 [INF] Request finished in 173.1975ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:49:12.0264537+01:00 0HLC3AU3KI7CJ:0000001A [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:49:12.0373380+01:00 0HLC3AU3KI7CJ:0000001A [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:12.0596557+01:00 0HLC3AU3KI7CJ:0000001A [INF] Request finished in 69.6047ms 404  (791a596a)
+2018-03-06T12:49:15.2011386+01:00 0HLC3AU3KI7CI:0000001D [INF] Request starting HTTP/1.1 GET http://localhost:55953/Home/ViewQuestion/9   (ca22a1cb)
+2018-03-06T12:49:15.2110371+01:00 0HLC3AU3KI7CI:0000001D [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:15.2461812+01:00 0HLC3AU3KI7CI:0000001D [INF] Executing action method "XamPass.Controllers.HomeController.ViewQuestion (XamPass)" with arguments (["9"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:49:15.2596510+01:00 0HLC3AU3KI7CI:0000001D [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:49:15.2690059+01:00 0HLC3AU3KI7CI:0000001D [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelQuestion_QuestionId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`, `q.University`.`UniversityID`, `q.University`.`CountryID`, `q.University`.`FederalStateID`, `q.University`.`UniversityName`, `q.University.FederalState`.`FederalStateID`, `q.University.FederalState`.`FederalStateName`, `q.University.Country`.`CountryID`, `q.University.Country`.`CountryName`, `q.Subject`.`SubjectID`, `q.Subject`.`SubjectName`, `q.FieldOfStudies`.`FieldOfStudiesID`, `q.FieldOfStudies`.`FieldOfStudiesName`, `q.FieldOfStudies`.`Type`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+LEFT JOIN `dt_federal_state` AS `q.University.FederalState` ON `q.University`.`FederalStateID` = `q.University.FederalState`.`FederalStateID`
+LEFT JOIN `dt_Country` AS `q.University.Country` ON `q.University`.`CountryID` = `q.University.Country`.`CountryID`
+INNER JOIN `dt_subject` AS `q.Subject` ON `q`.`SubjectID` = `q.Subject`.`SubjectID`
+INNER JOIN `dt_field_of_studies` AS `q.FieldOfStudies` ON `q`.`FieldOfStudiesID` = `q.FieldOfStudies`.`FieldOfStudiesID`
+WHERE `q`.`QuestionID` = @__viewModelQuestion_QuestionId_0
+ORDER BY `q`.`QuestionID`
+LIMIT 2" (0723d8ff)
+2018-03-06T12:49:15.2756177+01:00 0HLC3AU3KI7CI:0000001D [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelQuestion_QuestionId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q.Answers`.`AnswerID`, `q.Answers`.`Content`, `q.Answers`.`DtQuestionQuestionID`, `q.Answers`.`SubmissionDate`, `q.Answers`.`UpVotes`
+FROM `dt_answer` AS `q.Answers`
+INNER JOIN (
+    SELECT DISTINCT `t`.*
+    FROM (
+        SELECT `q0`.`QuestionID`
+        FROM `dt_question` AS `q0`
+        LEFT JOIN `dt_University` AS `q.University0` ON `q0`.`UniversityID` = `q.University0`.`UniversityID`
+        LEFT JOIN `dt_federal_state` AS `q.University.FederalState0` ON `q.University0`.`FederalStateID` = `q.University.FederalState0`.`FederalStateID`
+        LEFT JOIN `dt_Country` AS `q.University.Country0` ON `q.University0`.`CountryID` = `q.University.Country0`.`CountryID`
+        INNER JOIN `dt_subject` AS `q.Subject0` ON `q0`.`SubjectID` = `q.Subject0`.`SubjectID`
+        INNER JOIN `dt_field_of_studies` AS `q.FieldOfStudies0` ON `q0`.`FieldOfStudiesID` = `q.FieldOfStudies0`.`FieldOfStudiesID`
+        WHERE `q0`.`QuestionID` = @__viewModelQuestion_QuestionId_0
+        ORDER BY `q0`.`QuestionID`
+        LIMIT 1
+    ) AS `t`
+) AS `t0` ON `q.Answers`.`DtQuestionQuestionID` = `t0`.`QuestionID`
+ORDER BY `t0`.`QuestionID`" (0723d8ff)
+2018-03-06T12:49:15.2850793+01:00 0HLC3AU3KI7CI:0000001D [INF] Executing ViewResult, running view at path "/Views/Home/ViewQuestion.cshtml". (9707eebe)
+2018-03-06T12:49:15.3436442+01:00 0HLC3AU3KI7CI:0000001D [INF] Executed action "XamPass.Controllers.HomeController.ViewQuestion (XamPass)" in 76.2455ms (afa2e885)
+2018-03-06T12:49:15.3621649+01:00 0HLC3AU3KI7CI:0000001D [INF] Request finished in 157.6452ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:49:15.3783319+01:00 0HLC3AU3KI7CK:00000015 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:49:15.3873040+01:00 0HLC3AU3KI7CK:00000015 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:15.4222828+01:00 0HLC3AU3KI7CK:00000015 [INF] Request finished in 49.3221ms 404  (791a596a)
+2018-03-06T12:49:30.6770108+01:00 0HLC3AU3KI7CJ:0000001B [INF] Request starting HTTP/1.1 GET http://localhost:55953/   (ca22a1cb)
+2018-03-06T12:49:30.6860926+01:00 0HLC3AU3KI7CJ:0000001B [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:30.7093835+01:00 0HLC3AU3KI7CJ:0000001B [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:49:30.7149712+01:00 0HLC3AU3KI7CJ:0000001B [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:49:30.7227464+01:00 0HLC3AU3KI7CJ:0000001B [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:49:30.7295031+01:00 0HLC3AU3KI7CJ:0000001B [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:49:30.7360507+01:00 0HLC3AU3KI7CJ:0000001B [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:49:30.7428887+01:00 0HLC3AU3KI7CJ:0000001B [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:49:30.7487373+01:00 0HLC3AU3KI7CJ:0000001B [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:49:30.8310323+01:00 0HLC3AU3KI7CJ:0000001B [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 63.849ms (afa2e885)
+2018-03-06T12:49:30.8705145+01:00 0HLC3AU3KI7CJ:0000001B [INF] Request finished in 158.9079ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:49:30.8780937+01:00 0HLC3AU3KI7CI:0000001E [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:49:30.8881825+01:00 0HLC3AU3KI7CI:0000001E [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:30.9015558+01:00 0HLC3AU3KI7CI:0000001E [INF] Request finished in 59.4963ms 404  (791a596a)
+2018-03-06T12:49:33.1351594+01:00 0HLC3AU3KI7CK:00000016 [INF] Request starting HTTP/1.1 POST http://localhost:55953/Home/ShowQuestions application/x-www-form-urlencoded 284 (ca22a1cb)
+2018-03-06T12:49:33.1400399+01:00 0HLC3AU3KI7CK:00000016 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:33.1650240+01:00 0HLC3AU3KI7CK:00000016 [INF] Executing action method "XamPass.Controllers.HomeController.ShowQuestions (XamPass)" with arguments (["XamPass.Models.ViewModels.ViewModelSearch"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:49:33.1707759+01:00 0HLC3AU3KI7CK:00000016 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:49:33.1790000+01:00 0HLC3AU3KI7CK:00000016 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:49:33.1900324+01:00 0HLC3AU3KI7CK:00000016 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:49:33.2072951+01:00 0HLC3AU3KI7CK:00000016 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:49:33.2181781+01:00 0HLC3AU3KI7CK:00000016 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:49:33.2263814+01:00 0HLC3AU3KI7CK:00000016 [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelSearch_FieldOfStudiesId_0='?', @__viewModelSearch_SubjectId_2='?', @__viewModelSearch_UniversityId_4='?', @__viewModelSearch_FederalStateId_6='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+WHERE ((((@__viewModelSearch_FieldOfStudiesId_0 IS NOT NULL AND `q`.`FieldOfStudiesID` IS NULL) OR (@__viewModelSearch_FieldOfStudiesId_0 IS NULL AND (`q`.`FieldOfStudiesID` <> 0))) AND ((@__viewModelSearch_SubjectId_2 IS NOT NULL AND `q`.`SubjectID` IS NULL) OR (@__viewModelSearch_SubjectId_2 IS NULL AND (`q`.`SubjectID` <> 0)))) AND ((@__viewModelSearch_UniversityId_4 IS NOT NULL AND `q`.`UniversityID` IS NULL) OR (@__viewModelSearch_UniversityId_4 IS NULL AND ((`q`.`UniversityID` <> 0) OR `q`.`UniversityID` IS NULL)))) AND ((@__viewModelSearch_FederalStateId_6 IS NOT NULL AND `q.University`.`FederalStateID` IS NULL) OR (@__viewModelSearch_FederalStateId_6 IS NULL AND ((`q.University`.`FederalStateID` <> 0) OR `q.University`.`FederalStateID` IS NULL)))" (0723d8ff)
+2018-03-06T12:49:33.2332378+01:00 0HLC3AU3KI7CK:00000016 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:49:33.2915999+01:00 0HLC3AU3KI7CK:00000016 [INF] Executed action "XamPass.Controllers.HomeController.ShowQuestions (XamPass)" in 94.8145ms (afa2e885)
+2018-03-06T12:49:33.3573479+01:00 0HLC3AU3KI7CK:00000016 [INF] Request finished in 169.7879ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:49:33.3706560+01:00 0HLC3AU3KI7CJ:0000001C [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:49:33.3768772+01:00 0HLC3AU3KI7CJ:0000001C [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:33.4062797+01:00 0HLC3AU3KI7CJ:0000001C [INF] Request finished in 73.4351ms 404  (791a596a)
+2018-03-06T12:49:37.0773143+01:00 0HLC3AU3KI7CI:0000001F [INF] Request starting HTTP/1.1 GET http://localhost:55953/Home/ViewQuestion/3   (ca22a1cb)
+2018-03-06T12:49:37.0858823+01:00 0HLC3AU3KI7CI:0000001F [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:37.1129245+01:00 0HLC3AU3KI7CI:0000001F [INF] Executing action method "XamPass.Controllers.HomeController.ViewQuestion (XamPass)" with arguments (["3"]) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:49:37.1176946+01:00 0HLC3AU3KI7CI:0000001F [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:49:37.1266587+01:00 0HLC3AU3KI7CI:0000001F [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelQuestion_QuestionId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q`.`QuestionID`, `q`.`Content`, `q`.`FieldOfStudiesID`, `q`.`SubjectID`, `q`.`SubmissionDate`, `q`.`Title`, `q`.`UniversityID`, `q`.`UpVotes`, `q.University`.`UniversityID`, `q.University`.`CountryID`, `q.University`.`FederalStateID`, `q.University`.`UniversityName`, `q.University.FederalState`.`FederalStateID`, `q.University.FederalState`.`FederalStateName`, `q.University.Country`.`CountryID`, `q.University.Country`.`CountryName`, `q.Subject`.`SubjectID`, `q.Subject`.`SubjectName`, `q.FieldOfStudies`.`FieldOfStudiesID`, `q.FieldOfStudies`.`FieldOfStudiesName`, `q.FieldOfStudies`.`Type`
+FROM `dt_question` AS `q`
+LEFT JOIN `dt_University` AS `q.University` ON `q`.`UniversityID` = `q.University`.`UniversityID`
+LEFT JOIN `dt_federal_state` AS `q.University.FederalState` ON `q.University`.`FederalStateID` = `q.University.FederalState`.`FederalStateID`
+LEFT JOIN `dt_Country` AS `q.University.Country` ON `q.University`.`CountryID` = `q.University.Country`.`CountryID`
+INNER JOIN `dt_subject` AS `q.Subject` ON `q`.`SubjectID` = `q.Subject`.`SubjectID`
+INNER JOIN `dt_field_of_studies` AS `q.FieldOfStudies` ON `q`.`FieldOfStudiesID` = `q.FieldOfStudies`.`FieldOfStudiesID`
+WHERE `q`.`QuestionID` = @__viewModelQuestion_QuestionId_0
+ORDER BY `q`.`QuestionID`
+LIMIT 2" (0723d8ff)
+2018-03-06T12:49:37.1352050+01:00 0HLC3AU3KI7CI:0000001F [INF] Executed DbCommand ("0"ms) [Parameters=["@__viewModelQuestion_QuestionId_0='?'"], CommandType='Text', CommandTimeout='30']"
+""SELECT `q.Answers`.`AnswerID`, `q.Answers`.`Content`, `q.Answers`.`DtQuestionQuestionID`, `q.Answers`.`SubmissionDate`, `q.Answers`.`UpVotes`
+FROM `dt_answer` AS `q.Answers`
+INNER JOIN (
+    SELECT DISTINCT `t`.*
+    FROM (
+        SELECT `q0`.`QuestionID`
+        FROM `dt_question` AS `q0`
+        LEFT JOIN `dt_University` AS `q.University0` ON `q0`.`UniversityID` = `q.University0`.`UniversityID`
+        LEFT JOIN `dt_federal_state` AS `q.University.FederalState0` ON `q.University0`.`FederalStateID` = `q.University.FederalState0`.`FederalStateID`
+        LEFT JOIN `dt_Country` AS `q.University.Country0` ON `q.University0`.`CountryID` = `q.University.Country0`.`CountryID`
+        INNER JOIN `dt_subject` AS `q.Subject0` ON `q0`.`SubjectID` = `q.Subject0`.`SubjectID`
+        INNER JOIN `dt_field_of_studies` AS `q.FieldOfStudies0` ON `q0`.`FieldOfStudiesID` = `q.FieldOfStudies0`.`FieldOfStudiesID`
+        WHERE `q0`.`QuestionID` = @__viewModelQuestion_QuestionId_0
+        ORDER BY `q0`.`QuestionID`
+        LIMIT 1
+    ) AS `t`
+) AS `t0` ON `q.Answers`.`DtQuestionQuestionID` = `t0`.`QuestionID`
+ORDER BY `t0`.`QuestionID`" (0723d8ff)
+2018-03-06T12:49:37.1553943+01:00 0HLC3AU3KI7CI:0000001F [INF] Executing ViewResult, running view at path "/Views/Home/ViewQuestion.cshtml". (9707eebe)
+2018-03-06T12:49:37.2703723+01:00 0HLC3AU3KI7CI:0000001F [INF] Executed action "XamPass.Controllers.HomeController.ViewQuestion (XamPass)" in 127.1492ms (afa2e885)
+2018-03-06T12:49:37.3067404+01:00 0HLC3AU3KI7CI:0000001F [INF] Request finished in 201.4121ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:49:37.3212305+01:00 0HLC3AU3KI7CK:00000017 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:49:37.3320996+01:00 0HLC3AU3KI7CK:00000017 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:37.4004576+01:00 0HLC3AU3KI7CK:00000017 [INF] Request finished in 83.7703ms 404  (791a596a)
+2018-03-06T12:49:52.6918332+01:00 0HLC3AU3KI7CJ:0000001D [INF] Request starting HTTP/1.1 GET http://localhost:55953/   (ca22a1cb)
+2018-03-06T12:49:52.6996454+01:00 0HLC3AU3KI7CJ:0000001D [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:52.7242825+01:00 0HLC3AU3KI7CJ:0000001D [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:49:52.7306903+01:00 0HLC3AU3KI7CJ:0000001D [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:49:52.7368794+01:00 0HLC3AU3KI7CJ:0000001D [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:49:52.7437449+01:00 0HLC3AU3KI7CJ:0000001D [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:49:52.7509375+01:00 0HLC3AU3KI7CJ:0000001D [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:49:52.7580270+01:00 0HLC3AU3KI7CJ:0000001D [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:49:52.7628289+01:00 0HLC3AU3KI7CJ:0000001D [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:49:52.8041460+01:00 0HLC3AU3KI7CJ:0000001D [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 64.1451ms (afa2e885)
+2018-03-06T12:49:52.8221725+01:00 0HLC3AU3KI7CJ:0000001D [INF] Request finished in 118.3537ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:49:52.8279262+01:00 0HLC3AU3KI7CI:00000020 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:49:52.8376824+01:00 0HLC3AU3KI7CI:00000020 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:52.8509835+01:00 0HLC3AU3KI7CI:00000020 [INF] Request finished in 20.2166ms 404  (791a596a)
+2018-03-06T12:49:54.7165918+01:00 0HLC3AU3KI7CK:00000018 [INF] Request starting HTTP/1.1 GET http://localhost:55953/Admin   (ca22a1cb)
+2018-03-06T12:49:54.7280608+01:00 0HLC3AU3KI7CK:00000018 [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:49:54.7331571+01:00 0HLC3AU3KI7CK:00000018 [INF] Authorization was successful for user: "admin@xampass.local". (d7eb274a)
+2018-03-06T12:49:54.7566069+01:00 0HLC3AU3KI7CK:00000018 [INF] Executing action method "XamPass.Controllers.AdminController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:49:54.7613884+01:00 0HLC3AU3KI7CK:00000018 [INF] Executing ViewResult, running view at path "/Views/Admin/Index.cshtml". (9707eebe)
+2018-03-06T12:49:54.7755373+01:00 0HLC3AU3KI7CK:00000018 [INF] Executed action "XamPass.Controllers.AdminController.Index (XamPass)" in 34.1395ms (afa2e885)
+2018-03-06T12:49:54.8339164+01:00 0HLC3AU3KI7CK:00000018 [INF] Request finished in 82.1925ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:50:00.5019789+01:00 0HLC3AU3KI7CJ:0000001E [INF] Request starting HTTP/1.1 GET http://localhost:55953/Account/Logout   (ca22a1cb)
+2018-03-06T12:50:00.5070127+01:00 0HLC3AU3KI7CJ:0000001E [INF] AuthenticationScheme: "Identity.Application" was successfully authenticated. (1805f3b3)
+2018-03-06T12:50:00.5203171+01:00 0HLC3AU3KI7CJ:0000001E [INF] Authorization was successful for user: "admin@xampass.local". (d7eb274a)
+2018-03-06T12:50:00.5452976+01:00 0HLC3AU3KI7CJ:0000001E [INF] Executing action method "XamPass.Controllers.AccountController.Logout (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:50:00.5550492+01:00 0HLC3AU3KI7CJ:0000001E [INF] AuthenticationScheme: "Identity.Application" signed out. (d3f50c8d)
+2018-03-06T12:50:00.5617239+01:00 0HLC3AU3KI7CJ:0000001E [INF] AuthenticationScheme: "Identity.External" signed out. (d3f50c8d)
+2018-03-06T12:50:00.5693781+01:00 0HLC3AU3KI7CJ:0000001E [INF] AuthenticationScheme: "Identity.TwoFactorUserId" signed out. (d3f50c8d)
+2018-03-06T12:50:00.5750828+01:00 0HLC3AU3KI7CJ:0000001E [INF] User logged out. (f9c27106)
+2018-03-06T12:50:00.5849991+01:00 0HLC3AU3KI7CJ:0000001E [INF] Executing RedirectResult, redirecting to "/". (d98d540e)
+2018-03-06T12:50:00.5892804+01:00 0HLC3AU3KI7CJ:0000001E [INF] Executed action "XamPass.Controllers.AccountController.Logout (XamPass)" in 72.5894ms (afa2e885)
+2018-03-06T12:50:00.6035612+01:00 0HLC3AU3KI7CJ:0000001E [INF] Request finished in 96.0011ms 302  (791a596a)
+2018-03-06T12:50:00.6127119+01:00 0HLC3AU3KI7CI:00000021 [INF] Request starting HTTP/1.1 GET http://localhost:55953/   (ca22a1cb)
+2018-03-06T12:50:00.6373040+01:00 0HLC3AU3KI7CI:00000021 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T12:50:00.6419563+01:00 0HLC3AU3KI7CI:00000021 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T12:50:00.6487714+01:00 0HLC3AU3KI7CI:00000021 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T12:50:00.6571426+01:00 0HLC3AU3KI7CI:00000021 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T12:50:00.6636139+01:00 0HLC3AU3KI7CI:00000021 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T12:50:00.6736276+01:00 0HLC3AU3KI7CI:00000021 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T12:50:00.6817842+01:00 0HLC3AU3KI7CI:00000021 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T12:50:00.7292786+01:00 0HLC3AU3KI7CI:00000021 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 76.6923ms (afa2e885)
+2018-03-06T12:50:00.7636501+01:00 0HLC3AU3KI7CI:00000021 [INF] Request finished in 132.1872ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T12:50:00.7681686+01:00 0HLC3AU3KI7CK:00000019 [INF] Request starting HTTP/1.1 GET http://localhost:55953/resources/demos/style.css   (ca22a1cb)
+2018-03-06T12:50:00.7834837+01:00 0HLC3AU3KI7CK:00000019 [INF] Request finished in 42.1359ms 404  (791a596a)
