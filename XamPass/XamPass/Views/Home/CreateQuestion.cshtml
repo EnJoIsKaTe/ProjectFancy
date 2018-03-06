@@ -57,12 +57,12 @@
                                             }
                                         }
                                         @Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies,
-                                             fieldOfStudiesText,
-                                             new
-                                             {
-                                                 @class = "form-control col-md-2 dropdown-toggle col dropdown-field",
-                                                 @onchange = "this.form.submit();"
-                                             })
+                                                            fieldOfStudiesText,
+                                                            new
+                                                            {
+                                                                @class = "form-control col-md-2 dropdown-toggle col dropdown-field",
+                                                                @onchange = "this.form.submit();"
+                                                            })
                                     </div>
                                     <div class="col-md-3 col-validation">
                                         <div class="validation-div">
@@ -94,12 +94,12 @@
                                             }
                                         }
                                         @Html.DropDownListFor(m => m.SubjectId, Model.Subjects,
-                                             subjectText,
-                                             new
-                                             {
-                                                 @class = "form-control col-md-2 dropdown-toggle col dropdown-field",
-                                                 @onchange = "this.form.submit();"
-                                             })
+                                                            subjectText,
+                                                            new
+                                                            {
+                                                                @class = "form-control col-md-2 dropdown-toggle col dropdown-field",
+                                                                @onchange = "this.form.submit();"
+                                                            })
                                     </div>
                                     <div class="col-md-3 col-validation">
                                         <div class="validation-div">
@@ -143,12 +143,12 @@
                                             }
                                         }
                                         @Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates,
-                                             federalStateText,
-                                             new
-                                             {
-                                                 @class = "form-control col-md-2 dropdown-toggle col dropdown-field",
-                                                 @onchange = "this.form.submit();"
-                                             })
+                                                            federalStateText,
+                                                            new
+                                                            {
+                                                                @class = "form-control col-md-2 dropdown-toggle col dropdown-field",
+                                                                @onchange = "this.form.submit();"
+                                                            })
                                     </div>
                                     <div class="col-md-3 col-validation">
                                         <div class="validation-div">
@@ -190,12 +190,12 @@
                                             }
                                         }
                                         @Html.DropDownListFor(m => m.UniversityId, Model.Universities,
-                                             universityText,
-                                             new
-                                             {
-                                                 @class = "form-control col-lg-6 dropdown-toggle col dropdown-field",
-                                                 @onchange = "this.form.submit();"
-                                             })
+                                                            universityText,
+                                                            new
+                                                            {
+                                                                @class = "form-control col-lg-6 dropdown-toggle col dropdown-field",
+                                                                @onchange = "this.form.submit();"
+                                                            })
                                     </div>
                                     <div class="col-md-3 col-validation">
                                         <div class="validation-div">
@@ -213,54 +213,45 @@
                         </div>
                     </div>
                     <hr style="margin: 20px 0px 20px 0px;" />
-                    <div class="container" width="80%">
+                    <div class="container container-ext">
                         <div class="row">
-                            <div class="col-lg-3">
-                                <div class="input-cell-name-big">
-                                    Titel der Frage
-                                </div>
+                            <div class="col-md-1 input-cell-name">
+                                Titel der Frage
                             </div>
-                            <div class="col-lg-6">
+                            <div class="row">
                                 @*<textarea class="form-control col-md-2 input-cell-big"></textarea>*@
                                 @Html.TextAreaFor(m => m.QuestionTitle, new { @class = "input-cell-big" })
-                                <div class="validation-div-big">
-                                    @Html.ValidationMessageFor(m => m.QuestionTitle, "", new { @class = "validation-message-big" })
-                                </div>
+                            </div>
+                            <div class="row validation-div-big">
+                                @Html.ValidationMessageFor(m => m.QuestionTitle, "", new { @class = "validation-message-big" })
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-3">
-                                <div class="input-cell-name-big">
-                                    Frage
-                                </div>
+                            <div class="col-md-1 input-cell-name">
+                                Frage
                             </div>
-                            <div class="col-lg-6">
+                            <div class="row">
                                 @*<textarea class="form-control col-md-2 input-cell-big"></textarea>*@
                                 @Html.TextAreaFor(m => m.QuestionContent, new { @class = "input-cell-big" })
-                                <div class="validation-div-big">
-                                    @Html.ValidationMessageFor(m => m.QuestionContent, "", new { @class = "validation-message-big" })
-                                </div>
+                            </div>
+                            <div class=" row validation-div-big">
+                                @Html.ValidationMessageFor(m => m.QuestionContent, "", new { @class = "validation-message-big" })
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-3">
-                                <div class="input-cell-name-big">
-                                    Antwort oder Lösung (optional)
-                                </div>
+                            <div class="col-md-1 input-cell-name">
+                                Antwort oder Lösung (optional)
                             </div>
-                            <div class="col-lg-6">
+                            <div class="row">
                                 @*<textarea class="form-control col-md-2 input-cell-big"></textarea>*@
                                 @Html.TextAreaFor(m => m.AnswerContent, new { @class = "input-cell-big" })
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-cell-name"></div>
-                            <div class="col-lg-3">
-                                <div width="100%" style="text-align:right;">
-                                    @*<button id="createBtn" type="submit" class="btn">Anlegen</button>*@
-                                    <input type="submit" id="createBtn" value="Neuen Eintrag anlegen" formmethod="post"
-                                           formaction=@Url.Action("CreateNewEntry", "Home" ) class="btn" />
-                                </div>
+                            <div width="100%" style="text-align:right;">
+                                @*<button id="createBtn" type="submit" class="btn">Anlegen</button>*@
+                                <input type="submit" id="createBtn" value="Neuen Eintrag anlegen" formmethod="post"
+                                       formaction=@Url.Action("CreateNewEntry", "Home" ) class="btn" />
                             </div>
                         </div>
                     </div>
