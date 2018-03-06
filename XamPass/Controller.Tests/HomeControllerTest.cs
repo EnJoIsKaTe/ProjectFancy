@@ -180,7 +180,7 @@ namespace Controller.Tests
                     Subject = context.Subjects.FirstOrDefault(s => s.SubjectID == 1),
                     SubmissionDate = DateTime.Now,
                     University = context.Universities.FirstOrDefault(u => u.UniversityID == 1),
-                    UpVotes = 2},
+                    UpVotes = 5},
 
                 new DtQuestion(){Answers = null,
                     Content = "Was soll das alles?",
@@ -188,7 +188,7 @@ namespace Controller.Tests
                     Subject = context.Subjects.FirstOrDefault(u => u.SubjectID == 1),
                     SubmissionDate = DateTime.Now,
                     University = context.Universities.FirstOrDefault(u => u.UniversityID == 2),
-                    UpVotes = 0},
+                    UpVotes = 1},
 
                  new DtQuestion(){Answers = context.Answers.Where(a => a.AnswerID == 2).ToList(),
                     Content = "Was ist deine Lieblingsfarbe?",
@@ -196,7 +196,7 @@ namespace Controller.Tests
                     Subject = context.Subjects.FirstOrDefault(u => u.SubjectID == 1),
                     SubmissionDate = DateTime.Now,
                     University = context.Universities.FirstOrDefault(u => u.UniversityID == 3),
-                    UpVotes = 0}
+                    UpVotes = 4}
             };
 
             // weitere Fragen eintragen
@@ -210,7 +210,7 @@ namespace Controller.Tests
                     Subject = context.Subjects.FirstOrDefault(u => u.SubjectID == i),
                     SubmissionDate = DateTime.Now,
                     University = context.Universities.FirstOrDefault(u => u.UniversityID == i),
-                    UpVotes = 0
+                    UpVotes = 2
                 };
 
                 questions.Add(question);
@@ -611,6 +611,74 @@ namespace Controller.Tests
 
         //    Assert.AreEqual(vmq.QuestionId, 1);            
         //}
+
+        #endregion
+
+        #region Integration Tests
+
+        [Test]
+        public void GetQuestionTest()
+        {
+            DtQuestion question = _context.Questions.First();
+
+            Assert.IsNotNull(question);
+            Assert.AreEqual(1, question.UniversityID);
+            Assert.AreEqual(1, question.SubjectID);
+            Assert.AreEqual(1, question.FieldOfStudiesID);
+        }
+
+        [Test]
+        public void CreateNewQuestion()
+        {
+            DtQuestion question = new DtQuestion();
+            question.Content = "Test Content";
+            question.FieldOfStudiesID = 1;
+            question.SubjectID = 1;
+            question.UniversityID = 1;
+
+            _context.Add(question);
+            _context.SaveChanges();
+
+            DtQuestion loadedQuestion = _context.Questions.FirstOrDefault(q => q.Content.Equals("Test Content"));
+
+            Assert.IsNotNull(loadedQuestion);
+            Assert.AreEqual(loadedQuestion.Content, question.Content);
+        }
+
+        [Test]
+        public void CreateSaveLoadNewAnswerTest()
+        {
+            DtAnswer answer = new DtAnswer();
+
+            answer.Content = "Test Antwort";
+            DtQuestion question = _context.Questions.SingleOrDefault(q => q.QuestionID == 1);
+            question.Answers.Add(answer);
+
+            _context.SaveChanges();
+
+            DtAnswer loadedAnswer = null;
+
+            List<DtAnswer> answers = _context.Questions.SingleOrDefault(q => q.QuestionID == 1).Answers.ToList();
+
+            loadedAnswer = answers.SingleOrDefault(a => a.Content.Equals(answer.Content));
+
+            Assert.AreEqual(loadedAnswer.Content, answer.Content);
+
+        }
+
+        [Test]
+        public void OrderQuestionsByUpvotesTest()
+        {
+            HomeController homeController = new HomeController(_context, null);
+
+            ViewModelSearch viewModelSearch = new ViewModelSearch();
+
+            homeController.ShowQuestions(viewModelSearch);
+
+            Assert.AreEqual(5, viewModelSearch.Questions.First().UpVotes);
+            Assert.AreEqual(4, viewModelSearch.Questions[1].UpVotes);
+            Assert.AreEqual(2, viewModelSearch.Questions[2].UpVotes);
+        }
 
         #endregion
     }
