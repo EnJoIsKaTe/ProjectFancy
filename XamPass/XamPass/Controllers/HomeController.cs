@@ -81,6 +81,9 @@ namespace XamPass.Controllers
 
             var universities = _universities.OrderBy(u => u.UniversityName).ToList();
 
+            // Set Filters for the Dropdown Lists
+            SetAllFilters(viewModelSearch);
+
             // questions should NOT be rendered
             viewModelSearch.SearchExecuted = false;
 
@@ -92,6 +95,11 @@ namespace XamPass.Controllers
                 if (university.FederalStateID != viewModelSearch.FederalStateId)
                 {
                     viewModelSearch.UniversityId = null;
+                }
+                // if no federal state is selected, universities should NOT be filtered
+                if (viewModelSearch.FederalStateId == null)
+                {
+                    viewModelSearch = FillAllDropdowns(viewModelSearch);
                 }
             }
             // filter Universities by selected FederalState
@@ -107,9 +115,6 @@ namespace XamPass.Controllers
                     }
                 }
             }
-
-            // Set Filters for the Dropdown Lists
-            SetAllFilters(viewModelSearch);
 
             return View(viewModelSearch);
         }
