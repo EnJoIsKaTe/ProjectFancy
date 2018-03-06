@@ -73,6 +73,7 @@ namespace XamPass.Controllers
         /// <param name="viewModelSearch"></param>
         /// <returns></returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Index(ViewModelSearch viewModelSearch)
         {
             // Fill the Dropdowns with all the Data from the Db
@@ -112,6 +113,8 @@ namespace XamPass.Controllers
 
             return View(viewModelSearch);
         }
+
+        // TODO Benjamin: Bitte die Filter in eigene region oder Klasse
 
         /// <summary>
         /// Fills the ViewModelSearch Dropdowns with the Data from the Database
@@ -298,6 +301,8 @@ namespace XamPass.Controllers
         /// </summary>
         /// <param name="viewModelSearch"></param>
         /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult ShowQuestions(ViewModelSearch viewModelSearch)
         {
             // questions should be rendered
@@ -417,6 +422,7 @@ namespace XamPass.Controllers
         /// <param name="viewModelQuestions"></param>
         /// <returns></returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult ViewQuestion(ViewModelQuestion viewModelQuestions)
         {
             try
@@ -472,6 +478,7 @@ namespace XamPass.Controllers
         /// <param name="viewModelCreate"></param>
         /// <returns></returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult CreateQuestion(ViewModelCreate viewModelCreate)
         {
             // get entries from db
@@ -555,6 +562,7 @@ namespace XamPass.Controllers
         /// <param name="viewModelSearch"></param>
         /// <returns></returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult CreateNewEntry(ViewModelCreate viewModelCreate)
         {
             // If all entries are correct
@@ -750,6 +758,8 @@ namespace XamPass.Controllers
         #endregion
 
         #region Temporary
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Done(ViewModelSearch viewModelSearch)
         {
             // TODO irgendwann muss das noch weg
@@ -772,11 +782,13 @@ namespace XamPass.Controllers
         /// </summary>
         /// <param name="viewModelCreate"></param>
         /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult CreateNewFieldOfStudies(ViewModelCreate viewModelCreate)
         {
             ViewModelCreateFieldOfStudies vmFieldOfStudies = new ViewModelCreateFieldOfStudies();
 
-            return View("CreateFieldOfStudies", vmFieldOfStudies);
+            return View(vmFieldOfStudies);
         }
 
         /// <summary>
@@ -816,11 +828,13 @@ namespace XamPass.Controllers
         /// </summary>
         /// <param name="viewModelCreate"></param>
         /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult CreateNewSubject(ViewModelCreate viewModelCreate)
         {
             ViewModelCreateSubject vmSubject = new ViewModelCreateSubject();
 
-            return View("CreateSubject", vmSubject);
+            return View(vmSubject);
         }
 
         /// <summary>
@@ -862,6 +876,8 @@ namespace XamPass.Controllers
         /// </summary>
         /// <param name="viewModelCreate"></param>
         /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateNewUniversity(ViewModelCreate viewModelCreate)
         {
             ViewModelCreateUniversity vmUniversity = new ViewModelCreateUniversity();
@@ -877,7 +893,7 @@ namespace XamPass.Controllers
                 });
             }
 
-            return View("CreateUniversity", vmUniversity);
+            return View(vmUniversity);
         }
 
         /// <summary>
