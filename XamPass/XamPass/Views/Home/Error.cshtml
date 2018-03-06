@@ -1,0 +1,24 @@
+﻿@*@model XamPass.Models.ViewModels.LoginViewModel*@
+
+@{
+    ViewData["Title"] = "Fehler";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/errorPage.css" />
+</head>
+<body>
+    <div class="row" style="text-align:center">
+        <h1>Ups, es ist ein Fehler aufgetreten.</h1>
+        <div class="row">
+            <div style="text-align: center;">
+                <div class="col-md-2">
+                    <input type="submit" value="Home" formaction=@Url.Action("", "Home" ) class="btn btn-redirect" />
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" value="Frage erstellen" formaction=@Url.Action("", "CreateQuestion" ) class="btn btn-redirect" />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

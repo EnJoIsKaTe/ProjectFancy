@@ -1,0 +1,15 @@
+﻿.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.btn-redirect {
+    width: 100%;
+}
+
+.col-md-2 {
+    float: none;
+    display: inline-block;
+    width: 250px;
+    margin-top: 20px;
+}
