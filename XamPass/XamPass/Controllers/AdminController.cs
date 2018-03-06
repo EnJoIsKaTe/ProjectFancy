@@ -14,6 +14,7 @@ using XamPass.Models.ViewModels;
 
 namespace XamPass.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly DataContext _context;
@@ -23,19 +24,20 @@ namespace XamPass.Controllers
             _context = context;
         }
 
-        [Authorize]
+        //[Authorize]
         public IActionResult Index()
         {
             return View();
         }
 
-        [Authorize]
+        //[Authorize]
         public IActionResult CreateDB()
         {
-            DBInitialize.DatabaseTest(_context, true);
+            DBInitialize.DatabaseTest(_context);
             return RedirectToAction("Done");
         }
         
+        [AllowAnonymous]
         public IActionResult Done(ViewModelSearch viewModelSearch)
         {
             var result = viewModelSearch;
@@ -91,7 +93,7 @@ namespace XamPass.Controllers
 
         #region Review Questions
 
-        [Authorize]
+        //[Authorize]
         // GET: DtQuestions
         public async Task<IActionResult> IndexQuestions()
         {
@@ -99,7 +101,7 @@ namespace XamPass.Controllers
             return View(await dataContext.ToListAsync());
         }
 
-        [Authorize]
+        //[Authorize]
         // GET: DtQuestions/Details/5
         public async Task<IActionResult> DetailsQuestions(int? id)
         {
@@ -121,7 +123,7 @@ namespace XamPass.Controllers
             return View(dtQuestion);
         }
 
-        [Authorize]
+        //[Authorize]
         // GET: DtQuestions/Create
         public IActionResult CreateQuestions()
         {
@@ -134,7 +136,7 @@ namespace XamPass.Controllers
         // POST: DtQuestions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
+        //[Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateQuestions([Bind("QuestionID,UniversityID,FieldOfStudiesID,SubjectID,SubmissionDate,Title,Content,UpVotes")] DtQuestion dtQuestion)
@@ -151,7 +153,7 @@ namespace XamPass.Controllers
             return View(dtQuestion);
         }
 
-        [Authorize]
+        //[Authorize]
         // GET: DtQuestions/Edit/5
         public async Task<IActionResult> EditQuestions(int? id)
         {
@@ -174,7 +176,7 @@ namespace XamPass.Controllers
         // POST: DtQuestions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
+        //[Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditQuestions(int id, [Bind("QuestionID,UniversityID,FieldOfStudiesID,SubjectID,SubmissionDate,Title,Content,UpVotes")] DtQuestion dtQuestion)
@@ -210,7 +212,7 @@ namespace XamPass.Controllers
             return View(dtQuestion);
         }
 
-        [Authorize]
+        //[Authorize]
         // GET: DtQuestions/Delete/5
         public async Task<IActionResult> DeleteQuestions(int? id)
         {
@@ -232,7 +234,7 @@ namespace XamPass.Controllers
             return View(dtQuestion);
         }
 
-        [Authorize]
+        //[Authorize]
         // POST: DtQuestions/Delete/5
         [HttpPost, ActionName("DeleteQuestions")]
         [ValidateAntiForgeryToken]

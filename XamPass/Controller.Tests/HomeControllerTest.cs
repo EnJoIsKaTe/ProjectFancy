@@ -30,7 +30,7 @@ namespace Controller.Tests
             _context = new DataContext(builder.Options);
             _context.Database.Migrate();
 
-            DBInitialize.DatabaseTest(_context, true);
+            DBInitialize.DatabaseTest(_context);
         }
 
         [TearDown]
