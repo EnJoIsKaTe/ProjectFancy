@@ -228,6 +228,8 @@ namespace Controller.Tests
         [TearDown]
         public void TearDownDatabase()
         {
+            // TODO Benjamin: mache das noch ordentlich
+
             //_context.Database.EnsureDeleted();
             _context.Dispose();
         }
@@ -272,7 +274,7 @@ namespace Controller.Tests
         [Test]
         public void FillAllDropdownsTest()
         {
-            HomeController homeController = new HomeController(_context);
+            HomeController homeController = new HomeController(_context, null);
 
             ViewModelSearch viewModelSearch = new ViewModelSearch();
 
@@ -287,7 +289,7 @@ namespace Controller.Tests
         [Test]
         public void SetFilterForUniversitiesTest()
         {
-            HomeController homeController = new HomeController(_context);
+            HomeController homeController = new HomeController(_context, null);
 
             ViewModelSearch viewModelSearch = new ViewModelSearch();
 
@@ -337,7 +339,7 @@ namespace Controller.Tests
         [Test]
         public void SetFilterForFieldsOfStudiesTest()
         {
-            HomeController homeController = new HomeController(_context);
+            HomeController homeController = new HomeController(_context, null);
 
             ViewModelSearch viewModelSearch = new ViewModelSearch();
 
@@ -429,7 +431,7 @@ namespace Controller.Tests
         [Test]
         public void SetFilterForSubjectsTest()
         {
-            HomeController homeController = new HomeController(_context);
+            HomeController homeController = new HomeController(_context, null);
 
             ViewModelSearch viewModelSearch = new ViewModelSearch();
 
