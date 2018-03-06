@@ -307,7 +307,7 @@ namespace Controller.Tests
               .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
               .ToList();
 
-            viewModelSearch = homeController.SetFilterForUniversities(questions, viewModelSearch);
+            homeController.SetFilterForUniversities(questions, viewModelSearch);
 
             Assert.AreEqual(3, viewModelSearch.Universities.Count);
             Assert.AreEqual("BA Dresden", viewModelSearch.Universities.First().Text);
@@ -329,7 +329,7 @@ namespace Controller.Tests
               .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
               .ToList();
 
-            viewModelSearch = homeController.SetFilterForUniversities(questions, viewModelSearch);
+            homeController.SetFilterForUniversities(questions, viewModelSearch);
 
             Assert.AreEqual(9, viewModelSearch.Universities.Count);
             Assert.AreEqual("BA Dresden", viewModelSearch.Universities.First().Text);
@@ -356,7 +356,7 @@ namespace Controller.Tests
               .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
               .ToList();
 
-            viewModelSearch = homeController.SetFilterForFieldsOfStudies(questions, viewModelSearch);
+            homeController.SetFilterForFieldsOfStudies(questions, viewModelSearch);
 
             Assert.AreEqual(1, viewModelSearch.FieldsOfStudies.Count);
             Assert.AreEqual("Informatik", viewModelSearch.FieldsOfStudies.First().Text);
@@ -378,7 +378,7 @@ namespace Controller.Tests
               .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
               .ToList();
 
-            viewModelSearch = homeController.SetFilterForFieldsOfStudies(questions, viewModelSearch);
+            homeController.SetFilterForFieldsOfStudies(questions, viewModelSearch);
 
             Assert.AreEqual(2, viewModelSearch.FieldsOfStudies.Count);
             Assert.AreEqual("Bauingenieurwesen", viewModelSearch.FieldsOfStudies.First().Text);
@@ -400,7 +400,7 @@ namespace Controller.Tests
               .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
               .ToList();
 
-            viewModelSearch = homeController.SetFilterForFieldsOfStudies(questions, viewModelSearch);
+            homeController.SetFilterForFieldsOfStudies(questions, viewModelSearch);
 
             Assert.AreEqual(1, viewModelSearch.FieldsOfStudies.Count);
             Assert.AreEqual("Bauingenieurwesen", viewModelSearch.FieldsOfStudies.First().Text);
@@ -421,7 +421,7 @@ namespace Controller.Tests
               .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
               .ToList();
 
-            viewModelSearch = homeController.SetFilterForFieldsOfStudies(questions, viewModelSearch);
+            homeController.SetFilterForFieldsOfStudies(questions, viewModelSearch);
 
             Assert.AreEqual(8, viewModelSearch.FieldsOfStudies.Count);
             Assert.AreEqual("Bauingenieurwesen", viewModelSearch.FieldsOfStudies.First().Text);
@@ -449,7 +449,7 @@ namespace Controller.Tests
               .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
               .ToList();
 
-            viewModelSearch = homeController.SetFilterForSubjects(questions, viewModelSearch);
+            homeController.SetFilterForSubjects(questions, viewModelSearch);
 
             Assert.AreEqual(1, viewModelSearch.Subjects.Count);
             Assert.AreEqual("Automaten und formale Sprachen", viewModelSearch.Subjects.First().Text);
@@ -470,7 +470,7 @@ namespace Controller.Tests
               .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
               .ToList();
 
-            viewModelSearch = homeController.SetFilterForSubjects(questions, viewModelSearch);
+            homeController.SetFilterForSubjects(questions, viewModelSearch);
 
             Assert.AreEqual(1, viewModelSearch.Subjects.Count);
             Assert.AreEqual("Automaten und formale Sprachen", viewModelSearch.Subjects.First().Text);
@@ -492,7 +492,7 @@ namespace Controller.Tests
               .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
               .ToList();
 
-            viewModelSearch = homeController.SetFilterForSubjects(questions, viewModelSearch);
+            homeController.SetFilterForSubjects(questions, viewModelSearch);
 
             Assert.AreEqual(2, viewModelSearch.Subjects.Count);
             Assert.AreEqual("Automaten und formale Sprachen", viewModelSearch.Subjects.First().Text);
@@ -512,7 +512,7 @@ namespace Controller.Tests
               .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
               .ToList();
 
-            viewModelSearch = homeController.SetFilterForSubjects(questions, viewModelSearch);
+            homeController.SetFilterForSubjects(questions, viewModelSearch);
 
             Assert.AreEqual(7, viewModelSearch.Subjects.Count);
             Assert.AreEqual("Automaten und formale Sprachen", viewModelSearch.Subjects.First().Text);
@@ -531,7 +531,7 @@ namespace Controller.Tests
               .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
               .ToList();
 
-            viewModelSearch = homeController.SetFilterForSubjects(questions, viewModelSearch);
+            homeController.SetFilterForSubjects(questions, viewModelSearch);
 
             Assert.AreEqual(1, viewModelSearch.Subjects.Count);
             Assert.AreEqual("Automaten und formale Sprachen", viewModelSearch.Subjects.First().Text);
