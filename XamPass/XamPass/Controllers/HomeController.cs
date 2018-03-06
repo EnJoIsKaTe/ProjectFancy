@@ -16,7 +16,7 @@ using Microsoft.Extensions.Logging;
 
 namespace XamPass.Controllers
 {
-    //[RequireHttps]
+    [RequireHttps]
     public class HomeController : Controller
     {
         private readonly DataContext _context;
