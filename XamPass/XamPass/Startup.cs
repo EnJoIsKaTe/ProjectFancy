@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using XamPass.Models;
+using Microsoft.Extensions.Logging;
 using XamPass.Models.DataBaseModels;
 
 namespace XamPass
@@ -52,7 +53,7 @@ namespace XamPass
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -75,6 +76,9 @@ namespace XamPass
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            loggerFactory.AddFile("Logs/XamPass-{Date}.txt");
+
         }
     }
 }

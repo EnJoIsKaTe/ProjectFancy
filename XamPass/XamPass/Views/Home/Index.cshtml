@@ -34,7 +34,8 @@
                     <div class="row">
                         @Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies, "Fachrichtung auswählen", new
                         {
-                            @class = "form-control col-md-2 dropdown-toggle col input-cell"
+                            @class = "form-control col-md-2 dropdown-toggle col input-cell",
+                            @onchange = "this.form.submit();"
                         })
                     </div>
                     <div class="row input-cell-name">
@@ -43,7 +44,8 @@
                     <div class="row">
                         @Html.DropDownListFor(m => m.SubjectId, Model.Subjects, "Fach auswählen", new
                         {
-                            @class = "form-control col-md-2 dropdown-toggle col input-cell"
+                            @class = "form-control col-md-2 dropdown-toggle col input-cell",
+                            @onchange = "this.form.submit();"
                         })
                     </div>
                     <div class="row input-cell-name">

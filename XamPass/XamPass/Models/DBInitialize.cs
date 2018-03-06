@@ -107,7 +107,7 @@ namespace XamPass.Models
             DtSubject[] subjects = new DtSubject[]
             {
                 new DtSubject(){SubjectName = "Automaten und formale Sprachen"},
-                new DtSubject(){SubjectName = "Berechebarkeit und Komplexität"},
+                new DtSubject(){SubjectName = "Berechenbarkeit und Komplexität"},
                 new DtSubject(){SubjectName = "Personalführung"},
                 new DtSubject(){SubjectName = "Stochastik"},
                 new DtSubject(){SubjectName = "Lineare Algebra"},
