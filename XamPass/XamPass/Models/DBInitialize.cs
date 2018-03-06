@@ -9,18 +9,18 @@ namespace XamPass.Models
     public class DBInitialize
     {
         /// <summary>
-        /// Testet die Datenbankverbindung
+        /// Fügt der Datenbank Einträge hinzu
         /// </summary>
-        public static void DatabaseTest(DataContext context, bool createNewDatabase)
+        public static void DatabaseTest(DataContext context)
         {
-            if (createNewDatabase)
-            {
-                // Löscht die Datenbank falls vorhanden
-                context.Database.EnsureDeleted();
+            //if (createNewDatabase)
+            //{
+            //    // Löscht die Datenbank falls vorhanden
+            //    context.Database.EnsureDeleted();
 
-                // Erstellt die Datenbank neu auf Grundlage der Model-Klassen
-                context.Database.EnsureCreated();
-            }
+            //    // Erstellt die Datenbank neu auf Grundlage der Model-Klassen
+            //    context.Database.EnsureCreated();
+            //}
 
             DtCountry[] countries = new DtCountry[]
             {
@@ -194,7 +194,6 @@ namespace XamPass.Models
             }
 
             context.SaveChanges();
-          
         }
     }
 }

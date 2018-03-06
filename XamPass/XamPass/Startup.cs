@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using XamPass.Models;
 using Microsoft.Extensions.Logging;
 using XamPass.Models.DataBaseModels;
 
@@ -26,15 +28,26 @@ namespace XamPass
         public void ConfigureServices(IServiceCollection services)
         {
             // Datenbank Service registrieren
-            services.AddDbContext<DataContext>(options 
+            services.AddDbContext<DataContext>(options
                 => options.UseMySql(Configuration.GetConnectionString("DataBaseConnection")));
 
             // Authentifizierung
-            services.AddAuthentication("AdminCookieScheme").AddCookie("AdminCookieScheme", options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<DataContext>()
+                .AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(options =>
             {
-                options.AccessDeniedPath = new PathString("/Admin/Access");
-                options.LoginPath = new PathString("/Admin/Login");
-            });            
+                options.AccessDeniedPath = new PathString("/Account/Access");
+                options.LoginPath = new PathString("/Account/Login");
+                options.LogoutPath = new PathString("/Account/Logout");
+            });
+
+            //services.AddAuthentication("AdminCookieScheme").AddCookie("AdminCookieScheme", options =>
+            //{
+            //    options.AccessDeniedPath = new PathString("/Admin/Access");
+            //    options.LoginPath = new PathString("/Admin/Login");
+            //});
 
             services.AddMvc();
         }

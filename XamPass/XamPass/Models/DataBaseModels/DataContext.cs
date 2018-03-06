@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace XamPass.Models.DataBaseModels
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<ApplicationUser>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -32,6 +33,11 @@ namespace XamPass.Models.DataBaseModels
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            // Customize the ASP.NET Identity model and override the defaults if needed.
+            // For example, you can rename the ASP.NET Identity table names and more.
+            // Add your customizations after calling base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<DtQuestion>().ToTable("dt_question");
             modelBuilder.Entity<DtFederalState>().ToTable("dt_federal_state");
             modelBuilder.Entity<DtCountry>().ToTable("dt_Country");
