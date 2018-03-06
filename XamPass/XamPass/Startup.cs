@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using XamPass.Models;
 using Microsoft.Extensions.Logging;
 using XamPass.Models.DataBaseModels;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace XamPass
 {
@@ -27,11 +29,11 @@ namespace XamPass
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Datenbank Service registrieren
+            // Register Database Service
             services.AddDbContext<DataContext>(options
                 => options.UseMySql(Configuration.GetConnectionString("DataBaseConnection")));
 
-            // Authentifizierung
+            // Authentication
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<DataContext>()
                 .AddDefaultTokenProviders();
@@ -42,6 +44,8 @@ namespace XamPass
                 options.LoginPath = new PathString("/Account/Login");
                 options.LogoutPath = new PathString("/Account/Logout");
             });
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
 
             //services.AddAuthentication("AdminCookieScheme").AddCookie("AdminCookieScheme", options =>
             //{
@@ -67,7 +71,7 @@ namespace XamPass
 
             app.UseStaticFiles();
 
-            // Authentifizierung
+            // Authentication
             app.UseAuthentication();
 
             app.UseMvc(routes =>
@@ -77,7 +81,27 @@ namespace XamPass
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
+            // Add LogFile
             loggerFactory.AddFile("Logs/XamPass-{Date}.txt");
+
+            // Add Localization
+            var supportedCultures = new List<CultureInfo>
+            {
+                new CultureInfo("de"),
+                new CultureInfo("en")
+            };
+
+            var options = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("de"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures,
+            };
+
+            app.UseRequestLocalization(options);
+            app.UseStaticFiles();
+
+            app.UseMvcWithDefaultRoute();
 
         }
     }

@@ -30,7 +30,6 @@ namespace Controller.Tests
             builder.UseMySql($"server = localhost; userid=dev; pwd=geheim; port=3306; database=Test_XamPassDatabase; sslmode=none");
 
             _context = new DataContext(builder.Options);
-            //_context.Database.Migrate();
             
             DatabaseTest(_context, true);
         }
@@ -228,13 +227,12 @@ namespace Controller.Tests
         [TearDown]
         public void TearDownDatabase()
         {
-            // TODO Benjamin: mache das noch ordentlich
-
             //_context.Database.EnsureDeleted();
             _context.Dispose();
         }
 
         #region DatabaseTests
+
         [Test]
         public void Created()
         {

@@ -61,11 +61,11 @@ namespace XamPass.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Neue Fachrichtung anlegen ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Test ähnelt.
         /// </summary>
-        internal static string BtnNameNewFieldOfStudies {
+        internal static string Test {
             get {
-                return ResourceManager.GetString("BtnNameNewFieldOfStudies", resourceCulture);
+                return ResourceManager.GetString("Test", resourceCulture);
             }
         }
     }

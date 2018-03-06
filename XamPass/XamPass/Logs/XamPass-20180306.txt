@@ -3980,3 +3980,51 @@ ORDER BY `u`.`UniversityName`" (0723d8ff)
 2018-03-06T13:26:41.0753783+01:00 0HLC3BLP2B243:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44325/favicon.ico   (ca22a1cb)
 2018-03-06T13:26:41.1738250+01:00 0HLC3BLP2B243:00000002 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Users\Admin\Documents\Code\ProjectFancy\XamPass\XamPass\wwwroot\favicon.ico"' (27b0a520)
 2018-03-06T13:26:41.2592207+01:00 0HLC3BLP2B243:00000002 [INF] Request finished in 467.7034ms 200 image/x-icon (791a596a)
+2018-03-06T15:02:03.4212048+01:00 0HLC3DBB0VHON:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44325/   (ca22a1cb)
+2018-03-06T15:02:37.4651306+01:00 0HLC3DBB0VHON:00000001 [INF] Executing action method "XamPass.Controllers.HomeController.Index (XamPass)" with arguments (null) - ModelState is Valid (ba7f4ac2)
+2018-03-06T15:02:41.9647095+01:00 0HLC3DBB0VHON:00000001 [INF] Entity Framework Core "2.0.1-rtm-125" initialized '"DataContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "None" (9958f5bb)
+2018-03-06T15:02:44.1346633+01:00 0HLC3DBB0VHON:00000001 [INF] Executed DbCommand ("997"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FieldOfStudiesID`, `f`.`FieldOfStudiesName`, `f`.`Type`
+FROM `dt_field_of_studies` AS `f`
+ORDER BY `f`.`FieldOfStudiesName`" (0723d8ff)
+2018-03-06T15:02:44.8974723+01:00 0HLC3DBB0VHON:00000001 [INF] Executed DbCommand ("197"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `s`.`SubjectID`, `s`.`SubjectName`
+FROM `dt_subject` AS `s`
+ORDER BY `s`.`SubjectName`" (0723d8ff)
+2018-03-06T15:02:45.1012681+01:00 0HLC3DBB0VHON:00000001 [INF] Executed DbCommand ("84"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `f`.`FederalStateID`, `f`.`FederalStateName`
+FROM `dt_federal_state` AS `f`
+ORDER BY `f`.`FederalStateName`" (0723d8ff)
+2018-03-06T15:02:45.4290886+01:00 0HLC3DBB0VHON:00000001 [INF] Executed DbCommand ("102"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT `u`.`UniversityID`, `u`.`CountryID`, `u`.`FederalStateID`, `u`.`UniversityName`
+FROM `dt_University` AS `u`
+ORDER BY `u`.`UniversityName`" (0723d8ff)
+2018-03-06T15:03:02.2627081+01:00 0HLC3DBB0VHON:00000001 [INF] Executing ViewResult, running view at path "/Views/Home/Index.cshtml". (9707eebe)
+2018-03-06T15:03:03.9861306+01:00 0HLC3DBB0VHON:00000001 [INF] Executed action "XamPass.Controllers.HomeController.Index (XamPass)" in 58997.1092ms (afa2e885)
+2018-03-06T15:03:04.1137756+01:00 0HLC3DBB0VHON:00000001 [INF] Request finished in 60838.4718ms 200 text/html; charset=utf-8 (791a596a)
+2018-03-06T15:03:04.6511775+01:00 0HLC3DBB0VHOR:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44325/images/XamPassLogo.png   (ca22a1cb)
+2018-03-06T15:03:04.7033052+01:00 0HLC3DBB0VHOQ:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44325/css/home.css   (ca22a1cb)
+2018-03-06T15:03:05.5696512+01:00 0HLC3DBB0VHOP:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44325/lib/bootstrap/dist/css/bootstrap.css   (ca22a1cb)
+2018-03-06T15:03:05.6185845+01:00 0HLC3DBB0VHOV:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44325/lib/bootstrap/dist/js/bootstrap.js   (ca22a1cb)
+2018-03-06T15:03:05.7184949+01:00 0HLC3DBB0VHOQ:00000001 [INF] Sending file. Request path: '"/css/home.css"'. Physical path: '"C:\Users\Admin\Documents\Code\ProjectFancy\XamPass\XamPass\wwwroot\css\home.css"' (27b0a520)
+2018-03-06T15:03:05.7464012+01:00 0HLC3DBB0VHOS:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44325/resources/demos/style.css   (ca22a1cb)
+2018-03-06T15:03:06.0621017+01:00 0HLC3DBB0VHOR:00000001 [INF] Sending file. Request path: '"/images/XamPassLogo.png"'. Physical path: '"C:\Users\Admin\Documents\Code\ProjectFancy\XamPass\XamPass\wwwroot\images\XamPassLogo.png"' (27b0a520)
+2018-03-06T15:03:06.1125228+01:00 0HLC3DBB0VHOT:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44325/lib/jquery/dist/jquery.js   (ca22a1cb)
+2018-03-06T15:03:06.5121376+01:00 0HLC3DBB0VHOV:00000001 [INF] Sending file. Request path: '"/lib/bootstrap/dist/js/bootstrap.js"'. Physical path: '"C:\Users\Admin\Documents\Code\ProjectFancy\XamPass\XamPass\wwwroot\lib\bootstrap\dist\js\bootstrap.js"' (27b0a520)
+2018-03-06T15:03:06.5509379+01:00 0HLC3DBB0VHOT:00000001 [INF] Sending file. Request path: '"/lib/jquery/dist/jquery.js"'. Physical path: '"C:\Users\Admin\Documents\Code\ProjectFancy\XamPass\XamPass\wwwroot\lib\jquery\dist\jquery.js"' (27b0a520)
+2018-03-06T15:03:06.6927494+01:00 0HLC3DBB0VHOU:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:44325/js/site.js?v=ji3-IxbEzYWjzzLCGkF1KDjrT2jLbbrSYXw-AhMPNIA   (ca22a1cb)
+2018-03-06T15:03:06.8242263+01:00 0HLC3DBB0VHOQ:00000001 [INF] Request finished in 1862.1266ms 200 text/css (791a596a)
+2018-03-06T15:03:07.0295987+01:00 0HLC3DBB0VHON:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44325/css/site.css   (ca22a1cb)
+2018-03-06T15:03:07.2149214+01:00 0HLC3DBB0VHOS:00000001 [INF] Request finished in 1564.8073ms 404  (791a596a)
+2018-03-06T15:03:07.2324441+01:00 0HLC3DBB0VHOP:00000001 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"C:\Users\Admin\Documents\Code\ProjectFancy\XamPass\XamPass\wwwroot\lib\bootstrap\dist\css\bootstrap.css"' (27b0a520)
+2018-03-06T15:03:07.2645729+01:00 0HLC3DBB0VHOV:00000001 [INF] Request finished in 1969.4637ms 200 application/javascript (791a596a)
+2018-03-06T15:03:07.2732937+01:00 0HLC3DBB0VHOU:00000001 [INF] Sending file. Request path: '"/js/site.js"'. Physical path: '"C:\Users\Admin\Documents\Code\ProjectFancy\XamPass\XamPass\wwwroot\js\site.js"' (27b0a520)
+2018-03-06T15:03:07.4468973+01:00 0HLC3DBB0VHOR:00000001 [INF] Request finished in 1979.393ms 200 image/png (791a596a)
+2018-03-06T15:03:08.4237399+01:00 0HLC3DBB0VHOT:00000001 [INF] Request finished in 2609.2682ms 200 application/javascript (791a596a)
+2018-03-06T15:03:08.4681848+01:00 0HLC3DBB0VHOU:00000001 [INF] Request finished in 2719.0199ms 200 application/javascript (791a596a)
+2018-03-06T15:03:08.4912482+01:00 0HLC3DBB0VHOP:00000001 [INF] Request finished in 3357.3446ms 200 text/css (791a596a)
+2018-03-06T15:03:08.5092545+01:00 0HLC3DBB0VHON:00000002 [INF] Sending file. Request path: '"/css/site.css"'. Physical path: '"C:\Users\Admin\Documents\Code\ProjectFancy\XamPass\XamPass\wwwroot\css\site.css"' (27b0a520)
+2018-03-06T15:03:08.8581358+01:00 0HLC3DBB0VHON:00000002 [INF] Request finished in 4201.8792ms 200 text/css (791a596a)
+2018-03-06T15:03:09.9371103+01:00 0HLC3DBB0VHOS:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:44325/favicon.ico   (ca22a1cb)
+2018-03-06T15:03:09.9620251+01:00 0HLC3DBB0VHOS:00000002 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\Users\Admin\Documents\Code\ProjectFancy\XamPass\XamPass\wwwroot\favicon.ico"' (27b0a520)
+2018-03-06T15:03:10.0512371+01:00 0HLC3DBB0VHOS:00000002 [INF] Request finished in 118.8655ms 200 image/x-icon (791a596a)

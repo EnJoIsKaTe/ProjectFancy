@@ -9,9 +9,9 @@ namespace XamPass.Models
     public class DBInitialize
     {
         /// <summary>
-        /// Fügt der Datenbank Einträge hinzu
+        /// Fills the Database with Entities
         /// </summary>
-        public static void DatabaseTest(DataContext context)
+        public static void SeedDatabase(DataContext context)
         {
             // TODO irgendwann entfernen
             //if (createNewDatabase)

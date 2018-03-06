@@ -32,7 +32,7 @@ namespace XamPass.Controllers
 
         public IActionResult CreateDB()
         {
-            DBInitialize.DatabaseTest(_context);
+            DBInitialize.SeedDatabase(_context);
             return RedirectToAction("Done");
         }
 
