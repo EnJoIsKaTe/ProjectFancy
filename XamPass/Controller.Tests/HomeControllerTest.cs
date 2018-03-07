@@ -276,7 +276,7 @@ namespace Controller.Tests
 
             ViewModelSearch viewModelSearch = new ViewModelSearch();
 
-            viewModelSearch = homeController.FillAllDropdowns(viewModelSearch);
+            viewModelSearch.FillAllDropdowns(_context);
 
             Assert.AreEqual(9, viewModelSearch.Universities.Count);
             Assert.AreEqual(8, viewModelSearch.FieldsOfStudies.Count);
@@ -293,7 +293,7 @@ namespace Controller.Tests
 
             // First Test
             viewModelSearch = new ViewModelSearch();
-            viewModelSearch = homeController.FillAllDropdowns(viewModelSearch);
+            viewModelSearch.FillAllDropdowns(_context);
 
             viewModelSearch.FieldOfStudiesId = 1;
             viewModelSearch.SubjectId = 1;
@@ -315,7 +315,7 @@ namespace Controller.Tests
 
             // Second Test
             viewModelSearch = new ViewModelSearch();
-            viewModelSearch = homeController.FillAllDropdowns(viewModelSearch);
+            viewModelSearch.FillAllDropdowns(_context);
 
             viewModelSearch.FieldOfStudiesId = 1;
             viewModelSearch.SubjectId = 2;
@@ -342,7 +342,7 @@ namespace Controller.Tests
             ViewModelSearch viewModelSearch = new ViewModelSearch();
 
             // First Test
-            viewModelSearch = homeController.FillAllDropdowns(viewModelSearch);
+            viewModelSearch.FillAllDropdowns(_context);
 
             viewModelSearch.UniversityId = 1;
             viewModelSearch.SubjectId = 1;
@@ -364,7 +364,7 @@ namespace Controller.Tests
 
             // Second Test
             viewModelSearch = new ViewModelSearch();
-            viewModelSearch = homeController.FillAllDropdowns(viewModelSearch);
+            viewModelSearch.FillAllDropdowns(_context);
 
             viewModelSearch.UniversityId = 2;
             viewModelSearch.SubjectId = null;
@@ -386,7 +386,7 @@ namespace Controller.Tests
 
             // Third Test
             viewModelSearch = new ViewModelSearch();
-            viewModelSearch = homeController.FillAllDropdowns(viewModelSearch);
+            viewModelSearch.FillAllDropdowns(_context);
 
             viewModelSearch.UniversityId = null;
             viewModelSearch.SubjectId = 2;
@@ -407,7 +407,7 @@ namespace Controller.Tests
 
             // Fourth Test
             viewModelSearch = new ViewModelSearch();
-            viewModelSearch = homeController.FillAllDropdowns(viewModelSearch);
+            viewModelSearch.FillAllDropdowns(_context);
 
             viewModelSearch.UniversityId = 5;
             viewModelSearch.SubjectId = 1;
@@ -435,7 +435,7 @@ namespace Controller.Tests
 
             // First Test
             viewModelSearch = new ViewModelSearch();
-            viewModelSearch = homeController.FillAllDropdowns(viewModelSearch);
+            viewModelSearch.FillAllDropdowns(_context);
 
             viewModelSearch.UniversityId = 1;
             viewModelSearch.FieldOfStudiesId = 1;
@@ -456,7 +456,7 @@ namespace Controller.Tests
 
             // Second Test
             viewModelSearch = new ViewModelSearch();
-            viewModelSearch = homeController.FillAllDropdowns(viewModelSearch);
+            viewModelSearch.FillAllDropdowns(_context);
 
             viewModelSearch.UniversityId = 1;
             viewModelSearch.FieldOfStudiesId = null;
@@ -478,7 +478,7 @@ namespace Controller.Tests
 
             // Third Test
             viewModelSearch = new ViewModelSearch();
-            viewModelSearch = homeController.FillAllDropdowns(viewModelSearch);
+            viewModelSearch.FillAllDropdowns(_context);
 
             viewModelSearch.UniversityId = 2;
             viewModelSearch.FieldOfStudiesId = null;
@@ -498,7 +498,7 @@ namespace Controller.Tests
 
             // Fourth Test
             viewModelSearch = new ViewModelSearch();
-            viewModelSearch = homeController.FillAllDropdowns(viewModelSearch);
+            viewModelSearch.FillAllDropdowns(_context);
 
             viewModelSearch.UniversityId = 1;
             viewModelSearch.FieldOfStudiesId = 5;
@@ -518,7 +518,7 @@ namespace Controller.Tests
 
             // Fifth Test
             viewModelSearch = new ViewModelSearch();
-            viewModelSearch = homeController.FillAllDropdowns(viewModelSearch);
+            viewModelSearch.FillAllDropdowns(_context);
 
             viewModelSearch.UniversityId = 1;
 

@@ -117,43 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddNewEntry" xml:space="preserve">
+  <data name="AskAQuestion" xml:space="preserve">
+    <value>Stelle eine Frage</value>
+  </data>
+  <data name="CreateNewEntry" xml:space="preserve">
     <value>Neuen Eintrag anlegen</value>
   </data>
-  <data name="Country" xml:space="preserve">
-    <value>Land</value>
-  </data>
-  <data name="FederalState" xml:space="preserve">
-    <value>Bundesland</value>
+  <data name="CreateNewFieldOfStudies" xml:space="preserve">
+    <value>Neue Fachrichtung anlegen</value>
   </data>
   <data name="FieldOfStudies" xml:space="preserve">
     <value>Fachrichtung</value>
   </data>
-  <data name="Germany" xml:space="preserve">
-    <value>Deutschland</value>
-  </data>
-  <data name="NewEntry" xml:space="preserve">
-    <value>Neuer Eintrag</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Suchen</value>
-  </data>
-  <data name="SelectFederalState" xml:space="preserve">
-    <value>Bundesland auswählen</value>
-  </data>
   <data name="SelectFieldOfStudies" xml:space="preserve">
     <value>Fachrichtung auswählen</value>
   </data>
-  <data name="SelectSubject" xml:space="preserve">
-    <value>Fach auswählen</value>
-  </data>
-  <data name="SelectUniversity" xml:space="preserve">
-    <value>Hochschule auswählen</value>
-  </data>
   <data name="Subject" xml:space="preserve">
     <value>Fach</value>
-  </data>
-  <data name="University" xml:space="preserve">
-    <value>Hochschule</value>
   </data>
 </root>
