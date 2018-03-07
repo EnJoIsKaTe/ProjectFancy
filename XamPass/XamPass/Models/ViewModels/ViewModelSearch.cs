@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -36,7 +37,7 @@ namespace XamPass.Models.ViewModels
         /// Standard Constructor
         /// </summary>
         public ViewModelSearch()
-        {
+        { 
             //Universities = new List<SelectListItem>();
             //FederalStates = new List<SelectListItem>();
             //Subjects = new List<SelectListItem>();

@@ -10,10 +10,8 @@ namespace XamPass.Models.ViewModels
 {
     public class DropDownViewModel
     {
-        // TODO: implement logger
-        //private ILogger _logger;
-                
-       
+        //public ILogger _logger;
+
         public virtual int? UniversityId { get; set; }
         public virtual int? FederalStateId { get; set; }
         public virtual int? SubjectId { get; set; }
@@ -26,6 +24,8 @@ namespace XamPass.Models.ViewModels
 
         public DropDownViewModel()
         {
+            //_logger = logger;
+
             Universities = new List<SelectListItem>();
             FederalStates = new List<SelectListItem>();
             Subjects = new List<SelectListItem>();
