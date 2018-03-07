@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /XamPass/XamPass/Logs
+Logs

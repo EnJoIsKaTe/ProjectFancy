@@ -10,7 +10,7 @@ using XamPass.Models.DataBaseModels;
 
 namespace XamPass.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     [Authorize]
     public class DtUniversitiesController : Controller
     {

@@ -11,21 +11,21 @@ namespace XamPass.Models.ViewModels
     /// <summary>
     /// ViewModel that provides the data to search for Questions
     /// </summary>
-    public class ViewModelSearch
+    public class ViewModelSearch : DropDownViewModel
     {
-        //[Required(ErrorMessage = "Bitte geben Sie eine Universität an")]
-        public int? UniversityId { get; set; }
-        //[Required(ErrorMessage = "Bitte geben Sie ein Bundesland an")]
-        public int? FederalStateId { get; set; }
-        //[Required(ErrorMessage = "Bitte geben Sie ein Fach an")]
-        public int? SubjectId { get; set; }
-        //[Required(ErrorMessage = "Bitte geben Sie einen Studiengang an")]
-        public int? FieldOfStudiesId { get; set; }
+        ////[Required(ErrorMessage = "Bitte geben Sie eine Universität an")]
+        //public int? UniversityId { get; set; }
+        ////[Required(ErrorMessage = "Bitte geben Sie ein Bundesland an")]
+        //public int? FederalStateId { get; set; }
+        ////[Required(ErrorMessage = "Bitte geben Sie ein Fach an")]
+        //public int? SubjectId { get; set; }
+        ////[Required(ErrorMessage = "Bitte geben Sie einen Studiengang an")]
+        //public int? FieldOfStudiesId { get; set; }
 
-        public List<SelectListItem> Universities { get; set; }
-        public List<SelectListItem> FederalStates { get; set; }
-        public List<SelectListItem> Subjects { get; set; }
-        public List<SelectListItem> FieldsOfStudies { get; set; }
+        //public List<SelectListItem> Universities { get; set; }
+        //public List<SelectListItem> FederalStates { get; set; }
+        //public List<SelectListItem> Subjects { get; set; }
+        //public List<SelectListItem> FieldsOfStudies { get; set; }
 
         // show questions
         public int? QuestionId { get; set; }
@@ -37,10 +37,10 @@ namespace XamPass.Models.ViewModels
         /// </summary>
         public ViewModelSearch()
         {
-            Universities = new List<SelectListItem>();
-            FederalStates = new List<SelectListItem>();
-            Subjects = new List<SelectListItem>();
-            FieldsOfStudies = new List<SelectListItem>();
+            //Universities = new List<SelectListItem>();
+            //FederalStates = new List<SelectListItem>();
+            //Subjects = new List<SelectListItem>();
+            //FieldsOfStudies = new List<SelectListItem>();
 
             // show questions
             Questions = new List<DtQuestion>();
