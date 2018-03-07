@@ -272,7 +272,7 @@ namespace Controller.Tests
         [Test]
         public void FillAllDropdownsTest()
         {
-            HomeController homeController = new HomeController(_context, null);
+            HomeController homeController = new HomeController(_context, null, null);
 
             ViewModelSearch viewModelSearch = new ViewModelSearch();
 
@@ -287,7 +287,7 @@ namespace Controller.Tests
         [Test]
         public void SetFilterForUniversitiesTest()
         {
-            HomeController homeController = new HomeController(_context, null);
+            HomeController homeController = new HomeController(_context, null, null);
 
             ViewModelSearch viewModelSearch = new ViewModelSearch();
 
@@ -337,7 +337,7 @@ namespace Controller.Tests
         [Test]
         public void SetFilterForFieldsOfStudiesTest()
         {
-            HomeController homeController = new HomeController(_context, null);
+            HomeController homeController = new HomeController(_context, null, null);
 
             ViewModelSearch viewModelSearch = new ViewModelSearch();
 
@@ -429,7 +429,7 @@ namespace Controller.Tests
         [Test]
         public void SetFilterForSubjectsTest()
         {
-            HomeController homeController = new HomeController(_context, null);
+            HomeController homeController = new HomeController(_context, null, null);
 
             ViewModelSearch viewModelSearch = new ViewModelSearch();
 
@@ -667,7 +667,7 @@ namespace Controller.Tests
         [Test]
         public void OrderQuestionsByUpvotesTest()
         {
-            HomeController homeController = new HomeController(_context, null);
+            HomeController homeController = new HomeController(_context, null, null);
 
             ViewModelSearch viewModelSearch = new ViewModelSearch();
 

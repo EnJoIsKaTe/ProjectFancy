@@ -53,7 +53,11 @@ namespace XamPass
             //    options.LoginPath = new PathString("/Admin/Login");
             //});
 
-            services.AddMvc();
+            services
+                .AddMvc()
+                .AddViewLocalization(options => options.ResourcesPath = "Resources")
+                .AddDataAnnotationsLocalization();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,17 +91,16 @@ namespace XamPass
             // Add Localization
             var supportedCultures = new List<CultureInfo>
             {
-                new CultureInfo("de"),
-                new CultureInfo("en")
+                new CultureInfo("de-DE"),
+                new CultureInfo("en-US")
             };
 
             var options = new RequestLocalizationOptions
             {
-                DefaultRequestCulture = new RequestCulture("de"),
+                DefaultRequestCulture = new RequestCulture("de-DE"),
                 SupportedCultures = supportedCultures,
                 SupportedUICultures = supportedCultures,
             };
-
             app.UseRequestLocalization(options);
             app.UseStaticFiles();
 
