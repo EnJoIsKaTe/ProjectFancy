@@ -83,7 +83,6 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2 input-cell">
-                                        @*<input class="form-control col-md-2 input-cell" />*@
                                         @{ string subjectText;
                                             if (Model.SubjectId == null)
                                             {
@@ -206,7 +205,6 @@
                                 @Localizer["Title"]
                             </div>
                             <div class="row">
-                                @*<textarea class="form-control col-md-2 input-cell-big"></textarea>*@
                                 @Html.TextAreaFor(m => m.QuestionTitle, new { @class = "input-cell-big" })
                             </div>
                             <div class="row validation-div-big">
@@ -218,7 +216,6 @@
                                 @Localizer["Question"]
                             </div>
                             <div class="row">
-                                @*<textarea class="form-control col-md-2 input-cell-big"></textarea>*@
                                 @Html.TextAreaFor(m => m.QuestionContent, new { @class = "input-cell-big" })
                             </div>
                             <div class=" row validation-div-big">
@@ -230,13 +227,11 @@
                                 @Localizer["Answer"]
                             </div>
                             <div class="row">
-                                @*<textarea class="form-control col-md-2 input-cell-big"></textarea>*@
                                 @Html.TextAreaFor(m => m.AnswerContent, new { @class = "input-cell-big" })
                             </div>
                         </div>
                         <div class="row">
                             <div width="100%" style="text-align:right;">
-                                @*<button id="createBtn" type="submit" class="btn">Anlegen</button>*@
                                 <input type="submit" id="createBtn" value=@Localizer["CreateNewEntry"] formmethod="post"
                                        formaction=@Url.Action("CreateNewEntry", "Home" ) class="btn" />
                             </div>

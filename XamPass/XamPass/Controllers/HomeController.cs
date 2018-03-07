@@ -639,7 +639,7 @@ namespace XamPass.Controllers
                 _logger.LogError(ex, "Error while saving new University to the Database");
             }
 
-            return View("CreateUniversity", vmUniversity);
+            return View("CreateNewUniversity", vmUniversity);
         }
 
         /// <summary>

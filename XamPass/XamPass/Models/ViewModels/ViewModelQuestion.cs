@@ -22,6 +22,9 @@ namespace XamPass.Models.ViewModels
         public List<DtQuestion> Questions { get; set; }
         public List<DtAnswer> Answers { get; set; }
 
+        /// <summary>
+        /// Standard Constructor
+        /// </summary>
         public ViewModelQuestion()
         {
             Questions = new List<DtQuestion>();

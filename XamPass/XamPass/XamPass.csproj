@@ -28,10 +28,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Controllers\AdminController.de-DE.resx">
+    <EmbeddedResource Update="Resources\Controllers\HomeController.de-DE.resx">
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Controllers\HomeController.de-DE.resx">
+    <EmbeddedResource Update="Resources\Models\ViewModels\ViewModelCreate.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Models\ViewModels\ViewModelCreateFieldOfStudies.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Models\ViewModels\ViewModelCreateSubject.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Models\ViewModels\ViewModelCreateUniversity.de-DE.resx">
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\Home\CreateNewFieldOfStudies.de-DE.resx">
