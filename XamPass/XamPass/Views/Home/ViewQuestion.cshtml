@@ -1,5 +1,9 @@
 ﻿@model XamPass.Models.ViewModels.ViewModelQuestion
 
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
 @{
     ViewData["Title"] = "ViewQuestion";
 }
@@ -23,10 +27,9 @@
 </head>
 
 <body>
-    <h1>Frage</h1>
+    <h1>@Localizer["Question"]</h1>
 
     <div class="container" style="padding-left:0px;padding-right:0px">
-        @*style="height:auto;display:block;overflow:auto"*@
         @using (Html.BeginForm("ViewQuestion", "Home", FormMethod.Post))
         {
             <div class="row">
@@ -34,98 +37,70 @@
                     <div class="card card-custom">
                         <div class="card-body" style="padding:10px;">
                             <div class="card-header">
-                                Info
+                                @Localizer["Info"]
                             </div>
                             <div style="width:100%;display:inline-block;">
                                 <div style="display:inline-block;">
-                                    Fachrichtung:
+                                    @Localizer["FieldOfStudies"]
                                 </div>
                                 <div style="display:inline-block;float:right;">
-                                    @*Informatik*@
                                     @Model.FieldOfStudies.FieldOfStudiesName
                                 </div>
                             </div>
                             <div style="width:100%;display:inline-block;">
                                 <div style="display:inline-block;">
-                                    Fach:
+                                    @Localizer["Subject"]
                                 </div>
                                 <div style="display:inline-block;float:right; max-width:100pt;white-space: normal;text-align:right;">
-                                    @*overflow: hidden;text-overflow:ellipsis;*@
-                                    @*Mathemathik*@
                                     @Model.Subject.SubjectName
                                 </div>
                             </div>
                             <div style="width:100%;display:inline-block;">
                                 <div style="display:inline-block;">
-                                    Erstellungsdatum:
+                                    @Localizer["CreationDate"]
                                 </div>
                                 <div style="display:inline-block;float:right;">
-                                    @*15.02.2018*@
                                     @Model.Question.SubmissionDate.ToShortDateString()
                                 </div>
                             </div>
                             <hr style="margin:5px 0px 5px 0px" />
                             <div style="width:100%;display:inline-block;">
                                 <div style="display:inline-block;">
-                                    Hochschule:
+                                    @Localizer["University"]
                                 </div>
                                 <div style="display:inline-block;float:right;">
-                                    @*BA Leipzig*@
                                     @Model.University.UniversityName
                                 </div>
                             </div>
                             <div style="width:100%;display:inline-block;">
                                 <div style="display:inline-block;">
-                                    Land:
+                                    @Localizer["Country"]
                                 </div>
                                 <div style="display:inline-block;float:right;">
-                                    Deutschland
+                                    @Localizer["Germany"]
                                 </div>
                             </div>
                             <div style="width:100%;display:inline-block;">
                                 <div style="display:inline-block;">
-                                    Bundesland:
+                                    @Localizer["FederalState"]
                                 </div>
                                 <div style="display:inline-block;float:right;">
-                                    @*Sachsen*@
                                     @Model.FederalState.FederalStateName
                                 </div>
-                            </div>
-                            @*<hr style="margin:5px 0px 5px 0px" />
-                                <div style="width:100%;display:inline-block; margin-bottom:10px;">
-                                     <div style="display:inline-block;">
-                                          Bewertung:
-                                     </div>
-                                     <div style="display:inline-block;float:right;">
-                                          4.5/5
-                                     </div>
-                                </div>
-                                <div style="width:100%;display:inline-block; text-align:center">
-                                     <div class="btn-group mr-2" role="group">
-                                          <button type="button" class="btn btn-secondary rating-button">1</button>
-                                          <button type="button" class="btn btn-secondary rating-button">2</button>
-                                          <button type="button" class="btn btn-secondary rating-button">3</button>
-                                          <button type="button" class="btn btn-secondary rating-button">4</button>
-                                          <button type="button" class="btn btn-secondary rating-button">5</button>
-                                     </div>
-                                </div>*@
+                            </div>                            
                         </div>
                     </div>
                     <div class="question">
-                        @*Die Funkstation Kamina war eine Sende- und Empfangsanlage für drahtlose Telegrafie (Löschfunkensender) in der deutschen Kolonie Togoland.*@
                         @Model.Question.Content
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <button class="btn btn-ext-answer" type="button" data-toggle="collapse" data-target="#collapseAwnser" aria-expanded="false">
-                    Antworten anzeigen
+                    @Localizer["ShowQuestion"]
                 </button>
                 <div class="collapse" id="collapseAwnser">
                     <div class="">
-                        @*Die Antwort ist 5. Oder 7.*@
-
                         <ul>
                             @foreach (var item in Model.Answers)
                             {
@@ -135,10 +110,9 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <button class="btn btn-ext-answer" type="button" data-toggle="collapse" data-target="#collapseAnswerInput" aria-expanded="false">
-                    Antwort hinzufügen
+                    @Localizer["AddAnswer"]
                 </button>
                 <div class="collapse" id="collapseAnswerInput">
                     <div class="input-cell-name-big">
@@ -146,13 +120,10 @@
                     </div>
                     <div width="100%" style="text-align:left;">
                         @Html.HiddenFor(m => Model.QuestionId)
-                        @*<input type="submit" id="createBtn" value="Erstellen" formmethod="post"
-                            formaction=@Url.Action("CreateAnswer", "Home") class="btn" />*@
-                        <input type="submit" id="createBtn" value="Erstellen" formmethod="post" class="btn" />
+                        <input type="submit" id="createBtn" value=@Localizer["Create"] formmethod="post" class="btn" />
                     </div>
                 </div>
             </div>
-
         }
     </div>
 </body>

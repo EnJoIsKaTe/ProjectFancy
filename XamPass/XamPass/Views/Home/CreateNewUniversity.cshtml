@@ -1,7 +1,11 @@
 ﻿@model XamPass.Models.ViewModels.ViewModelCreateUniversity
 
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = Localizer["CreateNewUniversity"].Value;
 }
 
 <head>
@@ -19,7 +23,7 @@
 </head>
 
 <body>
-    <h1>Neue Universität anlegen</h1>
+    <h1>@Localizer["CreateNewUniversity"]</h1>
 
     <form asp-action="Create">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -27,19 +31,17 @@
             <div class="row">
                 <div class="col-md-4 form-something-new">
                     <div class="form-group">
-                        <label asp class="control-label">Name der Universität</label>
-                        <input asp-for="@Model.UniversityName" class="form-control" />
+                        <label asp class="control-label">@Localizer["UniversityName"]</label>
+                        < input asp-for="@Model.UniversityName" class="form-control" />
                         <span asp-validation-for="@Model.UniversityName" class="text-danger"></span>
                     </div>
                 </div>
-
             </div>
-
             <div class="row">
                 <div class="col-md-4 form-something-new">
                     <div class="form-group">
-                        <label asp class="control-label">Name des Bundesland</label>
-                        @Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, "Bundesland auswählen", new
+                        <label asp class="control-label">@Localizer["FederalStateName"]</label>
+                        @Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates, Localizer["SelectFederalState"].Value, new
                         {
                             @class = "form-control dropdown-toggle"
                         })
@@ -50,15 +52,11 @@
 
             <div class="row">
                 <div class="text-left col-md-2 create-something-new">
-                    @*<div class="form-group">*@
-                    <input type="submit" value="Universität erstellen" class="btn btn-default" style="width:100%"
+                    <input type="submit" value=@Localizer["CreateUniversity"] class="btn btn-default" style="width:100%"
                            formaction=@Url.Action("SaveNewUniversity", "Home") />
-                    @*</div>*@
                 </div>
                 <div class="text-left col-md-2 cancel-something-new">
-                    @*<div class="form-group">*@
-                    <input type="submit" value="Abbrechen" class="btn btn-default" style="width:100%" formaction=@Url.Action("CancelNewField", "Home") />
-                    @*</div>*@
+                    <input type="submit" value=@Localizer["Cancel"] class="btn btn-default" style="width:100%" formaction=@Url.Action("CancelNewField", "Home") />
                 </div>
             </div>
         </div>

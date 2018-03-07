@@ -46,7 +46,6 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2 input-cell">
-                                        @*<input class="form-control col-md-2 input-cell" />*@
                                         @{
                                             string fieldOfStudiesText;
                                             if (Model.FieldOfStudiesId == null)
@@ -60,12 +59,12 @@
                                             }
                                         }
                                         @Html.DropDownListFor(m => m.FieldOfStudiesId, Model.FieldsOfStudies,
-                                             fieldOfStudiesText,
-                                             new
-                                             {
-                                                 @class = "form-control col-md-2 dropdown-toggle col dropdown-field",
-                                                 @onchange = "this.form.submit();"
-                                             })
+                                                  fieldOfStudiesText,
+                                                  new
+                                                  {
+                                                      @class = "form-control col-md-2 dropdown-toggle col dropdown-field",
+                                                      @onchange = "this.form.submit();"
+                                                  })
                                     </div>
                                     <div class="col-md-3 col-validation">
                                         <div class="validation-div">
@@ -97,12 +96,12 @@
                                             }
                                         }
                                         @Html.DropDownListFor(m => m.SubjectId, Model.Subjects,
-                                                                                subjectText,
-                                                                                new
-                                                                                {
-                                                                                    @class = "form-control col-md-2 dropdown-toggle col dropdown-field",
-                                                                                    @onchange = "this.form.submit();"
-                                                                                })
+                                                                                     subjectText,
+                                                                                     new
+                                                                                     {
+                                                                                         @class = "form-control col-md-2 dropdown-toggle col dropdown-field",
+                                                                                         @onchange = "this.form.submit();"
+                                                                                     })
                                     </div>
                                     <div class="col-md-3 col-validation">
                                         <div class="validation-div">
@@ -119,7 +118,7 @@
                             </div>
                             <div class="row">
                                 <div class="row input-cell-name">
-                                    Land
+                                    @Localizer["Country"]
                                 </div>
                                 <div class="row" style="margin-bottom: 3px;">
                                     <input id="inputCountry" readonly="true" value="Deutschland" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
@@ -127,15 +126,14 @@
                             </div>
                             <div class="row">
                                 <div class="row input-cell-name">
-                                    Bundesland
+                                    @Localizer["FederalState"]
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2 input-cell">
-                                        @*<input class="form-control col-md-2 input-cell" />*@
                                         @{ string federalStateText;
                                             if (Model.FederalStateId == null)
                                             {
-                                                federalStateText = "Bundesland auswählen";
+                                                federalStateText = Localizer["SelectFederalState"].Value;
                                             }
                                             else
                                             {
@@ -146,12 +144,12 @@
                                             }
                                         }
                                         @Html.DropDownListFor(m => m.FederalStateId, Model.FederalStates,
-                                                                                federalStateText,
-                                                                                new
-                                                                                {
-                                                                                    @class = "form-control col-md-2 dropdown-toggle col dropdown-field",
-                                                                                    @onchange = "this.form.submit();"
-                                                                                })
+                                                                                     federalStateText,
+                                                                                     new
+                                                                                     {
+                                                                                         @class = "form-control col-md-2 dropdown-toggle col dropdown-field",
+                                                                                         @onchange = "this.form.submit();"
+                                                                                     })
                                     </div>
                                     <div class="col-md-3 col-validation">
                                         <div class="validation-div">
@@ -162,24 +160,10 @@
                             </div>
                             <div class="row">
                                 <div class="row input-cell-name">
-                                    Hochschule
+                                    @Localizer["University"]
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2 input-cell">
-                                        @*<input class="form-control col-md-2 input-cell" />*@
-                                        @*@{
-                                            List<SelectListItem>
-                                                uniSelectList = new List<SelectListItem>
-                                                    ();
-                                                    foreach (var item in Model.Universities)
-                                                    {
-                                                    uniSelectList.Add(new SelectListItem()
-                                                    {
-                                                    Value = item.UniversityID.ToString(),
-                                                    Text = item.UniversityName
-                                                    });
-                                                    }
-                                                    }*@
                                         @{
                                             string universityText;
                                             if (Model.UniversityId == null)
@@ -193,12 +177,12 @@
                                             }
                                         }
                                         @Html.DropDownListFor(m => m.UniversityId, Model.Universities,
-                                                                                universityText,
-                                                                                new
-                                                                                {
-                                                                                    @class = "form-control col-lg-6 dropdown-toggle col dropdown-field",
-                                                                                    @onchange = "this.form.submit();"
-                                                                                })
+                                                                                     universityText,
+                                                                                     new
+                                                                                     {
+                                                                                         @class = "form-control col-lg-6 dropdown-toggle col dropdown-field",
+                                                                                         @onchange = "this.form.submit();"
+                                                                                     })
                                     </div>
                                     <div class="col-md-3 col-validation">
                                         <div class="validation-div">
@@ -207,7 +191,7 @@
                                     </div>
                                     <div class="col-md-4 col-button-end">
                                         <div width="100%" style="text-align:right;">
-                                            <input type="submit" id="createUniversityBtn" value="Neue Universität anlegen" formmethod="post"
+                                            <input type="submit" id="createUniversityBtn" value=@Localizer["CreateNewUniversity"] formmethod="post"
                                                    formaction=@Url.Action("CreateNewUniversity", "Home" ) class="btn new-something-btn" />
                                         </div>
                                     </div>
@@ -219,7 +203,7 @@
                     <div class="container container-ext">
                         <div class="row">
                             <div class="col-md-1 input-cell-name">
-                                Titel der Frage
+                                @Localizer["Title"]
                             </div>
                             <div class="row">
                                 @*<textarea class="form-control col-md-2 input-cell-big"></textarea>*@
@@ -231,7 +215,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-1 input-cell-name">
-                                Frage
+                                @Localizer["Question"]
                             </div>
                             <div class="row">
                                 @*<textarea class="form-control col-md-2 input-cell-big"></textarea>*@
@@ -243,7 +227,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-1 input-cell-name">
-                                Antwort oder Lösung (optional)
+                                @Localizer["Answer"]
                             </div>
                             <div class="row">
                                 @*<textarea class="form-control col-md-2 input-cell-big"></textarea>*@
@@ -253,7 +237,7 @@
                         <div class="row">
                             <div width="100%" style="text-align:right;">
                                 @*<button id="createBtn" type="submit" class="btn">Anlegen</button>*@
-                                <input type="submit" id="createBtn" value="Neuen Eintrag anlegen" formmethod="post"
+                                <input type="submit" id="createBtn" value=@Localizer["CreateNewEntry"] formmethod="post"
                                        formaction=@Url.Action("CreateNewEntry", "Home" ) class="btn" />
                             </div>
                         </div>
