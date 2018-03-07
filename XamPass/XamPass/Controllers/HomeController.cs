@@ -78,7 +78,7 @@ namespace XamPass.Controllers
 
             //var universities = _universities.OrderBy(u => u.UniversityName).ToList();
             // TODO: try-catch
-            var universities = _context.Universities.OrderBy(u => u.UniversityName).ToList();
+            //var universities = _context.Universities.OrderBy(u => u.UniversityName).ToList();
 
             // Set Filters for the Dropdown Lists
             //SetAllFilters(viewModelSearch);
@@ -86,38 +86,39 @@ namespace XamPass.Controllers
             // questions should NOT be rendered
             viewModelSearch.SearchExecuted = false;
 
-            // sets selected University to null if the seleected FederalState does not fit
-            if (viewModelSearch.UniversityId.HasValue)
-            {
-                //var university = viewModelSearch.Universities.FirstOrDefault(u => u.UniversityID == viewModelSearch.UniversityId);
-                var university = universities.FirstOrDefault(u => u.UniversityID == viewModelSearch.UniversityId);
-                if (university.FederalStateID != viewModelSearch.FederalStateId)
-                {
-                    viewModelSearch.UniversityId = null;
-                }
-            }
-            // filter Universities by selected FederalState
-            if (viewModelSearch.FederalStateId.HasValue)
-            {
-                //viewModelSearch.Universities = new List<SelectListItem>();
-                //foreach (var item in universities)
-                //{
-                //    if (item.FederalStateID == viewModelSearch.FederalStateId)
-                //    {
-                //        viewModelSearch.Universities.Add(
-                //            new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
-                //    }
-                //}
-                viewModelSearch.Universities = new List<SelectListItem>();
-                foreach (var item in universities)
-                {
-                    if (item.FederalStateID == viewModelSearch.FederalStateId)
-                    {
-                        viewModelSearch.Universities.Add(
-                            new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
-                    }
-                }
-            }
+            viewModelSearch.FilterUniversitiesByFederalState(_context);
+            //// sets selected University to null if the seleected FederalState does not fit
+            //if (viewModelSearch.UniversityId.HasValue)
+            //{
+            //    //var university = viewModelSearch.Universities.FirstOrDefault(u => u.UniversityID == viewModelSearch.UniversityId);
+            //    var university = universities.FirstOrDefault(u => u.UniversityID == viewModelSearch.UniversityId);
+            //    if (university.FederalStateID != viewModelSearch.FederalStateId)
+            //    {
+            //        viewModelSearch.UniversityId = null;
+            //    }
+            //}
+            //// filter Universities by selected FederalState
+            //if (viewModelSearch.FederalStateId.HasValue)
+            //{
+            //    //viewModelSearch.Universities = new List<SelectListItem>();
+            //    //foreach (var item in universities)
+            //    //{
+            //    //    if (item.FederalStateID == viewModelSearch.FederalStateId)
+            //    //    {
+            //    //        viewModelSearch.Universities.Add(
+            //    //            new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
+            //    //    }
+            //    //}
+            //    viewModelSearch.Universities = new List<SelectListItem>();
+            //    foreach (var item in universities)
+            //    {
+            //        if (item.FederalStateID == viewModelSearch.FederalStateId)
+            //        {
+            //            viewModelSearch.Universities.Add(
+            //                new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
+            //        }
+            //    }
+            //}
 
             return View(viewModelSearch);
         }
@@ -309,7 +310,7 @@ namespace XamPass.Controllers
         {
             // get entries from db
             viewModelCreate.FillAllDropdowns(_context);
-            var universities = _context.Universities.OrderBy(u => u.UniversityName).ToList();
+            //var universities = _context.Universities.OrderBy(u => u.UniversityName).ToList();
 
             // TODO: try-catch
 
@@ -379,38 +380,40 @@ namespace XamPass.Controllers
             //    }
             //}
 
-            // sets selected University to null if the seleected FederalState does not fit
-            if (viewModelCreate.UniversityId.HasValue)
-            {
-                //var university = viewModelSearch.Universities.FirstOrDefault(u => u.UniversityID == viewModelSearch.UniversityId);
-                var university = universities.FirstOrDefault(u => u.UniversityID == viewModelCreate.UniversityId);
-                if (university.FederalStateID != viewModelCreate.FederalStateId)
-                {
-                    viewModelCreate.UniversityId = null;
-                }
-            }
-            // filter Universities by selected FederalState
-            if (viewModelCreate.FederalStateId.HasValue)
-            {
-                //viewModelSearch.Universities = new List<SelectListItem>();
-                //foreach (var item in universities)
-                //{
-                //    if (item.FederalStateID == viewModelSearch.FederalStateId)
-                //    {
-                //        viewModelSearch.Universities.Add(
-                //            new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
-                //    }
-                //}
-                viewModelCreate.Universities = new List<SelectListItem>();
-                foreach (var item in universities)
-                {
-                    if (item.FederalStateID == viewModelCreate.FederalStateId)
-                    {
-                        viewModelCreate.Universities.Add(
-                            new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
-                    }
-                }
-            }
+            viewModelCreate.FilterUniversitiesByFederalState(_context);
+
+            //// sets selected University to null if the seleected FederalState does not fit
+            //if (viewModelCreate.UniversityId.HasValue)
+            //{
+            //    //var university = viewModelSearch.Universities.FirstOrDefault(u => u.UniversityID == viewModelSearch.UniversityId);
+            //    var university = universities.FirstOrDefault(u => u.UniversityID == viewModelCreate.UniversityId);
+            //    if (university.FederalStateID != viewModelCreate.FederalStateId)
+            //    {
+            //        viewModelCreate.UniversityId = null;
+            //    }
+            //}
+            //// filter Universities by selected FederalState
+            //if (viewModelCreate.FederalStateId.HasValue)
+            //{
+            //    //viewModelSearch.Universities = new List<SelectListItem>();
+            //    //foreach (var item in universities)
+            //    //{
+            //    //    if (item.FederalStateID == viewModelSearch.FederalStateId)
+            //    //    {
+            //    //        viewModelSearch.Universities.Add(
+            //    //            new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
+            //    //    }
+            //    //}
+            //    viewModelCreate.Universities = new List<SelectListItem>();
+            //    foreach (var item in universities)
+            //    {
+            //        if (item.FederalStateID == viewModelCreate.FederalStateId)
+            //        {
+            //            viewModelCreate.Universities.Add(
+            //                new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
+            //        }
+            //    }
+            //}
             return View(viewModelCreate);
             //}
 
@@ -478,6 +481,7 @@ namespace XamPass.Controllers
             }
 
             // if not all entries are correct you are redirected
+            viewModelCreate.FillAllDropdowns(_context);
             return View("CreateQuestion", viewModelCreate);
         }
         #endregion
@@ -866,7 +870,9 @@ namespace XamPass.Controllers
                     await _context.SaveChangesAsync();
 
                     ViewModelCreate viewModelCreate = new ViewModelCreate();
-                    viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
+                    //viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
+                    viewModelCreate.FillAllDropdowns(_context);
+                    viewModelCreate.FieldOfStudiesId = fieldOfStudies.FieldOfStudiesID;
 
                     return View("CreateQuestion", viewModelCreate);
                 }
@@ -912,7 +918,9 @@ namespace XamPass.Controllers
                     await _context.SaveChangesAsync();
 
                     ViewModelCreate viewModelCreate = new ViewModelCreate();
-                    viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
+                    //viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
+                    viewModelCreate.FillAllDropdowns(_context);
+                    viewModelCreate.SubjectId = subject.SubjectID;
 
                     return View("CreateQuestion", viewModelCreate);
                 }
@@ -974,7 +982,9 @@ namespace XamPass.Controllers
                     await _context.SaveChangesAsync();
 
                     ViewModelCreate viewModelCreate = new ViewModelCreate();
-                    viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
+                    //viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
+                    viewModelCreate.FillAllDropdowns(_context);
+                    viewModelCreate.UniversityId = university.UniversityID;
 
                     return View("CreateQuestion", viewModelCreate);
                 }

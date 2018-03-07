@@ -9,15 +9,15 @@ using XamPass.Models.DataBaseModels;
 namespace XamPass.Models.ViewModels
 {
     public class ViewModelCreate : DropDownViewModel
-    {
-        [Required(ErrorMessage = "Bitte geben Sie eine Universität an")]
-        public int? UniversityId { get; set; }
+    {        
+        [Required(ErrorMessage = "Bitte geben Sie eine Universität an")]        
+        public override int? UniversityId { get; set; }
         [Required(ErrorMessage = "Bitte geben Sie ein Bundesland an")]
-        public int? FederalStateId { get; set; }
+        public override int? FederalStateId { get; set; }
         [Required(ErrorMessage = "Bitte geben Sie ein Fach an")]
-        public int? SubjectId { get; set; }
+        public override int? SubjectId { get; set; }
         [Required(ErrorMessage = "Bitte geben Sie einen Studiengang an")]
-        public int? FieldOfStudiesId { get; set; }
+        public override int? FieldOfStudiesId { get; set; }
 
         // Properties, die aus der Oberfläche zu befüllen sind
         [DataType(DataType.MultilineText)]

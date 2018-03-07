@@ -13,14 +13,14 @@ namespace XamPass.Models.ViewModels
     /// </summary>
     public class ViewModelSearch : DropDownViewModel
     {
-        //[Required(ErrorMessage = "Bitte geben Sie eine Universität an")]
-        public int? UniversityId { get; set; }
-        //[Required(ErrorMessage = "Bitte geben Sie ein Bundesland an")]
-        public int? FederalStateId { get; set; }
-        //[Required(ErrorMessage = "Bitte geben Sie ein Fach an")]
-        public int? SubjectId { get; set; }
-        //[Required(ErrorMessage = "Bitte geben Sie einen Studiengang an")]
-        public int? FieldOfStudiesId { get; set; }
+        ////[Required(ErrorMessage = "Bitte geben Sie eine Universität an")]
+        //public int? UniversityId { get; set; }
+        ////[Required(ErrorMessage = "Bitte geben Sie ein Bundesland an")]
+        //public int? FederalStateId { get; set; }
+        ////[Required(ErrorMessage = "Bitte geben Sie ein Fach an")]
+        //public int? SubjectId { get; set; }
+        ////[Required(ErrorMessage = "Bitte geben Sie einen Studiengang an")]
+        //public int? FieldOfStudiesId { get; set; }
 
         //public List<SelectListItem> Universities { get; set; }
         //public List<SelectListItem> FederalStates { get; set; }

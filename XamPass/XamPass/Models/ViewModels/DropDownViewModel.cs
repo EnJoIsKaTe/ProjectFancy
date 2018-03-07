@@ -12,6 +12,12 @@ namespace XamPass.Models.ViewModels
     {
         // TODO: implement logger
         //private ILogger _logger;
+                
+       
+        public virtual int? UniversityId { get; set; }
+        public virtual int? FederalStateId { get; set; }
+        public virtual int? SubjectId { get; set; }
+        public virtual int? FieldOfStudiesId { get; set; }
 
         public List<SelectListItem> Universities { get; set; }
         public List<SelectListItem> FederalStates { get; set; }
@@ -78,6 +84,44 @@ namespace XamPass.Models.ViewModels
                     Value = item.UniversityID.ToString(),
                     Text = item.UniversityName
                 });
+            }
+        }
+
+        public void FilterUniversitiesByFederalState(DataContext context)
+        {
+            var universities = context.Universities.OrderBy(u => u.UniversityName).ToList();
+
+            // sets selected University to null if the seleected FederalState does not fit
+            if (UniversityId.HasValue)
+            {
+                //var university = viewModelSearch.Universities.FirstOrDefault(u => u.UniversityID == viewModelSearch.UniversityId);
+                var university = universities.FirstOrDefault(u => u.UniversityID == UniversityId);
+                if (university.FederalStateID != FederalStateId)
+                {
+                    UniversityId = null;
+                }
+            }
+            // filter Universities by selected FederalState
+            if (FederalStateId.HasValue)
+            {
+                //viewModelSearch.Universities = new List<SelectListItem>();
+                //foreach (var item in universities)
+                //{
+                //    if (item.FederalStateID == viewModelSearch.FederalStateId)
+                //    {
+                //        viewModelSearch.Universities.Add(
+                //            new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
+                //    }
+                //}
+                Universities = new List<SelectListItem>();
+                foreach (var item in universities)
+                {
+                    if (item.FederalStateID == FederalStateId)
+                    {
+                        Universities.Add(
+                            new SelectListItem { Value = item.UniversityID.ToString(), Text = item.UniversityName });
+                    }
+                }
             }
         }
     }
