@@ -12,8 +12,8 @@ namespace XamPass.Models.ViewModels
         /// Name of the FieldOfStudies
         /// </summary>
         [StringLength(100)]
-        [MinLength(5, ErrorMessage = "Der Name der Fachrichtung muss mindestens 5 Zeichen haben")]
-        [Required(ErrorMessage = "Bitte geben Sie eine Fachrichtung an")]
+        [MinLength(5, ErrorMessage = "MinLength")]
+        [Required(ErrorMessage = "PleaseEnterFieldOfStudies")]
         public string FieldOfStudiesName { get; set; }
     }
 }

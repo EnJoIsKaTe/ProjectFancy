@@ -77,12 +77,6 @@
                             @onchange = "this.form.submit();"
                         })
                     </div>
-                    @*<div class="row input-cell-name">
-                            Schlüsselwörter
-                        </div>
-                        <div class="row">
-                            <input id="inputKeywords" class="form-control col-md-2 input-cell" style="padding-left:16px;" />
-                        </div>*@
                     <div class="row">
                         <button id="submitBtn" type="submit" formaction=@Url.Action("ShowQuestions", "Home") class="btn">
                             @Localizer["Search"]
@@ -107,12 +101,8 @@
                 </asp:PlaceHolder>
 
                 <div class="row" style="margin-left: 0px;">
-                    @*<div class="question-wrapper">*@
                     <div class="question-wrapper-header">
                         <div class="question-header-text-beginning" style="padding-left:5px;">Fragen</div>
-                        @*<div class="question-header-text-beginning">Informatik</div>
-                            <div class="question-header-text"> - </div>
-                            <div class="question-header-text">Mathematik</div>*@
                     </div>
                     @foreach (var item in Model.Questions)
                     {
@@ -122,11 +112,9 @@
                                 {
                                     <div class="question-header-text-title">@item.Title</div>
                                 }
-                                @*<div class="question-header-text-title">Das ist der Titel</div>*@
                                 <div class="question">
                                     <a asp-action="ViewQuestion" asp-route-id="@item.QuestionID" class="question-header-text-beginning">@item.Content</a>
                                     <br>
-                                    @*<div class="question-header-text-beginning">Das ist die Frage aller Fragen!</div>*@
                                 </div>
                             </div>
                             <div class="col-sm-4" style="padding-left:0px;padding-right:0px;text-align:right;">
@@ -134,7 +122,6 @@
                             </div>
                         </div>
                     }
-                    @*</div>*@
                 </div>
             }
         </div>

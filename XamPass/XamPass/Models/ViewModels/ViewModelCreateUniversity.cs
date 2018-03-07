@@ -13,14 +13,14 @@ namespace XamPass.Models.ViewModels
         /// Name of the University
         /// </summary>
         [StringLength(100)]
-        [MinLength(5, ErrorMessage = "Der Name der Universität muss mindestens 5 Zeichen haben")]
-        [Required(ErrorMessage = "Bitte geben Sie eine Universität an")]
+        [MinLength(5, ErrorMessage = "MinLength")]
+        [Required(ErrorMessage = "PleaseSelectUniversity")]
         public string UniversityName { get; set; }
 
         /// <summary>
         /// Identifier of the Federal State
         /// </summary>
-        [Required(ErrorMessage = "Bitte geben Sie ein Bundesland an")]
+        [Required(ErrorMessage = "PleaseSelectFederalState")]
         public int? FederalStateId { get; set; }
         
         /// <summary>

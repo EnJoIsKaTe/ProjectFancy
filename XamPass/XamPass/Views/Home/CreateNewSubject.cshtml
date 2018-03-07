@@ -1,7 +1,9 @@
 ﻿@model XamPass.Models.ViewModels.ViewModelCreateSubject
+@using Microsoft.AspNetCore.Mvc.Localization
 
+@inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "Create Subject";
+    ViewData["Title"] = Localizer["CreateNewSubject"].Value;
 }
 
 <head>
@@ -19,7 +21,7 @@
 </head>
 
 <body>
-    <h1>Neues Studienfach anlegen</h1>
+    <h1>@Localizer["CreateNewSubject"]</h1>
 
     <form asp-action="Create">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -35,16 +37,12 @@
             </div>
             <div class="row">
                 <div class="text-left col-md-2 create-something-new">
-                    @*<div class="form-group">*@
-                        <input type="submit" value="Fach erstellen" class="btn btn-default" style="width:100%"
-                               formaction=@Url.Action("SaveNewSubject", "Home") />
-                    @*</div>*@
+                    <input type="submit" value=@Localizer["CreateSubject"] class="btn btn-default" style="width:100%"
+                           formaction=@Url.Action("SaveNewSubject", "Home") />
                 </div>
                 <div class="text-left col-md-2 cancel-something-new">
-                    @*<div class="form-group">*@
-                        <input type="submit" value="Abbrechen" class="btn btn-default" style="width:100%"
-                               formaction=@Url.Action("CancelNewField", "Home") />
-                    @*</div>*@
+                    <input type="submit" value=@Localizer["Cancel"] class="btn btn-default" style="width:100%"
+                           formaction=@Url.Action("CancelNewField", "Home") />
                 </div>
             </div>
         </div>

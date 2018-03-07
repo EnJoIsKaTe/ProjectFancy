@@ -12,8 +12,8 @@ namespace XamPass.Models.ViewModels
         /// Name of the Subject
         /// </summary>
         [StringLength(100)]
-        [MinLength(5, ErrorMessage = "Der Name des Faches muss mindestens 5 Zeichen haben")]
-        [Required(ErrorMessage = "Bitte geben Sie ein Fach an")]
+        [MinLength(5, ErrorMessage = "MinLength")]
+        [Required(ErrorMessage = "PleaseEnterSubject")]
         public string SubjectName { get; set; }
     }
 }
