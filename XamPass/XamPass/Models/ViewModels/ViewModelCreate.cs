@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,8 +10,8 @@ using XamPass.Models.DataBaseModels;
 namespace XamPass.Models.ViewModels
 {
     public class ViewModelCreate : DropDownViewModel
-    {        
-        [Required(ErrorMessage = "Bitte geben Sie eine Universität an")]        
+    {
+        [Required(ErrorMessage = "Bitte geben Sie eine Universität an")]
         public override int? UniversityId { get; set; }
         [Required(ErrorMessage = "Bitte geben Sie ein Bundesland an")]
         public override int? FederalStateId { get; set; }
@@ -28,20 +29,11 @@ namespace XamPass.Models.ViewModels
         [DataType(DataType.MultilineText)]
         public string AnswerContent { get; set; }
 
-        //public List<SelectListItem> Universities { get; set; }
-        //public List<SelectListItem> FederalStates { get; set; }
-        //public List<SelectListItem> Subjects { get; set; }
-        //public List<SelectListItem> FieldsOfStudies { get; set; }
-
         /// <summary>
         /// Standard Constructor
         /// </summary>
         public ViewModelCreate()
         {
-            //Universities = new List<SelectListItem>();
-            //FederalStates = new List<SelectListItem>();
-            //Subjects = new List<SelectListItem>();
-            //FieldsOfStudies = new List<SelectListItem>();
-        }       
+        }
     }
 }

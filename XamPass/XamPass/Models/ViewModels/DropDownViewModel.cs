@@ -10,8 +10,6 @@ namespace XamPass.Models.ViewModels
 {
     public class DropDownViewModel
     {
-        //public ILogger _logger;
-
         public virtual int? UniversityId { get; set; }
         public virtual int? FederalStateId { get; set; }
         public virtual int? SubjectId { get; set; }
@@ -24,15 +22,13 @@ namespace XamPass.Models.ViewModels
 
         public DropDownViewModel()
         {
-            //_logger = logger;
-
             Universities = new List<SelectListItem>();
             FederalStates = new List<SelectListItem>();
             Subjects = new List<SelectListItem>();
             FieldsOfStudies = new List<SelectListItem>();
         }
 
-        public void FillAllDropdowns(DataContext context)
+        public void FillAllDropdowns(DataContext context, ILogger logger)
         {
             List<DtFieldOfStudies> fieldsOfStudies = new List<DtFieldOfStudies>();
             List<DtSubject> subjects = new List<DtSubject>();
@@ -49,7 +45,7 @@ namespace XamPass.Models.ViewModels
             }
             catch (Exception ex)
             {
-                //_logger.LogError(ex, "Error while loading Dropdown entries from the Database");
+                logger.LogError(ex, "Error while loading Dropdown entries from the Database");
             }
 
             // fill SelectLists
@@ -87,9 +83,17 @@ namespace XamPass.Models.ViewModels
             }
         }
 
-        public void FilterUniversitiesByFederalState(DataContext context)
+        public void FilterUniversitiesByFederalState(DataContext context, ILogger logger)
         {
-            var universities = context.Universities.OrderBy(u => u.UniversityName).ToList();
+            List<DtUniversity> universities = new List<DtUniversity>();
+            try
+            {
+                universities = context.Universities.OrderBy(u => u.UniversityName).ToList();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error while loading Dropdown entries from the Database");
+            }
 
             // sets selected University to null if the seleected FederalState does not fit
             if (UniversityId.HasValue)
