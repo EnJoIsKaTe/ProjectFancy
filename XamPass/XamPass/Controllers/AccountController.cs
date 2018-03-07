@@ -14,7 +14,7 @@ using XamPass.Models.ViewModels;
 
 namespace XamPass.Controllers
 {
-    [RequireHttps]
+    //[RequireHttps]
     [Authorize]
     public class AccountController : Controller
     {
