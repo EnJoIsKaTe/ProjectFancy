@@ -80,7 +80,7 @@ namespace XamPass.Controllers
             viewModelSearch.SearchExecuted = false;
 
             viewModelSearch.FilterUniversitiesByFederalState(_context);
-            
+
             return View(viewModelSearch);
         }
 
@@ -102,10 +102,9 @@ namespace XamPass.Controllers
                 SetAllFilters(viewModelSearch);
 
                 viewModelSearch.FilterUniversitiesByFederalState(_context);
-               
+
                 // questions should be rendered
                 viewModelSearch.SearchExecuted = true;
-                
 
                 //Build the filter and load the Questions from the Database
                 List<DtQuestion> filteredQuestions = _context.Questions
@@ -115,7 +114,6 @@ namespace XamPass.Controllers
                     .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
                     .ToList();
 
-                //viewModelQuestions = GetViewModelQuestions(viewModelQuestions, true).Result;
                 viewModelSearch.Questions = filteredQuestions.OrderByDescending(q => q.UpVotes).ToList();
             }
             catch (Exception ex)
@@ -240,7 +238,7 @@ namespace XamPass.Controllers
         public IActionResult CreateQuestion(ViewModelCreate viewModelCreate)
         {
             // get entries from db
-            viewModelCreate.FillAllDropdowns(_context);           
+            viewModelCreate.FillAllDropdowns(_context);
 
             viewModelCreate.FilterUniversitiesByFederalState(_context);
             return View(viewModelCreate);
@@ -302,80 +300,9 @@ namespace XamPass.Controllers
                 return RedirectToAction("ViewQuestion", new { id = question.QuestionID });
             }
 
-            // Todo hier das viewModelCreate wieder befüllen
-
             // if not all entries are correct you are redirected
             viewModelCreate.FillAllDropdowns(_context);
             return View("CreateQuestion", viewModelCreate);
-        }
-        #endregion
-
-        #region GetViewModels
-
-        ///// <summary>
-        ///// Fills the Properties for the Dropdowns in the View to Create a new Questions with data from DB
-        ///// </summary>
-        ///// <param name="viewModelCreate"></param>
-        ///// <returns></returns>
-        //private async Task<ViewModelCreate> GetViewModelCreate(ViewModelCreate viewModelCreate)
-        //{
-        //    try
-        //    {
-        //        var universities = await _context.Universities.ToListAsync();
-        //        var federalStates = await _context.FederalStates.ToListAsync();
-        //        var subjects = await _context.Subjects.ToListAsync();
-        //        var fieldsOfStudies = await _context.FieldsOfStudies.ToListAsync();
-
-        //        foreach (var item in universities)
-        //        {
-        //            viewModelCreate.Universities.Add(new SelectListItem()
-        //            {
-        //                Value = item.UniversityID.ToString(),
-        //                Text = item.UniversityName
-        //            });
-        //        }
-        //        foreach (var item in federalStates)
-        //        {
-        //            viewModelCreate.FederalStates.Add(new SelectListItem()
-        //            {
-        //                Value = item.FederalStateID.ToString(),
-        //                Text = item.FederalStateName
-        //            });
-        //        }
-        //        foreach (var item in subjects)
-        //        {
-        //            viewModelCreate.Subjects.Add(new SelectListItem()
-        //            {
-        //                Value = item.SubjectID.ToString(),
-        //                Text = item.SubjectName
-        //            });
-        //        }
-        //        foreach (var item in fieldsOfStudies)
-        //        {
-        //            viewModelCreate.FieldsOfStudies.Add(new SelectListItem()
-        //            {
-        //                Value = item.FieldOfStudiesID.ToString(),
-        //                Text = item.FieldOfStudiesName
-        //            });
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex, "Error while loading Data for the Dropdowns from Db");
-        //    }
-
-        //    return viewModelCreate;
-        //}
-        #endregion
-
-        #region Temporary
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Done(ViewModelSearch viewModelSearch)
-        {
-            // TODO irgendwann muss das noch weg
-            var result = viewModelSearch;
-            return View(result);
         }
         #endregion
 
@@ -399,7 +326,6 @@ namespace XamPass.Controllers
                    .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
                    .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
                    .ToList();
-
 
                 if (questions.Count == 0)
                 {
@@ -427,7 +353,7 @@ namespace XamPass.Controllers
             }
 
             // if no filter is set, the Dropdowns don´t have to be filtered
-            if(viewModelSearch.UniversityId.HasValue)
+            if (viewModelSearch.UniversityId.HasValue)
             {
                 SetFilterForFieldsOfStudies(questions, viewModelSearch);
                 SetFilterForSubjects(questions, viewModelSearch);
@@ -436,18 +362,10 @@ namespace XamPass.Controllers
             {
                 SetFilterForSubjects(questions, viewModelSearch);
             }
-            if(viewModelSearch.SubjectId.HasValue)
+            if (viewModelSearch.SubjectId.HasValue)
             {
 
             }
-            
-
-            //if (viewModelSearch.SubjectId.HasValue || viewModelSearch.UniversityId.HasValue || viewModelSearch.FieldOfStudiesId.HasValue)
-            //{
-            //    SetFilterForUniversities(questions, viewModelSearch);
-            //    SetFilterForFieldsOfStudies(questions, viewModelSearch);
-            //    SetFilterForSubjects(questions, viewModelSearch);
-            //}
         }
 
         /// <summary>
@@ -459,8 +377,6 @@ namespace XamPass.Controllers
         /// <returns></returns>
         public void SetFilterForUniversities(List<DtQuestion> questions, ViewModelSearch viewModelSearch)
         {
-            //List<DtUniversity> universities = new List<DtUniversity>();            
-
             var universities = questions
                .Select(q => q.University)
                .Distinct()
@@ -470,7 +386,7 @@ namespace XamPass.Controllers
             // if no filter was set or no element was returned all Elements stay in the List
             if (universities.Count == 0)
             {
-                // TODO: try-catch
+                // TODO Benjamin: try-catch
                 universities = _context.Universities.OrderBy(u => u.UniversityName).ToList();
             }
 
@@ -492,8 +408,6 @@ namespace XamPass.Controllers
         /// <returns></returns>
         public void SetFilterForFieldsOfStudies(List<DtQuestion> questions, ViewModelSearch viewModelSearch)
         {
-            //List<DtFieldOfStudies> fieldsOfStudies = new List<DtFieldOfStudies>();
-
             var fieldsOfStudies = questions
                .Select(q => q.FieldOfStudies)
                .Distinct()
@@ -503,7 +417,7 @@ namespace XamPass.Controllers
             // if no filter was set or no element was returned all Elements stay in the List
             if (fieldsOfStudies.Count == 0)
             {
-                // TODO: try-catch
+                // TODO Benjamin: try-catch
                 fieldsOfStudies = _context.FieldsOfStudies.OrderBy(f => f.FieldOfStudiesName).ToList();
             }
 
@@ -531,19 +445,10 @@ namespace XamPass.Controllers
                 .OrderBy(s => s.SubjectName)
                 .ToList();
 
-            //if(viewModelSearch.SubjectId.HasValue)
-            //{
-            //    var fieldsOfStudies = questions.Where(q => q.SubjectID == viewModelSearch.SubjectId);
-            //    if(!fieldsOfStudies.Any())
-            //    {
-            //        viewModelSearch.SubjectId = null;
-            //    }
-            //}
-
             // if no filter was set or no element was returned all Elements stay in the List
             if (subjects.Count == 0)
             {
-                // TODO: try-catch
+                // TODO Benjamin: try-catch
                 subjects = _context.Subjects.OrderBy(s => s.SubjectName).ToList();
             }
 
@@ -601,7 +506,6 @@ namespace XamPass.Controllers
                     await _context.SaveChangesAsync();
 
                     ViewModelCreate viewModelCreate = new ViewModelCreate();
-                    //viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
                     viewModelCreate.FillAllDropdowns(_context);
                     viewModelCreate.FieldOfStudiesId = fieldOfStudies.FieldOfStudiesID;
 
@@ -649,7 +553,6 @@ namespace XamPass.Controllers
                     await _context.SaveChangesAsync();
 
                     ViewModelCreate viewModelCreate = new ViewModelCreate();
-                    //viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
                     viewModelCreate.FillAllDropdowns(_context);
                     viewModelCreate.SubjectId = subject.SubjectID;
 
@@ -713,7 +616,6 @@ namespace XamPass.Controllers
                     await _context.SaveChangesAsync();
 
                     ViewModelCreate viewModelCreate = new ViewModelCreate();
-                    //viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
                     viewModelCreate.FillAllDropdowns(_context);
                     viewModelCreate.UniversityId = university.UniversityID;
 
@@ -747,7 +649,6 @@ namespace XamPass.Controllers
         public IActionResult CancelNewField()
         {
             ViewModelCreate viewModelCreate = new ViewModelCreate();
-            //viewModelCreate = GetViewModelCreate(viewModelCreate).Result;
             viewModelCreate.FillAllDropdowns(_context);
 
             return View("CreateQuestion", viewModelCreate);
