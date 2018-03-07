@@ -55,7 +55,7 @@ namespace XamPass.Controllers
             ViewModelSearch viewModelSearch = new ViewModelSearch();
 
             // Fill the Dropdowns with all the Data from the Db
-            viewModelSearch.FillAllDropdowns(_context);
+            viewModelSearch.FillAllDropdowns(_context, _logger);
 
             return View(viewModelSearch);
         }
@@ -71,7 +71,7 @@ namespace XamPass.Controllers
         public IActionResult Index(ViewModelSearch viewModelSearch)
         {
             // Fill the Dropdowns with all the Data from the Db
-            viewModelSearch.FillAllDropdowns(_context);
+            viewModelSearch.FillAllDropdowns(_context, _logger);
 
             // Set Filters for the Dropdown Lists
             SetAllFilters(viewModelSearch);
@@ -79,7 +79,7 @@ namespace XamPass.Controllers
             // questions should NOT be rendered
             viewModelSearch.SearchExecuted = false;
 
-            viewModelSearch.FilterUniversitiesByFederalState(_context);
+            viewModelSearch.FilterUniversitiesByFederalState(_context, _logger);
 
             return View(viewModelSearch);
         }
@@ -96,12 +96,12 @@ namespace XamPass.Controllers
             try
             {
                 // Fill the Dropdowns with all the Data from the Db
-                viewModelSearch.FillAllDropdowns(_context);
+                viewModelSearch.FillAllDropdowns(_context, _logger);
 
                 // Set Filters for the Dropdown Lists
                 SetAllFilters(viewModelSearch);
 
-                viewModelSearch.FilterUniversitiesByFederalState(_context);
+                viewModelSearch.FilterUniversitiesByFederalState(_context, _logger);
 
                 // questions should be rendered
                 viewModelSearch.SearchExecuted = true;
@@ -238,9 +238,9 @@ namespace XamPass.Controllers
         public IActionResult CreateQuestion(ViewModelCreate viewModelCreate)
         {
             // get entries from db
-            viewModelCreate.FillAllDropdowns(_context);
+            viewModelCreate.FillAllDropdowns(_context, _logger);
 
-            viewModelCreate.FilterUniversitiesByFederalState(_context);
+            viewModelCreate.FilterUniversitiesByFederalState(_context, _logger);
             return View(viewModelCreate);
         }
 
@@ -301,7 +301,7 @@ namespace XamPass.Controllers
             }
 
             // if not all entries are correct you are redirected
-            viewModelCreate.FillAllDropdowns(_context);
+            viewModelCreate.FillAllDropdowns(_context, _logger);
             return View("CreateQuestion", viewModelCreate);
         }
         #endregion
@@ -361,10 +361,6 @@ namespace XamPass.Controllers
             if (viewModelSearch.FieldOfStudiesId.HasValue)
             {
                 SetFilterForSubjects(questions, viewModelSearch);
-            }
-            if (viewModelSearch.SubjectId.HasValue)
-            {
-
             }
         }
 
@@ -506,7 +502,7 @@ namespace XamPass.Controllers
                     await _context.SaveChangesAsync();
 
                     ViewModelCreate viewModelCreate = new ViewModelCreate();
-                    viewModelCreate.FillAllDropdowns(_context);
+                    viewModelCreate.FillAllDropdowns(_context, _logger);
                     viewModelCreate.FieldOfStudiesId = fieldOfStudies.FieldOfStudiesID;
 
                     return View("CreateQuestion", viewModelCreate);
@@ -553,7 +549,7 @@ namespace XamPass.Controllers
                     await _context.SaveChangesAsync();
 
                     ViewModelCreate viewModelCreate = new ViewModelCreate();
-                    viewModelCreate.FillAllDropdowns(_context);
+                    viewModelCreate.FillAllDropdowns(_context, _logger);
                     viewModelCreate.SubjectId = subject.SubjectID;
 
                     return View("CreateQuestion", viewModelCreate);
@@ -579,6 +575,7 @@ namespace XamPass.Controllers
         {
             ViewModelCreateUniversity vmUniversity = new ViewModelCreateUniversity();
 
+            // TODO Benjamin: try-catch
             var federalStates = await _context.FederalStates.ToListAsync();
 
             foreach (var item in federalStates)
@@ -616,11 +613,13 @@ namespace XamPass.Controllers
                     await _context.SaveChangesAsync();
 
                     ViewModelCreate viewModelCreate = new ViewModelCreate();
-                    viewModelCreate.FillAllDropdowns(_context);
+                    viewModelCreate.FillAllDropdowns(_context, _logger);
                     viewModelCreate.UniversityId = university.UniversityID;
 
                     return View("CreateQuestion", viewModelCreate);
                 }
+
+                // TODO Benjamin: try-catch
 
                 var federalStates = await _context.FederalStates.ToListAsync();
 
@@ -649,7 +648,7 @@ namespace XamPass.Controllers
         public IActionResult CancelNewField()
         {
             ViewModelCreate viewModelCreate = new ViewModelCreate();
-            viewModelCreate.FillAllDropdowns(_context);
+            viewModelCreate.FillAllDropdowns(_context, _logger);
 
             return View("CreateQuestion", viewModelCreate);
         }

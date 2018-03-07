@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,7 @@ using XamPass.Models.DataBaseModels;
 
 namespace XamPass.Models.ViewModels
 {
-    public class ViewModelCreate : DropDownViewModel
+    public class ViewModelCreate : DropDownViewModel      
     { 
         [Required(ErrorMessage = "PleaseSelectUniversity")]
         public override int? UniversityId { get; set; }
