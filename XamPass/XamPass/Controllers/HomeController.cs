@@ -332,6 +332,8 @@ namespace XamPass.Controllers
                 return RedirectToAction("ViewQuestion", new { id = question.QuestionID });
             }
 
+            // Todo hier das viewModelCreate wieder befüllen
+
             // if not all entries are correct you are redirected
             viewModelCreate.FillAllDropdowns(_context);
             return View("CreateQuestion", viewModelCreate);
