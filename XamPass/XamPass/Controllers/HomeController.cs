@@ -95,47 +95,17 @@ namespace XamPass.Controllers
         {
             try
             {
+                // Fill the Dropdowns with all the Data from the Db
+                viewModelSearch.FillAllDropdowns(_context);
+
+                // Set Filters for the Dropdown Lists
+                SetAllFilters(viewModelSearch);
+
+                viewModelSearch.FilterUniversitiesByFederalState(_context);
+               
                 // questions should be rendered
                 viewModelSearch.SearchExecuted = true;
-
-                // get entries from db
-                var fieldsOfStudies = _context.FieldsOfStudies.OrderBy(f => f.FieldOfStudiesName).ToListAsync().Result;
-                var subjects = _context.Subjects.OrderBy(s => s.SubjectName).ToListAsync().Result;
-                var federalStates = _context.FederalStates.OrderBy(f => f.FederalStateName).ToListAsync().Result;
-                var universities = _context.Universities.OrderBy(u => u.UniversityName).ToListAsync().Result;
-
-                foreach (var item in fieldsOfStudies)
-                {
-                    viewModelSearch.FieldsOfStudies.Add(new SelectListItem
-                    {
-                        Value = item.FieldOfStudiesID.ToString(),
-                        Text = item.FieldOfStudiesName
-                    });
-                }
-                foreach (var item in subjects)
-                {
-                    viewModelSearch.Subjects.Add(new SelectListItem
-                    {
-                        Value = item.SubjectID.ToString(),
-                        Text = item.SubjectName
-                    });
-                }
-                foreach (var item in federalStates)
-                {
-                    viewModelSearch.FederalStates.Add(new SelectListItem
-                    {
-                        Value = item.FederalStateID.ToString(),
-                        Text = item.FederalStateName
-                    });
-                }
-                foreach (var item in universities)
-                {
-                    viewModelSearch.Universities.Add(new SelectListItem
-                    {
-                        Value = item.UniversityID.ToString(),
-                        Text = item.UniversityName
-                    });
-                }
+                
 
                 //Build the filter and load the Questions from the Database
                 List<DtQuestion> filteredQuestions = _context.Questions
@@ -429,18 +399,55 @@ namespace XamPass.Controllers
                    .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
                    .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
                    .ToList();
+
+
+                if (questions.Count == 0)
+                {
+                    if (viewModelSearch.SubjectId.HasValue)
+                    {
+                        viewModelSearch.SubjectId = null;
+                    }
+                    else if (viewModelSearch.FieldOfStudiesId.HasValue)
+                    {
+                        viewModelSearch.FieldOfStudiesId = null;
+                        viewModelSearch.SubjectId = null;
+                    }
+
+                    questions = _context.Questions
+                   .Where(q => (viewModelSearch.FieldOfStudiesId != null ? q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId : q.FieldOfStudiesID != 0))
+                   .Where(q => (viewModelSearch.SubjectId != null ? q.SubjectID == viewModelSearch.SubjectId : q.SubjectID != 0))
+                   .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
+                   .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
+                   .ToList();
+                }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error while loading filtered Questions from the Database");
             }
+
             // if no filter is set, the Dropdowns don´t have to be filtered
-            if (viewModelSearch.SubjectId.HasValue || viewModelSearch.UniversityId.HasValue || viewModelSearch.FieldOfStudiesId.HasValue)
+            if(viewModelSearch.UniversityId.HasValue)
             {
-                SetFilterForUniversities(questions, viewModelSearch);
                 SetFilterForFieldsOfStudies(questions, viewModelSearch);
                 SetFilterForSubjects(questions, viewModelSearch);
             }
+            if (viewModelSearch.FieldOfStudiesId.HasValue)
+            {
+                SetFilterForSubjects(questions, viewModelSearch);
+            }
+            if(viewModelSearch.SubjectId.HasValue)
+            {
+
+            }
+            
+
+            //if (viewModelSearch.SubjectId.HasValue || viewModelSearch.UniversityId.HasValue || viewModelSearch.FieldOfStudiesId.HasValue)
+            //{
+            //    SetFilterForUniversities(questions, viewModelSearch);
+            //    SetFilterForFieldsOfStudies(questions, viewModelSearch);
+            //    SetFilterForSubjects(questions, viewModelSearch);
+            //}
         }
 
         /// <summary>
@@ -523,6 +530,15 @@ namespace XamPass.Controllers
                 .Distinct()
                 .OrderBy(s => s.SubjectName)
                 .ToList();
+
+            //if(viewModelSearch.SubjectId.HasValue)
+            //{
+            //    var fieldsOfStudies = questions.Where(q => q.SubjectID == viewModelSearch.SubjectId);
+            //    if(!fieldsOfStudies.Any())
+            //    {
+            //        viewModelSearch.SubjectId = null;
+            //    }
+            //}
 
             // if no filter was set or no element was returned all Elements stay in the List
             if (subjects.Count == 0)
