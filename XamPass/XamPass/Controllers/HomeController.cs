@@ -382,8 +382,15 @@ namespace XamPass.Controllers
             // if no filter was set or no element was returned all Elements stay in the List
             if (universities.Count == 0)
             {
-                // TODO Benjamin: try-catch
-                universities = _context.Universities.OrderBy(u => u.UniversityName).ToList();
+                try
+                {
+                    universities = _context.Universities.OrderBy(u => u.UniversityName).ToList();
+                }
+                catch (Exception ex)
+                {
+
+                    _logger.LogError(ex, "Error while loading filtered Questions from the Database");
+                }
             }
 
             viewModelSearch.Universities.Clear();
@@ -413,8 +420,15 @@ namespace XamPass.Controllers
             // if no filter was set or no element was returned all Elements stay in the List
             if (fieldsOfStudies.Count == 0)
             {
-                // TODO Benjamin: try-catch
-                fieldsOfStudies = _context.FieldsOfStudies.OrderBy(f => f.FieldOfStudiesName).ToList();
+                try
+                {
+                    fieldsOfStudies = _context.FieldsOfStudies.OrderBy(f => f.FieldOfStudiesName).ToList();
+                }
+                catch (Exception ex)
+                {
+
+                    _logger.LogError(ex, "Error while loading filtered Questions from the Database");
+                }
             }
 
             viewModelSearch.FieldsOfStudies.Clear();
@@ -444,8 +458,15 @@ namespace XamPass.Controllers
             // if no filter was set or no element was returned all Elements stay in the List
             if (subjects.Count == 0)
             {
-                // TODO Benjamin: try-catch
-                subjects = _context.Subjects.OrderBy(s => s.SubjectName).ToList();
+                try
+                {
+                    subjects = _context.Subjects.OrderBy(s => s.SubjectName).ToList();
+                }
+                catch (Exception ex)
+                {
+
+                    _logger.LogError(ex, "Error while loading filtered Questions from the Database");
+                }
             }
 
             viewModelSearch.Subjects.Clear();
@@ -575,17 +596,26 @@ namespace XamPass.Controllers
         {
             ViewModelCreateUniversity vmUniversity = new ViewModelCreateUniversity();
 
-            // TODO Benjamin: try-catch
-            var federalStates = await _context.FederalStates.ToListAsync();
-
-            foreach (var item in federalStates)
+            try
             {
-                vmUniversity.FederalStates.Add(new SelectListItem()
+                var federalStates = await _context.FederalStates.ToListAsync();
+
+                foreach (var item in federalStates)
                 {
-                    Value = item.FederalStateID.ToString(),
-                    Text = item.FederalStateName
-                });
+                    vmUniversity.FederalStates.Add(new SelectListItem()
+                    {
+                        Value = item.FederalStateID.ToString(),
+                        Text = item.FederalStateName
+                    });
+                }
             }
+            catch (Exception ex)
+            {
+
+                _logger.LogError(ex, "Error while loading filtered Questions from the Database");
+            }
+
+
 
             return View(vmUniversity);
         }
@@ -618,8 +648,6 @@ namespace XamPass.Controllers
 
                     return View("CreateQuestion", viewModelCreate);
                 }
-
-                // TODO Benjamin: try-catch
 
                 var federalStates = await _context.FederalStates.ToListAsync();
 

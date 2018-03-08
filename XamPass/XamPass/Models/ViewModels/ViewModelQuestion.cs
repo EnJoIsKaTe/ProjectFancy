@@ -9,7 +9,6 @@ namespace XamPass.Models.ViewModels
 {
     public class ViewModelQuestion
     {
-        // TODO: nicht genutzte Properties löschen
         public int? QuestionId { get; set; }
         public DtQuestion Question { get; set; }
         public DtAnswer Answer { get; set; }

@@ -11,17 +11,9 @@ namespace XamPass.Models
         /// <summary>
         /// Fills the Database with Entities
         /// </summary>
-        public static void SeedDatabase(DataContext context)
+        public static bool SeedDatabase(DataContext context)
         {
-            // TODO irgendwann entfernen
-            //if (createNewDatabase)
-            //{
-            //    // Löscht die Datenbank falls vorhanden
-            //    context.Database.EnsureDeleted();
-
-            //    // Erstellt die Datenbank neu auf Grundlage der Model-Klassen
-            //    context.Database.EnsureCreated();
-            //}                        
+            bool seeded = false;   
 
             if (!context.Countries.Any())
             {
@@ -38,6 +30,7 @@ namespace XamPass.Models
                 }
 
                 context.SaveChanges();
+                seeded = true;
             }
 
             if (!context.FederalStates.Any())
@@ -69,6 +62,8 @@ namespace XamPass.Models
                 }
 
                 context.SaveChanges();
+                seeded = true;
+
             }
 
             if (!context.Universities.Any())
@@ -112,6 +107,8 @@ namespace XamPass.Models
                 }
 
                 context.SaveChanges();
+                seeded = true;
+
             }
 
             if (!context.Subjects.Any())
@@ -158,6 +155,8 @@ namespace XamPass.Models
                 }
 
                 context.SaveChanges();
+                seeded = true;
+
             }
 
             if (!context.Questions.Any())
@@ -212,7 +211,11 @@ namespace XamPass.Models
                 }
 
                 context.SaveChanges();
+                seeded = true;
+
             }
+
+            return seeded;
         }
     }
 }

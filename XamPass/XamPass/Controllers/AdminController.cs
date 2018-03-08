@@ -25,23 +25,28 @@ namespace XamPass.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
+        [HttpGet]
         public IActionResult CreateDB()
         {
-            DBInitialize.SeedDatabase(_context);
-            return RedirectToAction("Done");
-        }
-
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public IActionResult Done(ViewModelSearch viewModelSearch)
-        {
-            var result = viewModelSearch;
-            return View(result);
+            var result = DBInitialize.SeedDatabase(_context);
+            CreateDBViewModel createDBViewModel = new CreateDBViewModel();
+            // TODO: localization
+            if (result)
+            {
+                createDBViewModel.Finished = "Daten eingetragen!";
+            }
+            else
+            {
+                createDBViewModel.Finished = "Keine neuen Daten eingetragen.";
+            }
+            //return RedirectToAction("Index");
+            return View(createDBViewModel);
         }
 
         #region Review Questions

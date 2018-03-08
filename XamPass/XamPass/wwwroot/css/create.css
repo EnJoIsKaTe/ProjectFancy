@@ -46,10 +46,10 @@ h1 {
 }
 
 .new-something-btn {
-    width: 150pt;
-    border: 1px solid #edb850;
-    background-color: transparent;
-    color: #ef8f32;
+	width: 150pt;
+	border: 1px solid #edb850;
+	background-color: transparent;
+	color: #ef8f32;
 }
 
     .new-something-btn:hover {
@@ -100,6 +100,7 @@ h1 {
     display: table-cell;
     height: 34px;
     vertical-align: middle;
+	 /*TODO: Fehler float nicht möglich*/
     float: right;
 }
 
@@ -149,6 +150,7 @@ h1 {
 
     .validation-div {
         display: inline-block;
+		  /*TODO: Fehler*/
         float: right;
     }
 
