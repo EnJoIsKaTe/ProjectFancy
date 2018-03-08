@@ -12,12 +12,13 @@
         <h1>Ups, es ist ein Fehler aufgetreten.</h1>
         <div class="row">
             <div style="text-align: center;">
-                <div class="col-md-2">
-                    <input type="submit" value="Home" formaction=@Url.Action("", "Home" ) class="btn btn-redirect" />
-                </div>
-                <div class="col-md-2">
+					<div class="col-md-2">
+						<a asp-controller="Home" asp-action="Index" class="btn btn-redirect">Home</a>
+						@*<input type="submit" value="Home" formaction=@Url.Action("Index", "Home" ) class="btn btn-redirect" />*@
+					</div>
+                @*<div class="col-md-2">
                     <input type="submit" value="Frage erstellen" formaction=@Url.Action("", "CreateQuestion" ) class="btn btn-redirect" />
-                </div>
+                </div>*@
             </div>
         </div>
     </div>
