@@ -118,39 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddAnswer" xml:space="preserve">
-    <value>Antwort hinzufügen</value>
+    <value>Add an answer</value>
   </data>
   <data name="Country" xml:space="preserve">
-    <value>Land:</value>
+    <value>Country:</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Erstellen</value>
+    <value>Create</value>
   </data>
   <data name="CreationDate" xml:space="preserve">
-    <value>Erstellungsdatum:</value>
+    <value>Entry date:</value>
   </data>
   <data name="FederalState" xml:space="preserve">
-    <value>Bundesland:</value>
+    <value>Federal state:</value>
   </data>
   <data name="FieldOfStudies" xml:space="preserve">
-    <value>Fachrichtung:</value>
+    <value>Field of studies:</value>
   </data>
   <data name="Germany" xml:space="preserve">
-    <value>Deutschland</value>
+    <value>Germany</value>
   </data>
   <data name="Info" xml:space="preserve">
-    <value>Info</value>
+    <value>Information</value>
   </data>
   <data name="Question" xml:space="preserve">
-    <value>Frage</value>
+    <value>Question</value>
   </data>
   <data name="ShowQuestion" xml:space="preserve">
-    <value>Antworten anzeigen</value>
+    <value>Show answers</value>
   </data>
   <data name="Subject" xml:space="preserve">
-    <value>Fach:</value>
+    <value>Subject:</value>
   </data>
   <data name="University" xml:space="preserve">
-    <value>Hochschule:</value>
+    <value>University:</value>
   </data>
 </root>

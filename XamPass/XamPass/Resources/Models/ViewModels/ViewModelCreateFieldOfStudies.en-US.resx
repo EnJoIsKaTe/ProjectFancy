@@ -117,40 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddAnswer" xml:space="preserve">
-    <value>Antwort hinzufügen</value>
+  <data name="MinLength" xml:space="preserve">
+    <value>The name of the field of studies must contain at least 5 characters</value>
   </data>
-  <data name="Country" xml:space="preserve">
-    <value>Land:</value>
-  </data>
-  <data name="Create" xml:space="preserve">
-    <value>Erstellen</value>
-  </data>
-  <data name="CreationDate" xml:space="preserve">
-    <value>Erstellungsdatum:</value>
-  </data>
-  <data name="FederalState" xml:space="preserve">
-    <value>Bundesland:</value>
-  </data>
-  <data name="FieldOfStudies" xml:space="preserve">
-    <value>Fachrichtung:</value>
-  </data>
-  <data name="Germany" xml:space="preserve">
-    <value>Deutschland</value>
-  </data>
-  <data name="Info" xml:space="preserve">
-    <value>Info</value>
-  </data>
-  <data name="Question" xml:space="preserve">
-    <value>Frage</value>
-  </data>
-  <data name="ShowQuestion" xml:space="preserve">
-    <value>Antworten anzeigen</value>
-  </data>
-  <data name="Subject" xml:space="preserve">
-    <value>Fach:</value>
-  </data>
-  <data name="University" xml:space="preserve">
-    <value>Hochschule:</value>
+  <data name="PleaseEnterFieldOfStudies" xml:space="preserve">
+    <value>Please select a field of studies</value>
   </data>
 </root>

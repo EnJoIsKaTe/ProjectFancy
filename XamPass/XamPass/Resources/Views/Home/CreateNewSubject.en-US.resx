@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Test" xml:space="preserve">
-    <value>Das ist ein TestString</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CreateNewSubject" xml:space="preserve">
+    <value>Create a new subject</value>
+  </data>
+  <data name="CreateSubject" xml:space="preserve">
+    <value>Create subject</value>
   </data>
 </root>

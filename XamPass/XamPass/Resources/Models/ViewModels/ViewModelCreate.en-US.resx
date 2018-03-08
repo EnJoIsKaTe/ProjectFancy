@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="PleaseEnterQuestion" xml:space="preserve">
-    <value>Bitte geben Sie eine Frage ein</value>
+    <value>Please select a question</value>
   </data>
   <data name="PleaseEnterTitle" xml:space="preserve">
-    <value>Bitte geben Sie einen Titel ein</value>
+    <value>Please select a title</value>
   </data>
   <data name="PleaseSelectFederalState" xml:space="preserve">
-    <value>Bitte geben Sie ein Bundesland an</value>
+    <value>Please select a federal state</value>
   </data>
   <data name="PleaseSelectFieldOfStudies" xml:space="preserve">
-    <value>Bitte geben Sie einen Studiengang an</value>
+    <value>Please select a field of studies</value>
   </data>
   <data name="PleaseSelectSubject" xml:space="preserve">
-    <value>Bitte geben Sie ein Fach an</value>
+    <value>Please select a subject</value>
   </data>
   <data name="PleaseSelectUniversity" xml:space="preserve">
-    <value>Bitte geben Sie eine Universität an</value>
+    <value>Please select a university</value>
   </data>
 </root>

@@ -117,40 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddAnswer" xml:space="preserve">
-    <value>Antwort hinzufügen</value>
+  <data name="AddNewEntry" xml:space="preserve">
+    <value>Create new entry</value>
   </data>
   <data name="Country" xml:space="preserve">
-    <value>Land:</value>
-  </data>
-  <data name="Create" xml:space="preserve">
-    <value>Erstellen</value>
-  </data>
-  <data name="CreationDate" xml:space="preserve">
-    <value>Erstellungsdatum:</value>
+    <value>Country</value>
   </data>
   <data name="FederalState" xml:space="preserve">
-    <value>Bundesland:</value>
+    <value>Federal state</value>
   </data>
   <data name="FieldOfStudies" xml:space="preserve">
-    <value>Fachrichtung:</value>
+    <value>Field of studies</value>
   </data>
   <data name="Germany" xml:space="preserve">
-    <value>Deutschland</value>
+    <value>Germany</value>
   </data>
-  <data name="Info" xml:space="preserve">
-    <value>Info</value>
+  <data name="NewEntry" xml:space="preserve">
+    <value>New entry</value>
   </data>
-  <data name="Question" xml:space="preserve">
-    <value>Frage</value>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
   </data>
-  <data name="ShowQuestion" xml:space="preserve">
-    <value>Antworten anzeigen</value>
+  <data name="SelectFederalState" xml:space="preserve">
+    <value>Select federal state</value>
+  </data>
+  <data name="SelectFieldOfStudies" xml:space="preserve">
+    <value>Select field of studies</value>
+  </data>
+  <data name="SelectSubject" xml:space="preserve">
+    <value>Select subject</value>
+  </data>
+  <data name="SelectUniversity" xml:space="preserve">
+    <value>Select university</value>
   </data>
   <data name="Subject" xml:space="preserve">
-    <value>Fach:</value>
+    <value>Subject</value>
   </data>
   <data name="University" xml:space="preserve">
-    <value>Hochschule:</value>
+    <value>University</value>
   </data>
 </root>
