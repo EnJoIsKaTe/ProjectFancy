@@ -101,7 +101,7 @@ h1 {
     height: 34px;
     vertical-align: middle;
 	 /*TODO: Fehler float nicht möglich*/
-    float: right;
+    /*float: right;*/
 }
 
 #createBtn {
@@ -151,7 +151,7 @@ h1 {
     .validation-div {
         display: inline-block;
 		  /*TODO: Fehler*/
-        float: right;
+        /*float: right;*/
     }
 
     .input-cell {
@@ -168,7 +168,7 @@ h1 {
         background-color: #BBB;
         border-radius: 5px 5px 0px 5px;
         padding: 2px 0px 2px 5px;
-        margin-top: 15px;
+        margin-top: 3px;
     }
 }
 

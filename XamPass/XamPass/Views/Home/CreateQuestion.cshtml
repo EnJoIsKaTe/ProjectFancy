@@ -39,7 +39,7 @@
                 @using (Html.BeginForm("CreateQuestion", "Home", FormMethod.Post))
                 {
                     <div class="container container-ext">
-                        <div class="form-group">
+                        @*<div class="form-group">*@
                             <div class="row">
                                 <div class="row input-cell-name">
                                     @Localizer["FieldOfStudies"]
@@ -196,9 +196,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @*</div>*@
                     </div>
-                    <hr style="margin: 20px 0px 20px 0px;" />
+                    <hr style="margin: 10px 0px 10px 0px;" />
                     <div class="container container-ext">
                         <div class="row">
                             <div class="col-md-1 input-cell-name">
