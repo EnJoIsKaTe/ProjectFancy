@@ -95,6 +95,7 @@
                 </div>
             </div>
 
+            @* Show results in partial view after search button was pressed *@
             @if (@Model.SearchExecuted)
             {
                 <asp:PlaceHolder id="DivINeedToAddStuffTo" runat="server">
@@ -104,6 +105,7 @@
                     <div class="question-wrapper-header">
                         <div class="question-header-text-beginning" style="padding-left:5px;">Fragen</div>
                     </div>
+                    @* Every result has its own <div> *@
                     @foreach (var item in Model.Questions)
                     {
                         <div class="row question-wrapper">
