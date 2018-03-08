@@ -21,9 +21,7 @@ namespace XamPass.Controllers
     public class HomeController : Controller
     {
         private readonly DataContext _context;
-
         private ILogger _logger;
-        private readonly IStringLocalizer<HomeController> _stringLocalizer;
 
         #region Controller
 
@@ -33,11 +31,10 @@ namespace XamPass.Controllers
         /// </summary>
         /// <param name="context"></param>
         /// <param name="logger"></param>
-        public HomeController(DataContext context, ILogger<HomeController> logger, IStringLocalizer<HomeController> stringLocalizer)
+        public HomeController(DataContext context, ILogger<HomeController> logger)
         {
             _context = context;
             _logger = logger;
-            _stringLocalizer = stringLocalizer;
         }
 
         #endregion

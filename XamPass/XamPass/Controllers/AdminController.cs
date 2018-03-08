@@ -11,18 +11,21 @@ using XamPass.Models.DataBaseModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using XamPass.Models.ViewModels;
+using Microsoft.Extensions.Localization;
 
 namespace XamPass.Controllers
 {
-    //[RequireHttps]
     [Authorize]
     public class AdminController : Controller
     {
         private readonly DataContext _context;
 
-        public AdminController(DataContext context)
+        private readonly IStringLocalizer<AdminController> _stringLocalizer;
+
+        public AdminController(DataContext context, IStringLocalizer<AdminController> stringLocalizer)
         {
             _context = context;
+            _stringLocalizer = stringLocalizer;
         }
 
         [HttpGet]
@@ -36,29 +39,25 @@ namespace XamPass.Controllers
         {
             var result = DBInitialize.SeedDatabase(_context);
             CreateDBViewModel createDBViewModel = new CreateDBViewModel();
-            // TODO: localization
             if (result)
             {
-                createDBViewModel.Finished = "Daten eingetragen!";
+                createDBViewModel.Finished = _stringLocalizer["DataEntered"];
             }
             else
             {
-                createDBViewModel.Finished = "Keine neuen Daten eingetragen.";
+                createDBViewModel.Finished = _stringLocalizer["NoDataEntered"];
             }
-            //return RedirectToAction("Index");
             return View(createDBViewModel);
         }
 
         #region Review Questions
-
-        // GET: DtQuestions
+        
         public async Task<IActionResult> IndexQuestions()
         {
             var dataContext = _context.Questions.Include(d => d.FieldOfStudies).Include(d => d.Subject).Include(d => d.University);
             return View(await dataContext.ToListAsync());
         }
-
-        // GET: DtQuestions/Details/5
+        
         public async Task<IActionResult> DetailsQuestions(int? id)
         {
             if (id == null)
@@ -78,8 +77,7 @@ namespace XamPass.Controllers
 
             return View(dtQuestion);
         }
-
-        // GET: DtQuestions/Create
+        
         public IActionResult CreateQuestions()
         {
             ViewData["FieldOfStudiesID"] = new SelectList(_context.FieldsOfStudies, "FieldOfStudiesID", "FieldOfStudiesID");
@@ -87,10 +85,7 @@ namespace XamPass.Controllers
             ViewData["UniversityID"] = new SelectList(_context.Universities, "UniversityID", "UniversityID");
             return View();
         }
-
-        // POST: DtQuestions/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateQuestions([Bind("QuestionID,UniversityID,FieldOfStudiesID,SubjectID,SubmissionDate,Title,Content,UpVotes")] DtQuestion dtQuestion)
@@ -106,8 +101,7 @@ namespace XamPass.Controllers
             ViewData["UniversityID"] = new SelectList(_context.Universities, "UniversityID", "UniversityID", dtQuestion.UniversityID);
             return View(dtQuestion);
         }
-
-        // GET: DtQuestions/Edit/5
+        
         public async Task<IActionResult> EditQuestions(int? id)
         {
             if (id == null)
@@ -125,10 +119,7 @@ namespace XamPass.Controllers
             ViewData["UniversityID"] = new SelectList(_context.Universities, "UniversityID", "UniversityID", dtQuestion.UniversityID);
             return View(dtQuestion);
         }
-
-        // POST: DtQuestions/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditQuestions(int id, [Bind("QuestionID,UniversityID,FieldOfStudiesID,SubjectID,SubmissionDate,Title,Content,UpVotes")] DtQuestion dtQuestion)
@@ -163,8 +154,7 @@ namespace XamPass.Controllers
             ViewData["UniversityID"] = new SelectList(_context.Universities, "UniversityID", "UniversityID", dtQuestion.UniversityID);
             return View(dtQuestion);
         }
-
-        // GET: DtQuestions/Delete/5
+        
         public async Task<IActionResult> DeleteQuestions(int? id)
         {
             if (id == null)
@@ -185,8 +175,7 @@ namespace XamPass.Controllers
 
             return View(dtQuestion);
         }
-
-        // POST: DtQuestions/Delete/5
+        
         [HttpPost, ActionName("DeleteQuestions")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteQuestionsConfirmed(int id)
