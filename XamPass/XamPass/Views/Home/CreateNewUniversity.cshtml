@@ -52,11 +52,11 @@
 
             <div class="row">
                 <div class="text-left col-md-2 create-something-new">
-                    <input type="submit" value=@Localizer["CreateUniversity"] class="btn btn-default" style="width:100%"
+                    <input type="submit" value="@Localizer["CreateUniversity"].Value" class="btn btn-default" style="width:100%"
                            formaction=@Url.Action("SaveNewUniversity", "Home") />
                 </div>
                 <div class="text-left col-md-2 cancel-something-new">
-                    <input type="submit" value=@Localizer["Cancel"] class="btn btn-default" style="width:100%" formaction=@Url.Action("CancelNewField", "Home") />
+                    <input type="submit" value="@Localizer["Cancel"].Value" class="btn btn-default" style="width:100%" formaction=@Url.Action("CancelNewField", "Home") />
                 </div>
             </div>
         </div>

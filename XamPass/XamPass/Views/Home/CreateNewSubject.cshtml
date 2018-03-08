@@ -37,11 +37,11 @@
             </div>
             <div class="row">
                 <div class="text-left col-md-2 create-something-new">
-                    <input type="submit" value=@Localizer["CreateSubject"] class="btn btn-default" style="width:100%"
+                    <input type="submit" value="@Localizer["CreateSubject"].Value" class="btn btn-default" style="width:100%"
                            formaction=@Url.Action("SaveNewSubject", "Home") />
                 </div>
                 <div class="text-left col-md-2 cancel-something-new">
-                    <input type="submit" value=@Localizer["Cancel"] class="btn btn-default" style="width:100%"
+                    <input type="submit" value="@Localizer["Cancel"].Value" class="btn btn-default" style="width:100%"
                            formaction=@Url.Action("CancelNewField", "Home") />
                 </div>
             </div>

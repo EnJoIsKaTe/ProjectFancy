@@ -72,7 +72,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-button-end">
-                                        <input type="submit" id="createFieldOfStudiesBtn" value=@Localizer["CreateNewFieldOfStudies"] formmethod="post"
+                                        <input type="submit" id="createFieldOfStudiesBtn" value="@Localizer["CreateNewFieldOfStudies"].Value" formmethod="post"
                                                formaction=@Url.Action("CreateNewFieldOfStudies", "Home" ) class="btn new-something-btn" />
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@
                                     </div>
                                     <div class="col-md-4 col-button-end">
                                         <div width="100%" style="text-align:right;">
-                                            <input type="submit" id="createSubjectBtn" value="Neues Fach anlegen" formmethod="post"
+                                            <input type="submit" id="createSubjectBtn" value="@Localizer["CreateNewSubject"].Value" formmethod="post"
                                                    formaction=@Url.Action("CreateNewSubject", "Home" ) class="btn new-something-btn" />
                                         </div>
                                     </div>
@@ -167,7 +167,7 @@
                                             string universityText;
                                             if (Model.UniversityId == null)
                                             {
-                                                universityText = "Hochschule auswählen";
+                                                universityText = Localizer["SelectUniversity"].Value;
                                             }
                                             else
                                             {
@@ -190,7 +190,7 @@
                                     </div>
                                     <div class="col-md-4 col-button-end">
                                         <div width="100%" style="text-align:right;">
-                                            <input type="submit" id="createUniversityBtn" value=@Localizer["CreateNewUniversity"] formmethod="post"
+                                            <input type="submit" id="createUniversityBtn" value="@Localizer["CreateNewUniversity"].Value" formmethod="post"
                                                    formaction=@Url.Action("CreateNewUniversity", "Home" ) class="btn new-something-btn" />
                                         </div>
                                     </div>
@@ -232,7 +232,7 @@
                         </div>
                         <div class="row">
                             <div width="100%" style="text-align:right;">
-                                <input type="submit" id="createBtn" value=@Localizer["CreateNewEntry"] formmethod="post"
+                                <input type="submit" id="createBtn" value="@Localizer["CreateNewEntry"].Value" formmethod="post"
                                        formaction=@Url.Action("CreateNewEntry", "Home" ) class="btn" />
                             </div>
                         </div>

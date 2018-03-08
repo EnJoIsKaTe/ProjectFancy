@@ -1,4 +1,9 @@
 ﻿<!DOCTYPE html>
+
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
 <html>
 <head>
     <meta charset="utf-8" />
@@ -32,8 +37,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav toolbar-ul">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Home"]</a></li>
+                    <li><a asp-area="" asp-controller="Admin" asp-action="Index">@Localizer["Login"]</a></li>
                 </ul>
             </div>
         </div>
