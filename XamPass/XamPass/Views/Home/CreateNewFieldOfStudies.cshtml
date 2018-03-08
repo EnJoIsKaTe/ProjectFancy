@@ -1,7 +1,11 @@
-﻿@model XamPass.Models.ViewModels.ViewModelCreateSubject
+﻿@model XamPass.Models.ViewModels.ViewModelCreateFieldOfStudies
+
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Create Subject";
+    ViewData["Title"] = Localizer["CreateNewFieldOfStudies"];
 }
 
 <head>
@@ -19,7 +23,7 @@
 </head>
 
 <body>
-    <h1>Neues Studienfach anlegen</h1>
+    <h1>@Localizer["CreateNewFieldOfStudies"]</h1>
 
     <form asp-action="Create">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -27,27 +31,22 @@
             <div class="row">
                 <div class="col-md-4 form-something-new">
                     <div class="form-group">
-                        <label asp class="control-label">Name des Fachs</label>
-                        <input asp-for="@Model.SubjectName" class="form-control" />
-                        <span asp-validation-for="@Model.SubjectName" class="text-danger"></span>
+                        <label asp class="control-label">@Localizer["FieldOfStudiesName"]</label>
+                        <input asp-for="@Model.FieldOfStudiesName" class="form-control" />
+                        <span asp-validation-for="@Model.FieldOfStudiesName" class="text-danger"></span>
                     </div>
+
                 </div>
             </div>
             <div class="row">
                 <div class="text-left col-md-2 create-something-new">
-                    @*<div class="form-group">*@
-                        <input type="submit" value="Fach erstellen" class="btn btn-default" style="width:100%"
-                               formaction=@Url.Action("SaveNewSubject", "Home") />
-                    @*</div>*@
+                    <input type="submit" value="@Localizer["CreateFieldOfStudies"].Value" class="btn btn-default" style="width:100%"
+                           formaction=@Url.Action("SaveNewFieldOfStudies", "Home") />
                 </div>
                 <div class="text-left col-md-2 cancel-something-new">
-                    @*<div class="form-group">*@
-                        <input type="submit" value="Abbrechen" class="btn btn-default" style="width:100%" formaction=@Url.Action("CancelNewField", "Home") />
-                    @*</div>*@
+                    <input type="submit" value="@Localizer["Cancel"].Value" class="btn btn-default" style="width:100%" formaction=@Url.Action("CancelNewField", "Home") />
                 </div>
             </div>
         </div>
     </form>
 </body>
-
-

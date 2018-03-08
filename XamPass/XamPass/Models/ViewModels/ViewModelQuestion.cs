@@ -7,9 +7,11 @@ using XamPass.Models.DataBaseModels;
 
 namespace XamPass.Models.ViewModels
 {
+    /// <summary>
+    /// ViewModel to show the details of a question
+    /// </summary>
     public class ViewModelQuestion
     {
-        // TODO: nicht genutzte Properties löschen
         public int? QuestionId { get; set; }
         public DtQuestion Question { get; set; }
         public DtAnswer Answer { get; set; }
@@ -22,6 +24,9 @@ namespace XamPass.Models.ViewModels
         public List<DtQuestion> Questions { get; set; }
         public List<DtAnswer> Answers { get; set; }
 
+        /// <summary>
+        /// Standard Constructor
+        /// </summary>
         public ViewModelQuestion()
         {
             Questions = new List<DtQuestion>();

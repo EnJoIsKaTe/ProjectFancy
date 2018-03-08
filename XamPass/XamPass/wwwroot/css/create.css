@@ -46,10 +46,10 @@ h1 {
 }
 
 .new-something-btn {
-    width: 150pt;
-    border: 1px solid #edb850;
-    background-color: transparent;
-    color: #ef8f32;
+	width: 150pt;
+	border: 1px solid #edb850;
+	background-color: transparent;
+	color: #ef8f32;
 }
 
     .new-something-btn:hover {
@@ -100,16 +100,14 @@ h1 {
     display: table-cell;
     height: 34px;
     vertical-align: middle;
-    float: right;
 }
 
 #createBtn {
     height: 35pt;
     position: relative;
     margin: 20pt 0pt 20pt 0pt;
-    /*box-shadow: 0px 0px 5px #edc880;*/
     border: 1px solid #666;
-    background: linear-gradient(#ef8f32, #ef8f32); /*#ed8a2a;*/
+    background: linear-gradient(#ef8f32, #ef8f32);
     font-size: 15pt;
     font-weight: 600;
 }
@@ -149,7 +147,6 @@ h1 {
 
     .validation-div {
         display: inline-block;
-        float: right;
     }
 
     .input-cell {
@@ -166,7 +163,7 @@ h1 {
         background-color: #BBB;
         border-radius: 5px 5px 0px 5px;
         padding: 2px 0px 2px 5px;
-        margin-top: 15px;
+        margin-top: 3px;
     }
 }
 

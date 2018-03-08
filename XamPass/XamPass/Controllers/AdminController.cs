@@ -11,96 +11,88 @@ using XamPass.Models.DataBaseModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using XamPass.Models.ViewModels;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging;
 
 namespace XamPass.Controllers
 {
+    /// <summary>
+    /// Controller for a logged in Admin to manage the application and Database
+    /// </summary>
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly DataContext _context;
+        private readonly IStringLocalizer<AdminController> _stringLocalizer;
+        private ILogger _logger;
 
-        public AdminController(DataContext context)
+        /// <summary>
+        /// Standard Constructor
+        /// </summary>
+        /// <param name="context">Database Connection inserted via Dependency injection</param>
+        /// <param name="stringLocalizer">Localization interface, inserted via Dependendy injection</param>
+        public AdminController(DataContext context, IStringLocalizer<AdminController> stringLocalizer, ILogger<AdminController> logger)
         {
             _context = context;
+            _stringLocalizer = stringLocalizer;
+            _logger = logger;
         }
 
-        [Authorize]
+        /// <summary>
+        /// Index Page
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
-        [Authorize]
+        /// <summary>
+        /// Method that Creates the Database and seeds it with data
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
         public IActionResult CreateDB()
         {
-            DBInitialize.DatabaseTest(_context, true);
-            return RedirectToAction("Done");
-        }
-        
-        public IActionResult Done(ViewModelSearch viewModelSearch)
-        {
-            var result = viewModelSearch;
-            return View(result);
-        }
-
-        #region Authorization
-        public IActionResult Login()
-        {
-            if (HttpContext.User.Identity.IsAuthenticated)
+            var result = DBInitialize.SeedDatabase(_context);
+            CreateDBViewModel createDBViewModel = new CreateDBViewModel();
+            if (result)
             {
-                return RedirectToAction("Index", "Admin");
+                createDBViewModel.Finished = _stringLocalizer["DataEntered"];
             }
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginInputModel inputModel)
-        {
-            if (!(inputModel.Username == "admin" && inputModel.Password == "password"))
-                return View();
-
-            // create claims
-            List<Claim> claims = new List<Claim>
+            else
             {
-                new Claim(ClaimTypes.Name, "admin")
-                //new Claim(ClaimTypes.Email, inputModel.Username)
-            };
-
-            // create identity
-            ClaimsIdentity identity = new ClaimsIdentity(claims, "cookie");
-
-            // create principal
-            ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-
-            // sign-in
-            await HttpContext.SignInAsync(
-                    scheme: "AdminCookieScheme",
-                    principal: principal);
-
-            return RedirectToAction("Index", "Admin");
+                createDBViewModel.Finished = _stringLocalizer["NoDataEntered"];
+            }
+            return View(createDBViewModel);
         }
-
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync(
-                    scheme: "AdminCookieScheme");
-
-            return RedirectToAction("Index", "Home");
-        }
-
-        #endregion
 
         #region Review Questions
 
-        [Authorize]
-        // GET: DtQuestions
+        /// <summary>
+        /// Loads the questions from the Database
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> IndexQuestions()
         {
-            var dataContext = _context.Questions.Include(d => d.FieldOfStudies).Include(d => d.Subject).Include(d => d.University);
-            return View(await dataContext.ToListAsync());
+            try
+            {
+                var dataContext = _context.Questions.Include(d => d.FieldOfStudies).Include(d => d.Subject).Include(d => d.University);
+                return View(await dataContext.ToListAsync());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while loading questions from the database");
+                return View(null);
+            }
         }
 
-        [Authorize]
-        // GET: DtQuestions/Details/5
+        /// <summary>
+        /// Show the Questions with details
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> DetailsQuestions(int? id)
         {
             if (id == null)
@@ -108,147 +100,237 @@ namespace XamPass.Controllers
                 return NotFound();
             }
 
-            var dtQuestion = await _context.Questions
-                .Include(d => d.FieldOfStudies)
-                .Include(d => d.Subject)
-                .Include(d => d.University)
-                .SingleOrDefaultAsync(m => m.QuestionID == id);
-            if (dtQuestion == null)
+            try
             {
-                return NotFound();
+                var dtQuestion = await _context.Questions
+                    .Include(d => d.FieldOfStudies)
+                    .Include(d => d.Subject)
+                    .Include(d => d.University)
+                    .SingleOrDefaultAsync(m => m.QuestionID == id);
+                if (dtQuestion == null)
+                {
+                    return NotFound();
+                }
+                return View(dtQuestion);
             }
-
-            return View(dtQuestion);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while loading questions from the Database");
+                return View(null);
+            }
         }
 
-        [Authorize]
-        // GET: DtQuestions/Create
+        /// <summary>
+        /// Creates all questions by loading the from the Database
+        /// </summary>
+        /// <returns></returns>
         public IActionResult CreateQuestions()
         {
-            ViewData["FieldOfStudiesID"] = new SelectList(_context.FieldsOfStudies, "FieldOfStudiesID", "FieldOfStudiesID");
-            ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectID");
-            ViewData["UniversityID"] = new SelectList(_context.Universities, "UniversityID", "UniversityID");
+            try
+            {
+                ViewData["FieldOfStudiesID"] = new SelectList(_context.FieldsOfStudies, "FieldOfStudiesID", "FieldOfStudiesID");
+                ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectID");
+                ViewData["UniversityID"] = new SelectList(_context.Universities, "UniversityID", "UniversityID");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while loading data from the database");
+            }
+
             return View();
         }
 
-        // POST: DtQuestions/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
+        /// <summary>
+        /// Creates Questions from the Database
+        /// </summary>
+        /// <param name="dtQuestion"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateQuestions([Bind("QuestionID,UniversityID,FieldOfStudiesID,SubjectID,SubmissionDate,Title,Content,UpVotes")] DtQuestion dtQuestion)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(dtQuestion);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(IndexQuestions));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(dtQuestion);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(IndexQuestions));
+                }
+                ViewData["FieldOfStudiesID"] = new SelectList(_context.FieldsOfStudies, "FieldOfStudiesID", "FieldOfStudiesID", dtQuestion.FieldOfStudiesID);
+                ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectID", dtQuestion.SubjectID);
+                ViewData["UniversityID"] = new SelectList(_context.Universities, "UniversityID", "UniversityID", dtQuestion.UniversityID);
             }
-            ViewData["FieldOfStudiesID"] = new SelectList(_context.FieldsOfStudies, "FieldOfStudiesID", "FieldOfStudiesID", dtQuestion.FieldOfStudiesID);
-            ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectID", dtQuestion.SubjectID);
-            ViewData["UniversityID"] = new SelectList(_context.Universities, "UniversityID", "UniversityID", dtQuestion.UniversityID);
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "Error while loading data from the database");
+            }
             return View(dtQuestion);
         }
 
-        [Authorize]
-        // GET: DtQuestions/Edit/5
+        /// <summary>
+        /// Edit the loaded Questions
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> EditQuestions(int? id)
         {
-            if (id == null)
+            try
             {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    return NotFound();
+                }
 
-            var dtQuestion = await _context.Questions.SingleOrDefaultAsync(m => m.QuestionID == id);
-            if (dtQuestion == null)
-            {
-                return NotFound();
+                var dtQuestion = await _context.Questions.SingleOrDefaultAsync(m => m.QuestionID == id);
+                if (dtQuestion == null)
+                {
+                    return NotFound();
+                }
+                ViewData["FieldOfStudiesID"] = new SelectList(_context.FieldsOfStudies, "FieldOfStudiesID", "FieldOfStudiesID", dtQuestion.FieldOfStudiesID);
+                ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectID", dtQuestion.SubjectID);
+                ViewData["UniversityID"] = new SelectList(_context.Universities, "UniversityID", "UniversityID", dtQuestion.UniversityID);
+                return View(dtQuestion);
             }
-            ViewData["FieldOfStudiesID"] = new SelectList(_context.FieldsOfStudies, "FieldOfStudiesID", "FieldOfStudiesID", dtQuestion.FieldOfStudiesID);
-            ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectID", dtQuestion.SubjectID);
-            ViewData["UniversityID"] = new SelectList(_context.Universities, "UniversityID", "UniversityID", dtQuestion.UniversityID);
-            return View(dtQuestion);
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "Error while loading data from the database");
+                return View(new DtQuestion());
+            }
         }
 
-        // POST: DtQuestions/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
+        /// <summary>
+        /// Edits the selected Question
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="dtQuestion"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditQuestions(int id, [Bind("QuestionID,UniversityID,FieldOfStudiesID,SubjectID,SubmissionDate,Title,Content,UpVotes")] DtQuestion dtQuestion)
         {
-            if (id != dtQuestion.QuestionID)
+            try
             {
-                return NotFound();
+                if (id != dtQuestion.QuestionID)
+                {
+                    return NotFound();
+                }
+
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        _context.Update(dtQuestion);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!DtQuestionExists(dtQuestion.QuestionID))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                    return RedirectToAction(nameof(IndexQuestions));
+                }
+                ViewData["FieldOfStudiesID"] = new SelectList(_context.FieldsOfStudies, "FieldOfStudiesID", "FieldOfStudiesID", dtQuestion.FieldOfStudiesID);
+                ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectID", dtQuestion.SubjectID);
+                ViewData["UniversityID"] = new SelectList(_context.Universities, "UniversityID", "UniversityID", dtQuestion.UniversityID);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "Error while loading data from the database");
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(dtQuestion);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!DtQuestionExists(dtQuestion.QuestionID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(IndexQuestions));
-            }
-            ViewData["FieldOfStudiesID"] = new SelectList(_context.FieldsOfStudies, "FieldOfStudiesID", "FieldOfStudiesID", dtQuestion.FieldOfStudiesID);
-            ViewData["SubjectID"] = new SelectList(_context.Subjects, "SubjectID", "SubjectID", dtQuestion.SubjectID);
-            ViewData["UniversityID"] = new SelectList(_context.Universities, "UniversityID", "UniversityID", dtQuestion.UniversityID);
             return View(dtQuestion);
         }
 
-        [Authorize]
-        // GET: DtQuestions/Delete/5
+        /// <summary>
+        /// Delete the selected question
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> DeleteQuestions(int? id)
         {
-            if (id == null)
+            try
             {
-                return NotFound();
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var dtQuestion = await _context.Questions
+                    .Include(d => d.FieldOfStudies)
+                    .Include(d => d.Subject)
+                    .Include(d => d.University)
+                    .Include(d => d.Answers)
+                    .SingleOrDefaultAsync(m => m.QuestionID == id);
+                if (dtQuestion == null)
+                {
+                    return NotFound();
+                }
+
+                return View(dtQuestion);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "Error while loading data from the database");
             }
 
-            var dtQuestion = await _context.Questions
-                .Include(d => d.FieldOfStudies)
-                .Include(d => d.Subject)
-                .Include(d => d.University)
-                .SingleOrDefaultAsync(m => m.QuestionID == id);
-            if (dtQuestion == null)
-            {
-                return NotFound();
-            }
-
-            return View(dtQuestion);
+            return View(new DtQuestion());
         }
 
-        [Authorize]
-        // POST: DtQuestions/Delete/5
+        /// <summary>
+        /// Deletes the question if it is confirmed
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost, ActionName("DeleteQuestions")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteQuestionsConfirmed(int id)
         {
-            var dtQuestion = await _context.Questions.SingleOrDefaultAsync(m => m.QuestionID == id);
-            _context.Questions.Remove(dtQuestion);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var dtQuestion = await _context.Questions
+                    .Include(q => q.Answers)
+                    .SingleOrDefaultAsync(m => m.QuestionID == id);
+
+                List<DtAnswer> answers = dtQuestion.Answers;
+                _context.Answers.RemoveRange(answers);
+
+                _context.Questions.Remove(dtQuestion);
+                await _context.SaveChangesAsync();                
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while loading data from the database");
+            }
+
             return RedirectToAction(nameof(IndexQuestions));
         }
 
+        /// <summary>
+        /// Question does not exists returns question
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool DtQuestionExists(int id)
         {
-            return _context.Questions.Any(e => e.QuestionID == id);
-        }
+            try
+            {
+                return _context.Questions.Any(e => e.QuestionID == id);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "Error while loading data from the database");
+            }
 
+            return true;
+        }
+        
         #endregion
     }
 }

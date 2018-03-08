@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace XamPass.Models.ViewModels
 {
+    /// <summary>
+    /// ViewModel to create a new subject
+    /// </summary>
     public class ViewModelCreateSubject
     {
         /// <summary>
         /// Name of the Subject
         /// </summary>
         [StringLength(100)]
-        [MinLength(5, ErrorMessage = "Der Name des Faches muss mindestens 5 Zeichen haben")]
-        [Required(ErrorMessage = "Bitte geben Sie ein Fach an")]
+        [MinLength(5, ErrorMessage = "MinLength")]
+        [Required(ErrorMessage = "PleaseEnterSubject")]
         public string SubjectName { get; set; }
     }
 }

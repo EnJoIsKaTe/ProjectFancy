@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,40 +9,35 @@ using XamPass.Models.DataBaseModels;
 
 namespace XamPass.Models.ViewModels
 {
-    public class ViewModelCreate
-    {
-        [Required(ErrorMessage = "Bitte geben Sie eine Universität an")]
-        public int? UniversityId { get; set; }
-        [Required(ErrorMessage = "Bitte geben Sie ein Bundesland an")]
-        public int? FederalStateId { get; set; }
-        [Required(ErrorMessage = "Bitte geben Sie ein Fach an")]
-        public int? SubjectId { get; set; }
-        [Required(ErrorMessage = "Bitte geben Sie einen Studiengang an")]
-        public int? FieldOfStudiesId { get; set; }
+    /// <summary>
+    /// ViewModel that stores the data to create a new question
+    /// </summary>
+    public class ViewModelCreate : DropDownViewModel      
+    { 
+        [Required(ErrorMessage = "PleaseSelectUniversity")]
+        public override int? UniversityId { get; set; }
+        [Required(ErrorMessage = "PleaseSelectFederalState")]
+        public override int? FederalStateId { get; set; }
+        [Required(ErrorMessage = "PleaseSelectSubject")]
+        public override int? SubjectId { get; set; }
+        [Required(ErrorMessage = "PleaseSelectFieldOfStudies")]
+        public override int? FieldOfStudiesId { get; set; }
 
-        // Properties, die aus der Oberfläche zu befüllen sind
+        // Properties, that have to be filled from the UI
         [DataType(DataType.MultilineText)]
-        [Required(ErrorMessage = "Bitte geben Sie eine Frage ein")]
+        [Required(ErrorMessage = "PleaseEnterQuestion")]
         public string QuestionContent { get; set; }
-        [Required(ErrorMessage = "Bitte geben Sie einen Titel ein")]
+        [Required(ErrorMessage = "PleaseEnterTitle")]
         public string QuestionTitle { get; set; }
         [DataType(DataType.MultilineText)]
         public string AnswerContent { get; set; }
-
-        public List<SelectListItem> Universities { get; set; }
-        public List<SelectListItem> FederalStates { get; set; }
-        public List<SelectListItem> Subjects { get; set; }
-        public List<SelectListItem> FieldsOfStudies { get; set; }
 
         /// <summary>
         /// Standard Constructor
         /// </summary>
         public ViewModelCreate()
         {
-            Universities = new List<SelectListItem>();
-            FederalStates = new List<SelectListItem>();
-            Subjects = new List<SelectListItem>();
-            FieldsOfStudies = new List<SelectListItem>();
+
         }       
     }
 }

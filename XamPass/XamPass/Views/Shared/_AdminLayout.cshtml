@@ -31,16 +31,15 @@
 				</a>
 			</div>
 			<div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav toolbar-ul">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a></li>
-                    @*Test Buttons*@
-                    <li><a asp-area="" asp-controller="DtUniversities" asp-action="Index">Test DB</a></li>
-                    <li><a asp-area="" asp-controller="Admin" asp-action="CreateDB">Create Database</a></li>
-                    <li><a asp-area="" asp-controller="Admin" asp-action="IndexQuestions">Review Questions</a></li>
-                    <li><a asp-area="" asp-controller="Admin" asp-action="Logout">Logout</a></li>
-                    @*<li><a asp-area="" asp-controller="Home" asp-action="ViewQuestion">ViewQuestion</a></li>*@
-                </ul>
+				<ul class="nav navbar-nav toolbar-ul">
+					<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+					<li><a asp-area="" asp-controller="Admin" asp-action="CreateDB">Seed Database</a></li>
+					<li><a asp-area="" asp-controller="Admin" asp-action="IndexQuestions">Review Questions</a></li>
+					<li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+				</ul>
+				<ul class="nav navbar-nav toolbar-ul navbar-right">
+					<li><a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a></li>
+				</ul>
 			</div>
 		</div>
 	</nav>
