@@ -13,7 +13,7 @@ namespace XamPass.Models
         /// </summary>
         public static bool SeedDatabase(DataContext context)
         {
-            bool seeded = false;   
+            bool seeded = false;
 
             if (!context.Countries.Any())
             {
@@ -187,28 +187,6 @@ namespace XamPass.Models
                     University = context.Universities.FirstOrDefault(u => u.UniversityID == 3),
                     UpVotes = 0}
             };
-
-                // weitere Fragen eintragen
-                for (int i = 1; i < 6; i++)
-                {
-                    var question = new DtQuestion()
-                    {
-                        Answers = null,
-                        Content = String.Format("Weitere Frage {0}", i),
-                        FieldOfStudies = context.FieldsOfStudies.FirstOrDefault(u => u.FieldOfStudiesID == i),
-                        Subject = context.Subjects.FirstOrDefault(u => u.SubjectID == i),
-                        SubmissionDate = DateTime.Now,
-                        University = context.Universities.FirstOrDefault(u => u.UniversityID == i),
-                        UpVotes = 0
-                    };
-
-                    questions.Add(question);
-                }
-
-                foreach (DtQuestion question in questions)
-                {
-                    context.Add(question);
-                }
 
                 context.SaveChanges();
                 seeded = true;
