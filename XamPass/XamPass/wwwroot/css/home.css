@@ -53,9 +53,8 @@ h1 {
 #newEntryBtn {
     position: relative;
     width: 200pt;
-    /*box-shadow: 0px 0px 5px #edc880;*/
     border: 1px solid #edb850;
-    background-color: transparent; /*linear-gradient(#ef8f32, #ef8f32);*/ /*#ed8a2a;*/
+    background-color: transparent;
     color: #ef8f32;
 }
 

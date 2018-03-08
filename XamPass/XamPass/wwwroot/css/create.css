@@ -100,17 +100,14 @@ h1 {
     display: table-cell;
     height: 34px;
     vertical-align: middle;
-	 /*TODO: Fehler float nicht möglich*/
-    /*float: right;*/
 }
 
 #createBtn {
     height: 35pt;
     position: relative;
     margin: 20pt 0pt 20pt 0pt;
-    /*box-shadow: 0px 0px 5px #edc880;*/
     border: 1px solid #666;
-    background: linear-gradient(#ef8f32, #ef8f32); /*#ed8a2a;*/
+    background: linear-gradient(#ef8f32, #ef8f32);
     font-size: 15pt;
     font-weight: 600;
 }
@@ -150,8 +147,6 @@ h1 {
 
     .validation-div {
         display: inline-block;
-		  /*TODO: Fehler*/
-        /*float: right;*/
     }
 
     .input-cell {
