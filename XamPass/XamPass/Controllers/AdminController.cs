@@ -176,6 +176,7 @@ namespace XamPass.Controllers
                 .Include(d => d.FieldOfStudies)
                 .Include(d => d.Subject)
                 .Include(d => d.University)
+                .Include(d => d.Answers)
                 .SingleOrDefaultAsync(m => m.QuestionID == id);
             if (dtQuestion == null)
             {
@@ -190,7 +191,13 @@ namespace XamPass.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteQuestionsConfirmed(int id)
         {
-            var dtQuestion = await _context.Questions.SingleOrDefaultAsync(m => m.QuestionID == id);
+            var dtQuestion = await _context.Questions
+                .Include(q => q.Answers)
+                .SingleOrDefaultAsync(m => m.QuestionID == id);               
+
+            List<DtAnswer> answers = dtQuestion.Answers;
+            _context.Answers.RemoveRange(answers);
+
             _context.Questions.Remove(dtQuestion);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(IndexQuestions));

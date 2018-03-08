@@ -90,7 +90,7 @@ namespace XamPass
 
             // Add Localization
             var supportedCultures = new List<CultureInfo>
-            {
+            { 
                 new CultureInfo("de-DE"),
                 new CultureInfo("en-US")
             };
