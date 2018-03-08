@@ -306,6 +306,18 @@ namespace XamPass.Controllers
         }
         #endregion
 
+        #region Contact
+        /// <summary>
+        /// Renders Page for contact and other informations
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        #endregion
+
         #region Filter Dropdowns
 
         /// <summary>
