@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace XamPass.Models
 {
+    /// <summary>
+    /// Logged in user of the application
+    /// </summary>
     public class ApplicationUser : IdentityUser
     {
     }

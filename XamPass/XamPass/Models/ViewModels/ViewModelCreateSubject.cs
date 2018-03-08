@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace XamPass.Models.ViewModels
 {
+    /// <summary>
+    /// ViewModel to create a new subject
+    /// </summary>
     public class ViewModelCreateSubject
     {
         /// <summary>

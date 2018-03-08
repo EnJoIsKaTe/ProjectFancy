@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace XamPass.Models.ViewModels
 {
+    /// <summary>
+    /// ViewModel to create a new field of studies
+    /// </summary>
     public class ViewModelCreateFieldOfStudies
     {
         /// <summary>

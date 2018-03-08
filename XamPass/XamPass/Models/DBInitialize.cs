@@ -6,6 +6,9 @@ using XamPass.Models.DataBaseModels;
 
 namespace XamPass.Models
 {
+    /// <summary>
+    /// Class to seed the Database and fill it with data
+    /// </summary>
     public class DBInitialize
     {
         /// <summary>
@@ -37,8 +40,7 @@ namespace XamPass.Models
             }
 
             if (!context.FederalStates.Any())
-            {
-                // Testdaten in die Tabelle dt_federal_state einfügen
+            {                
                 DtFederalState[] federalStates = new DtFederalState[]
                 {
                 new DtFederalState(){ FederalStateName = "Baden-Württemberg"},
@@ -71,7 +73,6 @@ namespace XamPass.Models
 
             if (!context.Universities.Any())
             {
-                // Testdaten in Tabelle dt_university einfügen
                 List<DtUniversity> universities = new List<DtUniversity>()
             {
                 new DtUniversity(){UniversityName = "BA Leipzig", CountryID = 1, FederalStateID = 13 },
@@ -140,12 +141,12 @@ namespace XamPass.Models
             {
                 DtAnswer[] answers = new DtAnswer[]
               {
-                new DtAnswer(){ /*QuestionId = 1,*/
+                new DtAnswer(){
                     SubmissionDate = DateTime.Now,
                     Content = "Ich weiß doch nicht wie eine Turing Maschine aussieht!!!11!",
                     UpVotes = 77
                 },
-                new DtAnswer(){ /*QuestionId = 3,*/
+                new DtAnswer(){
                     SubmissionDate = DateTime.Now,
                     Content = "Blau! Nein rot!",
                     UpVotes = 2

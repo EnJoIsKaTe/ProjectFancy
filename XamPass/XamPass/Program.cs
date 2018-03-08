@@ -15,6 +15,7 @@ namespace XamPass
 {
     public class Program
     {
+        // entry point of the application
         public static void Main(string[] args)
         {
             var host = BuildWebHost(args);

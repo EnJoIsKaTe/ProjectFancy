@@ -8,6 +8,9 @@ using XamPass.Models.DataBaseModels;
 
 namespace XamPass.Models.ViewModels
 {
+    /// <summary>
+    /// ViewModel - Class that holds the properties for the Index View, to search for questions in the database and the View to create new Questions
+    /// </summary>
     public class DropDownViewModel
     {
         public virtual int? UniversityId { get; set; }
@@ -20,6 +23,9 @@ namespace XamPass.Models.ViewModels
         public List<SelectListItem> Subjects { get; set; }
         public List<SelectListItem> FieldsOfStudies { get; set; }
 
+        /// <summary>
+        /// Standard Constructor
+        /// </summary>
         public DropDownViewModel()
         {
             Universities = new List<SelectListItem>();
@@ -28,6 +34,11 @@ namespace XamPass.Models.ViewModels
             FieldsOfStudies = new List<SelectListItem>();
         }
 
+        /// <summary>
+        /// Fills all the Dropdown lists with Data from the database
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="logger"></param>
         public void FillAllDropdowns(DataContext context, ILogger logger)
         {
             List<DtFieldOfStudies> fieldsOfStudies = new List<DtFieldOfStudies>();
@@ -83,6 +94,11 @@ namespace XamPass.Models.ViewModels
             }
         }
 
+        /// <summary>
+        /// Filters the Universities by the selected federal state
+        /// </summary>
+        /// <param name="context">database connection</param>
+        /// <param name="logger">Logger interface</param>
         public void FilterUniversitiesByFederalState(DataContext context, ILogger logger)
         {
             List<DtUniversity> universities = new List<DtUniversity>();

@@ -7,8 +7,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace XamPass.Models.DataBaseModels
 {
+    /// <summary>
+    /// Class that handles the connection to the entity framework database
+    /// </summary>
     public class DataContext : IdentityDbContext<ApplicationUser>
     {
+        /// <summary>
+        /// Standard Constructor
+        /// </summary>
+        /// <param name="options"></param>
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
             
@@ -16,7 +23,7 @@ namespace XamPass.Models.DataBaseModels
 
         #region DbSets
 
-        // Jede DatenbankTabelle wird durch ein DbSet repräsentiert
+        // Every Table is represented by a DbSet
         public DbSet<DtQuestion> Questions { get; set; }
         public DbSet<DtFederalState> FederalStates { get; set; }
         public DbSet<DtCountry> Countries { get; set; }
@@ -28,15 +35,12 @@ namespace XamPass.Models.DataBaseModels
         #endregion
 
         /// <summary>
-        /// Jede Datenbanktabelle wird nach dem Namensschema benannt
+        /// Every Table is named according to the schema
         /// </summary>
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<DtQuestion>().ToTable("dt_question");
             modelBuilder.Entity<DtFederalState>().ToTable("dt_federal_state");

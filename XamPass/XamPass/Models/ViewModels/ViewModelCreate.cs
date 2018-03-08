@@ -9,6 +9,9 @@ using XamPass.Models.DataBaseModels;
 
 namespace XamPass.Models.ViewModels
 {
+    /// <summary>
+    /// ViewModel that stores the data to create a new question
+    /// </summary>
     public class ViewModelCreate : DropDownViewModel      
     { 
         [Required(ErrorMessage = "PleaseSelectUniversity")]

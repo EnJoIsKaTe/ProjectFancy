@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace XamPass.Models.ViewModels
 {
+    /// <summary>
+    /// ViewModel for the Register View
+    /// </summary>
     public class RegisterViewModel
     {
         [Required]

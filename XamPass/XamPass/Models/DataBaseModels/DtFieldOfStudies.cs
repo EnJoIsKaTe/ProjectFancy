@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 namespace XamPass.Models.DataBaseModels
 {
     /// <summary>
-    /// Klasse die einen Datensatz für ein Studienfach beschreibt
+    /// Class that represents a field of studies dataset
     /// </summary>
     public class DtFieldOfStudies
     {
         #region Properties
 
         /// <summary>
-        /// Identifier des Datensatzes
+        /// Identifier of the dataset
         /// </summary>
         [Key]
         public int FieldOfStudiesID { get; set; }
 
         /// <summary>
-        /// Name des Studienfachs
+        /// Name of the field of studies dataset
         /// </summary>
         public string FieldOfStudiesName { get; set; }
 
         /// <summary>
-        /// Typ des Studienfachs (ermöglicht eine später Spezifizierung)
+        /// Type of the field of studies
         /// </summary>
         public FieldOfStudiesType Type { get; set; }
         

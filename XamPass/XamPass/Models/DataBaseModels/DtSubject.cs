@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 namespace XamPass.Models.DataBaseModels
 {
     /// <summary>
-    /// Klasse die einen Datensatz für ein Fach beschreibt
+    /// Class that represents a subject dataset
     /// </summary>
     public class DtSubject
     {
         #region Prperties
 
         /// <summary>
-        /// Identifier des Datensatzes
+        /// Identifier of the subject dataset
         /// </summary>
         [Key]
         public int SubjectID { get; set; }

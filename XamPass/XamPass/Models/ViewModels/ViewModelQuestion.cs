@@ -7,6 +7,9 @@ using XamPass.Models.DataBaseModels;
 
 namespace XamPass.Models.ViewModels
 {
+    /// <summary>
+    /// ViewModel to show the details of a question
+    /// </summary>
     public class ViewModelQuestion
     {
         public int? QuestionId { get; set; }

@@ -7,30 +7,30 @@ using System.Threading.Tasks;
 namespace XamPass.Models.DataBaseModels
 {
     /// <summary>
-    /// Klasse die einen Datensatz für eine Antwort beschreibt
+    /// Represents a DataSet for an Answer to a question
     /// </summary>
     public class DtAnswer
     {
         #region Properties
 
         /// <summary>
-        /// Identifier des Datensatzes
+        /// Identifier of the Dataset
         /// </summary>
         [Key]
         public int AnswerID { get; set; }
 
         /// <summary>
-        /// Zeitpunkt der Erstellung des Datensatzes
+        /// DateTime when the Answer has been submitted
         /// </summary>
         public DateTime SubmissionDate { get; set; }
 
         /// <summary>
-        /// Inhalt der Antwort
+        /// Content of the Answer
         /// </summary>
         public string Content { get; set; }
 
         /// <summary>
-        /// Positive Bewertungen für die Antwort
+        /// Upvotes to the Answer
         /// </summary>
         public int UpVotes { get; set; }
         

@@ -14,7 +14,9 @@ using XamPass.Models.ViewModels;
 
 namespace XamPass.Controllers
 {
-    //[RequireHttps]
+    /// <summary>
+    /// Controller to handle the login and authorization for the Admin to manage the Application and Database
+    /// </summary>
     [Authorize]
     public class AccountController : Controller
     {
@@ -22,6 +24,12 @@ namespace XamPass.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger _logger;
 
+        /// <summary>
+        /// Standard Constructor
+        /// </summary>
+        /// <param name="userManager">Dependency injected</param>
+        /// <param name="signInManager">Dependency injected</param>
+        /// <param name="loggerFactory">Dependency injected</param>
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
@@ -32,13 +40,20 @@ namespace XamPass.Controllers
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
 
+        /// <summary>
+        /// Returns the index Page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             return View();
         }
 
-        //
-        // GET: /Account/Login
+        /// <summary>
+        /// Login
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl = null)
@@ -49,9 +64,13 @@ namespace XamPass.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
-
-        //
-        // POST: /Account/Login
+        
+        /// <summary>
+        /// Login
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -79,13 +98,15 @@ namespace XamPass.Controllers
                     return View(model);
                 }
             }
-
-            // If we got this far, something failed, redisplay form
+            
             return View(model);
         }
-
-        //
-        // GET: /Account/Register
+        
+        /// <summary>
+        /// Register with the Url
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpGet]
         //[AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
@@ -93,11 +114,14 @@ namespace XamPass.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
-
-        //
-        // POST: /Account/Register
+        
+        /// <summary>
+        /// Post Method to Reguster with url
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpPost]
-        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
@@ -114,22 +138,25 @@ namespace XamPass.Controllers
                 }
                 AddErrors(result);
             }
-
-            // If we got this far, something failed, redisplay form
+            
             return View(model);
         }
-
-        //
-        // POST: /Account/Logout
+        
+        /// <summary>
+        /// Logout the user and redirect to the Index Page of the HomeController
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation(4, "User logged out.");
             return RedirectToAction("Index", "Home");
         }
-
-        //
-        // GET /Account/AccessDenied
+        
+        /// <summary>
+        /// Show access denied form
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult AccessDenied()
         {
@@ -138,6 +165,10 @@ namespace XamPass.Controllers
 
         #region Helpers
 
+        /// <summary>
+        /// Adds the errors to the ViewModel
+        /// </summary>
+        /// <param name="result"></param>
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
@@ -146,6 +177,11 @@ namespace XamPass.Controllers
             }
         }
 
+        /// <summary>
+        /// Redirect to the HomeController Methods
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         private IActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
