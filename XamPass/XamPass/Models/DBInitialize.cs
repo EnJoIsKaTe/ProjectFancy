@@ -18,9 +18,6 @@ namespace XamPass.Models
         {
             bool seeded = false;
 
-            //context.Database.EnsureDeleted();
-            //context.Database.EnsureCreated();
-
             if (!context.Countries.Any())
             {
                 DtCountry[] countries = new DtCountry[]
