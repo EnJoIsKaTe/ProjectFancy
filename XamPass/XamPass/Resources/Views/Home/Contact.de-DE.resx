@@ -117,13 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Acknowledgement" xml:space="preserve">
+    <value>Zur Kenntnis:</value>
+  </data>
   <data name="Contact" xml:space="preserve">
-    <value>Impressum</value>
+    <value>Kontakt</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Startseite</value>
+  <data name="Names" xml:space="preserve">
+    <value>Lucas Hartig, Patrick Kilian, Pierre Klafs, Benjamin Vogl</value>
   </data>
-  <data name="Login" xml:space="preserve">
-    <value>Login</value>
+  <data name="Text" xml:space="preserve">
+    <value>Diese Anwendung wurde im Rahmen eines Studentenprojektes an der Berufsakademie Leipzig erstellt. 
+Wir bitten alle Nutzer und Nutzerinnern um einen respektvollen Umgang sowohl miteinander als auch mit den Daten und Prüfungsfragen.
+Alle Angaben wurden nicht von den Betreibern dieser Seite sondern von ihren Nutzern erzeugt, wir übernehmen keine Garantie und Haftung für die Vollständigkeit und Korrektheit der Inhalte.
+Wir weisen weiterhin ausdrücklich darauf hin, dass keine Einträge erwünscht sind bei denen eure Dozenten ausdrücklich auf die Diskretion und die Vertraulichkeit der von ihnen gestellten Prüfungsfragen hingewiesen haben.
+Bitte unterlasst auch das Nennen von Personenbezogenen Daten im Zusammenhang mit den Prüfungsfragen.</value>
   </data>
 </root>

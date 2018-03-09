@@ -45,7 +45,7 @@ h1 {
 #colNewEntry {
     padding-left: 0px;
     padding-right: 0px;
-    width: auto;
+    width: 200pt;
     float: right;
     margin-right: 0px;
 }
@@ -109,7 +109,7 @@ h1 {
     padding-top: 5px;
 }
 
-@media(max-width:450px) {
+@media(max-width:992px) {
     #newEntryBtn {
         width: 100%
     }

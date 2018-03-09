@@ -132,6 +132,13 @@
   <data name="Germany" xml:space="preserve">
     <value>Germany</value>
   </data>
+  <data name="Info" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="InfoText" xml:space="preserve">
+    <value>Welcome to XamPass - this page wants to help you to pass your exams. Here you can search for already stored questions of other students or store some questions from your own old exams to help others with theirs.
+Have fun and be respectful.</value>
+  </data>
   <data name="NewEntry" xml:space="preserve">
     <value>New entry</value>
   </data>
