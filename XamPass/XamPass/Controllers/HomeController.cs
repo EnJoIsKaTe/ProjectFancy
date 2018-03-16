@@ -25,7 +25,7 @@ namespace XamPass.Controllers
     {
         private readonly DataContext _context;
         private ILogger _logger;
-        
+
         /// <summary>
         /// Standard Constructor
         /// Gets the Logger and the Database Connection via Dependency Injection
@@ -37,7 +37,7 @@ namespace XamPass.Controllers
             _context = context;
             _logger = logger;
         }
-        
+
         #region Homepage
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace XamPass.Controllers
             viewModelSearch.FillAllDropdowns(_context, _logger);
 
             // Set Filters for the Dropdown Lists
-            //SetAllFilters(viewModelSearch);
+            SetAllFilters(viewModelSearch);
 
             // questions should NOT be rendered
             viewModelSearch.SearchExecuted = false;
@@ -89,27 +89,27 @@ namespace XamPass.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ShowQuestions(ViewModelSearch viewModelSearch)
         {
-                // Fill the Dropdowns with all the Data from the Db
-                viewModelSearch.FillAllDropdowns(_context, _logger);
+            // Fill the Dropdowns with all the Data from the Db
+            viewModelSearch.FillAllDropdowns(_context, _logger);
 
-                // Set Filters for the Dropdown Lists
-                viewModelSearch = SetAllFilters(viewModelSearch);
+            // Set Filters for the Dropdown Lists
+            viewModelSearch = SetAllFilters(viewModelSearch);
 
-                viewModelSearch.FilterUniversitiesByFederalState(_context, _logger);
+            viewModelSearch.FilterUniversitiesByFederalState(_context, _logger);
 
-                // questions should be rendered
-                viewModelSearch.SearchExecuted = true;
+            // questions should be rendered
+            viewModelSearch.SearchExecuted = true;
 
-                ////Build the filter and load the Questions from the Database
-                //List<DtQuestion> filteredQuestions = _context.Questions
-                //    .Where(q => (viewModelSearch.FieldOfStudiesId != null ? q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId : q.FieldOfStudiesID != 0))
-                //    .Where(q => (viewModelSearch.SubjectId != null ? q.SubjectID == viewModelSearch.SubjectId : q.SubjectID != 0))
-                //    .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
-                //    .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
-                //    .ToList();
+            ////Build the filter and load the Questions from the Database
+            //List<DtQuestion> filteredQuestions = _context.Questions
+            //    .Where(q => (viewModelSearch.FieldOfStudiesId != null ? q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId : q.FieldOfStudiesID != 0))
+            //    .Where(q => (viewModelSearch.SubjectId != null ? q.SubjectID == viewModelSearch.SubjectId : q.SubjectID != 0))
+            //    .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
+            //    .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
+            //    .ToList();
 
-                //viewModelSearch.Questions = filteredQuestions.OrderByDescending(q => q.UpVotes).ToList();
-           
+            //viewModelSearch.Questions = filteredQuestions.OrderByDescending(q => q.UpVotes).ToList();
+
 
             return View("Index", viewModelSearch);
         }
