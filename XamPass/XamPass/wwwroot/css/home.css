@@ -42,12 +42,19 @@ h1 {
         background: linear-gradient(#ef8f32, #e57d19);
     }
 
+#colNewEntry {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 200pt;
+    float: right;
+    margin-right: 0px;
+}
+
 #newEntryBtn {
     position: relative;
-    width: 250pt;
-    /*box-shadow: 0px 0px 5px #edc880;*/
+    width: 200pt;
     border: 1px solid #edb850;
-    background-color: transparent; /*linear-gradient(#ef8f32, #ef8f32);*/ /*#ed8a2a;*/
+    background-color: transparent;
     color: #ef8f32;
 }
 
@@ -100,4 +107,18 @@ h1 {
 
 .question {
     padding-top: 5px;
+}
+
+@media(max-width:992px) {
+    #newEntryBtn {
+        width: 100%
+    }
+
+    #colNewEntry {
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 100%;
+        float: none;
+        margin-right: 0px;
+    }
 }

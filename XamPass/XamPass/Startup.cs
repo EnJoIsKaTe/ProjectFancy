@@ -17,6 +17,9 @@ using Microsoft.AspNetCore.Localization;
 
 namespace XamPass
 {
+    /// <summary>
+    /// Stores methods that are called when the application starts
+    /// </summary>
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -46,13 +49,7 @@ namespace XamPass
             });
 
             services.AddLocalization(options => options.ResourcesPath = "Resources");
-
-            //services.AddAuthentication("AdminCookieScheme").AddCookie("AdminCookieScheme", options =>
-            //{
-            //    options.AccessDeniedPath = new PathString("/Admin/Access");
-            //    options.LoginPath = new PathString("/Admin/Login");
-            //});
-
+            
             services
                 .AddMvc()
                 .AddViewLocalization(options => options.ResourcesPath = "Resources")
@@ -60,7 +57,12 @@ namespace XamPass
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// Gets called by the runtime, registeres all the Services that can be used via dependency injection
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
+        /// <param name="loggerFactory"></param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())

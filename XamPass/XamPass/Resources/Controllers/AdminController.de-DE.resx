@@ -117,13 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Contact" xml:space="preserve">
-    <value>Impressum</value>
+  <data name="DataEntered" xml:space="preserve">
+    <value>Daten eingetragen!</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Startseite</value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>Login</value>
+  <data name="NoDataEntered" xml:space="preserve">
+    <value>Keine neuen Daten eingetragen.</value>
   </data>
 </root>

@@ -24,7 +24,6 @@ namespace XamPass.Models.ViewModels
         /// </summary>
         public ViewModelSearch()
         {
-            // show questions
             Questions = new List<DtQuestion>();
         }
     }

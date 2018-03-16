@@ -8,24 +8,21 @@ using System.Threading.Tasks;
 namespace XamPass.Models.DataBaseModels
 {
     /// <summary>
-    /// Klasse die einen Datensatz für ein Bundesland (Bundesstaat) beschreibt
+    /// Class that represents a federal state dataset
     /// </summary>
     public class DtFederalState
     {
         #region Properties
 
         /// <summary>
-        /// Identifier des Datensatzes
+        /// Identifier of the dataset
         /// </summary>
         [Key]
         public int FederalStateID { get; set; }
 
         /// <summary>
-        /// Name des Bundesstaates
+        /// Name of the federal state
         /// </summary>
-        [StringLength(100)]
-        [MinLength(5,ErrorMessage = "Der Name des Bundesland muss mindestens 5 Zeichen lang sein")]
-        [Required(ErrorMessage = "Bitte geben Sie ein Bundesland an")]
         public string FederalStateName { get; set; }
 
         #endregion

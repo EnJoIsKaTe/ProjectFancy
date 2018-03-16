@@ -1,9 +1,18 @@
-﻿
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
 @{
     ViewData["Title"] = "Contact";
 }
 
-@*TODO Benjamin: localization*@
-<h2>Contact</h2>
+<h2>Impressum</h2>
 
-<h4>Hier könnt ihre Werbung stehen!</h4>
+<h4>@Localizer["Acknowledgement"]</h4>
+<div>
+    @Localizer["Text"]
+</div>
+<h4>@Localizer["Contact"]</h4>
+<div>
+    @Localizer["Names"]
+</div>

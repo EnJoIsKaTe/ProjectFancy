@@ -17,31 +17,27 @@ using Microsoft.Extensions.Localization;
 
 namespace XamPass.Controllers
 {
-    //[RequireHttps]
+    /// <summary>
+    /// Controller to manage all the main functionalities of the application
+    /// Works with user interactions and loads data from the Database and filters the data
+    /// </summary>
     public class HomeController : Controller
     {
         private readonly DataContext _context;
-
         private ILogger _logger;
-        private readonly IStringLocalizer<HomeController> _stringLocalizer;
-
-        #region Controller
-
+        
         /// <summary>
         /// Standard Constructor
         /// Gets the Logger and the Database Connection via Dependency Injection
         /// </summary>
         /// <param name="context"></param>
         /// <param name="logger"></param>
-        public HomeController(DataContext context, ILogger<HomeController> logger, IStringLocalizer<HomeController> stringLocalizer)
+        public HomeController(DataContext context, ILogger<HomeController> logger)
         {
             _context = context;
             _logger = logger;
-            _stringLocalizer = stringLocalizer;
         }
-
-        #endregion
-
+        
         #region Homepage
 
         /// <summary>

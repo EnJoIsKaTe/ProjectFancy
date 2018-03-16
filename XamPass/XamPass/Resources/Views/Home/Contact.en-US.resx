@@ -117,13 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Acknowledgement" xml:space="preserve">
+    <value>Acknowledgement</value>
+  </data>
   <data name="Contact" xml:space="preserve">
-    <value>Impressum</value>
+    <value>Contact</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Startseite</value>
+  <data name="Names" xml:space="preserve">
+    <value>Lucas Hartig, Patrick Kilian, Pierre Klafs, Benjamin Vogl</value>
   </data>
-  <data name="Login" xml:space="preserve">
-    <value>Login</value>
+  <data name="Text" xml:space="preserve">
+    <value>This application was developed as a students project at the "Berufsakademie Leipzig". 
+We´d like all users to use this application in a respectful manner, respectful regarding other users as well as the data we are working with.
+All content is not produced or owned by the creators of this website but added by it´s users. We can not and will not guarantee for the correctness or completness of the entries made by other users.
+We do not want any entries where your teachers explicitly informed you that the content is confidential. Please don´t add any information about the persona of your teachers and do not add any unneccessary information besides the content of the questions.</value>
   </data>
 </root>

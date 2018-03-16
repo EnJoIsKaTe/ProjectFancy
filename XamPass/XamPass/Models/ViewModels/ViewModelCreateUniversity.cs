@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace XamPass.Models.ViewModels
 {
+    /// <summary>
+    /// ViewModel to create a new University
+    /// </summary>
     public class ViewModelCreateUniversity
     {
         /// <summary>

@@ -7,32 +7,32 @@ using System.Threading.Tasks;
 namespace XamPass.Models.DataBaseModels
 {
     /// <summary>
-    /// Klasse die einen Datensatz für einen Staat beschreibt
+    /// Class that represents a university dataset
     /// </summary>
     public class DtUniversity
     {
         #region Properties
 
         /// <summary>
-        /// Identifier des Datensatzes
+        /// Identifier of the Dataset
         /// </summary>
         [Key]
         public int UniversityID { get; set; }
 
         /// <summary>
-        /// FK für den Staat der Universität
+        /// Foreign key for the Country where the University is located
         /// </summary>
         public int CountryID { get; set; }
         public DtCountry Country { get; set; }
 
         /// <summary>
-        /// FK für den Bundesstaat der Universität
+        /// Foreign key for the federal state where the University is located
         /// </summary>
         public int FederalStateID { get; set; }
         public DtFederalState FederalState { get; set; }
 
         /// <summary>
-        /// Name der Hochschule / Universität
+        /// Name of the University
         /// </summary>
         [StringLength(100)]
         public string UniversityName { get; set; }

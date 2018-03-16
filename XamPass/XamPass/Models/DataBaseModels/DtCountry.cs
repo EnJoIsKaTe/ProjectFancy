@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 namespace XamPass.Models.DataBaseModels
 {
     /// <summary>
-    /// Klasse die einen Datensatz für einen Staat beschreibt
+    /// Represents a dataset to a country
     /// </summary>
     public class DtCountry
     {
         #region Properties
 
         /// <summary>
-        /// Identifier des Datensatzes
+        /// Identifier of the dataset
         /// </summary>
         [Key]        
         public int CountryID { get; set; }
 
         /// <summary>
-        /// Name des Staates
+        /// Name of the country
         /// </summary>
         [StringLength(100)]
         public string CountryName { get; set; }

@@ -8,65 +8,68 @@ using Microsoft.EntityFrameworkCore;
 namespace XamPass.Models.DataBaseModels
 {
     /// <summary>
-    /// Klasse die einen Datensatz für eine Prüfungsfrage beschreibt
+    /// Class that represents a dataset for a Exam-Question
     /// </summary>
     public class DtQuestion
     {
         #region Properties
 
         /// <summary>
-        /// Id des Datensatzes
+        /// Identifier of the question
         /// </summary>
         [Key]
         public int QuestionID { get; set; }
 
         /// <summary>
-        /// Universität an der die Frage gestellt wurde
+        /// Foreign Key of the University where the Question was asked
         /// </summary>
         public int? UniversityID { get; set; }
         public DtUniversity University { get; set; }
 
         /// <summary>
-        /// Studiengang in dem die Frage gestellt wurde
+        /// Foreign Key of Field of Studies where the Question has been asked
         /// </summary>
         public int FieldOfStudiesID { get; set; }
         public DtFieldOfStudies FieldOfStudies { get; set; }
 
         /// <summary>
-        /// Fach in dem die Frage gestellt wurde
+        /// Foreign Key of Subject where the Question has been asked
         /// </summary>
         public int SubjectID { get; set; }
         public DtSubject Subject { get; set; }
 
         /// <summary>
-        /// Liste von Antworten, die auf die Frage gegeben wurden
+        /// Foreign Key List of answers that have been given to this question
         /// </summary>
         //public int AnswerID { get; set; }       
         public List<DtAnswer> Answers { get; set; }
 
         /// <summary>
-        /// Zeitpunkt der Erstellung des Datensatzes
+        /// Date when the question has been submitted
         /// </summary>
         public DateTime SubmissionDate { get; set; }
 
         /// <summary>
-        /// Titel / Betreff, der Frage
+        /// Title of the question
         /// </summary>        
         [StringLength(250)]
         public string Title { get; set; }
 
         /// <summary>
-        /// Inhaltstext der Frage
+        /// Content of the question
         /// </summary>        
         public string Content { get; set; }
 
         /// <summary>
-        /// Anzahl der positiven Bewertungen der Frage
+        /// positive votes for the quality of the question
         /// </summary>
         public int UpVotes { get; set; }        
 
         #endregion
 
+        /// <summary>
+        /// Standard Construcor
+        /// </summary>
         public DtQuestion()
         {
             Answers = new List<DtAnswer>();
