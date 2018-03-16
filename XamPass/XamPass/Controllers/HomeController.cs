@@ -74,7 +74,7 @@ namespace XamPass.Controllers
             viewModelSearch.FillAllDropdowns(_context, _logger);
 
             // Set Filters for the Dropdown Lists
-            SetAllFilters(viewModelSearch);
+            //SetAllFilters(viewModelSearch);
 
             // questions should NOT be rendered
             viewModelSearch.SearchExecuted = false;
@@ -93,33 +93,27 @@ namespace XamPass.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ShowQuestions(ViewModelSearch viewModelSearch)
         {
-            try
-            {
                 // Fill the Dropdowns with all the Data from the Db
                 viewModelSearch.FillAllDropdowns(_context, _logger);
 
                 // Set Filters for the Dropdown Lists
-                SetAllFilters(viewModelSearch);
+                viewModelSearch = SetAllFilters(viewModelSearch);
 
                 viewModelSearch.FilterUniversitiesByFederalState(_context, _logger);
 
                 // questions should be rendered
                 viewModelSearch.SearchExecuted = true;
 
-                //Build the filter and load the Questions from the Database
-                List<DtQuestion> filteredQuestions = _context.Questions
-                    .Where(q => (viewModelSearch.FieldOfStudiesId != null ? q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId : q.FieldOfStudiesID != 0))
-                    .Where(q => (viewModelSearch.SubjectId != null ? q.SubjectID == viewModelSearch.SubjectId : q.SubjectID != 0))
-                    .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
-                    .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
-                    .ToList();
+                ////Build the filter and load the Questions from the Database
+                //List<DtQuestion> filteredQuestions = _context.Questions
+                //    .Where(q => (viewModelSearch.FieldOfStudiesId != null ? q.FieldOfStudiesID == viewModelSearch.FieldOfStudiesId : q.FieldOfStudiesID != 0))
+                //    .Where(q => (viewModelSearch.SubjectId != null ? q.SubjectID == viewModelSearch.SubjectId : q.SubjectID != 0))
+                //    .Where(q => (viewModelSearch.UniversityId != null ? q.UniversityID == viewModelSearch.UniversityId : q.UniversityID != 0))
+                //    .Where(q => (viewModelSearch.FederalStateId != null ? q.University.FederalStateID == viewModelSearch.FederalStateId : q.University.FederalStateID != 0))
+                //    .ToList();
 
-                viewModelSearch.Questions = filteredQuestions.OrderByDescending(q => q.UpVotes).ToList();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error while loading filtered Questions from Db");
-            }
+                //viewModelSearch.Questions = filteredQuestions.OrderByDescending(q => q.UpVotes).ToList();
+           
 
             return View("Index", viewModelSearch);
         }
@@ -325,7 +319,7 @@ namespace XamPass.Controllers
         /// </summary>
         /// <param name="viewModelSearch"></param>
         /// <returns></returns>
-        public void SetAllFilters(ViewModelSearch viewModelSearch)
+        public ViewModelSearch SetAllFilters(ViewModelSearch viewModelSearch)
         {
             List<DtQuestion> questions = null;
 
@@ -364,7 +358,7 @@ namespace XamPass.Controllers
                 _logger.LogError(ex, "Error while loading filtered Questions from the Database");
             }
 
-            // if no filter is set, the Dropdowns don´t have to be filtered
+            //if no filter is set, the Dropdowns don´t have to be filtered
             if (viewModelSearch.UniversityId.HasValue)
             {
                 SetFilterForFieldsOfStudies(questions, viewModelSearch);
@@ -374,6 +368,9 @@ namespace XamPass.Controllers
             {
                 SetFilterForSubjects(questions, viewModelSearch);
             }
+
+            viewModelSearch.Questions = questions;
+            return viewModelSearch;
         }
 
         /// <summary>
