@@ -136,7 +136,7 @@
     <value>Information</value>
   </data>
   <data name="InfoText" xml:space="preserve">
-    <value>Willkommen auf XamPass - diese Seite will euch helfen euch auf anstehende Prüfungen vorzubereiten. Hier könnt ihr nach älteren Prüfungsfragen suchen oder selbst neue Einträge hinzufügen, um sie anderen Nutzern und Nutzerinnen für die Vorbereitung auf ihre Prüfungen zur Verfügung zu stellen.</value>
+    <value>Willkommen auf XamPass - diese Seite will euch helfen, euch auf anstehende Prüfungen vorzubereiten. Hier könnt ihr nach älteren Prüfungsfragen suchen oder selbst neue Einträge hinzufügen, um sie anderen Nutzern und Nutzerinnen für die Vorbereitung auf ihre Prüfungen zur Verfügung zu stellen.</value>
   </data>
   <data name="NewEntry" xml:space="preserve">
     <value>Neuer Eintrag</value>
